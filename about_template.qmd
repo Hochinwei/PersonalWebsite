@@ -14,4 +14,3 @@ This page contains some elaborated background information about your workshop, o
 :::
 
 This is to demonstrate how to make a drop-down page from the navigation bar.
-
