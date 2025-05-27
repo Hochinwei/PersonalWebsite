@@ -39,5 +39,7 @@ format:
     theme: metro
     css: styles.css
     toc: true
+    icon: fontawesome
 
-
+extensions:
+  - quarto-ext/fontawesome
