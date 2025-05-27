@@ -8,22 +8,27 @@ about:
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com
+      href: https://x.com/HoChinWei_
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/hochinwei/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/Hochinwei
+    - icon: orcid
+      text: ORCID
+      href: https://orcid.org/my-orcid?orcid=0009-0003-4688-805X
 ---
 
 ::: {#hero-heading}
 
-Hello, I am *Author*.
+Hello, I am *Chin Wei*.
 
-Feel free to edit the text and layout to make this website your own!
+I'm currently a MSc psychology researcher at the [University of Hull](https://www.hull.ac.uk/), as part of the prestigious White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/). 
 
-This is a template with `side navigation`. Read more about website navigation [here](https://quarto.org/docs/websites/website-navigation.html).
+Before this, I completed my Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my work in the Undergraduate Research Experience on Campus [(URECA)](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)) programme. 
+
+I had the opportunity to lead two independent, year-long research projects under the guidance of faculty mentors, solidifying my love for all things research. 
 
 In this template you can find examples of using `listing` (grid, table, default) in **Projects, Talks, Blog**. Read more about lists [here](https://quarto.org/docs/websites/website-listings.html).
 
