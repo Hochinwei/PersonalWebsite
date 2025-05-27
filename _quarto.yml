@@ -7,8 +7,8 @@ website:
   title: "Ho Chin Wei"
 
   page-footer:
-    left: "&copy; Copyright 2022, Author"
-    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2025, Ho Chin Wei"
+    right: "This page is built with [Quarto](https://quarto.org/)."
 
   sidebar:
     pinned: true
