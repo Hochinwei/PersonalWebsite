@@ -1,10 +1,10 @@
 ---
-title: "Author"
-image: profile.png
+title: "Ho Chin Wei"
+image: profile.jpg
 about:
   id: hero-heading
   template: trestles
-  image-shape: rectangle
+  image-shape: rounded
   links:
     - icon: twitter
       text: Twitter
