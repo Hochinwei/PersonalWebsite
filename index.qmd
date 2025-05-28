@@ -6,17 +6,15 @@ about:
   template: trestles
   image-shape: rounded
   links:
-    - icon: x-twitter
-      text: "{{< fa brands x-twitter >}}"
-      href: https://x.com/HoChinWei_
-    - icon: linkedin
-      text: LinkedIn
+    - text: "{{< fa brands linkedin >}} LinkedIn"
       href: https://www.linkedin.com/in/hochinwei/
-    - icon: github
-      text: Github
+    - text: "{{< fa brands researchgate >}} ResearchGate"
+      href: https://www.researchgate.net/profile/Chin-Wei-Ho?ev=hdr_xprf
+    - text: "{{< fa brands x-twitter >}}"
+      href: https://x.com/HoChinWei_
+    - text: "{{< fa brands github >}} Github"
       href: https://github.com/Hochinwei
-    - icon: orcid
-      text: ORCID
+    - text: "{{< fa brands orcid >}} ORCID"
       href: https://orcid.org/my-orcid?orcid=0009-0003-4688-805X
 ---
 
