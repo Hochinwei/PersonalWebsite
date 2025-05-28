@@ -12,9 +12,6 @@ website:
 
   navbar:
     pinned: true
-    align: center
-    style: "docked"
-    collapse-level: 1
     right:
 
       - text: "About me"
@@ -29,12 +26,13 @@ website:
       - text: "Talks"
         href: talks/index.qmd
         
+      - text: "CV"
+        href: CV.qmd
+        
       - text: "Contact"
         href: contact.qmd
             
-      - text: "CV"
-        href: CV.qmd
-
+  
 format:
   html:
     theme: metro
