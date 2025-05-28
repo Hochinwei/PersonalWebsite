@@ -1,6 +1,6 @@
 ---
 title: "Ho Chin Wei"
-image: profile.jpg
+image: "assets/profile.jpg"
 about:
   id: hero-heading
   template: trestles

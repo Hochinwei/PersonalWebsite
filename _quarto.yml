@@ -10,29 +10,30 @@ website:
     left: "&copy; Copyright 2025, Ho Chin Wei"
     right: "This page is built with [Quarto](https://quarto.org/)."
 
-  sidebar:
+  navbar:
     pinned: true
     align: center
     style: "docked"
     collapse-level: 1
-    contents:
+    right:
 
+      - text: "About me"
+        href: about.qmd
+        
+      - text: "Blog"
+        href: blog.qmd
+      
       - text: "Projects"
         href: projects/index.qmd
 
       - text: "Talks"
         href: talks/index.qmd
-
-      - text: "Blog"
-        href: blog.qmd
-
-      - section: "About"
-        contents:
-          - text: "About me"
-            href: about.qmd
-          - text: "This template"
-            href: about_template.qmd
-
+        
+      - text: "Contact"
+        href: contact.qmd
+            
+      - text: "CV"
+        href: CV.qmd
 
 format:
   html:
