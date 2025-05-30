@@ -1,9 +1,9 @@
 ---
-title: "Author"
+title: "Ho Chin Wei"
 image: "assets/profile.jpg"
 about:
   id: hero-heading
-  template: trestles
+  template: marquee
   image-shape: rectangle
   links:
     - text: "{{< fa brands linkedin >}} LinkedIn"
@@ -20,16 +20,18 @@ about:
 
 ::: {#hero-heading}
 
-I am a researcher at University of Oslo. 
+I am a PhD student at the University of Hull, UK. 
 
-My work is about Electronic Health Records.
+My focus is on AI-Images
 
 
 ## Education 
 
-University of Oslo | Oslo, Norway
+University of Hull | Hull, United Kingdom
 
-PhD in Biostatistics | Oct 2022
+MSc in Social Research | Oct 2022
+
+BSc in Social Sciences in Psychology | June 2024
 
 ## Experience
 
