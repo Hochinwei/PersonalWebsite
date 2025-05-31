@@ -1,7 +1,7 @@
 ---
 title: "Projects"
 description: |
-  This page provides a mix of two types of listing, grouped by `id`.
+  This page displays the different projects I've created. It is categorized primarily by two ways.
 listing:
   - id: ehr
     max-description-length: 500
@@ -26,7 +26,6 @@ listing:
     filter-ui: false
     
 ---
-
 
 
 ## Grid listing
