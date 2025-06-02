@@ -22,7 +22,7 @@ about:
 
 I am a PhD student at the University of Hull, UK. 
 
-My focus is on AI-Images
+My research area broadly lies in understanding human behavior interacting with AI-technologies. More specifically, my PhD project focuses on misinformation from AI-Imagery, and how do we cognitively process AI-images differently than "Real" images. I have a more diverse list of topics I am interested in (e.g., Effects of AI-pornography, discussions around what is "real" or "fake" information etc. - Refer to my blog for more!)
 
 
 ## Education 
