@@ -10,6 +10,7 @@ listing:
     contents: 
       - project_1
       - project_2
+      - LinkedIn Games Analysis
     type: grid
     grid-item-border: false
     
@@ -29,8 +30,6 @@ listing:
 
 
 ## Grid listing
-
-This is an example of **grid** listing. You can specify the content in the `yaml` header in the `.qmd` file. 
 
 It is convenient to use `id` to link to multiple folders. 
 
