@@ -1,0 +1,572 @@
+---
+title: "LinkedIn games analysis pipeline"
+author: "Ho Chin Wei"
+format: 
+  html:
+    theme: flatly
+    smooth-scroll: true
+---
+
+This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between PM and CW. 
+
+This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players `PM` and `CW`. Beginning from April 29th till today, `r format(Sys.Date(), "%B %d, %Y")`, data will continually be updated manually in the raw xlsx file and ran through the pipeline for analysis when rendered. 
+
+This document aims to describe and visualize the differences in scores between the two game players.
+
+```{r library, message = FALSE, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Libraries loaded
+library(tidyverse)
+library(readxl)
+library(car)
+library(patchwork)
+library(knitr)
+library(kableExtra)
+
+# Load the data in
+dat <- read_xlsx("LinkedIn_games_data.xlsx")
+```
+
+To account for missing data (e.g., failure to complete Pinpoint guesses), "-" will be recoded into N.A. and listwise deletion will be conducted to remove the data for the day. Additionally, since the data is manually entered, it is recorded in wide format. The code below pivots the wide format into long format, which is simpler for analysis.
+
+```{r data_wrangling}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Convert "-" into NA and all columns into double
+dat <- dat %>% 
+  mutate(across(where(is.character), ~ na_if(., "-"))) %>% 
+  mutate(across(where(is.character), as.double)) 
+
+# Change to long format
+dat_long <- dat %>% 
+  pivot_longer(
+    cols = -date,
+    names_to = c("Player", "Game_type"),
+    names_sep = "_",
+    values_to = "value"
+  )
+```
+
+# Descriptive statistics
+
+In this section, descriptive statistics will be computed during render.
+
+```{r central_tendencies}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Calculate mean, median and SD for understanding average
+summary_stats <- dat_long %>% 
+  group_by(Player, Game_type) %>% 
+  summarise(
+    Mean = round(mean(value, na.rm = TRUE), 1),
+    Median = round(median(value, na.rm = TRUE), 1),
+    Standard_Deviation = round(sd(value, na.rm = TRUE), 1),
+    .groups = "drop"
+  )
+
+# Store central tendencies scores for inline updating
+## Tango (Mean)
+mean_t_PM <- summary_stats %>%
+  filter(Game_type == "T", Player == "PM") %>%
+  pull(Mean)
+mean_t_CW <- summary_stats %>%
+  filter(Game_type == "T", Player == "CW") %>%
+  pull(Mean)
+## Zip (Mean)
+mean_z_PM <- summary_stats %>%
+  filter(Game_type == "Z", Player == "PM") %>%
+  pull(Mean)
+mean_z_CW <- summary_stats %>%
+  filter(Game_type == "Z", Player == "CW") %>%
+  pull(Mean)
+## Pinpoint (Mean)
+mean_p_PM <- summary_stats %>%
+  filter(Game_type == "P", Player == "PM") %>%
+  pull(Mean)
+mean_p_CW <- summary_stats %>%
+  filter(Game_type == "P", Player == "CW") %>%
+  pull(Mean)
+## Crossclimb (Mean)
+mean_c_PM <- summary_stats %>%
+  filter(Game_type == "C", Player == "PM") %>%
+  pull(Mean)
+mean_c_CW <- summary_stats %>%
+  filter(Game_type == "C", Player == "CW") %>%
+  pull(Mean)
+
+## Tango (Median)
+median_t_PM <- summary_stats %>%
+  filter(Game_type == "T", Player == "PM") %>%
+  pull(Median)
+median_t_CW <- summary_stats %>%
+  filter(Game_type == "T", Player == "CW") %>%
+  pull(Median)
+## Zip (Median)
+median_z_PM <- summary_stats %>%
+  filter(Game_type == "Z", Player == "PM") %>%
+  pull(Median)
+median_z_CW <- summary_stats %>%
+  filter(Game_type == "Z", Player == "CW") %>%
+  pull(Median)
+## Pinpoint (Median)
+median_p_PM <- summary_stats %>%
+  filter(Game_type == "P", Player == "PM") %>%
+  pull(Median)
+median_p_CW <- summary_stats %>%
+  filter(Game_type == "P", Player == "CW") %>%
+  pull(Median)
+## Crossclimb (Median)
+median_c_PM <- summary_stats %>%
+  filter(Game_type == "C", Player == "PM") %>%
+  pull(Median)
+median_c_CW <- summary_stats %>%
+  filter(Game_type == "C", Player == "CW") %>%
+  pull(Median)
+
+# Build table for visualization
+kable(summary_stats, 
+        caption = "Summary statistics for each player and game type.", 
+        align = "c")  
+```
+
+As of April 29  2025 through `r format(Sys.Date(), "%B %d, %Y")`, for **Tango**:
+
+- PM’s average time is **`r mean_t_PM`** seconds, with the median time being **`r median_t_PM`** seconds.
+- CW’s average time is **`r mean_t_CW`** seconds, with the median time being **`r median_t_CW`** seconds.
+
+For **Zip**:
+
+- PM’s average time is **`r mean_z_PM`** seconds, with the median time being **`r median_z_PM`** seconds.
+- CW’s average time is **`r mean_z_CW`** seconds, with the median time being **`r median_z_CW`** seconds.
+
+For **Pinpoint**:
+
+- PM’s average number of tries is **`r mean_p_PM`**, the number of median tries being **`r median_p_PM`**.  
+- CW’s average number of tries is **`r mean_p_CW`**, the number of median tries being **`r median_p_CW`**.  
+
+For **Crossclimb**:
+
+- PM’s average time is **`r mean_c_PM`** seconds, with the median time being **`r median_c_PM`** seconds.
+- CW’s average time is **`r mean_c_CW`** seconds, with the median time being **`r median_c_CW`** seconds.
+
+# Time-series visualizations
+
+```{r data-filtering}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Filter data subsequent between player visualization/analysis
+dat_longT <- dat_long %>%
+              filter(Game_type == "T") 
+dat_longZ <- dat_long %>%
+              filter(Game_type == "Z") 
+dat_longP <- dat_long %>%
+              filter(Game_type == "P") 
+dat_longC <- dat_long %>%
+              filter(Game_type == "C") 
+```
+
+
+# Boxplot comparisons
+
+In this section, boxplots are created to visualize the difference in scores between players across the four LinkedIn games.
+
+::: {.panel-tabset}
+
+## Tango
+
+```{r t-ts, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+ggplot(dat_longT, aes(x = date, y = value, color = Player)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Tango Time-Series Plot",
+    x = "Date",
+    y = "Seconds"
+  ) +
+  theme_minimal()
+```
+
+## Zip
+
+```{r z-ts, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+ggplot(dat_longZ, aes(x = date, y = value, color = Player)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Zip Time-Series Plot",
+    x = "Date",
+    y = "Seconds"
+  ) +
+  theme_minimal()
+```
+
+## Pinpoint
+
+```{r p-ts, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+ggplot(dat_longP, aes(x = date, y = value, color = Player)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Pinpoint Time-Series Plot",
+    x = "Date",
+    y = "Tries"
+  ) +
+  theme_minimal()
+```
+
+## Crossclimb
+
+```{r c-ts, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+ggplot(dat_longC, aes(x = date, y = value, color = Player)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Crossclimb Time-Series Plot",
+    x = "Date",
+    y = "Seconds"
+  ) +
+  theme_minimal()
+```
+
+:::
+
+::: {.panel-tabset}
+
+## Tango
+```{r boxplot_tango, warning = FALSE, message = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+Tango_box <- ggplot(subset(dat_long, Game_type == "T"), aes(x = Player, y = value)) +
+              geom_boxplot() +
+              labs(title = "Tango Comparisons", x = "Tango", y = "Seconds") +
+              coord_cartesian(ylim = c(0, 100)) +
+              theme_minimal() +
+              theme(
+                axis.line = element_line(color = "black"), 
+                plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+                axis.title = element_text(size = 12),
+                panel.grid.major = element_line(color = "gray95", size = 0.1),
+                panel.grid.minor = element_line(color = "gray95", size = 0.1)
+              )
+
+Tango_box
+```
+
+## Zip
+
+```{r boxplot_zip, warning = FALSE, message = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+Zip_box <- ggplot(subset(dat_long, Game_type == "Z"), aes(x = Player, y = value)) +
+            geom_boxplot() +
+            labs(title = "Zip Comparisons", x = "Zip", y = "Seconds") +
+            coord_cartesian(ylim = c(0, 100)) +
+            theme_minimal() +
+            theme(
+              axis.line = element_line(color = "black"), 
+              plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+              axis.title = element_text(size = 12),
+              panel.grid.major = element_line(color = "gray95", size = 0.1),
+              panel.grid.minor = element_line(color = "gray95", size = 0.1)
+            )
+
+Zip_box
+```
+
+## Pinpoint
+
+```{r boxplot_pinpoint, warning = FALSE, message = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+Pinpoint_box <- ggplot(subset(dat_long, Game_type == "P"), aes(x = Player, y = value)) +
+                  geom_boxplot() +
+                  labs(title = "Pinpoint Comparisons", x = "Pinpoint", y = "Tries") +
+                  coord_cartesian(ylim = c(0, 6)) +
+                  theme_minimal() +
+                  theme(
+                    axis.line = element_line(color = "black"), 
+                    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+                    axis.title = element_text(size = 12),
+                    panel.grid.major = element_line(color = "gray95", size = 0.1),
+                    panel.grid.minor = element_line(color = "gray95", size = 0.1)
+                  )
+
+Pinpoint_box
+```
+
+## Crossclimb
+
+```{r outlier_visualization, warning = FALSE, message = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+Crossclimb_box <- ggplot(subset(dat_long, Game_type == "C"), aes(x = Player, y = value)) +
+                    geom_boxplot() +
+                    labs(title = "Crossclimb Comparisons", x = "Crossclimb", y = "Seconds") +
+                    coord_cartesian(ylim = c(0, 100)) +
+                    theme_minimal() +
+                    theme(
+                      axis.line = element_line(color = "black"), 
+                      plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+                      axis.title = element_text(size = 12),
+                      panel.grid.major = element_line(color = "gray95", size = 0.1),
+                      panel.grid.minor = element_line(color = "gray95", size = 0.1)
+                    )
+
+Crossclimb_box
+```
+
+:::
+
+# T-test comparisons
+
+::: {.callout-note}
+# IMPORTANT NOTE
+The subsequent analysis is made purely for fun. 
+
+This is not a formalized statistics project and I understand the implications of [optional-stopping](https://www.analytics-toolkit.com/glossary/peeking/) (by running new updated raw data through this pipeline) on frequentist statistics such as the multiple repeated t-tests conducted each time the document is rendered with additional data. 
+:::
+
+## Homogenity of Variance Checks
+
+::: {.panel-tabset}
+
+## Tango
+```{r T-HoV}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Levene's test of homogenity of variance
+levene_T <- leveneTest(value ~ as.factor(Player), data = dat_longT)
+levene_T_df <- as.data.frame(levene_T)
+
+# Clean up df formatting
+levene_T_df <- levene_T_df %>% 
+  mutate(
+    `Df` = Df,
+    `F Value` = round(`F value`, 3),
+    `Pr(>F)` = signif(`Pr(>F)`, 3)
+  ) %>% 
+  select(`Df`, `F Value`, `Pr(>F)`)
+
+# Create Clean table
+levene_T_df %>% 
+  kable(
+    caption = "Levene’s Test for Homogeneity of Variance",
+    col.names = c("Degrees of Freedom", "F Statistic", "p-value"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover")) 
+
+```
+
+## Zip
+```{r Z-HoV}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Levene's test of homogenity of variance
+levene_Z <- leveneTest(value ~ as.factor(Player), data = dat_longZ)
+levene_Z_df <- as.data.frame(levene_Z)
+
+# Clean up df formatting
+levene_Z_df <- levene_Z_df %>% 
+  mutate(
+    `Df` = Df,
+    `F Value` = round(`F value`, 3),
+    `Pr(>F)` = signif(`Pr(>F)`, 3)
+  ) %>% 
+  select(`Df`, `F Value`, `Pr(>F)`)
+
+# Create Clean table
+levene_Z_df %>% 
+  kable(
+    caption = "Levene’s Test for Homogeneity of Variance",
+    col.names = c("Degrees of Freedom", "F Statistic", "p-value"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+```
+
+## Pinpoint
+```{r P-HoV}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Levene's test of homogenity of variance
+levene_P <- leveneTest(value ~ as.factor(Player), data = dat_longP)
+levene_P_df <- as.data.frame(levene_P)
+
+# Clean up df formatting
+levene_P_df <- levene_P_df %>% 
+  mutate(
+    `Df` = Df,
+    `F Value` = round(`F value`, 3),
+    `Pr(>F)` = signif(`Pr(>F)`, 3)
+  ) %>% 
+  select(`Df`, `F Value`, `Pr(>F)`)
+
+# Create Clean table
+levene_P_df %>% 
+  kable(
+    caption = "Levene’s Test for Homogeneity of Variance",
+    col.names = c("Degrees of Freedom", "F Statistic", "p-value"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+```
+
+## Crossclimb
+```{r C-HoV}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Levene's test of homogenity of variance
+levene_C <- leveneTest(value ~ as.factor(Player), data = dat_longC)
+levene_C_df <- as.data.frame(levene_C)
+
+# Clean up df formatting
+levene_C_df <- levene_C_df %>% 
+  mutate(
+    `Df` = Df,
+    `F Value` = round(`F value`, 3),
+    `Pr(>F)` = signif(`Pr(>F)`, 3)
+  ) %>% 
+  select(`Df`, `F Value`, `Pr(>F)`)
+
+# Create Clean table
+levene_C_df %>% 
+  kable(
+    caption = "Levene’s Test for Homogeneity of Variance",
+    col.names = c("Degrees of Freedom", "F Statistic", "p-value"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+```
+:::
+
+
+## Non-parametric T-tests 
+
+These are Mann-Whitney U tests comparing the difference in scores between the games, since the data is non-normal but does not violate the Homogenity of Variance assumption. 
+
+::: {.panel-tabset}
+
+## Tango
+
+```{r T-tt}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Non-parametric T-tests
+wilcox_T <- wilcox.test(value ~ Player, data = dat_longT, exact = FALSE)
+
+# Extract statistics
+wilcox_df_T <- data.frame(
+  `W Statistic` = wilcox_T$statistic,
+  `p-value` = signif(wilcox_T$p.value, 3),
+  `Method` = wilcox_T$method
+)
+
+# Create table
+wilcox_df_T %>% 
+  kable(
+    caption = "Wilcoxon Rank-Sum Test Results",
+    col.names = c("W Statistic", "p-value", "Method"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+```
+
+## Zip
+
+```{r Z-tt}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Non-parametric T-tests
+wilcox_Z <- wilcox.test(value ~ Player, data = dat_longZ, exact = FALSE)
+
+# Extract statistics
+wilcox_df_Z <- data.frame(
+  `W Statistic` = wilcox_Z$statistic,
+  `p-value` = signif(wilcox_Z$p.value, 3),
+  `Method` = wilcox_Z$method
+)
+
+# Create table
+wilcox_df_Z %>% 
+  kable(
+    caption = "Wilcoxon Rank-Sum Test Results",
+    col.names = c("W Statistic", "p-value", "Method"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+```
+
+## Pinpoint
+
+```{r P-tt}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Non-parametric T-tests
+wilcox_P <- wilcox.test(value ~ Player, data = dat_longP, exact = FALSE)
+
+# Extract statistics
+wilcox_df_P <- data.frame(
+  `W Statistic` = wilcox_P$statistic,
+  `p-value` = signif(wilcox_P$p.value, 3),
+  `Method` = wilcox_P$method
+)
+
+# Create table
+wilcox_df_P %>% 
+  kable(
+    caption = "Wilcoxon Rank-Sum Test Results",
+    col.names = c("W Statistic", "p-value", "Method"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+```
+
+## Crossclimb
+
+```{r C-tt}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Non-parametric T-tests
+wilcox_C <- wilcox.test(value ~ Player, data = dat_longC, exact = FALSE)
+
+# Extract statistics
+wilcox_df_C <- data.frame(
+  `W Statistic` = wilcox_C$statistic,
+  `p-value` = signif(wilcox_C$p.value, 3),
+  `Method` = wilcox_C$method
+)
+
+# Create table
+wilcox_df_C %>% 
+  kable(
+    caption = "Wilcoxon Rank-Sum Test Results",
+    col.names = c("W Statistic", "p-value", "Method"),
+    format = "html"
+  ) %>% 
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+```
+
+:::
+
+
