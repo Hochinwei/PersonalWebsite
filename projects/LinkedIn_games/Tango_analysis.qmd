@@ -54,7 +54,8 @@ dat_long <- dat %>%
 
 # Descriptive statistics
 
-In this section, descriptive statistics will be computed during render.
+This section summarizes the central tendencies and variability in the players’ daily game performance across the four game types (Tango (T), Zip(Z), Pinpoint(P), and Crossclimb(C)), using standard measures of mean, median and standard deviation.
+
 
 ```{r central_tendencies}
 #| code-fold: true
@@ -157,8 +158,6 @@ For **Crossclimb**:
 
 # Time-series visualizations
 
-## Purpose of Time‐Series Visualizations
-
 The time‐series plots display each player’s daily performance (e.g., completion time (seconds) or number of tries) on the x‐axis (date) and the corresponding score on the y‐axis. 
 
 These visualizations provide comparisons of variability and stability to assess player score fluctuations and identify any days with unusually high or low values (and identify and potential outliers). It provides an intuitive and chronological overview of how PM and CW's LinkedIn game scores evolve.
@@ -260,14 +259,15 @@ Visual inspection of these boxplots can highlight difference or overlaps in scor
 ```{r boxplot_tango, warning = FALSE, message = FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
-Tango_box <- ggplot(subset(dat_long, Game_type == "T"), aes(x = Player, y = value)) +
+Tango_box <- ggplot(subset(dat_long, Game_type == "T"), aes(x = Player, y = value, fill = Player)) +
               geom_boxplot() +
+              scale_fill_manual(values = c("PM" = "#00CFC1", "CW" = "#FF6B5C")) +
               labs(title = "Tango Comparisons", x = "Tango", y = "Seconds") +
               coord_cartesian(ylim = c(0, 100)) +
               theme_minimal() +
               theme(
                 axis.line = element_line(color = "black"), 
-                plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+                plot.title = element_text(hjust = 0.5, size = 16), 
                 axis.title = element_text(size = 12),
                 panel.grid.major = element_line(color = "gray95", size = 0.1),
                 panel.grid.minor = element_line(color = "gray95", size = 0.1)
@@ -281,14 +281,15 @@ Tango_box
 ```{r boxplot_zip, warning = FALSE, message = FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
-Zip_box <- ggplot(subset(dat_long, Game_type == "Z"), aes(x = Player, y = value)) +
+Zip_box <- ggplot(subset(dat_long, Game_type == "Z"), aes(x = Player, y = value, fill = Player)) +
             geom_boxplot() +
+            scale_fill_manual(values = c("PM" = "#00CFC1", "CW" = "#FF6B5C")) +
             labs(title = "Zip Comparisons", x = "Zip", y = "Seconds") +
             coord_cartesian(ylim = c(0, 100)) +
             theme_minimal() +
             theme(
               axis.line = element_line(color = "black"), 
-              plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+              plot.title = element_text(hjust = 0.5, size = 16), 
               axis.title = element_text(size = 12),
               panel.grid.major = element_line(color = "gray95", size = 0.1),
               panel.grid.minor = element_line(color = "gray95", size = 0.1)
@@ -302,14 +303,15 @@ Zip_box
 ```{r boxplot_pinpoint, warning = FALSE, message = FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
-Pinpoint_box <- ggplot(subset(dat_long, Game_type == "P"), aes(x = Player, y = value)) +
+Pinpoint_box <- ggplot(subset(dat_long, Game_type == "P"), aes(x = Player, y = value, fill = Player)) +
                   geom_boxplot() +
+                  scale_fill_manual(values = c("PM" = "#00CFC1", "CW" = "#FF6B5C")) +
                   labs(title = "Pinpoint Comparisons", x = "Pinpoint", y = "Tries") +
                   coord_cartesian(ylim = c(0, 6)) +
                   theme_minimal() +
                   theme(
                     axis.line = element_line(color = "black"), 
-                    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+                    plot.title = element_text(hjust = 0.5, size = 16), 
                     axis.title = element_text(size = 12),
                     panel.grid.major = element_line(color = "gray95", size = 0.1),
                     panel.grid.minor = element_line(color = "gray95", size = 0.1)
@@ -323,14 +325,15 @@ Pinpoint_box
 ```{r outlier_visualization, warning = FALSE, message = FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
-Crossclimb_box <- ggplot(subset(dat_long, Game_type == "C"), aes(x = Player, y = value)) +
+Crossclimb_box <- ggplot(subset(dat_long, Game_type == "C"), aes(x = Player, y = value, fill = Player)) +
                     geom_boxplot() +
+                    scale_fill_manual(values = c("PM" = "#00CFC1", "CW" = "#FF6B5C")) +
                     labs(title = "Crossclimb Comparisons", x = "Crossclimb", y = "Seconds") +
                     coord_cartesian(ylim = c(0, 100)) +
                     theme_minimal() +
                     theme(
                       axis.line = element_line(color = "black"), 
-                      plot.title = element_text(hjust = 0.5, size = 16, face = "bold"), 
+                      plot.title = element_text(hjust = 0.5, size = 16), 
                       axis.title = element_text(size = 12),
                       panel.grid.major = element_line(color = "gray95", size = 0.1),
                       panel.grid.minor = element_line(color = "gray95", size = 0.1)
