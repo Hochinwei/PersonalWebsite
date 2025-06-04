@@ -6,25 +6,26 @@ format:
   html:
     theme: flatly
     smooth-scroll: true
-categories: [code, analysis]
+categories: [code, analysis, bayesian]
 ---
 
-This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between PM and CW. 
+This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between `PM` and `CW`. 
 
-This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players `PM` and `CW`. Beginning from April 29th till today, `r format(Sys.Date(), "%B %d, %Y")`, data will continually be updated manually in the raw xlsx file and ran through the pipeline for analysis when rendered. 
+This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players `PM` and `CW`. Beginning from April 29th till today, **`r format(Sys.Date(), "%B %d, %Y")`**, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered. 
 
-This document aims to describe and visualize the differences in scores between the two game players.
+In addition to summarizing means, medians, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF~10~) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see @nte-impt below).  
+
+This document aims to describe, visualize, and evaluate, using both descriptive statistics and Bayesian hypothesis tests, to assess the differences in scores between the two players.  
 
 ```{r library, message = FALSE, warning = FALSE}
-#| code-fold: true
-#| code-summary: "Show the code"
-# Libraries loaded
+# Libraries utilized
 library(tidyverse)
 library(readxl)
 library(car)
 library(patchwork)
 library(knitr)
 library(kableExtra)
+library(BayesFactor)
 
 # Load the data in
 dat <- read_xlsx("LinkedIn_games_data.xlsx")
@@ -172,10 +173,6 @@ dat_longC <- dat_long %>%
 ```
 
 
-# Boxplot comparisons
-
-In this section, boxplots are created to visualize the difference in scores between players across the four LinkedIn games.
-
 ::: {.panel-tabset}
 
 ## Tango
@@ -243,6 +240,10 @@ ggplot(dat_longC, aes(x = date, y = value, color = Player)) +
 ```
 
 :::
+
+# Boxplot comparisons
+
+In this section, boxplots are created to visualize the difference in scores between PM and CW across the four LinkedIn games.
 
 ::: {.panel-tabset}
 
@@ -331,16 +332,28 @@ Crossclimb_box
 
 :::
 
-# T-test comparisons
+# Bayesian Independent T-test comparisons
 
-::: {.callout-note}
+Here, using Bayesian Independent-samples t-tests, evidence for or against a difference in performance between PM and CW for each game type is quantified. For each comparision, the Bayes factor (BF~10~) to measure the relative support for the alternative hypothesis (that the two players differ in average game scores) over the null hypothesis (no difference). 
+
+Additionally, prior (default) and posterior distributions of the standardized effect size will be calculated to assess how the observed data update beliefs under the default Cauchy prior (scale = 0.707)
+
+::: {#nte-impt .callout-note}
 # IMPORTANT NOTE
-The subsequent analysis is made purely for fun. 
+The subsequent analysis is made purely for fun. This is not a formalized statistics project, and even though Bayesian analysis is more robust to [optional-stopping](https://www.analytics-toolkit.com/glossary/peeking/) than frequentist methods, there are important considerations.
 
-This is not a formalized statistics project and I understand the implications of [optional-stopping](https://www.analytics-toolkit.com/glossary/peeking/) (by running new updated raw data through this pipeline) on frequentist statistics such as the multiple repeated t-tests conducted each time the document is rendered with additional data. 
+- Peeking and Prior-Data Conflict
+Continously re-running the analysis with the same default prior (Cauchy scale = 0.707) without formally updating it in light of past data can produce Bayes factors that are not strictly coherent under sequential updating. 
+
+- Accumulation of Evidence
+Proper sequntial analysis would require recalculating the posterior at each stage and using that as the new prior for the next stage. Here, the analysis always begins from the default prior, which may under or overestimate evidence until enough data have accumulated. **Each Bayes Factor value should be regarded as snapshots of a formal sequentally updated analysis.**
+
+**These results can only be used as informal visualization and intuitive understanding rather than confirmatory statistical proof.**
 :::
 
-## Homogenity of Variance Checks
+## Homogenity of Variance Assumptions
+
+Runs Levene's test as a check of homogenity of variance for each game type subsets.
 
 ::: {.panel-tabset}
 
@@ -458,115 +471,424 @@ levene_C_df %>%
 ```
 :::
 
-
-## Non-parametric T-tests 
-
-These are Mann-Whitney U tests comparing the difference in scores between the games, since the data is non-normal but does not violate the Homogenity of Variance assumption. 
+## Bayes Factor computation 
 
 ::: {.panel-tabset}
 
 ## Tango
 
-```{r T-tt}
+Bayes factor computation for Tango between PM and CW.
+
+```{r T-tt, warning = FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
 
-# Non-parametric T-tests
-wilcox_T <- wilcox.test(value ~ Player, data = dat_longT, exact = FALSE)
+# Filter out PM’s values (remove NA from 'value')
+tango_pm <- dat_longT %>%
+  filter(Player == "PM", !is.na(value)) %>%
+  pull(value)
 
-# Extract statistics
-wilcox_df_T <- data.frame(
-  `W Statistic` = wilcox_T$statistic,
-  `p-value` = signif(wilcox_T$p.value, 3),
-  `Method` = wilcox_T$method
+# Filter out CW’s values (remove NA from 'value')
+tango_cw <- dat_longT %>%
+  filter(Player == "CW", !is.na(value)) %>%
+  pull(value)
+
+# Run Bayesian two-sample t-test
+bf_obj_tango <- ttestBF(
+  x = tango_pm,
+  y = tango_cw,
+  paired = FALSE
 )
 
-# Create table
-wilcox_df_T %>% 
+# extractBF() returns a data frame; the “bf” column is the numeric Bayes Factor
+bf_tango <- extractBF(bf_obj_tango)$bf[1]
+
+# Build a simple one‐row data.frame for kable()
+data.frame(
+  "Game Type" = "Tango",
+  "BF10"      = round(bf_tango, 3),
+  "Notes"     = if (bf_tango > 1) {
+                   "Evidence favoring difference (H1)"
+                 } else {
+                   "Evidence favoring H0 or inconclusive"
+                 }
+) %>%
+  # Display as HTML table with caption and styling
   kable(
-    caption = "Wilcoxon Rank-Sum Test Results",
-    col.names = c("W Statistic", "p-value", "Method"),
-    format = "html"
-  ) %>% 
-  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+    caption   = "Bayesian independent‐samples t‐test (Tango)",
+    col.names = c("Game Type", "BF₁₀", "Notes"),
+    format    = "html"
+  ) %>%
+  kable_styling(
+    full_width        = FALSE,
+    position          = "center",
+    bootstrap_options = c("striped", "hover")
+  )
+```
+
+Visualizations of posterior and prior distributions.
+
+```{r T-pd, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Obtain 10,000 posterior samples of the standardized effect size (delta)
+posterior_samples_T <- posterior(bf_obj_tango, iterations = 10000)
+
+# Convert to a data frame for easier handling
+posterior_df_T <- as.data.frame(posterior_samples_T)
+
+# Create a sequence of effect size (delta) values for the prior
+delta_range_T <- seq(-3, 3, length.out = 1000)  # reasonable range for visualization
+
+# Compute the density of the default Cauchy prior (scale = 0.707)
+prior_density_T <- dcauchy(delta_range_T, location = 0, scale = sqrt(2) / 2)
+
+# Create a data frame for the prior distribution
+prior_df_T <- data.frame(
+  delta = delta_range_T,
+  density = prior_density_T,
+  Distribution = "Prior"
+)
+
+# Compute the density of the posterior samples
+posterior_density_T <- density(posterior_df_T$delta, adjust = 1.5)  # adjust can be tuned for smoothing
+
+posterior_df_density_T <- data.frame(
+  delta = posterior_density_T$x,
+  density = posterior_density_T$y,
+  Distribution = "Posterior"
+)
+
+# Combine prior and posterior data frames
+combined_df_T <- rbind(prior_df_T, posterior_df_density_T)
+
+# Plot both distributions
+ggplot(combined_df_T, aes(x = delta, y = density, color = Distribution, fill = Distribution)) +
+  geom_line(size = 1) +
+  geom_area(alpha = 0.2, position = "identity") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+  labs(
+    title = "Prior and Posterior Distributions of Effect Size (δ)",
+    subtitle = "Tango: PM vs. CW",
+    x = "Effect Size (δ)",
+    y = "Density"
+  ) +
+  scale_color_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  scale_fill_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  theme_minimal(base_size = 14)
 ```
 
 ## Zip
+
+Bayes factor computation for Zip.
 
 ```{r Z-tt}
 #| code-fold: true
 #| code-summary: "Show the code"
 
-# Non-parametric T-tests
-wilcox_Z <- wilcox.test(value ~ Player, data = dat_longZ, exact = FALSE)
+# Filter out PM’s values (remove NA from 'value')
+zip_pm <- dat_longZ %>%
+  filter(Player == "PM", !is.na(value)) %>%
+  pull(value)
 
-# Extract statistics
-wilcox_df_Z <- data.frame(
-  `W Statistic` = wilcox_Z$statistic,
-  `p-value` = signif(wilcox_Z$p.value, 3),
-  `Method` = wilcox_Z$method
+# Filter out CW’s values (remove NA from 'value')
+zip_cw <- dat_longZ %>%
+  filter(Player == "CW", !is.na(value)) %>%
+  pull(value)
+
+# Run Bayesian two-sample t-test
+bf_obj_zip <- ttestBF(
+  x = zip_pm,
+  y = zip_cw,
+  paired = FALSE
 )
 
-# Create table
-wilcox_df_Z %>% 
+# extractBF() returns a data frame; the “bf” column is the numeric Bayes Factor
+bf_zip <- extractBF(bf_obj_zip)$bf[1]
+
+# Build a simple one‐row data.frame for kable()
+data.frame(
+  "Game Type" = "Zip",
+  "BF10"      = round(bf_zip, 3),
+  "Notes"     = if (bf_zip > 1) {
+                   "Evidence favoring difference (H1)"
+                 } else {
+                   "Evidence favoring H0 or inconclusive"
+                 }
+) %>%
+  # Display as HTML table with caption and styling
   kable(
-    caption = "Wilcoxon Rank-Sum Test Results",
-    col.names = c("W Statistic", "p-value", "Method"),
-    format = "html"
-  ) %>% 
-  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+    caption   = "Bayesian independent‐samples t‐test (Zip)",
+    col.names = c("Game Type", "BF₁₀", "Notes"),
+    format    = "html"
+  ) %>%
+  kable_styling(
+    full_width        = FALSE,
+    position          = "center",
+    bootstrap_options = c("striped", "hover")
+  )
+```
+
+Visualizations of posterior and prior distributions.
+
+```{r Z-pd, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Obtain 10,000 posterior samples of the standardized effect size (delta)
+posterior_samples_Z <- posterior(bf_obj_zip, iterations = 10000)
+
+# Convert to a data frame for easier handling
+posterior_df_Z <- as.data.frame(posterior_samples_Z)
+
+# Create a sequence of effect size (delta) values for the prior
+delta_range_Z <- seq(-3, 3, length.out = 1000)  # reasonable range for visualization
+
+# Compute the density of the default Cauchy prior (scale = 0.707)
+prior_density_Z <- dcauchy(delta_range_Z, location = 0, scale = sqrt(2) / 2)
+
+# Create a data frame for the prior distribution
+prior_df_Z <- data.frame(
+  delta = delta_range_Z,
+  density = prior_density_Z,
+  Distribution = "Prior"
+)
+
+# Compute the density of the posterior samples
+posterior_density_Z <- density(posterior_df_Z$delta, adjust = 1.5)  # adjust can be tuned for smoothing
+
+posterior_df_density_Z <- data.frame(
+  delta = posterior_density_Z$x,
+  density = posterior_density_Z$y,
+  Distribution = "Posterior"
+)
+
+# Combine prior and posterior data frames
+combined_df_Z <- rbind(prior_df_Z, posterior_df_density_Z)
+
+# Plot both distributions
+ggplot(combined_df_Z, aes(x = delta, y = density, color = Distribution, fill = Distribution)) +
+  geom_line(size = 1) +
+  geom_area(alpha = 0.2, position = "identity") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+  labs(
+    title = "Prior and Posterior Distributions of Effect Size (δ)",
+    subtitle = "Zip: PM vs. CW",
+    x = "Effect Size (δ)",
+    y = "Density"
+  ) +
+  scale_color_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  scale_fill_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  theme_minimal(base_size = 14)
 ```
 
 ## Pinpoint
 
-```{r P-tt}
+Bayes factor computation for Pinpoint.
+
+```{r pp-tt}
 #| code-fold: true
 #| code-summary: "Show the code"
 
-# Non-parametric T-tests
-wilcox_P <- wilcox.test(value ~ Player, data = dat_longP, exact = FALSE)
+# Filter out PM’s values (remove NA from 'value')
+pp_pm <- dat_longP %>%
+  filter(Player == "PM", !is.na(value)) %>%
+  pull(value)
 
-# Extract statistics
-wilcox_df_P <- data.frame(
-  `W Statistic` = wilcox_P$statistic,
-  `p-value` = signif(wilcox_P$p.value, 3),
-  `Method` = wilcox_P$method
+# Filter out CW’s values (remove NA from 'value')
+pp_cw <- dat_longP %>%
+  filter(Player == "CW", !is.na(value)) %>%
+  pull(value)
+
+# Run Bayesian two-sample t-test
+bf_obj_pp <- ttestBF(
+  x = pp_pm,
+  y = pp_cw,
+  paired = FALSE
 )
 
-# Create table
-wilcox_df_P %>% 
+# extractBF() returns a data frame; the “bf” column is the numeric Bayes Factor
+bf_pp <- extractBF(bf_obj_pp)$bf[1]
+
+# Build a simple one‐row data.frame for kable()
+data.frame(
+  "Game Type" = "Pinpoint",
+  "BF10"      = round(bf_pp, 3),
+  "Notes"     = if (bf_pp > 1) {
+                   "Evidence favoring difference (H1)"
+                 } else {
+                   "Evidence favoring H0 or inconclusive"
+                 }
+) %>%
+  # Display as HTML table with caption and styling
   kable(
-    caption = "Wilcoxon Rank-Sum Test Results",
-    col.names = c("W Statistic", "p-value", "Method"),
-    format = "html"
-  ) %>% 
-  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+    caption   = "Bayesian independent‐samples t‐test (Pinpoint)",
+    col.names = c("Game Type", "BF₁₀", "Notes"),
+    format    = "html"
+  ) %>%
+  kable_styling(
+    full_width        = FALSE,
+    position          = "center",
+    bootstrap_options = c("striped", "hover")
+  )
+```
+
+Visualizations of posterior and prior distributions.
+
+```{r pp-pd, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Obtain 10,000 posterior samples of the standardized effect size (delta)
+posterior_samples_pp <- posterior(bf_obj_pp, iterations = 10000)
+
+# Convert to a data frame for easier handling
+posterior_df_pp <- as.data.frame(posterior_samples_pp)
+
+# Create a sequence of effect size (delta) values for the prior
+delta_range_pp <- seq(-3, 3, length.out = 1000)  # reasonable range for visualization
+
+# Compute the density of the default Cauchy prior (scale = 0.707)
+prior_density_pp <- dcauchy(delta_range_pp, location = 0, scale = sqrt(2) / 2)
+
+# Create a data frame for the prior distribution
+prior_df_pp <- data.frame(
+  delta = delta_range_pp,
+  density = prior_density_pp,
+  Distribution = "Prior"
+)
+
+# Compute the density of the posterior samples
+posterior_density_pp <- density(posterior_df_pp$delta, adjust = 1.5)  # adjust can be tuned for smoothing
+
+posterior_df_density_pp <- data.frame(
+  delta = posterior_density_pp$x,
+  density = posterior_density_pp$y,
+  Distribution = "Posterior"
+)
+
+# Combine prior and posterior data frames
+combined_df_pp <- rbind(prior_df_pp, posterior_df_density_pp)
+
+# Plot both distributions
+ggplot(combined_df_pp, aes(x = delta, y = density, color = Distribution, fill = Distribution)) +
+  geom_line(size = 1) +
+  geom_area(alpha = 0.2, position = "identity") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+  labs(
+    title = "Prior and Posterior Distributions of Effect Size (δ)",
+    subtitle = "Pinpoint: PM vs. CW",
+    x = "Effect Size (δ)",
+    y = "Density"
+  ) +
+  scale_color_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  scale_fill_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  theme_minimal(base_size = 14)
 ```
 
 ## Crossclimb
+
+Bayes factor computation for Crossclimb.
 
 ```{r C-tt}
 #| code-fold: true
 #| code-summary: "Show the code"
 
-# Non-parametric T-tests
-wilcox_C <- wilcox.test(value ~ Player, data = dat_longC, exact = FALSE)
+# Filter out PM’s values (remove NA from 'value')
+cc_pm <- dat_longC %>%
+  filter(Player == "PM", !is.na(value)) %>%
+  pull(value)
 
-# Extract statistics
-wilcox_df_C <- data.frame(
-  `W Statistic` = wilcox_C$statistic,
-  `p-value` = signif(wilcox_C$p.value, 3),
-  `Method` = wilcox_C$method
+# Filter out CW’s values (remove NA from 'value')
+cc_cw <- dat_longC %>%
+  filter(Player == "CW", !is.na(value)) %>%
+  pull(value)
+
+# Run Bayesian two-sample t-test
+bf_obj_cc <- ttestBF(
+  x = cc_pm,
+  y = cc_cw,
+  paired = FALSE
 )
 
-# Create table
-wilcox_df_C %>% 
+# extractBF() returns a data frame; the “bf” column is the numeric Bayes Factor
+bf_cc <- extractBF(bf_obj_cc)$bf[1]
+
+# Build a simple one‐row data.frame for kable()
+data.frame(
+  "Game Type" = "Crossclimb",
+  "BF10"      = round(bf_cc, 3),
+  "Notes"     = if (bf_cc > 1) {
+                   "Evidence favoring difference (H1)"
+                 } else {
+                   "Evidence favoring H0 or inconclusive"
+                 }
+) %>%
+  # Display as HTML table with caption and styling
   kable(
-    caption = "Wilcoxon Rank-Sum Test Results",
-    col.names = c("W Statistic", "p-value", "Method"),
-    format = "html"
-  ) %>% 
-  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+    caption   = "Bayesian independent‐samples t‐test (Crossclimb)",
+    col.names = c("Game Type", "BF₁₀", "Notes"),
+    format    = "html"
+  ) %>%
+  kable_styling(
+    full_width        = FALSE,
+    position          = "center",
+    bootstrap_options = c("striped", "hover")
+  )
+```
+
+Visualizations of posterior and prior distributions.
+
+```{r cc-pd, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Obtain 10,000 posterior samples of the standardized effect size (delta)
+posterior_samples_cc <- posterior(bf_obj_cc, iterations = 10000)
+
+# Convert to a data frame for easier handling
+posterior_df_cc <- as.data.frame(posterior_samples_cc)
+
+# Create a sequence of effect size (delta) values for the prior
+delta_range_cc <- seq(-3, 3, length.out = 1000)  # reasonable range for visualization
+
+# Compute the density of the default Cauchy prior (scale = 0.707)
+prior_density_cc <- dcauchy(delta_range_cc, location = 0, scale = sqrt(2) / 2)
+
+# Create a data frame for the prior distribution
+prior_df_cc <- data.frame(
+  delta = delta_range_cc,
+  density = prior_density_cc,
+  Distribution = "Prior"
+)
+
+# Compute the density of the posterior samples
+posterior_density_cc <- density(posterior_df_cc$delta, adjust = 1.5)  # adjust can be tuned for smoothing
+
+posterior_df_density_cc <- data.frame(
+  delta = posterior_density_cc$x,
+  density = posterior_density_cc$y,
+  Distribution = "Posterior"
+)
+
+# Combine prior and posterior data frames
+combined_df_cc <- rbind(prior_df_cc, posterior_df_density_cc)
+
+# Plot both distributions
+ggplot(combined_df_cc, aes(x = delta, y = density, color = Distribution, fill = Distribution)) +
+  geom_line(size = 1) +
+  geom_area(alpha = 0.2, position = "identity") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+  labs(
+    title = "Prior and Posterior Distributions of Effect Size (δ)",
+    subtitle = "Crossclimb: PM vs. CW",
+    x = "Effect Size (δ)",
+    y = "Density"
+  ) +
+  scale_color_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  scale_fill_manual(values = c("Prior" = "#00CFC1", "Posterior" = "#FF6B5C")) +
+  theme_minimal(base_size = 14)
 ```
 
 :::
