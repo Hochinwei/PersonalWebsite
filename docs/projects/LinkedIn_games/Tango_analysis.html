@@ -169,7 +169,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link active" data-scroll-target="#descriptive-statistics">Descriptive statistics</a></li>
-  <li><a href="#time-series-visualizations" id="toc-time-series-visualizations" class="nav-link" data-scroll-target="#time-series-visualizations">Time-series visualizations</a></li>
+  <li><a href="#time-series-visualizations" id="toc-time-series-visualizations" class="nav-link" data-scroll-target="#time-series-visualizations">Time-series visualizations</a>
+  <ul class="collapse">
+  <li><a href="#purpose-of-timeseries-visualizations" id="toc-purpose-of-timeseries-visualizations" class="nav-link" data-scroll-target="#purpose-of-timeseries-visualizations">Purpose of Time‐Series Visualizations</a></li>
+  </ul></li>
   <li><a href="#boxplot-comparisons" id="toc-boxplot-comparisons" class="nav-link" data-scroll-target="#boxplot-comparisons">Boxplot comparisons</a></li>
   <li><a href="#bayesian-independent-t-test-comparisons" id="toc-bayesian-independent-t-test-comparisons" class="nav-link" data-scroll-target="#bayesian-independent-t-test-comparisons">Bayesian Independent T-test comparisons</a>
   <ul class="collapse">
@@ -217,13 +220,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between PM and CW.</p>
-<p>This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players <code>PM</code> and <code>CW</code>. Beginning from April 29th till today, June 04, 2025, data will continually be updated manually in the raw xlsx file and ran through the pipeline for analysis when rendered.</p>
-<p>In addition to summarizing means, medians, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF<sub>10</sub>) is computed along with prior and posterior distributions to illustrate how observed data update our beliefs about any effect (see <a href="#nte-impt" class="quarto-xref">Note&nbsp;1</a> below).</p>
-<p>This document aims to describe, visualize, and evaluate—using both descriptive statistics and Bayesian hypothesis tests—the differences in scores between the two players.</p>
-<p>This document aims to describe and visualize the differences in scores between the two game players.</p>
+<p>This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between <code>PM</code> and <code>CW</code>.</p>
+<p>This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players <code>PM</code> and <code>CW</code>. Beginning from April 29th till today, <strong>June 04, 2025</strong>, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered.</p>
+<p>In addition to summarizing means, medians, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF<sub>10</sub>) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see <a href="#nte-impt" class="quarto-xref">Note&nbsp;1</a> below).</p>
+<p>This document aims to describe, visualize, and evaluate, using both descriptive statistics and Bayesian hypothesis tests, to assess the differences in scores between the two players.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries loaded</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries utilized</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
@@ -431,6 +433,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="time-series-visualizations" class="level1">
 <h1>Time-series visualizations</h1>
+<section id="purpose-of-timeseries-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="purpose-of-timeseries-visualizations">Purpose of Time‐Series Visualizations</h2>
+<p>The time‐series plots display each player’s daily performance (e.g., completion time (seconds) or number of tries) on the x‐axis (date) and the corresponding score on the y‐axis.</p>
+<p>These visualizations provide comparisons of variability and stability to assess player score fluctuations and identify any days with unusually high or low values (and identify and potential outliers). It provides an intuitive and chronological overview of how PM and CW’s LinkedIn game scores evolve.</p>
+<p>The data is first subset into the four game type prior to visualizations.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -539,9 +546,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+</section>
 <section id="boxplot-comparisons" class="level1">
 <h1>Boxplot comparisons</h1>
-<p>In this section, boxplots are created to visualize the difference in scores between PM and CW across the four LinkedIn games.</p>
+<p>In this section, boxplots are created to provide a concise visual summary of the score distributions for each game type, comparing PM and CW’s performance at a glance. The boxplots show the median, interquartile range (IQR), and potential outliers for each player.</p>
+<p>Visual inspection of these boxplots can highlight difference or overlaps in score distributions, which can inform interpretation of subsequent Bayesian independent-samples t-test results later.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Tango</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Zip</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Pinpoint</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Crossclimb</a></li></ul>
 <div class="tab-content">
@@ -662,7 +671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="bayesian-independent-t-test-comparisons" class="level1">
 <h1>Bayesian Independent T-test comparisons</h1>
-<p>Here, using Bayesian Independent-samples t-tests, evidence for or against a difference in performance between PM and CW for each game type is quantified. For each comparision, the Bayes factor (BF<sub>10</sub>) to measure the relative support for the alternative hypothesis (that the two players differ in average game scores) over the null hypothesis (no difference).</p>
+<p>Here, using Bayesian Independent-samples t-tests, evidence for or against a difference in performance between PM and CW for each game type will be quantified. For each comparison, the Bayes factor (BF<sub>10</sub>) ia computed to measure the relative support for the alternative hypothesis (that the two players differ in average game scores) over the null hypothesis (no difference).</p>
 <p>Additionally, prior (default) and posterior distributions of the standardized effect size will be calculated to assess how the observed data update beliefs under the default Cauchy prior (scale = 0.707)</p>
 <div id="nte-impt" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -676,8 +685,8 @@ Note&nbsp;1: IMPORTANT NOTE
 <div class="callout-body-container callout-body">
 <p>The subsequent analysis is made purely for fun. This is not a formalized statistics project, and even though Bayesian analysis is more robust to <a href="https://www.analytics-toolkit.com/glossary/peeking/">optional-stopping</a> than frequentist methods, there are important considerations.</p>
 <ul>
-<li><p>Peeking and Prior-Data Conflict Continously re-running the analysis with the same default prior (Cauchy scale = 0.707) without formally updating it in light of past data can produce Bayes factors that are not strictly coherent under sequential updating.</p></li>
-<li><p>Accumulation of Evidence Proper sequntial analysis would require recalculating the posterior at each stage and using that as the new prior for the next stage. Here, the analysis always begins from the default prior, which may under or overestimate evidence until enough data have accumulated. <strong>Each Bayes Factor value should be regarded as snapshots of a formal sequentally updated analysis.</strong></p></li>
+<li><p>Continously re-running the analysis with the same default prior (Cauchy scale = 0.707) without formally updating it in light of past data can produce Bayes factors that are not strictly coherent under sequential updating.</p></li>
+<li><p>Proper sequential analysis would require recalculating the posterior at each stage and using that as the new prior for the next stage. Here, the analysis always begins from the default prior, which may under or overestimate evidence until enough data have accumulated. <strong>Each Bayes Factor value should be regarded as snapshots of a formal sequentially updated analysis.</strong></p></li>
 </ul>
 <p><strong>These results can only be used as informal visualization and intuitive understanding rather than confirmatory statistical proof.</strong></p>
 </div>

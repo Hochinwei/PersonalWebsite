@@ -157,6 +157,14 @@ For **Crossclimb**:
 
 # Time-series visualizations
 
+## Purpose of Time‐Series Visualizations
+
+The time‐series plots display each player’s daily performance (e.g., completion time (seconds) or number of tries) on the x‐axis (date) and the corresponding score on the y‐axis. 
+
+These visualizations provide comparisons of variability and stability to assess player score fluctuations and identify any days with unusually high or low values (and identify and potential outliers). It provides an intuitive and chronological overview of how PM and CW's LinkedIn game scores evolve.
+
+The data is first subset into the four game type prior to visualizations.
+
 ```{r data-filtering}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -171,7 +179,6 @@ dat_longP <- dat_long %>%
 dat_longC <- dat_long %>%
               filter(Game_type == "C") 
 ```
-
 
 ::: {.panel-tabset}
 
@@ -243,7 +250,9 @@ ggplot(dat_longC, aes(x = date, y = value, color = Player)) +
 
 # Boxplot comparisons
 
-In this section, boxplots are created to visualize the difference in scores between PM and CW across the four LinkedIn games.
+In this section, boxplots are created to provide a concise visual summary of the score distributions for each game type, comparing PM and CW's performance at a glance. The boxplots show the median, interquartile range (IQR), and potential outliers for each player. 
+
+Visual inspection of these boxplots can highlight difference or overlaps in score distributions, which can inform interpretation of subsequent Bayesian independent-samples t-test results later.
 
 ::: {.panel-tabset}
 
@@ -334,7 +343,7 @@ Crossclimb_box
 
 # Bayesian Independent T-test comparisons
 
-Here, using Bayesian Independent-samples t-tests, evidence for or against a difference in performance between PM and CW for each game type is quantified. For each comparision, the Bayes factor (BF~10~) to measure the relative support for the alternative hypothesis (that the two players differ in average game scores) over the null hypothesis (no difference). 
+Here, using Bayesian Independent-samples t-tests, evidence for or against a difference in performance between PM and CW for each game type will be quantified. For each comparison, the Bayes factor (BF~10~) ia computed to measure the relative support for the alternative hypothesis (that the two players differ in average game scores) over the null hypothesis (no difference). 
 
 Additionally, prior (default) and posterior distributions of the standardized effect size will be calculated to assess how the observed data update beliefs under the default Cauchy prior (scale = 0.707)
 
@@ -342,18 +351,16 @@ Additionally, prior (default) and posterior distributions of the standardized ef
 # IMPORTANT NOTE
 The subsequent analysis is made purely for fun. This is not a formalized statistics project, and even though Bayesian analysis is more robust to [optional-stopping](https://www.analytics-toolkit.com/glossary/peeking/) than frequentist methods, there are important considerations.
 
-- Peeking and Prior-Data Conflict
-Continously re-running the analysis with the same default prior (Cauchy scale = 0.707) without formally updating it in light of past data can produce Bayes factors that are not strictly coherent under sequential updating. 
+- Continously re-running the analysis with the same default prior (Cauchy scale = 0.707) without formally updating it in light of past data can produce Bayes factors that are not strictly coherent under sequential updating. 
 
-- Accumulation of Evidence
-Proper sequntial analysis would require recalculating the posterior at each stage and using that as the new prior for the next stage. Here, the analysis always begins from the default prior, which may under or overestimate evidence until enough data have accumulated. **Each Bayes Factor value should be regarded as snapshots of a formal sequentally updated analysis.**
+- Proper sequential analysis would require recalculating the posterior at each stage and using that as the new prior for the next stage. Here, the analysis always begins from the default prior, which may under or overestimate evidence until enough data have accumulated. **Each Bayes Factor value should be regarded as snapshots of a formal sequentially updated analysis.**
 
 **These results can only be used as informal visualization and intuitive understanding rather than confirmatory statistical proof.**
 :::
 
 ## Homogenity of Variance Assumptions
 
-Runs Levene's test as a check of homogenity of variance for each game type subsets.
+Runs Levene's test as a check of homogenity of variance for each game type subsets. Although Bayesian t‐tests are typically robust to mild heterogeneity of variance, it remains good practice to understand whether this assumption might be violated.
 
 ::: {.panel-tabset}
 
