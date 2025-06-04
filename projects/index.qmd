@@ -10,7 +10,7 @@ listing:
     contents: 
       - project_1
       - project_2
-      - LinkedIn Games Analysis
+      - LinkedIn_games
     type: grid
     grid-item-border: false
     
@@ -29,7 +29,7 @@ listing:
 ---
 
 
-## Grid listing
+## Analysis Projects
 
 It is convenient to use `id` to link to multiple folders. 
 

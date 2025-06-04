@@ -1,10 +1,12 @@
 ---
 title: "LinkedIn games analysis pipeline"
 author: "Ho Chin Wei"
+date: "2025-06-01"
 format: 
   html:
     theme: flatly
     smooth-scroll: true
+categories: [code, analysis]
 ---
 
 This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between PM and CW. 
