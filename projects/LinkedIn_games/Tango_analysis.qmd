@@ -13,7 +13,7 @@ This is a personal project to create a live analysis pipeline that will show des
 
 This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players `PM` and `CW`. Beginning from April 29th till today, **`r format(Sys.Date(), "%B %d, %Y")`**, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered. 
 
-In addition to summarizing means, medians, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF~10~) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see @nte-impt below).  
+In addition to summarizing means, medians, standard deviations, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF~10~) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see @nte-impt below).  
 
 This document aims to describe, visualize, and evaluate, using both descriptive statistics and Bayesian hypothesis tests, to assess the differences in scores between the two players.  
 
