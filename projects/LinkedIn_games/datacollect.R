@@ -1,9 +1,3 @@
-# -----------------------------------------
-## Remember to setwd("C:\\Users\\elmoe\\OneDrive - hull.ac.uk\\Github\\Quarto-Website\\PersonalWebsite\\projects\\LinkedIn_games")
-## git login if required
-## This is ignored by git.
-# -----------------------------------------
-
 # 1) Load required libraries
 library(telegram.bot)
 library(openxlsx)
@@ -113,9 +107,9 @@ handle_single_update <- function(bot, update) {
     )
   }
   
-  # 6.6) Append a new row if today’s game column is already filled,
-  #      otherwise fill the existing last row
-  if (nrow(data) == 0 || !is.na(data[[game_col]][nrow(data)])) {
+  # 6.6 append a row if there is no data yet, or if the last row is not for today
+  if (nrow(data) == 0 || data$date[nrow(data)] != Sys.Date()) {
+    # 1) Create a fresh row dated today
     new_row <- data.frame(
       date   = Sys.Date(),
       CW_T   = NA, CW_Z = NA, CW_P = NA, CW_C = NA,
@@ -125,6 +119,7 @@ handle_single_update <- function(bot, update) {
     new_row[[game_col]] <- value
     data <- rbind(data, new_row)
   } else {
+    # 2) Last row already *is* today, so just fill the new cell
     data[[game_col]][nrow(data)] <- value
   }
   
