@@ -55,8 +55,13 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-  
-          git add LinkedIn_games_data.xlsx last_update_id.txt || echo "No changes to commit"
+
+          git fetch origin main
+         
+          git reset --soft origin/main
+
+          git add LinkedIn_games_data.xlsx last_update_id.txt
+
           git diff --cached --quiet || (
             git commit -m "chore: update game data via workflow"
             git push origin HEAD:main
