@@ -139,7 +139,7 @@ handle_message <- function(bot, update) {
     data,
     excel_file,
     overwrite  = TRUE,
-    dateFormat = "dd-mm-yyyy"   # ← use four 'y' characters
+    dateFormat = "dd-mm-yyyy"   
   )
   
   # 7) Confirmation + optional GitHub push
