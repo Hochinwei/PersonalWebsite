@@ -21,11 +21,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      # (Optional) Debug step to confirm directory structure
-      - name: Debug: show folder tree
-        run: |
-          pwd
-          ls -R .
 
       # 4) Setup R (using r-lib setup)
       - name: Setup R
