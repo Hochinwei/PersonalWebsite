@@ -107,33 +107,39 @@ handle_single_update <- function(bot, update) {
     )
   }
   
-  # 6.6 append a row if there is no data yet, or if the last row is not for today
-  if (nrow(data) == 0 || data$date[nrow(data)] != Sys.Date()) {
-    # 1) Create a fresh row dated today
+  # 6.6) If the last row’s cell in game_col is already non-NA, append
+  # with date = (last row’s date + 1 day). Otherwise fill the last row.
+  last_row <- nrow(data)
+  
+  if (last_row == 0) {
+    # No rows yet → first row is today
+    new_date <- Sys.Date()
+    append_row <- TRUE
+    
+  } else if (!is.na(data[[game_col]][last_row])) {
+    # Last row already has a value in this column → append next day
+    new_date   <- data$date[last_row] + 1
+    append_row <- TRUE
+    
+  } else {
+    # Last row’s cell is still NA → fill it
+    append_row <- FALSE
+  }
+  
+  if (append_row) {
     new_row <- data.frame(
-      date   = Sys.Date(),
+      date   = new_date,
       CW_T   = NA, CW_Z = NA, CW_P = NA, CW_C = NA,
       PM_T   = NA, PM_Z = NA, PM_P = NA, PM_C = NA,
       stringsAsFactors = FALSE
     )
     new_row[[game_col]] <- value
     data <- rbind(data, new_row)
+    
   } else {
-    # 2) Last row already *is* today, so just fill the new cell
-    data[[game_col]][nrow(data)] <- value
+    # fill the empty cell in the last row
+    data[[game_col]][last_row] <- value
   }
-  
-  write.xlsx(
-    data,
-    excel_file,
-    overwrite  = TRUE,
-    dateFormat = "dd-mm-yyyy"
-  )
-  
-  # 6.7) Send confirmation back to user
-  bot$sendMessage(chat_id = chatid,
-                  text    = paste("Updated", game_col, "with value:", value))
-}
 
 # ────────────────────────────────────────────────────────────────────────────
 # 7) Ensure last_update_id.txt exists (initialize to zero if needed)
