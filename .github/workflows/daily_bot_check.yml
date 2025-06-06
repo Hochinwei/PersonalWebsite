@@ -1,8 +1,12 @@
 name: Daily Telegram Bot Check
 
+# 1) Give GITHUB_TOKEN write access to repo contents
+permissions:
+  contents: write
+
 on:
   schedule:
-    # Every day at 02:00 UTC (adjust if you want a different time)
+    # Every day at 09:00 UTC (adjust if you want a different time)
     - cron: '0 9 * * *'
   workflow_dispatch:    # allows manual trigger
 
