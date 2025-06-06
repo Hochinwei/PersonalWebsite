@@ -141,28 +141,30 @@ handle_single_update <- function(bot, update) {
 }
 
 # ────────────────────────────────────────────────────────────────────────────
-# 7) Read the last‐handled update ID (or default to 0)
-if (file.exists(state_file)) {
-  last_update_id <- as.integer(readLines(state_file, warn = FALSE))
-  if (is.na(last_update_id)) last_update_id <- 0
-} else {
+# 7) Ensure last_update_id.txt exists (initialize to zero if needed)
+if (!file.exists(state_file)) {
+  writeLines("0", con = state_file)
+}
+
+# 8) Read the last‐handled update ID
+last_update_id <- as.integer(readLines(state_file, warn = FALSE))
+if (is.na(last_update_id)) {
   last_update_id <- 0
 }
 
-# 8) Fetch new updates exactly once (timeout = 0 → return immediately)
-updates <- getUpdates(
-  bot     = bot,
+# 9) Fetch new updates (one‐shot)
+updates <- bot$getUpdates(
   offset  = last_update_id + 1,
   timeout = 0
 )
 
-# 9) If no new updates, exit right away
+# 10) If no new updates, exit immediately
 if (length(updates) == 0) {
   message("No new updates. Exiting.")
   quit(status = 0)
 }
 
-# 10) Process each new update
+# 11) Process each update
 new_max_id <- last_update_id
 for (upd in updates) {
   tryCatch(
@@ -176,7 +178,7 @@ for (upd in updates) {
   )
 }
 
-# 11) Save the updated max update ID back to last_update_id.txt
+# 12) Save the new maximum update ID back to state_file
 writeLines(as.character(new_max_id), con = state_file)
 
 message("Processed ", length(updates), " updates; last_update_id = ", new_max_id)
