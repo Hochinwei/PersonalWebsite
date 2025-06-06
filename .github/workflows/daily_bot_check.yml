@@ -21,6 +21,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
+      #Install system dependencies
+      - name: Install system deps (curl, ssl, xml)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
       # 4) Setup R (using r-lib setup)
       - name: Setup R
