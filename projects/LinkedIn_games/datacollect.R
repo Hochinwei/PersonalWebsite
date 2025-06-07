@@ -141,6 +141,7 @@ handle_single_update <- function(bot, update) {
     data[[game_col]][last_row] <- value
   }
 
+}
 # ────────────────────────────────────────────────────────────────────────────
 # 7) Ensure last_update_id.txt exists (initialize to zero if needed)
 if (!file.exists(state_file)) {
