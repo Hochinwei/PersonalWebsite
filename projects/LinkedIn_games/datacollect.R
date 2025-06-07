@@ -154,6 +154,27 @@ if (is.na(last_update_id)) {
   last_update_id <- 0
 }
 
+
+# —–– DEBUGGING BLOCK —––––––––––––––––––––––––––––––––––––––––––––––––
+# 1) Ensure no webhook is intercepting your updates
+bot$removeWebhook()
+Sys.sleep(1)
+
+# 2) Show what Telegram thinks your webhook status is
+wh <- bot$getWebhookInfo()
+message("Webhook URL is: ", if (nzchar(wh$url)) wh$url else "(none)")
+
+# 3) Inspect your saved offset
+message("last_update_id read from file: ", last_update_id)
+message("Will fetch with offset: ", last_update_id + 1)
+
+# 4) Do a test fetch of everything in the backlog
+test_updates <- bot$getUpdates(offset = 0, timeout = 0)
+message("Backlog update_ids: ",
+        paste(sapply(test_updates, function(u) u$update_id), collapse = ", "))
+# —–– END DEBUGGING BLOCK —–––––––––––––––––––––––––––––––––––––––––––
+
+
 # 9) Fetch new updates (one‐shot)
 updates <- bot$getUpdates(
   offset  = last_update_id + 1,
