@@ -160,27 +160,39 @@ updates <- bot$getUpdates(
   timeout = 0
 )
 
-# 10) If no new updates, exit immediately
-if (length(updates) == 0) {
-  message("No new updates. Exiting.")
-  quit(status = 0)
-}
-
-# 11) Process each update
-new_max_id <- last_update_id
-for (upd in updates) {
-  tryCatch(
-    {
-      handle_single_update(bot, upd)
-      new_max_id <- max(new_max_id, upd$update_id)
-    },
-    error = function(e) {
-      message("Error processing update ", upd$update_id, ": ", e$message)
-    }
+# 10) Read or initialize the main data frame once
+if (file.exists(excel_file)) {
+  data <- read.xlsx(excel_file, sheet = 1, detectDates = TRUE)
+  # ensure the date column is Date class
+  if (!inherits(data$date, "Date")) {
+    data$date <- as.Date(data$date)
+  }
+} else {
+  data <- data.frame(
+    date   = as.Date(character()),
+    CW_T   = numeric(), CW_Z = numeric(),
+    CW_P   = numeric(), CW_C = numeric(),
+    PM_T   = numeric(), PM_Z = numeric(),
+    PM_P   = numeric(), PM_C = numeric(),
+    stringsAsFactors = FALSE
   )
 }
 
-# 12) Save the new maximum update ID back to state_file
+# 11) Loop over new updates, updating 'data' in memory
+new_max_id <- last_update_id
+for (upd in updates) {
+  tryCatch({
+    handle_single_update(bot, upd)
+    new_max_id <- max(new_max_id, upd$update_id)
+  }, error = function(e) {
+    message("Error processing update ", upd$update_id, ": ", e$message)
+  })
+}
+
+# 12) Persist the updated data frame back to Excel
+write.xlsx(data, file = excel_file)
+
+# 13) Save the new maximum update ID back to state_file
 writeLines(as.character(new_max_id), con = state_file)
 
 message("Processed ", length(updates), " updates; last_update_id = ", new_max_id)
