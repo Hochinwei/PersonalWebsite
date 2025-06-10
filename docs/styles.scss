@@ -1,0 +1,113 @@
+/*-- scss:defaults --*/
+// quarto-scss-analysis-annotation { "origin": "united (builtin theme)" }
+
+$theme: "united" !default;
+
+//
+// Color system
+//
+
+// $white:    #fff !default;
+// $gray-100: #f8f9fa !default;
+// $gray-200: #e9ecef !default;
+// $gray-300: #dee2e6 !default;
+// $gray-400: #ced4da !default;
+// $gray-500: #aea79f !default;
+// $gray-600: #868e96 !default;
+// $gray-700: #495057 !default;
+// $gray-800: #333 !default;
+// $gray-900: #212529 !default;
+// $black:    #000 !default;
+
+// Neutrals & Grays
+$white:    #ffffff !default;
+$gray-100: #f6f6f6 !default;   // Soft white
+$gray-200: #e9ecef !default;   // Very light warm gray
+$gray-300: #dee2e6 !default;   // Soft warm gray
+$gray-400: #ced4da !default;   // Warm gray
+$gray-500: #b0b6b9 !default;   // Mid-tone warm gray
+$gray-600: #868e96 !default;   // Muted mid gray
+$gray-700: #495057 !default;   // Slightly warm charcoal
+$gray-800: #3a3a3a !default;   // Slate Gray from your palette
+$gray-900: #212529 !default;   // Deep neutral black-gray
+$black:    #000000 !default;
+
+// $blue:    #007bff !default;
+// $indigo:  #6610f2 !default;
+// $purple:  #772953 !default;
+// $pink:    #e83e8c !default;
+// $red:     #df382c !default;
+// $orange:  #e95420 !default;
+// $yellow:  #efb73e !default;
+// $green:   #38b44a !default;
+// $teal:    #20c997 !default;
+// $cyan:    #17a2b8 !default;
+
+$blue:     #005F73 !default;   // Deep teal (retains blue family)
+$indigo:   #415A77 !default;   // Muted, cool indigo (aligns with deep teal)
+$purple:   #6B4C7C !default;   // Muted eggplant purple, warm tone
+$pink:     #D77A85 !default;   // Soft, warm dusty pink, in harmony with coral
+$red:      #C85A5A !default;   // Muted brick red, earthy undertone
+$orange:   #EE6C4D !default;   // Coral Accent from your palette
+$yellow:   #E9D8A6 !default;   // Warm Sand from your palette
+$green:    #6C9A8B !default;   // Muted green, complements deep teal
+$teal:     #94D2BD !default;   // Soft Sky Blue from your palette
+$cyan:     #8FBDB3 !default;   // Muted cyan to match the sky blue undertones
+
+
+$primary:       $blue !default;
+$secondary:     $teal !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+// $primary:       $orange !default;
+// $secondary:     $gray-500 !default;
+// $success:       $green !default;
+// $info:          $cyan !default;
+// $warning:       $yellow !default;
+// $danger:        $red !default;
+// $light:         $gray-200 !default;
+// $dark:          $purple !default;
+
+$min-contrast-ratio:   1.8 !default;
+
+// Body
+
+$body-color:                $gray-800 !default;
+
+// Fonts
+
+// stylelint-disable-next-line value-keyword-case
+$font-family-sans-serif:      Ubuntu, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// Tables
+
+$table-dark-bg:               $dark !default;
+$table-dark-border-color:     darken($dark, 5%) !default;
+
+
+
+/*-- scss:rules --*/
+
+
+// Variables
+
+$web-font-path: "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" !default;
+@if $web-font-path {
+  @import url($web-font-path);
+}
+
+// Indicators
+
+.badge {
+  &.bg-light {
+    color: $body-color;
+  }
+}
+
+
+// quarto-scss-analysis-annotation { "origin": null }

@@ -35,8 +35,9 @@ website:
   
 format:
   html:
-    theme: united
-    css: styles.css
+    theme: 
+      - united
+      - styles.scss
     toc: true
     icon: fontawesome
 
