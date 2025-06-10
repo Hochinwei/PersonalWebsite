@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between <code>PM</code> and <code>CW</code>.</p>
-<p>This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players <code>PM</code> and <code>CW</code>. Beginning from April 29th till today, <strong>June 05, 2025</strong>, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered.</p>
+<p>This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players <code>PM</code> and <code>CW</code>. Beginning from April 29th till today, <strong>June 10, 2025</strong>, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered.</p>
 <p>In addition to summarizing means, medians, standard deviations, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF<sub>10</sub>) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see <a href="#nte-impt" class="quarto-xref">Note&nbsp;1</a> below).</p>
 <p>This document aims to describe, visualize, and evaluate, using both descriptive statistics and Bayesian hypothesis tests, to assess the differences in scores between the two players.</p>
 <div class="cell">
@@ -350,9 +350,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: center;">CW</td>
 <td style="text-align: center;">C</td>
-<td style="text-align: center;">60.1</td>
-<td style="text-align: center;">53.0</td>
-<td style="text-align: center;">22.4</td>
+<td style="text-align: center;">61.6</td>
+<td style="text-align: center;">57.0</td>
+<td style="text-align: center;">22.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">CW</td>
@@ -364,69 +364,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: center;">CW</td>
 <td style="text-align: center;">T</td>
-<td style="text-align: center;">49.6</td>
+<td style="text-align: center;">49.2</td>
 <td style="text-align: center;">39.0</td>
-<td style="text-align: center;">33.2</td>
+<td style="text-align: center;">32.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">CW</td>
 <td style="text-align: center;">Z</td>
-<td style="text-align: center;">32.7</td>
+<td style="text-align: center;">31.7</td>
 <td style="text-align: center;">19.0</td>
-<td style="text-align: center;">42.5</td>
+<td style="text-align: center;">41.6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">PM</td>
 <td style="text-align: center;">C</td>
-<td style="text-align: center;">65.0</td>
-<td style="text-align: center;">62.0</td>
-<td style="text-align: center;">24.9</td>
+<td style="text-align: center;">67.2</td>
+<td style="text-align: center;">63.5</td>
+<td style="text-align: center;">27.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">PM</td>
 <td style="text-align: center;">P</td>
-<td style="text-align: center;">2.9</td>
+<td style="text-align: center;">3.0</td>
 <td style="text-align: center;">3.0</td>
 <td style="text-align: center;">1.1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">PM</td>
 <td style="text-align: center;">T</td>
-<td style="text-align: center;">62.3</td>
-<td style="text-align: center;">46.5</td>
-<td style="text-align: center;">49.5</td>
+<td style="text-align: center;">61.2</td>
+<td style="text-align: center;">46.0</td>
+<td style="text-align: center;">48.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">PM</td>
 <td style="text-align: center;">Z</td>
-<td style="text-align: center;">37.1</td>
+<td style="text-align: center;">36.8</td>
 <td style="text-align: center;">16.5</td>
-<td style="text-align: center;">52.5</td>
+<td style="text-align: center;">51.3</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>As of April 29 2025 through June 05, 2025, for <strong>Tango</strong>:</p>
+<p>As of April 29 2025 through June 10, 2025, for <strong>Tango</strong>:</p>
 <ul>
-<li>PM’s average time is <strong>62.3</strong> seconds, with the median time being <strong>46.5</strong> seconds.</li>
-<li>CW’s average time is <strong>49.6</strong> seconds, with the median time being <strong>39</strong> seconds.</li>
+<li>PM’s average time is <strong>61.2</strong> seconds, with the median time being <strong>46</strong> seconds.</li>
+<li>CW’s average time is <strong>49.2</strong> seconds, with the median time being <strong>39</strong> seconds.</li>
 </ul>
 <p>For <strong>Zip</strong>:</p>
 <ul>
-<li>PM’s average time is <strong>37.1</strong> seconds, with the median time being <strong>16.5</strong> seconds.</li>
-<li>CW’s average time is <strong>32.7</strong> seconds, with the median time being <strong>19</strong> seconds.</li>
+<li>PM’s average time is <strong>36.8</strong> seconds, with the median time being <strong>16.5</strong> seconds.</li>
+<li>CW’s average time is <strong>31.7</strong> seconds, with the median time being <strong>19</strong> seconds.</li>
 </ul>
 <p>For <strong>Pinpoint</strong>:</p>
 <ul>
-<li>PM’s average number of tries is <strong>2.9</strong>, the number of median tries being <strong>3</strong>.<br>
+<li>PM’s average number of tries is <strong>3</strong>, the number of median tries being <strong>3</strong>.<br>
 </li>
 <li>CW’s average number of tries is <strong>3.7</strong>, the number of median tries being <strong>4</strong>.</li>
 </ul>
 <p>For <strong>Crossclimb</strong>:</p>
 <ul>
-<li>PM’s average time is <strong>65</strong> seconds, with the median time being <strong>62</strong> seconds.</li>
-<li>CW’s average time is <strong>60.1</strong> seconds, with the median time being <strong>53</strong> seconds.</li>
+<li>PM’s average time is <strong>67.2</strong> seconds, with the median time being <strong>63.5</strong> seconds.</li>
+<li>CW’s average time is <strong>61.6</strong> seconds, with the median time being <strong>57</strong> seconds.</li>
 </ul>
 </section>
 <section id="time-series-visualizations" class="level1">
@@ -737,12 +737,12 @@ Note&nbsp;1: IMPORTANT NOTE
 <tr class="odd">
 <td style="text-align: left;">group</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.598</td>
-<td style="text-align: right;">0.442</td>
+<td style="text-align: right;">0.482</td>
+<td style="text-align: right;">0.49</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: right;">71</td>
+<td style="text-align: right;">75</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
@@ -794,12 +794,12 @@ Note&nbsp;1: IMPORTANT NOTE
 <tr class="odd">
 <td style="text-align: left;">group</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.118</td>
-<td style="text-align: right;">0.732</td>
+<td style="text-align: right;">0.174</td>
+<td style="text-align: right;">0.678</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: right;">71</td>
+<td style="text-align: right;">75</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
@@ -851,12 +851,12 @@ Note&nbsp;1: IMPORTANT NOTE
 <tr class="odd">
 <td style="text-align: left;">group</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.406</td>
-<td style="text-align: right;">0.526</td>
+<td style="text-align: right;">0.234</td>
+<td style="text-align: right;">0.63</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: right;">68</td>
+<td style="text-align: right;">72</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
@@ -908,12 +908,12 @@ Note&nbsp;1: IMPORTANT NOTE
 <tr class="odd">
 <td style="text-align: left;">group</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.242</td>
-<td style="text-align: right;">0.624</td>
+<td style="text-align: right;">0.137</td>
+<td style="text-align: right;">0.712</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: right;">69</td>
+<td style="text-align: right;">73</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
@@ -992,7 +992,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Tango</td>
-<td style="text-align: right;">0.493</td>
+<td style="text-align: right;">0.479</td>
 <td style="text-align: left;">Evidence favoring H0 or inconclusive</td>
 </tr>
 </tbody>
@@ -1120,7 +1120,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Zip</td>
-<td style="text-align: right;">0.258</td>
+<td style="text-align: right;">0.26</td>
 <td style="text-align: left;">Evidence favoring H0 or inconclusive</td>
 </tr>
 </tbody>
@@ -1248,7 +1248,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Pinpoint</td>
-<td style="text-align: right;">3.974</td>
+<td style="text-align: right;">4.712</td>
 <td style="text-align: left;">Evidence favoring difference (H1)</td>
 </tr>
 </tbody>
@@ -1376,7 +1376,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Crossclimb</td>
-<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.357</td>
 <td style="text-align: left;">Evidence favoring H0 or inconclusive</td>
 </tr>
 </tbody>
