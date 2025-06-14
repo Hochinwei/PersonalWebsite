@@ -1,6 +1,5 @@
 ---
 title: "contact"
-format: html
 ---
 
 Coming Soon!

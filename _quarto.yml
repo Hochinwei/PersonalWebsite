@@ -6,13 +6,16 @@ website:
   page-navigation: true
   title: "Ho Chin Wei"
   favicon: "assets/favicon.png"
+  site-url: "https://hochinwei.com"
+  
 
   page-footer:
     left: "&copy; Copyright 2025, Ho Chin Wei"
-    right: "This page is built with [Quarto](https://quarto.org/)."
+    right: "This page is built with [Quarto](https://quarto.org/) in {{< fa brands r-project >}}."
 
   navbar:
     pinned: true
+    logo: "assets/favicon.png"
     right:
 
       - text: "About me"
@@ -30,7 +33,6 @@ website:
       - text: "Contact"
         href: contact.qmd
             
-  
 format:
   html:
     theme: 

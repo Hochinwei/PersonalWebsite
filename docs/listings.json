@@ -1,9 +1,9 @@
 [
   {
-    "listing": "/talks/index.html",
+    "listing": "/blog.html",
     "items": [
-      "/talks/talk_1/index.html",
-      "/talks/talk_2/index.html"
+      "/blog/post-with-code/index.html",
+      "/blog/welcome/index.html"
     ]
   },
   {
@@ -14,13 +14,6 @@
       "/projects/project_2/index.html",
       "/projects/pkg_1/index.html",
       "/projects/pkg_2/index.html"
-    ]
-  },
-  {
-    "listing": "/blog.html",
-    "items": [
-      "/blog/post-with-code/index.html",
-      "/blog/welcome/index.html"
     ]
   }
 ]
