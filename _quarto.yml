@@ -5,6 +5,7 @@ project:
 website:
   page-navigation: true
   title: "Ho Chin Wei"
+  favicon: "assets/favicon.png"
 
   page-footer:
     left: "&copy; Copyright 2025, Ho Chin Wei"
@@ -22,9 +23,6 @@ website:
       
       - text: "Projects"
         href: projects/index.qmd
-
-      - text: "Talks"
-        href: talks/index.qmd
         
       - text: "CV"
         href: CV.qmd
