@@ -4,7 +4,6 @@ author: "Ho Chin Wei"
 date: "2025-06-01"
 format: 
   html:
-    theme: flatly
     smooth-scroll: true
 categories: [code, analysis, bayesian]
 ---

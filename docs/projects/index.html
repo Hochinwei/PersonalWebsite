@@ -42,6 +42,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-999736d354a81f2253c1519988330e71.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -166,6 +168,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/favicon.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ho Chin Wei</span>
     </a>
@@ -252,7 +257,7 @@ window.Quarto = {
 <p>It is convenient to use <code>id</code> to link to multiple folders.</p>
 <div id="listing-ehr" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Y29kZSUyQ2FuYWx5c2lzJTJDYmF5ZXNpYW4=" data-listing-date-sort="1748707200000" data-listing-file-modified-sort="1749127775883" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5315">
+<div class="g-col-1" data-index="0" data-categories="Y29kZSUyQ2FuYWx5c2lzJTJDYmF5ZXNpYW4=" data-listing-date-sort="1748707200000" data-listing-file-modified-sort="1750172426068" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5315">
 <a href="../projects/LinkedIn_games/Tango_analysis.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
 <p class="card-img-top"><img src="LinkedIn_games\Tango_analysis_files\figure-html\t-ts-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -444,7 +449,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/hochinwei\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -781,7 +786,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
+<p>This page is built with <a href="https://quarto.org/">Quarto</a> in <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
 </div>
   </div>
 </footer>
