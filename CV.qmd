@@ -146,7 +146,7 @@ Nanyang Technological University (Singapore)
 [Bachelor of Social Sciences in Psychology]{.h5} [April 2020 -- June 2024]{.cv-date}
 
 -   BSc in Psychology
--   Honour's Thesis
+-   Honour's Thesis: "
 -   GPA: 4.31/5.00
 -   Activities
     -   Phi Kappa Phi
@@ -165,18 +165,14 @@ Ngee Ann Polytechnic
 :::
 :::
 
-[Associate of Arts, Business]{.h5} [Sep 2015 -- June 2018]{.cv-date}
+[Associate of Arts, Business Studies]{.h5} [Apr 2015 -- May 2018]{.cv-date}
 
--   Biology
--   [Running Start](https://www.tacomacc.edu/academics-programs/college-high-school/runningstart) student from 2010 through 2012.[^1]
+-   Business Studies 
+-   Granted Global Entrepreneurial Internship Programme (GEIP) award
 -   GPA: 3.71/4.00
--   \$5,600 in various merit-based and financial need-based scholarships
--   Activities
-    -   Phi Theta Kappa (Secretary, Vice President, Regional President)
-    -   Latinos Embracing Diversity (Secretary)
-    -   Environmental Club (Active Member)
-
-[^1]: I completed half of my classes at high school and the other half at community college.
+-   \$7,200 granted from Global Entrepreneurial Internship Programme (GEIP) award for 6-months internship in Shanghai, China.
+-   Co-curricular Activities
+    -   Muay Thai Club (Training Captain)
 
 
 ## {{< fa book >}} Publications
@@ -207,17 +203,16 @@ Tuttle, G., Noland, K., **Ryan, J.N.** 2020. Glyphosate: Ecological Fate and Eff
 
 ## {{< fa user-gear >}} Skills
 
-[Software and Programming]{.h5}
+[Software and Statistics]{.h5}
 
--   Proficient in R, Microsoft Office, ArcGIS (Pro, Field Maps, Dashboards, and Experience Builder).
+-   Proficient in R, SPSS, Jamovi and Microsoft Office tools
 -   Developing in Python, Arcade, and SQL.
 -   Utilizing resources (e.g. internet, program/package documentation, colleagues) to quickly understand a problem and find/implement the solution.
 
-[Research and Field Work]{.h5}
+[Research and methodology]{.h5}
 
 -   Conducting literature reviews
--   Soil sampling using step probes, soil probes with slide hammers, and bulk density samplers.
--   Collecting and analyzing water quality data using Hach colorimeters and turbidimeters, YSI ProDSS multiparameter meters, HOBO data loggers, and OTT MF Pro streamflow meter.
+-   Something about experimental and theoretical research design and psychology
 
 [Collaboration and Communication]{.h5}
 
