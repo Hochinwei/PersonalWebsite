@@ -13,7 +13,7 @@ anchor-sections: false
 -->
 
 ::: h3
-Washington State Department of Agriculture
+National Institute of Education (Singapore)
 :::
 
 :::
@@ -123,17 +123,15 @@ Ocean Mammal Institute
 :::
 
 ::: h3
-Montana State University
+University of Hull
 :::
 :::
 
-[Master of Science]{.h5} [Sep 2020 -- Aug 2023]{.cv-date}
+[Master's in Social Research]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
 
 -   Land Resources and Environmental Sciences
--   Professional Project: *An Improved Approach to Estimate Wind Erosion in Washington's Columbia Plateau Using Google Earth Engine*
--   GPA: 4.00/4.00
--   Activities
-    -   [Graduate Leadership Academy](https://www.montana.edu/gradschool/professionaldevelopment/gradcat/grad-leadership-academy.html)
+-   MSc Dissertation Project: *Ethics, Authenticity and Acceptability: Understanding Public Perceptions to Real and Altered Images in Contemporary Media*
+-   Grade: Distinction
 
 ::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
@@ -141,16 +139,15 @@ Montana State University
 :::
 
 ::: h3
-Pacific Lutheran University
+Nanyang Technological University (Singapore) 
 :::
 :::
 
-[Bachelor of Science & Bachelor of Arts]{.h5} [Sep 2015 -- May 2019]{.cv-date}
+[Bachelor of Social Sciences in Psychology]{.h5} [April 2020 -- June 2024]{.cv-date}
 
--   B.S. Biology, B.A. Environmental Studies, Minor in Chemistry
--   Biology Capstone: *Southern Resident Killer Whales: Evidence of Genetic and Reproductive Isolation*
--   Environmental Studies Capstone: *Saving the Southern Resident Killer Whales: A Co-Management Strategy*
--   GPA: 3.96/4.00
+-   BSc in Psychology
+-   Honour's Thesis
+-   GPA: 4.31/5.00
 -   Activities
     -   Phi Kappa Phi
 -   Awards and Scholarships
@@ -164,15 +161,15 @@ Pacific Lutheran University
 :::
 
 ::: h3
-Tacoma Community College
+Ngee Ann Polytechnic
 :::
 :::
 
-[Associate of Science]{.h5} [Sep 2010 -- June 2015]{.cv-date}
+[Associate of Arts, Business]{.h5} [Sep 2015 -- June 2018]{.cv-date}
 
 -   Biology
 -   [Running Start](https://www.tacomacc.edu/academics-programs/college-high-school/runningstart) student from 2010 through 2012.[^1]
--   GPA: 3.89/4.00
+-   GPA: 3.71/4.00
 -   \$5,600 in various merit-based and financial need-based scholarships
 -   Activities
     -   Phi Theta Kappa (Secretary, Vice President, Regional President)
