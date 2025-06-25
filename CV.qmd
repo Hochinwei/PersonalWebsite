@@ -5,12 +5,14 @@ anchor-sections: false
 
 ## {{< fa computer >}} Research Experience
 
+```{=html}
 <!-- This part adds the Huge title plus logo
  ::: {.d-inline-flex style="align-items:baseline"}
  ::: p-2
  ![](assets/img/wsda.webp){width="80px" fig-alt="Washington State Department of Agriculture logo"}
  :::
 -->
+```
 
 ::: h3
 National Institute of Education (Singapore)
@@ -52,7 +54,7 @@ Read this [blog post](https://wastatedeptag.blogspot.com/2019/07/checking-for-pe
 
 [![Jadey Ryan measures stream flow while Katie Noland records the data.](https://1.bp.blogspot.com/-JhcELPQJ1mU/XRuOrqPlg8I/AAAAAAAAALM/8GBKuWZ7JTMe68vHmLf2qt4E0_A7W_yDgCLcBGAs/s640/panorama.JPG){fig-alt="Panoramic photo of stream with lots of green riparian vegetation with woman standing in the stream wearing waders and measuring stream flow." fig-align="left"}](https://wastatedeptag.blogspot.com/2019/07/checking-for-pesticides-in-surface-water.html)
 
-::: {.d-inline-flex style="align-items:baseline"}
+::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
 ![](assets/img/plu.webp){width="60px" fig-alt="Pacific Lutheran University logo"}
 :::
@@ -60,7 +62,7 @@ Read this [blog post](https://wastatedeptag.blogspot.com/2019/07/checking-for-pe
 ::: h3
 Pacific Lutheran University
 :::
-:::
+:::::
 
 [Lab Prep and/or Teaching Assistant]{.h5} [Jan 2017 -- May 2017]{.cv-date}
 
@@ -71,7 +73,7 @@ Genetics, Microbiology, and Molecular Biology:
 
 ![Aliquots of reagents for a genetics lab.](assets/img/lab-prep.webp){fig-alt="Eight neat rack of Eppendorf tubes containing aliquots of reagents for a genetics lab." fig-align="left" height="200"}
 
-::: {.d-inline-flex style="align-items:baseline"}
+::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
 ![](assets/img/tacoma-water.webp){width="80px" fig-alt="Tacoma Water logo"}
 :::
@@ -79,7 +81,7 @@ Genetics, Microbiology, and Molecular Biology:
 ::: h3
 Tacoma Water
 :::
-:::
+:::::
 
 [Skilled Occupational Intern]{.h5} [Nov 2015 -- May 2019]{.cv-date}
 
@@ -91,7 +93,7 @@ Tacoma Water
 
 ![Collecting a water sample from a stream.](assets/img/green-river-sampling.webp){fig-alt="Smiling woman crouching next to stream scooping water for further sample analysis." fig-align="left" height="300"}
 
-::: {.d-inline-flex style="align-items:baseline"}
+::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
 ![](assets/img/omi.webp){width="60px" fig-alt="Ocean Mammal Institute logo"}
 :::
@@ -99,7 +101,7 @@ Tacoma Water
 ::: h3
 Ocean Mammal Institute
 :::
-:::
+:::::
 
 [Intern]{.h5} [Jan 2017]{.cv-date}
 
@@ -117,7 +119,7 @@ Ocean Mammal Institute
 
 ## {{< fa graduation-cap >}} Education
 
-::: {.d-inline-flex style="align-items:baseline"}
+::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
 ![](assets/img/msu.webp){width="80px" fig-alt="Montana State University logo"}
 :::
@@ -125,37 +127,36 @@ Ocean Mammal Institute
 ::: h3
 University of Hull
 :::
-:::
+:::::
 
 [Master's in Social Research]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
 
--   Land Resources and Environmental Sciences
+-   Social Research Methodology and Advanced Quantitative Analysis
 -   MSc Dissertation Project: *Ethics, Authenticity and Acceptability: Understanding Public Perceptions to Real and Altered Images in Contemporary Media*
 -   Grade: Distinction
+-   Fully Funded by the [White Rose Doctoral Training Partnership](https://wrdtp.ac.uk/) (WRDTP)
 
-::: {.d-inline-flex style="align-items:baseline"}
+::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
 ![](assets/img/plu.webp){width="60px" fig-alt="Pacific Lutheran University logo"}
 :::
 
 ::: h3
-Nanyang Technological University (Singapore) 
+Nanyang Technological University (Singapore)
 :::
-:::
+:::::
 
 [Bachelor of Social Sciences in Psychology]{.h5} [April 2020 -- June 2024]{.cv-date}
 
 -   BSc in Psychology
--   Honour's Thesis: "
+-   Honour's Thesis: "[Exploring the Interplay Between Online Engagement and Offline Social Activities: A Moderated Mediation Analysis of Life Satisfaction Among the Elderly](https://hdl.handle.net/10356/181085)"
 -   GPA: 4.31/5.00
 -   Activities
     -   Phi Kappa Phi
 -   Awards and Scholarships
-    -   \$550 Funding for Green River Watershed Pilot Studies
-    -   Certificate of Recognition for Excellence in Inorganic Chemistry American Chemical Society
-    -   \$60,000 Provost Merit Scholarship
+    -   President Research Scholar ([URECA](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca))) (2022 and 2023)
 
-::: {.d-inline-flex style="align-items:baseline"}
+::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
 ![](assets/img/tcc.webp){width="60px" fig-alt="Tacoma Community College logo"}
 :::
@@ -163,20 +164,20 @@ Nanyang Technological University (Singapore)
 ::: h3
 Ngee Ann Polytechnic
 :::
-:::
+:::::
 
 [Associate of Arts, Business Studies]{.h5} [Apr 2015 -- May 2018]{.cv-date}
 
--   Business Studies 
+-   Business Studies
 -   Granted Global Entrepreneurial Internship Programme (GEIP) award
 -   GPA: 3.71/4.00
 -   \$7,200 granted from Global Entrepreneurial Internship Programme (GEIP) award for 6-months internship in Shanghai, China.
 -   Co-curricular Activities
     -   Muay Thai Club (Training Captain)
 
-
 ## {{< fa book >}} Publications
 
+```{=html}
 <!-- FOR YOUR OWN REFERENCE - HOW TO LIST PUBLICATIONS
 **Ryan, J.N.**, Michel, L., Gelardi, D.G. 2023. Standard Operating Procedure: Soil Health Monitoring in Washington State. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-923](https://cms.agr.wa.gov/WSDAKentico/Documents//DO/NRAS/923-NRAS-SoilHealthSOP_WEB.pdf).
 
@@ -194,6 +195,7 @@ Tuttle, G., Noland, K., **Ryan, J.N.** 2020. Glyphosate: Ecological Fate and Eff
 
 **Ryan, J.N.** 2020. Understanding Pesticide Product Labels. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-849](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/849-NRAS-Interpreting-Labels.pdf).
 -->
+```
 
 ## {{< fa person-chalkboard >}} Presentations
 
