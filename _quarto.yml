@@ -15,7 +15,7 @@ website:
 
   navbar:
     pinned: true
-    logo: "assets/favicon.png"
+    logo: "assets/favicon.webp"
     right:
 
       - text: "About me"
