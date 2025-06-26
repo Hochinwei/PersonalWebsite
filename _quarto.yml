@@ -5,7 +5,7 @@ project:
 website:
   page-navigation: true
   title: "Ho Chin Wei"
-  favicon: "assets/favicon.png"
+  favicon: "assets/favicon.webp"
   site-url: "https://hochinwei.com"
   
 
@@ -18,19 +18,24 @@ website:
     logo: "assets/favicon.webp"
     right:
 
-      - text: "About me"
+      - text: "About"
+        icon: person-raised-hand
         href: about.qmd
         
       - text: "Blog"
+        icon: substack
         href: blog.qmd
       
       - text: "Projects"
+        icon: tools
         href: projects/index.qmd
         
       - text: "CV"
+        icon: file-earmark-richtext
         href: CV.qmd
         
       - text: "Contact"
+        icon: person-lines-fill
         href: contact.qmd
             
 format:
@@ -39,6 +44,10 @@ format:
       - united
       - styles.scss
     toc: true
+    smooth-scroll: true
+    link-external-newwindow: true
+    # code highlight style
+    highlight-style: arrow
     icon: fontawesome
 
 extensions:
