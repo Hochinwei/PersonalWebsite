@@ -20,7 +20,7 @@ National Institute of Education (Singapore)
 
 :::
 
-[Data Scientist]{.h5} [Jan 2022 -- Present]{.cv-date}
+[Research Assistant]{.h5} [Jan 2022 -- Present]{.cv-date}
 
 -   Collect and process soil and climate data from diverse sources to compile in a statewide soil health database using Kisters WISKI software.
 -   Use R, Python, and ArcGIS to develop data collection and decision support tools such as R Shiny web applications and ArcGIS field maps, dashboards, and Experience Builder web applications.
