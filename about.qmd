@@ -3,8 +3,7 @@ title: "Ho Chin Wei"
 image: "assets/profile.webp"
 about:
   id: hero-heading
-  template: marquee
-  image-shape: rounded
+  template: broadside
   links:
     - text: "{{< fa brands linkedin >}} LinkedIn"
       href: https://www.linkedin.com/in/hochinwei/
