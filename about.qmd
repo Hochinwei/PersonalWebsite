@@ -4,7 +4,7 @@ image: "assets/profile.webp"
 about:
   id: hero-heading
   template: marquee
-  image-shape: rectangle
+  image-shape: rounded
   links:
     - text: "{{< fa brands linkedin >}} LinkedIn"
       href: https://www.linkedin.com/in/hochinwei/
