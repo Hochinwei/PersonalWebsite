@@ -138,7 +138,7 @@ University of Hull
 
 ::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
-![](assets/img/plu.webp){width="60px" fig-alt="Pacific Lutheran University logo"}
+![](assets/ntu_logo.webp){width="200px" fig-alt="NTU logo"}
 :::
 
 ::: h3
@@ -152,13 +152,14 @@ Nanyang Technological University (Singapore)
 -   Honour's Thesis: "[Exploring the Interplay Between Online Engagement and Offline Social Activities: A Moderated Mediation Analysis of Life Satisfaction Among the Elderly](https://hdl.handle.net/10356/181085)"
 -   GPA: 4.31/5.00
 -   Activities
-    -   Phi Kappa Phi
+    -   NTU Canoe Sprint Captain
+    -   Research Assistant at [Clinical Brain Lab](https://www.clinicalbrain.org/)
 -   Awards and Scholarships
-    -   President Research Scholar ([URECA](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca))) (2022 and 2023)
+    -   NTU President Research Scholar ([URECA](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca))) (2022 and 2023)
 
 ::::: {.d-inline-flex style="align-items:baseline"}
 ::: p-2
-![](assets/img/tcc.webp){width="60px" fig-alt="Tacoma Community College logo"}
+![](assets/np_logo.webp){width=200px" fig-alt="Ngee Ann Polytechnic logo"}
 :::
 
 ::: h3
