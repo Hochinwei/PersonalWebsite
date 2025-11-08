@@ -1,9 +1,6 @@
 ---
-title: "Ho Chin Wei"
-image: "assets/profile.webp"
 about:
-  id: hero-heading
-  template: trestles
+  template: jolla
   image-shape: rounded
   links:
     - text: "{{< fa brands linkedin >}} LinkedIn"
@@ -18,16 +15,8 @@ about:
       href: https://orcid.org/my-orcid?orcid=0009-0003-4688-805X
 ---
 
-::: {#hero-heading}
+::: {#hero-container}
 <div id="particles-js"></div>
-
-Hello! I am *Chin Wei*.
-
-I'm a PhD researcher in psychology at the [University of Hull](https://www.hull.ac.uk/), fully funded as part of the White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
-
-I explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies — uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.
-
-Learn more [about me](about.qmd), or read about some of my [opinions](blog.qmd) and [projects](projects.qmd)!
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 
@@ -37,3 +26,20 @@ Learn more [about me](about.qmd), or read about some of my [opinions](blog.qmd) 
 </script>
 :::
 
+::: {#hero-content}
+ <!-- Images can be added with Markdown or HTML syntax -->
+  ![Profile 4](assets/Profile4.png){width="100px" .profile-img} 
+  ![Profile 2](assets/Profile2.png){width="160px" .profile-img} 
+  ![Profile 1](assets/Profile.webp){width="260px" .profile-img}
+  ![Profile 3](assets/Profile3.png){width="160px" .profile-img} 
+  ![Profile 5](assets/Profile5.png){width="100px" .profile-img} 
+  
+  
+Hello! I am *Chin Wei*.
+
+I'm a PhD researcher in psychology at the [University of Hull](https://www.hull.ac.uk/), funded by part of the White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
+
+I explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies — uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.
+
+Learn more [about me](about.qmd), or read about some of my [opinions](blog.qmd) and [projects](projects.qmd)!
+:::
