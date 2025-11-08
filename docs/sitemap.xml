@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hochinwei.com/index.html</loc>
-    <lastmod>2025-11-05T11:53:04.804Z</lastmod>
+    <lastmod>2025-11-08T10:46:23.844Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/projects/index.html</loc>
@@ -19,5 +19,13 @@
   <url>
     <loc>https://hochinwei.com/about.html</loc>
     <lastmod>2025-11-05T11:53:53.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/blog.html</loc>
+    <lastmod>2025-05-31T22:04:07.804Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/contact.html</loc>
+    <lastmod>2025-06-14T13:45:45.340Z</lastmod>
   </url>
 </urlset>

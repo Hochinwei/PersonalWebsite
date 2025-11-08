@@ -1,0 +1,223 @@
+---
+title: "Curriculum Vitae"
+anchor-sections: false
+---
+
+## {{< fa computer >}} Research Experience
+
+```{=html}
+<!-- This part adds the Huge title plus logo
+ ::: {.d-inline-flex style="align-items:baseline"}
+ ::: p-2
+ ![](assets/img/wsda.webp){width="80px" fig-alt="Washington State Department of Agriculture logo"}
+ :::
+-->
+```
+
+::: h3
+National Institute of Education (Singapore)
+:::
+
+:::
+
+[Research Assistant]{.h5} [Jan 2022 -- Present]{.cv-date}
+
+-   Collect and process soil and climate data from diverse sources to compile in a statewide soil health database using Kisters WISKI software.
+-   Use R, Python, and ArcGIS to develop data collection and decision support tools such as R Shiny web applications and ArcGIS field maps, dashboards, and Experience Builder web applications.
+-   Use GitHub for version control and to promote open access data and code.
+-   Collaborate with the Soil Health team to develop standard operating procedures (SOPs) and a quality assurance project plan to establish a soil health monitoring program.
+-   Create training videos for R packages and ArcGIS spatial data collection tools that I developed.
+-   Coordinate and facilitate meetings with intra- and inter- agency partners and stakeholders.
+
+![Jadey standing in a field with a soil sampling probe.](assets/img/soil-sampling.webp){.preview-image fig-alt="Woman in a field of wheat stubble holding a 3 foot long soil sampling probe over her shoulder." fig-align="left" height="150"}
+
+[Environmental Specialist]{.h5} [Jun 2020 -- Jan 2022]{.cv-date}
+
+In addition to duties as Environmental Technician:
+
+-   Contributed data analysis, writing, and editing to the annual fact sheets and technical report.
+-   Collaborated with the Surface Water Monitoring Program team to improve standard operating procedures and quality assurance project plan.
+-   Provided administrative support for timekeeping, purchasing, and travel.
+-   Supported planning for the [Washington Soil Heath Initiative](https://washingtonsoilhealthinitiative.com/) and [Sustainable Farms and Fields grant program](https://www.scc.wa.gov/programs/sustainable-farms-fields) during the COVID-19 hiring freeze.
+
+Read this [blog post](https://wastatedeptag.blogspot.com/2021/06/washington-soil-health-initiative.html), written by yours truly, to learn more about the Washington Soil Health Initiative.
+
+[![Soil sampling kits for distribution to conservation districts across the state.](assets/img/soil-bins.webp){fig-alt="Over a dozen large black totes full of soil sampling equipment and supplies." fig-align="left" height="250"}](https://wastatedeptag.blogspot.com/2021/06/washington-soil-health-initiative.html)
+
+[Environmental Technician]{.h5} [Jun 2019 -- May 2020]{.cv-date}
+
+-   Calibrated a water quality sonde and prepared chain of custodies and sample labels.
+-   Collected water samples from salmonid-bearing wadable streams for pesticide analysis and measured streamflow using an electromagnetic current meter.
+-   Performed quality assurance checks on data each week after sampling.
+
+Read this [blog post](https://wastatedeptag.blogspot.com/2019/07/checking-for-pesticides-in-surface-water.html) for a recount of what a site visit looks like, including pictures!
+
+[![Jadey Ryan measures stream flow while Katie Noland records the data.](https://1.bp.blogspot.com/-JhcELPQJ1mU/XRuOrqPlg8I/AAAAAAAAALM/8GBKuWZ7JTMe68vHmLf2qt4E0_A7W_yDgCLcBGAs/s640/panorama.JPG){fig-alt="Panoramic photo of stream with lots of green riparian vegetation with woman standing in the stream wearing waders and measuring stream flow." fig-align="left"}](https://wastatedeptag.blogspot.com/2019/07/checking-for-pesticides-in-surface-water.html)
+
+::::: {.d-inline-flex style="align-items:baseline"}
+::: p-2
+![](assets/img/plu.webp){width="60px" fig-alt="Pacific Lutheran University logo"}
+:::
+
+::: h3
+Pacific Lutheran University
+:::
+:::::
+
+[Lab Prep and/or Teaching Assistant]{.h5} [Jan 2017 -- May 2017]{.cv-date}
+
+Genetics, Microbiology, and Molecular Biology:
+
+-   Communicated with professors, lab manager, and peers to plan and implement preparation of organisms, media, reagents, and equipment.
+-   Guided students through the labs.
+
+![Aliquots of reagents for a genetics lab.](assets/img/lab-prep.webp){fig-alt="Eight neat rack of Eppendorf tubes containing aliquots of reagents for a genetics lab." fig-align="left" height="200"}
+
+::::: {.d-inline-flex style="align-items:baseline"}
+::: p-2
+![](assets/img/tacoma-water.webp){width="80px" fig-alt="Tacoma Water logo"}
+:::
+
+::: h3
+Tacoma Water
+:::
+:::::
+
+[Skilled Occupational Intern]{.h5} [Nov 2015 -- May 2019]{.cv-date}
+
+-   Used XC2 software for data entry, auditing, research, and correction of discrepancies for backflow preventer assembly installation and testing records for the Cross Connection Control program.
+-   Delivered consistent and compassionate customer service when interacting with customers in person, by phone, or by email.
+-   Collected water samples from the primary source (Green River Watershed) and various points within the distribution system for investigative sampling.
+-   Performed various water quality analyses in the field and lab using turbidimeters, colorimeters, and spectrometers.
+-   Designed and implemented two pilot studies in the Green River Watershed (Water Quality Index and Trace Metals Screening).
+
+![Collecting a water sample from a stream.](assets/img/green-river-sampling.webp){fig-alt="Smiling woman crouching next to stream scooping water for further sample analysis." fig-align="left" height="300"}
+
+::::: {.d-inline-flex style="align-items:baseline"}
+::: p-2
+![](assets/img/omi.webp){width="60px" fig-alt="Ocean Mammal Institute logo"}
+:::
+
+::: h3
+Ocean Mammal Institute
+:::
+:::::
+
+[Intern]{.h5} [Jan 2017]{.cv-date}
+
+-   Participated in lectures, discussions, and field research to learn about the biology and behavior of humpback whales, politics associated with marine mammal protection, and ecopsychology.
+-   Applied shore-based data collection methods to research the impact of vessel traffic on Hawaiian Humpback whales by monitoring their behaviors and movements.
+-   Developed and presented a poster of my results at the 23rd Annual Natural Sciences Academic Festival at Pacific Lutheran University.
+
+<object class="slides" data="https://drive.google.com/file/d/1_DwdH_vwO8YvQBcTq7xaimENyg4-EPpE/preview" title="Poster for Hawaiian humpback whale behavioral response to vessel traffic research project">
+
+<p>Oops! Your browser doesn't seem to support embedded PDFs.</p>
+
+<p><a href="https://drive.google.com/file/d/1_DwdH_vwO8YvQBcTq7xaimENyg4-EPpE/preview">Try opening it in a new tab instead.</a></p>
+
+</object>
+
+## {{< fa graduation-cap >}} Education
+
+::::: {.d-inline-flex style="align-items:baseline"}
+::: p-2
+![](assets/img/msu.webp){width="80px" fig-alt="Montana State University logo"}
+:::
+
+::: h3
+University of Hull
+:::
+:::::
+
+[Master's in Social Research]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
+
+-   Social Research Methodology and Advanced Quantitative Analysis
+-   MSc Dissertation Project: *Ethics, Authenticity and Acceptability: Understanding Public Perceptions to Real and Altered Images in Contemporary Media*
+-   Grade: Distinction
+-   Fully Funded by the [White Rose Doctoral Training Partnership](https://wrdtp.ac.uk/) (WRDTP)
+
+::::: {.d-inline-flex style="align-items:baseline"}
+::: p-2
+![](assets/ntu_logo.webp){width="200px" fig-alt="NTU logo"}
+:::
+
+::: h3
+Nanyang Technological University (Singapore)
+:::
+:::::
+
+[Bachelor of Social Sciences in Psychology]{.h5} [April 2020 -- June 2024]{.cv-date}
+
+-   BSc in Psychology
+-   Honour's Thesis: "[Exploring the Interplay Between Online Engagement and Offline Social Activities: A Moderated Mediation Analysis of Life Satisfaction Among the Elderly](https://hdl.handle.net/10356/181085)"
+-   GPA: 4.31/5.00
+-   Activities
+    -   NTU Canoe Sprint Captain
+    -   Research Assistant at [Clinical Brain Lab](https://www.clinicalbrain.org/)
+-   Awards and Scholarships
+    -   NTU President Research Scholar ([URECA](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca))) (2022 and 2023)
+
+::::: {.d-inline-flex style="align-items:baseline"}
+::: p-2
+![](assets/np_logo.webp){width=200px" fig-alt="Ngee Ann Polytechnic logo"}
+:::
+
+::: h3
+Ngee Ann Polytechnic
+:::
+:::::
+
+[Associate of Arts, Business Studies]{.h5} [Apr 2015 -- May 2018]{.cv-date}
+
+-   Business Studies
+-   Granted Global Entrepreneurial Internship Programme (GEIP) award
+-   GPA: 3.71/4.00
+-   \$7,200 granted from Global Entrepreneurial Internship Programme (GEIP) award for 6-months internship in Shanghai, China.
+-   Co-curricular Activities
+    -   Muay Thai Club (Training Captain)
+
+## {{< fa book >}} Publications
+
+```{=html}
+<!-- FOR YOUR OWN REFERENCE - HOW TO LIST PUBLICATIONS
+**Ryan, J.N.**, Michel, L., Gelardi, D.G. 2023. Standard Operating Procedure: Soil Health Monitoring in Washington State. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-923](https://cms.agr.wa.gov/WSDAKentico/Documents//DO/NRAS/923-NRAS-SoilHealthSOP_WEB.pdf).
+
+Noland, K., Nickelson, A., **Ryan, J.N.**, Drennan, M. 2021. Ambient Monitoring for Pesticides in Washington State Surface Water: 2019 Technical Report. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-629](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/629-SWMP-TechnicalReport-2019.pdf).
+
+-   Also co-author for [2018](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/629-SWMP-TechnicalReport-2018-REDUCED.pdf) and [2017](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/629-SWMP-TechnicalReport-2017.pdf) Technical Reports.
+
+Hancock, J., **Ryan, J.N.** 2021. Pesticide Groundwater Sampling in the Sumas-Blaine Surficial Aquifer. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 103-895](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/895-WhatcomSummaryReport-SumasBlaine.pdf).
+
+Tuttle, G., Noland, K., **Ryan, J.N.** 2020. Glyphosate: Ecological Fate and Effects and Human Health Summary. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 809-817](https://agr.wa.gov/getmedia/1a7d9deb-18dd-4604-84fd-da3805750854/871-wsdaglyphosatesummary2020).
+
+**Ryan, J.N.** 2020. Understanding Pesticide Leaching Potential and Protecting Groundwater. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 809-865](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/865-NRASLeachingPotentialFactsheet.pdf).
+
+**Ryan, J.N.** 2020. Pesticide Application and Water Quality. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-850](https://cms.agr.wa.gov/WSDAKentico/Documents/850-NRAS-PesticideApplication-WaterQuality-FINAL.pdf).
+
+**Ryan, J.N.** 2020. Understanding Pesticide Product Labels. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-849](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/849-NRAS-Interpreting-Labels.pdf).
+-->
+```
+
+## {{< fa person-chalkboard >}} Presentations
+
+### Upcoming
+
+[Parameterized reporting using Quarto: 2-hour workshop](https://www.meetup.com/rladies-dc/events/297344107/). R-Ladies Washington D.C. Virtual. January 18, 2024. **Invited**.
+
+## {{< fa user-gear >}} Skills
+
+[Software and Statistics]{.h5}
+
+-   Proficient in R, SPSS, Jamovi and Microsoft Office tools
+-   Developing in Python, Arcade, and SQL.
+-   Utilizing resources (e.g. internet, program/package documentation, colleagues) to quickly understand a problem and find/implement the solution.
+
+[Research and methodology]{.h5}
+
+-   Conducting literature reviews
+-   Something about experimental and theoretical research design and psychology
+
+[Collaboration and Communication]{.h5}
+
+-   Coordinating and facilitating meetings with intra- and inter-agency partners.
+-   Writing, editing, and reviewing data communication products for technical, policy, and general public audiences.

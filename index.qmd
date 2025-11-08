@@ -19,11 +19,12 @@ about:
 ---
 
 ::: {#hero-heading}
-Hello, I am *Chin Wei*.
+Hello! I am *Chin Wei*.
 
-I'm currently a PhD psychology researcher at the [University of Hull](https://www.hull.ac.uk/), as part of the prestigious White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
+I'm a PhD researcher in psychology at the [University of Hull](https://www.hull.ac.uk/), fully funded as part of the White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
 
-Before this, I completed a fully-funded Master's of Social Research (MSc) and Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my research work in the Undergraduate Research Experience on Campus [(URECA)](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)) programme.
+I explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies — uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.
 
-I had the opportunity to lead two independent, year-long research projects under the guidance of faculty mentors, solidifying my love for all things research.
+Learn more [about me](about.qmd), or read about some of my [opinions](blog.qmd) and [projects](projects.qmd)!
 :::
+
