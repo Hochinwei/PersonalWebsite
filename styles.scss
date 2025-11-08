@@ -154,9 +154,11 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&di
   z-index: 0;
 }
 
-.hero-content {
+#hero-content {
   position: relative;
   z-index: 1;
-  color: #ffffff; /* ensure text is visible over background */
+  color: #000000; /* ensure text is visible over background */
 }
+
+
 
