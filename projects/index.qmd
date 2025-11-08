@@ -1,51 +1,36 @@
 ---
 title: "Projects"
 description: |
-  This page displays the different projects I've created. It is categorized primarily by two ways.
+  This page displays the different projects I have worked on.
 listing:
-  - id: ehr
+  - id: linkedin
     max-description-length: 500
     image-height: 150px
     fields: [image, title, description]
     contents: 
-      - project_1
-      - project_2
       - LinkedIn_games
     type: grid
     grid-item-border: false
     
-  - id: packages
-    max-description-length: 80
-    image-height: 250px
-    fields: [title, description]
-    contents: 
-      - pkg_1
-      - pkg_2
-    type: table
-    grid-item-border: false
-    sort-ui: false
-    filter-ui: false
+#  - id: packages
+#   max-description-length: 80
+#   image-height: 250px
+#   fields: [title, description]
+#   contents: 
+#     - pkg_1
+#     - pkg_2
+#   type: table
+#   grid-item-border: false
+#   sort-ui: false
+#   filter-ui: false
     
 ---
 
 
 ## Analysis Projects
 
-It is convenient to use `id` to link to multiple folders. 
-
-::: {#ehr}
+::: {#linkedin}
 :::
-
-
-## Table listing
-
-This is an example of **table** listing. 
-
-### Packages 
-
-::: {#packages}
-:::
-
 
 
 

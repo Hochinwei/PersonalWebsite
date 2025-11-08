@@ -2,24 +2,12 @@
 title: "Ho Chin Wei"
 image: "assets/profile.webp"
 about:
-  id: hero-heading
   template: broadside
-  links:
-    - text: "{{< fa brands linkedin >}} LinkedIn"
-      href: https://www.linkedin.com/in/hochinwei/
-    - text: "{{< fa brands researchgate >}} ResearchGate"
-      href: https://www.researchgate.net/profile/Chin-Wei-Ho?ev=hdr_xprf
-    - text: "{{< fa brands x-twitter >}}"
-      href: https://x.com/HoChinWei_
-    - text: "{{< fa brands github >}} Github"
-      href: https://github.com/Hochinwei
-    - text: "{{< fa brands orcid >}} ORCID"
-      href: https://orcid.org/my-orcid?orcid=0009-0003-4688-805X
 ---
 
-::: {#hero-heading}
+Before this, I completed a fully-funded Master's of Social Research (MSc) at Hull and received my Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my research work in the Undergraduate Research Experience on Campus [(URECA)](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)) programme.
 
-I am a PhD student at the University of Hull, UK. 
+I had the opportunity to lead two independent, year-long research projects under the guidance of faculty mentors, solidifying my love for all things research.
 
 My research area broadly lies in understanding human behavior interacting with AI-technologies. More specifically, my PhD project focuses on misinformation from AI-Imagery, and how do we cognitively process AI-images differently than "Real" images. I have a more diverse list of topics I am interested in (e.g., Effects of AI-pornography, discussions around what is "real" or "fake" information etc. - Refer to my blog for more!)
 
@@ -31,10 +19,3 @@ University of Hull | Hull, United Kingdom
 MSc in Social Research | Oct 2025
 
 BSc in Social Sciences in Psychology | June 2024
-
-## Experience
-
-I have developed X R packages, published Y papers. 
-
-:::
-

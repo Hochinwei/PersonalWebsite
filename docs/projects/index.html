@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="This page displays the different projects I’ve created. It is categorized primarily by two ways.">
+<meta name="description" content="This page displays the different projects I have worked on.">
 
 <title>Projects – Ho Chin Wei</title>
 <style>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-ehr .list');
+    const listingTargetEl = window.document.querySelector('#listing-linkedin .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -88,35 +88,7 @@ ul.task-list li input[type="checkbox"] {
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-ehr'] = new List('listing-ehr', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-packages .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-packages'] = new List('listing-packages', options);
+    window['quarto-listings']['listing-linkedin'] = new List('listing-linkedin', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -225,10 +197,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#analysis-projects" id="toc-analysis-projects" class="nav-link active" data-scroll-target="#analysis-projects">Analysis Projects</a></li>
-  <li><a href="#table-listing" id="toc-table-listing" class="nav-link" data-scroll-target="#table-listing">Table listing</a>
-  <ul class="collapse">
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -242,7 +210,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    <p>This page displays the different projects I’ve created. It is categorized primarily by two ways.</p>
+    <p>This page displays the different projects I have worked on.</p>
   </div>
 </div>
 
@@ -261,8 +229,7 @@ window.Quarto = {
 
 <section id="analysis-projects" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-projects">Analysis Projects</h2>
-<p>It is convenient to use <code>id</code> to link to multiple folders.</p>
-<div id="listing-ehr" class="quarto-listing quarto-listing-container-grid">
+<div id="listing-linkedin" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
 <div class="g-col-1" data-index="0" data-categories="Y29kZSUyQ2FuYWx5c2lzJTJDYmF5ZXNpYW4=" data-listing-date-sort="1748732400000" data-listing-file-modified-sort="1750172426068" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5315">
 <a href="../projects/LinkedIn_games/Tango_analysis.html" class="quarto-grid-link">
@@ -278,92 +245,12 @@ This is a personal project to create a live analysis pipeline that will show des
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-file-modified-sort="1748277203482" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
-<a href="../projects/project_1/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../projects/project_1/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-project_1
-</h5>
-<div class="card-text listing-description delink">
-In this project I use EHR to explore the hospital transfers.
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-file-modified-sort="1748277203492" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
-<a href="../projects/project_2/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top">
-<img loading="lazy" src="../projects/project_2/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-project_2
-</h5>
-<div class="card-text listing-description delink">
-In this project I work on Machine Learning methods to predict in-hospital mortality.
-</div>
-</div>
-</div></a>
-</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
-</section>
-<section id="table-listing" class="level2">
-<h2 class="anchored" data-anchor-id="table-listing">Table listing</h2>
-<p>This is an example of <strong>table</strong> listing.</p>
-<section id="packages" class="level3">
-<h3 class="anchored" data-anchor-id="packages">Packages</h3>
-<div id="listing-packages" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
-Title
-</th>
-
-<th>
-Description
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1666652400000" data-listing-file-modified-sort="1748277203474" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5" data-listing-title-sort="pkg_1" data-listing-filename-sort="index.qmd">
-<td>
-<a href="../projects/pkg_1/index.html" class="title listing-title">pkg_1</a>
-</td>
-<td>
-<span class="listing-description">This package does this.</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1666652400000" data-listing-file-modified-sort="1748277203477" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="pkg_2" data-listing-filename-sort="index.qmd">
-<td>
-<a href="../projects/pkg_2/index.html" class="title listing-title">pkg_2</a>
-</td>
-<td>
-<span class="listing-description">This package does this.</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
 
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
