@@ -1,6 +1,5 @@
 ---
 title: "Ho Chin Wei"
-image: "assets/profile.webp"
 ---
 
 Before this, I completed a fully-funded Master's of Social Research (MSc) at Hull and received my Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my research work in the Undergraduate Research Experience on Campus [(URECA)](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)) programme.
