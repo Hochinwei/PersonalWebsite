@@ -1,11 +1,13 @@
 ---
-title: "Ho Chin Wei"
+title: "About Me"
 lightbox: true
 ---
 
+![First photo description](assets/profile2.webp){width="75px" group="gallery"} 
 
+![Second photo description](assets/profile3.webp){width="75px" group="gallery"} 
 
-
+![Third photo description](assets/profile4.webp){width="75px" group="gallery"}
 
 Before that, I completed a fully-funded Master's of Social Research (MSc) at Hull and received my Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my research work in the Undergraduate Research Experience on Campus [(URECA)](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)) programme.
 
@@ -13,11 +15,12 @@ I had the opportunity to lead two independent, year-long research projects under
 
 My research area broadly lies in understanding human behavior interacting with AI-technologies. More specifically, my PhD project focuses on misinformation from AI-Imagery, and how do we cognitively process AI-images differently than "Real" images. I have a more diverse list of topics I am interested in (e.g., Effects of AI-pornography, discussions around what is "real" or "fake" information etc. - Refer to my blog for more!)
 
+## Education
 
-## Education 
+University of Hull \| Hull, United Kingdom
 
-University of Hull | Hull, United Kingdom
+MSc in Social Research \| Oct 2025
 
-MSc in Social Research | Oct 2025
+Nanyang Technological University \| Singapore
 
-BSc in Social Sciences in Psychology | June 2024
+BSc in Social Sciences in Psychology \| June 2024

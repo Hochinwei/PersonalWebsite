@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ho Chin Wei</title>
+<title>about – Ho Chin Wei</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-fb887477bb242ff07bc4e93b73d450fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -144,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ho Chin Wei</h1>
+<h1 class="title">about</h1>
 </div>
 
 
@@ -161,13 +164,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Before this, I completed a fully-funded Master’s of Social Research (MSc) at Hull and received my Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my research work in the Undergraduate Research Experience on Campus <a href="https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)">(URECA)</a> programme.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/profile2.webp" class="lightbox" data-gallery="gallery" title="First photo description"><img src="assets/profile2.webp" class="img-fluid figure-img" alt="First photo description"></a></p>
+<figcaption>First photo description</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/profile3.webp" class="lightbox" data-gallery="gallery" title="Second photo description"><img src="assets/profile3.webp" class="img-fluid figure-img" alt="Second photo description"></a></p>
+<figcaption>Second photo description</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="assets/profile4.webp" class="lightbox" data-gallery="gallery" title="Third photo description"><img src="assets/profile4.webp" class="img-fluid figure-img" alt="Third photo description"></a></p>
+<figcaption>Third photo description</figcaption>
+</figure>
+</div>
+<p>Before that, I completed a fully-funded Master’s of Social Research (MSc) at Hull and received my Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my research work in the Undergraduate Research Experience on Campus <a href="https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)">(URECA)</a> programme.</p>
 <p>I had the opportunity to lead two independent, year-long research projects under the guidance of faculty mentors, solidifying my love for all things research.</p>
 <p>My research area broadly lies in understanding human behavior interacting with AI-technologies. More specifically, my PhD project focuses on misinformation from AI-Imagery, and how do we cognitively process AI-images differently than “Real” images. I have a more diverse list of topics I am interested in (e.g., Effects of AI-pornography, discussions around what is “real” or “fake” information etc. - Refer to my blog for more!)</p>
 <section id="education" class="level2">
 <h2 class="anchored" data-anchor-id="education">Education</h2>
 <p>University of Hull | Hull, United Kingdom</p>
 <p>MSc in Social Research | Oct 2025</p>
+<p>Nanyang Technological University | Singapore</p>
 <p>BSc in Social Sciences in Psychology | June 2024</p>
 
 
@@ -592,6 +614,38 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
