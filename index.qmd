@@ -14,17 +14,16 @@ about:
     - text: "{{< fa brands orcid >}} ORCID"
       href: https://orcid.org/my-orcid?orcid=0009-0003-4688-805X
 ---
-
 ::: {#hero-container}
 <div id="particles-js"></div>
   
 :::: {#hero-content}
  <!-- Images can be added with Markdown or HTML syntax -->
-  ![Profile 4](assets/Profile4.png){width="100px" .profile-img} 
-  ![Profile 2](assets/Profile2.png){width="160px" .profile-img} 
-  ![Profile 1](assets/profile.webp){width="260px" .profile-img}
-  ![Profile 3](assets/Profile3.png){width="160px" .profile-img} 
-  ![Profile 5](assets/Profile5.png){width="100px" .profile-img} 
+  ![Profile 4](assets/Profile4.webp){width="110px" .profile-img} 
+  ![Profile 2](assets/Profile2.webp){width="140px" .profile-img} 
+  ![Profile 1](assets/profile.webp){width="190px" .profile-img}
+  ![Profile 3](assets/Profile3.webp){width="140px" .profile-img} 
+  ![Profile 5](assets/Profile5.webp){width="110px" .profile-img} 
   
   
 #### Hello! I am *Chin Wei*.

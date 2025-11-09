@@ -1,7 +1,12 @@
 ---
 title: "Curriculum Vitae"
 anchor-sections: false
+lightbox: true
 ---
+
+![First photo description](assets/profile2.webp){group="gallery"}
+![Second photo description](assets/profile3.webp){group="gallery"}
+![Third photo description](assets/profile4.webp){group="gallery"}
 
 ## {{< fa computer >}} Research Experience
 
