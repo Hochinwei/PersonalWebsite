@@ -22,14 +22,14 @@ about:
  <!-- Images can be added with Markdown or HTML syntax -->
   ![Profile 4](assets/Profile4.png){width="100px" .profile-img} 
   ![Profile 2](assets/Profile2.png){width="160px" .profile-img} 
-  ![Profile 1](assets/Profile.webp){width="260px" .profile-img}
+  ![Profile 1](assets/profile.webp){width="260px" .profile-img}
   ![Profile 3](assets/Profile3.png){width="160px" .profile-img} 
   ![Profile 5](assets/Profile5.png){width="100px" .profile-img} 
   
   
-### Hello! I am *Chin Wei*.
+#### Hello! I am *Chin Wei*.
 
-I'm a PhD researcher in psychology at the [University of Hull](https://www.hull.ac.uk/), funded by part of the White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
+I'm a PhD researcher in psychology at the [University of Hull](https://www.hull.ac.uk/), funded by the White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
 
 I explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies — uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.
 
