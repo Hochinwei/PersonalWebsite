@@ -3,17 +3,83 @@ title: "About Me"
 lightbox: true
 ---
 
+
+::: {.column-page-left}
+
+![](assets/profile.webp){width="280px" fig-align="left" style="margin-right: 30px; border-radius: 8px;"}
+
+## Who I Am
+
+I'm a PhD researcher in Psychology at the [University of Hull](https://www.hull.ac.uk/), funded by the [White Rose Doctoral Training Partnership (WRDTP)](https://wrdtp.ac.uk/). My work sits at the fascinating—and sometimes unsettling—intersection of human cognition and artificial intelligence. I spend my days exploring how our minds adapt, resist, and evolve as AI-generated content becomes increasingly indistinguishable from reality.
+
+My research focuses on **AI-generated imagery and misinformation**: How do we cognitively process AI-images differently than "real" photographs? What happens when the line between authentic and fabricated blurs? These questions drive my PhD project, but my curiosity extends far beyond that—into the effects of AI-generated pornography, philosophical debates about what counts as "real" or "fake" information, and the broader implications of living in an AI-saturated world. (You can explore more of my thoughts on these topics in my [blog](blog.qmd)!)
+
+:::
+
+---
+
+## My Journey
+
+Before landing at Hull for my PhD, I completed a fully-funded **Master's of Social Research (MSc)** at the same institution. My path into research began earlier, though, at [Nanyang Technological University](https://www.ntu.edu.sg/) in Singapore, where I earned my **Bachelor's degree in Psychology**. During my time at NTU, I was honored as an **NTU President Research Scholar** for two consecutive years—a recognition tied to my work in the [Undergraduate Research Experience on Campus (URECA)](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)) programme.
+
+Through URECA, I had the opportunity to lead two independent, year-long research projects under the guidance of faculty mentors. Those experiences solidified my love for research—the thrill of asking questions no one has answered yet, the satisfaction of uncovering patterns in messy data, and the joy of contributing something new to our understanding of human behavior.
+
+---
+
+## What I Do (and Care About)
+
+Beyond my formal research, I'm passionate about [**PLACEHOLDER: e.g., open science, science communication, teaching, mentoring, public engagement, etc.**]. I believe that research shouldn't just live in academic journals—it should spark conversations, inform policy, and connect with the people it ultimately affects.
+
+I've been involved in [**PLACEHOLDER: teaching, workshops, outreach, collaborations, side projects**], and I'm always looking for opportunities to collaborate with others who share my curiosity about the cognitive and social implications of emerging technologies.
+
+Some of my key skills and tools include [**PLACEHOLDER: R, Python, eye-tracking, EEG, surveys, experimental design, data visualization, etc.**]. I approach research with a mix of rigor and creativity, always looking for innovative ways to tackle complex questions.
+
+---
+
+## When I'm Not Researching
+
+Outside the lab (and away from my laptop), I [**PLACEHOLDER: describe hobbies, interests, passions—e.g., "love hiking, devouring sci-fi novels, and attempting to cook recipes I find on Instagram" or "spend my weekends exploring coffee shops, playing board games, and indulging my obsession with true crime podcasts"**].
+
+I'm also a firm believer that good research comes from a well-rounded life. Whether it's [**PLACEHOLDER: travel, art, sports, reading, cooking, etc.**], I find that stepping away from my work often leads to the best insights when I return to it.
+
+---
+
+## A Glimpse of My World
+
+::: {layout="[[1,2]]"}
+
+::: {#gallery}
+![](assets/profile2.webp){width="150px" group="gallery"}
+![](assets/profile3.webp){width="150px" group="gallery"}
+![](assets/profile4.webp){width="150px" group="gallery"}
+:::
+
+::: {#caption}
+**A few snapshots from my life**: [**PLACEHOLDER: describe the photos—e.g., "From fieldwork in the lab, conference presentations, and the occasional coffee-fueled writing session."**]
+
+These moments capture what drives me—curiosity, collaboration, and a commitment to understanding the world around us (even when AI tries to complicate things).
+:::
+
+:::
+
+
+::: {style="display:flex;align-items:flex-start;"}
 ![First photo description](assets/profile2.webp){width="75px" group="gallery"} 
 
 ![Second photo description](assets/profile3.webp){width="75px" group="gallery"} 
 
 ![Third photo description](assets/profile4.webp){width="75px" group="gallery"}
+::: 
 
 Before that, I completed a fully-funded Master's of Social Research (MSc) at Hull and received my Bachelor’s degree in Psychology at Nanyang Technological University, Singapore, where I was honoured the title NTU President Research Scholar for two consecutive years, thanks to my research work in the Undergraduate Research Experience on Campus [(URECA)](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca)) programme.
 
-I had the opportunity to lead two independent, year-long research projects under the guidance of faculty mentors, solidifying my love for all things research.
+I had the opportunity to lead two independent, year-long research projects under the guidance of faculty mentors, solidifying my love for all things research. 
 
-My research area broadly lies in understanding human behavior interacting with AI-technologies. More specifically, my PhD project focuses on misinformation from AI-Imagery, and how do we cognitively process AI-images differently than "Real" images. I have a more diverse list of topics I am interested in (e.g., Effects of AI-pornography, discussions around what is "real" or "fake" information etc. - Refer to my blog for more!)
+My research area broadly lies in understanding human behavior interacting with AI-technologies. More specifically, my PhD project focuses on understanding whether the social Inhibition of Return effect (sIOR) persists in a joint-action task with an AI automation.
+
+Besides my PhD research, I am also very interested in advanced statistical (i.e., Bayesian approaches) and computational analysis (i.e., Natural Langauge Processing)
+
+I have a more diverse list of topics I am interested in (e.g., Effects of AI-pornography, discussions around what is "real" or "fake" information etc. - Refer to my blog for more!)
 
 ## Education
 
