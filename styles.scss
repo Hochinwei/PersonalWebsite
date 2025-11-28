@@ -109,30 +109,6 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&di
   }
 }
 
-
-// quarto-scss-analysis-annotation { "origin": null }
-
-/*-- Image transition code --*/
-
-.profile-img-wrap {
-  position: relative;
-  display: inline-block;
-}
-.profile-img-wrap img {
-  display: block;
-  width: 200px;              /* adjust to your desired size */
-  transition: opacity 0.4s ease;
-}
-.profile-img-wrap img.hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-.profile-img-wrap:hover img.hover {
-  opacity: 1;                /* fade in on hover */
-}
-
 /* === Particle.js Hero Section === */
 
 .hero-container {

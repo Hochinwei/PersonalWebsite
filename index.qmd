@@ -1,7 +1,6 @@
 ---
 about:
   template: jolla
-  image-shape: rounded
   links:
     - text: "{{< fa brands linkedin >}} LinkedIn"
       href: https://www.linkedin.com/in/hochinwei/
@@ -14,6 +13,7 @@ about:
     - text: "{{< fa brands orcid >}} ORCID"
       href: https://orcid.org/my-orcid?orcid=0009-0003-4688-805X
 ---
+
 ::: {#hero-container}
 <div id="particles-js"></div>
   

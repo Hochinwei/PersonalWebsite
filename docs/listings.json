@@ -1,12 +1,5 @@
 [
   {
-    "listing": "/blog.html",
-    "items": [
-      "/blog/post-with-code/index.html",
-      "/blog/welcome/index.html"
-    ]
-  },
-  {
     "listing": "/projects/index.html",
     "items": [
       "/projects/LinkedIn_games/Tango_analysis.html"

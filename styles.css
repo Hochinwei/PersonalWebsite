@@ -1,1 +1,34 @@
-/* css styles */
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
+.badge.bg-light {
+  color: #3a3a3a;
+}
+
+/* === Particle.js Hero Section === */
+.hero-container {
+  position: relative;
+  height: 100vh;
+  /* or adjust to your hero content */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#hero-content {
+  position: relative;
+  z-index: 1;
+  color: #000000;
+  /* ensure text is visible over background */
+}
