@@ -1,0 +1,232 @@
+---
+title: "Bayesian Analysis of a 2×2 Factorial Reaction Time Experiment in R"
+subtitle: "Demonstrating Simple Bayesian Workflows in Psychology Research"
+author: "Ho Chin Wei"
+date: last-modified
+date-format: "DD MMMM YYYY"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    code-tools: false
+    number-sections: false
+    highlight-style: github
+    embed-resources: true
+    page-layout: full
+execute:
+  echo: true
+  warning: false
+  message: false
+  eval: true
+  freeze: auto
+---
+
+# Overview
+
+This document demonstrates a complete **Bayesian analysis pipeline in R** for a simple reaction time experiment with a 2×2 factorial design. The goal is to show, in a clear and reproducible way, how to move from a simulated dataset to a fitted Bayesian mixed-effects model, and then on to interpretation of the posterior, predictions, and basic hypothesis tests.
+
+The focus here is practical. I assume you are comfortable with basic R, regression-type models, and the idea of random effects, but perhaps newer to Bayesian modelling with `brms`. Throughout, I explain the key Bayesian concepts that are directly relevant to the workflow, including priors, posterior distributions, mixed-effects modelling, and MCMC sampling.
+
+# Scenario and Data Simulation
+
+## Experimental Scenario
+
+The example is grounded in a cognitive psychology setting. Imagine an experiment where participants respond to visual targets while two experimental factors are manipulated. The first factor is **Viewing Condition**, where participants either have a *Restricted* view or an *Unrestricted* view of some relevant aspect of the display. The second factor is **Target Location**, which can be *Same* or *Different* relative to a previous location.
+
+The outcome of interest is **reaction time (RT)** in milliseconds. In line with typical inhibition-of-return paradigms, the data are simulated so that responses are slower when the target appears in the **same** location compared to a different one. The expected inhibition effect is around 20–30 ms. Viewing condition is not expected to have a strong effect, and there is no strong interaction between viewing condition and target location.
+
+## Setup and Data Generation
+
+To begin, I load the necessary packages and set a seed for reproducibility. The main packages used are `tidyverse` for data handling, `brms` for the Bayesian modelling, `bayestestR` and `bayesplot` for working with the posterior, and `tidybayes` for tidy posterior extraction.
+
+```{r}
+#| label: setup
+
+library(tidyverse) # Data wrangling and visualisation
+library(brms) # Bayesian regression models (Stan backend)
+library(bayestestR) # Posterior summaries and hypothesis tests
+library(bayesplot) # Posterior visualisation tools
+library(tidybayes) # Tidy extraction of posterior samples
+
+set.seed(42)
+```
+
+Next, I create a trial-level dataset that reflects the 2×2 design and the expected pattern of means. 30 participants complete 24 trials per condition, producing a reasonably sized data set to resemble a modest laboratory sample.
+
+```{r}
+#| label: simulate-data
+
+# Parameters for simulation
+n_subj   <- 30          # Number of participants
+n_trials <- 24          # Trials per condition per participant
+
+# Define cell means (ms), one row per condition so there's no risk of the
+# means lining up with the wrong condition (expand.grid()'s row order isn't
+# always what you'd guess - listing conditions explicitly avoids that trap)
+# These values encode a ~25 ms inhibition effect for "Same" vs. "Different"
+mu_table <- tribble(
+  ~Viewing,       ~Location,    ~mean, ~sd,
+  "Restricted",   "Same",         530,  30,
+  "Restricted",   "Different",    505,  30,
+  "Unrestricted", "Same",         525,  30,
+  "Unrestricted", "Different",    500,  30
+)
+
+# Generate trial-level data
+dat <- expand.grid(
+  Subj     = 1:n_subj,
+  Viewing  = c("Restricted", "Unrestricted"),
+  Location = c("Same", "Different"),
+  Trial    = 1:n_trials
+) %>%
+  left_join(mu_table, by = c("Viewing", "Location")) %>%
+  mutate(
+    RT      = rnorm(n(), mean = mean, sd = sd),
+    Subj    = factor(Subj),
+    Viewing = factor(Viewing, levels = c("Restricted", "Unrestricted")),
+    Location = factor(Location, levels = c("Different", "Same"))
+  ) %>%
+  select(Subj, Viewing, Location, Trial, RT)
+
+head(dat, 12)
+```
+
+At this point, I briefly check that the simulation behaves as intended. The condition means should show longer RTs in the *Same* condition than in the *Different* condition, with only small differences between viewing conditions.
+
+```{r}
+#| label: check-simulation
+
+dat %>%
+  group_by(Viewing, Location) %>%
+  summarise(
+    mean_RT = mean(RT),
+    sd_RT   = sd(RT),
+    n       = n(),
+    .groups = "drop"
+  )
+```
+
+This simple summary reassures us that the simulated dataset captures the qualitative pattern we designed.
+
+# Fitting the Bayesian Model
+
+With the data in hand, we now fit a Bayesian mixed-effects model. The outcome is `RT`, the fixed effects are `Viewing`, `Location`, and their interaction, and we include a random intercept for `Subj` to account for the fact that multiple trials come from the same participant.
+
+## Priors
+
+Before fitting, it's worth being explicit about the priors. `brms` will pick default (flat or very weakly informative) priors automatically, but a Bayesian workflow is more transparent when priors are chosen deliberately. Here I use weakly informative priors centred on plausible values given the scale of the data (reaction times in the 400-600ms range, with an expected effect of a few tens of milliseconds):
+
+- **Intercept**: `normal(500, 100)` - centred on a plausible average RT, wide enough to not rule out much.
+- **Fixed-effect coefficients** (`b`): `normal(0, 50)` - centred on "no effect", allowing effects up to roughly +/-100ms to be plausible a priori.
+- **Residual and random-intercept SDs**: `exponential(1)` - a standard weakly informative choice for scale parameters, keeping them positive and not too large.
+
+```{r}
+#| label: set-priors
+
+priors <- c(
+  prior(normal(500, 100), class = Intercept),
+  prior(normal(0, 50),   class = b),
+  prior(exponential(1),  class = sigma),
+  prior(exponential(1),  class = sd)
+)
+```
+
+## Model fit
+
+```{r}
+#| label: fit-model
+#| output: false
+
+fit <- brm(
+  formula = RT ~ Viewing * Location + (1 | Subj),
+  data    = dat,
+  family  = gaussian(),
+  prior   = priors,
+  chains  = 4,
+  cores   = 4,
+  iter    = 2000,
+  warmup  = 1000,
+  seed    = 42,
+  backend = "rstan"
+)
+```
+
+`chains = 4` runs four independent MCMC chains so we can check they agree with each other (a key diagnostic for whether sampling has worked properly). `warmup = 1000` discards the first 1000 iterations per chain while the sampler tunes itself, keeping the remaining 1000 per chain (4000 total) as usable posterior draws.
+
+## MCMC diagnostics
+
+Before trusting any of the results, we check that the chains converged. `Rhat` values close to 1.00 indicate the chains agree with each other, and `Bulk_ESS`/`Tail_ESS` indicate how many effectively independent draws we have.
+
+```{r}
+#| label: model-summary
+
+summary(fit)
+```
+
+# Interpreting the Posterior
+
+## Posterior summaries
+
+`bayestestR` gives a tidy summary of each parameter's posterior distribution, including the median estimate and a 95% credible interval (the range within which we believe the true value plausibly falls, given the model and data).
+
+```{r}
+#| label: posterior-describe
+
+describe_posterior(fit, effects = "fixed")
+```
+
+## Visualizing the posterior
+
+The plot below shows the posterior distribution for each fixed-effect coefficient - essentially, how much belief the model places on each possible effect size after seeing the data.
+
+```{r}
+#| label: posterior-plot
+#| fig-cap: "Posterior distributions of the fixed-effect coefficients."
+
+mcmc_plot(fit, type = "areas", variable = "^b_", regex = TRUE)
+```
+
+`tidybayes` lets us extract the posterior draws for the effect we care most about - the difference in RT between the *Same* and *Different* location conditions (our simulated inhibition-of-return effect) - and plot its full distribution directly.
+
+```{r}
+#| label: location-effect-draws
+#| fig-cap: "Posterior distribution of the Same vs. Different location effect (ms)."
+
+fit %>%
+  spread_draws(b_LocationSame) %>%
+  ggplot(aes(x = b_LocationSame)) +
+  stat_halfeye(fill = "#005F73") +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Estimated effect of Same vs. Different location (ms)",
+    y = NULL,
+    title = "Posterior distribution of the location effect"
+  )
+```
+
+# Hypothesis Test
+
+A common question in this kind of design is directional: *is reaction time credibly slower in the Same condition than the Different condition?* `brms` lets us test this directly against the posterior via `hypothesis()`, which returns an **Evidence Ratio** - how much more likely the posterior draws support the stated hypothesis versus its complement.
+
+```{r}
+#| label: hypothesis-test
+
+hypothesis(fit, "LocationSame > 0")
+```
+
+# Posterior Predictive Check
+
+Finally, it's good practice to check that the fitted model can generate data that looks like the data we actually observed. A posterior predictive check simulates new datasets from the model's posterior and overlays their distribution (light lines) against the real data (dark line, `y`). If the model is reasonable, the simulated distributions should closely track the real one.
+
+```{r}
+#| label: pp-check
+#| fig-cap: "Posterior predictive check: simulated RT distributions (light) vs. observed RT distribution (dark)."
+
+pp_check(fit, ndraws = 100)
+```
+
+# Summary
+
+This workflow moved from a simulated 2x2 factorial dataset through model specification (including explicit, weakly informative priors), model fitting with `brms`, MCMC convergence checks, posterior summarisation and visualisation, a directional hypothesis test via evidence ratios, and a posterior predictive check. The same steps generalise directly to real experimental data - simply swap the simulated `dat` object for an imported dataset with the same column structure.
+

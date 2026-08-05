@@ -7,11 +7,20 @@ listing:
     max-description-length: 500
     image-height: 150px
     fields: [image, title, description]
-    contents: 
+    contents:
       - LinkedIn_games
     type: grid
     grid-item-border: false
-    
+
+  - id: bayesian
+    max-description-length: 500
+    image-height: 150px
+    fields: [title, description]
+    contents:
+      - bayesian_analysis
+    type: grid
+    grid-item-border: false
+
 #  - id: packages
 #   max-description-length: 80
 #   image-height: 250px
@@ -30,6 +39,9 @@ listing:
 ## Analysis Projects
 
 ::: {#linkedin}
+:::
+
+::: {#bayesian}
 :::
 
 
