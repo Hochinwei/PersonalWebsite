@@ -4,220 +4,131 @@ anchor-sections: false
 format: html
 ---
 
-
-## {{< fa computer >}} Research Experience
-
-```{=html}
-<!-- This part adds the Huge title plus logo
- ::: {.d-inline-flex style="align-items:baseline"}
- ::: p-2
- ![](assets/img/wsda.webp){width="80px" fig-alt="Washington State Department of Agriculture logo"}
- :::
--->
-```
-
-::: h3
-National Institute of Education (Singapore)
-:::
-
-[Research Assistant!]{.h5} [Jan 2022 -- Present]{.cv-date}
-
--   Collect and process soil and climate data from diverse sources to compile in a statewide soil health database using Kisters WISKI software.
--   Use R, Python, and ArcGIS to develop data collection and decision support tools such as R Shiny web applications and ArcGIS field maps, dashboards, and Experience Builder web applications.
--   Use GitHub for version control and to promote open access data and code.
--   Collaborate with the Soil Health team to develop standard operating procedures (SOPs) and a quality assurance project plan to establish a soil health monitoring program.
--   Create training videos for R packages and ArcGIS spatial data collection tools that I developed.
--   Coordinate and facilitate meetings with intra- and inter- agency partners and stakeholders.
-
-![Jadey standing in a field with a soil sampling probe.](assets/img/soil-sampling.webp){.preview-image fig-alt="Woman in a field of wheat stubble holding a 3 foot long soil sampling probe over her shoulder." fig-align="left" height="150"}
-
-[Environmental Specialist]{.h5} [Jun 2020 -- Jan 2022]{.cv-date}
-
-In addition to duties as Environmental Technician:
-
--   Contributed data analysis, writing, and editing to the annual fact sheets and technical report.
--   Collaborated with the Surface Water Monitoring Program team to improve standard operating procedures and quality assurance project plan.
--   Provided administrative support for timekeeping, purchasing, and travel.
--   Supported planning for the [Washington Soil Heath Initiative](https://washingtonsoilhealthinitiative.com/) and [Sustainable Farms and Fields grant program](https://www.scc.wa.gov/programs/sustainable-farms-fields) during the COVID-19 hiring freeze.
-
-Read this [blog post](https://wastatedeptag.blogspot.com/2021/06/washington-soil-health-initiative.html), written by yours truly, to learn more about the Washington Soil Health Initiative.
-
-[![Soil sampling kits for distribution to conservation districts across the state.](assets/img/soil-bins.webp){fig-alt="Over a dozen large black totes full of soil sampling equipment and supplies." fig-align="left" height="250"}](https://wastatedeptag.blogspot.com/2021/06/washington-soil-health-initiative.html)
-
-[Environmental Technician]{.h5} [Jun 2019 -- May 2020]{.cv-date}
-
--   Calibrated a water quality sonde and prepared chain of custodies and sample labels.
--   Collected water samples from salmonid-bearing wadable streams for pesticide analysis and measured streamflow using an electromagnetic current meter.
--   Performed quality assurance checks on data each week after sampling.
-
-Read this [blog post](https://wastatedeptag.blogspot.com/2019/07/checking-for-pesticides-in-surface-water.html) for a recount of what a site visit looks like, including pictures!
-
-[![Jadey Ryan measures stream flow while Katie Noland records the data.](https://1.bp.blogspot.com/-JhcELPQJ1mU/XRuOrqPlg8I/AAAAAAAAALM/8GBKuWZ7JTMe68vHmLf2qt4E0_A7W_yDgCLcBGAs/s640/panorama.JPG){fig-alt="Panoramic photo of stream with lots of green riparian vegetation with woman standing in the stream wearing waders and measuring stream flow." fig-align="left"}](https://wastatedeptag.blogspot.com/2019/07/checking-for-pesticides-in-surface-water.html)
-
-::::: {.d-inline-flex style="align-items:baseline"}
-::: p-2
-![](assets/img/plu.webp){width="60px" fig-alt="Pacific Lutheran University logo"}
-:::
-
-::: h3
-Pacific Lutheran University
-:::
-:::::
-
-[Lab Prep and/or Teaching Assistant]{.h5} [Jan 2017 -- May 2017]{.cv-date}
-
-Genetics, Microbiology, and Molecular Biology:
-
--   Communicated with professors, lab manager, and peers to plan and implement preparation of organisms, media, reagents, and equipment.
--   Guided students through the labs.
-
-![Aliquots of reagents for a genetics lab.](assets/img/lab-prep.webp){fig-alt="Eight neat rack of Eppendorf tubes containing aliquots of reagents for a genetics lab." fig-align="left" height="200"}
-
-::::: {.d-inline-flex style="align-items:baseline"}
-::: p-2
-![](assets/img/tacoma-water.webp){width="80px" fig-alt="Tacoma Water logo"}
-:::
-
-::: h3
-Tacoma Water
-:::
-:::::
-
-[Skilled Occupational Intern]{.h5} [Nov 2015 -- May 2019]{.cv-date}
-
--   Used XC2 software for data entry, auditing, research, and correction of discrepancies for backflow preventer assembly installation and testing records for the Cross Connection Control program.
--   Delivered consistent and compassionate customer service when interacting with customers in person, by phone, or by email.
--   Collected water samples from the primary source (Green River Watershed) and various points within the distribution system for investigative sampling.
--   Performed various water quality analyses in the field and lab using turbidimeters, colorimeters, and spectrometers.
--   Designed and implemented two pilot studies in the Green River Watershed (Water Quality Index and Trace Metals Screening).
-
-![Collecting a water sample from a stream.](assets/img/green-river-sampling.webp){fig-alt="Smiling woman crouching next to stream scooping water for further sample analysis." fig-align="left" height="300"}
-
-::::: {.d-inline-flex style="align-items:baseline"}
-::: p-2
-![](assets/img/omi.webp){width="60px" fig-alt="Ocean Mammal Institute logo"}
-:::
-
-::: h3
-Ocean Mammal Institute
-:::
-:::::
-
-[Intern]{.h5} [Jan 2017]{.cv-date}
-
--   Participated in lectures, discussions, and field research to learn about the biology and behavior of humpback whales, politics associated with marine mammal protection, and ecopsychology.
--   Applied shore-based data collection methods to research the impact of vessel traffic on Hawaiian Humpback whales by monitoring their behaviors and movements.
--   Developed and presented a poster of my results at the 23rd Annual Natural Sciences Academic Festival at Pacific Lutheran University.
-
-<object class="slides" data="https://drive.google.com/file/d/1_DwdH_vwO8YvQBcTq7xaimENyg4-EPpE/preview" title="Poster for Hawaiian humpback whale behavioral response to vessel traffic research project">
-
-<p>Oops! Your browser doesn't seem to support embedded PDFs.</p>
-
-<p><a href="https://drive.google.com/file/d/1_DwdH_vwO8YvQBcTq7xaimENyg4-EPpE/preview">Try opening it in a new tab instead.</a></p>
-
-</object>
+Experimental social psychologist specialising in human-AI social interaction, digital well-being, and ageing with technology. Experienced in preregistered cognitive experiments, large-scale survey analysis, and advanced SEM/Bayesian methods. Skilled in R, Python, and PsychoPy, with cross-cultural experience in the UK and Singapore.
 
 ## {{< fa graduation-cap >}} Education
 
-::::: {.d-inline-flex style="align-items:baseline"}
-::: p-2
-![](assets/img/msu.webp){width="80px" fig-alt="Montana State University logo"}
+::: h3
+University of Hull, United Kingdom
 :::
+
+[PhD in Psychology]{.h5} [Sep 2025 -- Present]{.cv-date}
+
+-   Funded by White Rose Doctoral Training Partnership Award (1+3.5 Programme)
 
 ::: h3
-University of Hull
+University of Hull, United Kingdom
 :::
-:::::
 
-[Master's in Social Research]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
+[Master of Science in Social Research]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
 
--   Social Research Methodology and Advanced Quantitative Analysis
--   MSc Dissertation Project: *Ethics, Authenticity and Acceptability: Understanding Public Perceptions to Real and Altered Images in Contemporary Media*
--   Grade: Distinction
--   Fully Funded by the [White Rose Doctoral Training Partnership](https://wrdtp.ac.uk/) (WRDTP)
-
-::::: {.d-inline-flex style="align-items:baseline"}
-::: p-2
-![](assets/ntu_logo.webp){width="200px" fig-alt="NTU logo"}
-:::
+-   Distinction (First), GPA: 82.1/100
+-   Funded by White Rose Doctoral Training Partnership Award (1+3.5 Programme)
 
 ::: h3
-Nanyang Technological University (Singapore)
-:::
-:::::
-
-[Bachelor of Social Sciences in Psychology]{.h5} [April 2020 -- June 2024]{.cv-date}
-
--   BSc in Psychology
--   Honour's Thesis: "[Exploring the Interplay Between Online Engagement and Offline Social Activities: A Moderated Mediation Analysis of Life Satisfaction Among the Elderly](https://hdl.handle.net/10356/181085)"
--   GPA: 4.31/5.00
--   Activities
-    -   NTU Canoe Sprint Captain
-    -   Research Assistant at [Clinical Brain Lab](https://www.clinicalbrain.org/)
--   Awards and Scholarships
-    -   NTU President Research Scholar ([URECA](https://www.ntu.edu.sg/education/undergraduate-research-experience-on-campus-(ureca))) (2022 and 2023)
-
-::::: {.d-inline-flex style="align-items:baseline"}
-::: p-2
-![](assets/np_logo.webp){width=200px" fig-alt="Ngee Ann Polytechnic logo"}
+Nanyang Technological University, Singapore
 :::
 
-::: h3
-Ngee Ann Polytechnic
-:::
-:::::
+[Bachelor of Social Sciences in Psychology]{.h5} [Aug 2020 -- Jun 2024]{.cv-date}
 
-[Associate of Arts, Business Studies]{.h5} [Apr 2015 -- May 2018]{.cv-date}
-
--   Business Studies
--   Granted Global Entrepreneurial Internship Programme (GEIP) award
--   GPA: 3.71/4.00
--   \$7,200 granted from Global Entrepreneurial Internship Programme (GEIP) award for 6-months internship in Shanghai, China.
--   Co-curricular Activities
-    -   Muay Thai Club (Training Captain)
+-   Honours (Upper Second Class), CGPA: 4.32/5.00
+-   NTU President Research Scholar -- URECA AY20/21 (Distinction)
+-   NTU President Research Scholar -- URECA AY21/22 (Merit)
 
 ## {{< fa book >}} Publications
 
-```{=html}
-<!-- FOR YOUR OWN REFERENCE - HOW TO LIST PUBLICATIONS
-**Ryan, J.N.**, Michel, L., Gelardi, D.G. 2023. Standard Operating Procedure: Soil Health Monitoring in Washington State. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-923](https://cms.agr.wa.gov/WSDAKentico/Documents//DO/NRAS/923-NRAS-SoilHealthSOP_WEB.pdf).
+**Ho, C. W.** & Skarratt, P. (Submitted). *The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability*. Journal of Computer-Mediated Communication.
 
-Noland, K., Nickelson, A., **Ryan, J.N.**, Drennan, M. 2021. Ambient Monitoring for Pesticides in Washington State Surface Water: 2019 Technical Report. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-629](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/629-SWMP-TechnicalReport-2019.pdf).
+Toh, W. X., **Ho, C. W.**, & Khoo, S. S. A. (2024). Longitudinal relations of internet use frequency with cognitive and social functioning among older adults. *Innovation in Aging*, 8(Suppl1), 788–789. [https://doi.org/10.1093/geroni/igae098.2561](https://doi.org/10.1093/geroni/igae098.2561)
 
--   Also co-author for [2018](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/629-SWMP-TechnicalReport-2018-REDUCED.pdf) and [2017](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/629-SWMP-TechnicalReport-2017.pdf) Technical Reports.
+## {{< fa person-chalkboard >}} Conference Presentations
 
-Hancock, J., **Ryan, J.N.** 2021. Pesticide Groundwater Sampling in the Sumas-Blaine Surficial Aquifer. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 103-895](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/895-WhatcomSummaryReport-SumasBlaine.pdf).
+**Ho, C. W.**, Skarrat, P. (2026, April 1-3). *The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability* [Poster Presentation]. The 1st International Online Conference on Behavioral Sciences.
 
-Tuttle, G., Noland, K., **Ryan, J.N.** 2020. Glyphosate: Ecological Fate and Effects and Human Health Summary. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 809-817](https://agr.wa.gov/getmedia/1a7d9deb-18dd-4604-84fd-da3805750854/871-wsdaglyphosatesummary2020).
+Chai, Y. L., Lian, K. X., **Ho, C. W.**, Tilley, J. L. (2023, November 22-24). *Perceived Sources of Achievement Pressures Among Emerging Adults in Singapore: A Qualitative Study* [Poster presentation]. Educational Research Association of Singapore (ERAS) Conference & World Education Research Association (WERA) Focal Meeting 2023, Singapore.
 
-**Ryan, J.N.** 2020. Understanding Pesticide Leaching Potential and Protecting Groundwater. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 809-865](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/865-NRASLeachingPotentialFactsheet.pdf).
+Zhang, J., Lim, W., Tang, A., Tan, E., **Ho, C. W.**, Teo, I., Chen, K., & Chen, S. A. (2023, July 22-26). *HRV mediates the relationship between isthmus cingulate thickness and inhibitory control* [Poster presentation]. Organization for Human Brain Mapping 29th Annual Meeting, Montréal, QC, Canada.
 
-**Ryan, J.N.** 2020. Pesticide Application and Water Quality. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-850](https://cms.agr.wa.gov/WSDAKentico/Documents/850-NRAS-PesticideApplication-WaterQuality-FINAL.pdf).
+## {{< fa flask >}} Academic Projects
 
-**Ryan, J.N.** 2020. Understanding Pesticide Product Labels. Washington State Department of Agriculture, Natural Resources Assessment Section: Olympia, WA. [Publication No. 102-849](https://cms.agr.wa.gov/WSDAKentico/Documents/Pubs/849-NRAS-Interpreting-Labels.pdf).
--->
-```
+::: h3
+University of Hull, United Kingdom
+:::
 
-## {{< fa person-chalkboard >}} Presentations
+[Master's Dissertation -- The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
 
-### Upcoming
+-   Conducted end-to-end research workflow: study setup, piloting, launch, monitoring recruitment progress, and exporting a clean analysis-ready dataset.
+-   Recruited 700+ participants via Prolific and administered participant payments/approvals to ensure timely compensation.
+-   Conducted complex multi-level Structural Equation Modelling analysis to elucidate key processes behind acceptability of altered images.
 
-[Parameterized reporting using Quarto: 2-hour workshop](https://www.meetup.com/rladies-dc/events/297344107/). R-Ladies Washington D.C. Virtual. January 18, 2024. **Invited**.
+::: h3
+Nanyang Technological University (NTU), Singapore
+:::
+
+[Honours Thesis -- Digital Age and Elderly Well-Being: Internet Use, Social Participation, and Life Satisfaction]{.h5} [Aug 2023 -- Jun 2024]{.cv-date}
+
+-   Integrated concepts from psychology, gerontology, and digital literacy to conceptualize a moderated mediation model to analyse the social mechanisms between internet use and life satisfaction among the elderly.
+-   Probed the examination of a new dimension of internet use: "Variety of internet use", and its connections to the proposed model.
+-   Executed secondary analysis on the publicly available English Longitudinal Study of Ageing (ELSA).
+
+::: h3
+Nanyang Technological University (NTU), Singapore
+:::
+
+[Undergraduate Research Experience on Campus (URECA) -- Examining the effects of a scheduling nudge for freshmen undergraduates]{.h5} [Sep 2022 -- Aug 2023]{.cv-date}
+
+-   Utilized Qualtrics and Experience Sampling Method (ESM) to create an innovative experimental survey design.
+-   Self-taught "R" analysis software to conduct data cleaning and complex analysis.
+-   Administrated the collection of 1000+ data points for data analysis.
+
+## {{< fa computer >}} Research Experience
+
+::: h3
+National Institute of Education (NIE) -- Achievement Pressures Project
+:::
+
+[Research Assistant (RA)]{.h5} [Apr 2023 -- Jun 2023]{.cv-date}
+
+-   Created protocols for title/abstract screening process for systematic review and meta-analysis.
+-   Developed concise search syntax for retrieving articles across 5 psychology databases.
+-   Efficiently managed qualitative data collection of over 60 participants.
+-   Conducted over 10+ semi-structured qualitative interviews.
+-   Extracted and conducted full-text screening from 200+ journal articles and dissertations.
+
+::: h3
+Clinical Brain Lab (NTU) -- Active Aging Lifestyle
+:::
+
+[Student Assistant (SA)]{.h5} [Nov 2022 -- Apr 2023]{.cv-date}
+
+-   Conducted over 60 neurocognitive data collection sessions (EEG, TMS, fMRI), consistently collect high-quality data using Brain Vision Software.
+-   Developed comprehensive protocols and checklists for neurocognitive experiments and data collection, improving efficiency and ensuring data accuracy.
+-   Extensively conducted comprehensive literature reviews, utilizing advanced search techniques to synthesize information from multiple sources and inform research projects.
+
+## {{< fa coins >}} Funding & Grants
+
+[MSc of Social Science Research Grant]{.h5}
+
+-   Awarded £800 in competitive funding from the White Rose Doctoral Training Partnership (WRDTP) to support dissertation data collection.
+
+[Student-Led Network -- LLM Learning Group]{.h5}
+
+-   Obtained funding of £500 to organize monthly meetings with PhD students across University of Leeds, Manchester Metropolitan University, University of Hull, University of York, Sheffield Hallam University and University of Sheffield.
 
 ## {{< fa user-gear >}} Skills
 
-[Software and Statistics]{.h5}
+[Research Methods]{.h5}
 
--   Proficient in R, SPSS, Jamovi and Microsoft Office tools
--   Developing in Python, Arcade, and SQL.
--   Utilizing resources (e.g. internet, program/package documentation, colleagues) to quickly understand a problem and find/implement the solution.
+-   Experimental design, online experiments (Prolific, Qualtrics), longitudinal/secondary data analysis, SEM, moderated mediation, ESM, qualitative interviewing and thematic analysis.
 
-[Research and methodology]{.h5}
+[Statistical & Programming]{.h5}
 
--   Conducting literature reviews
--   Something about experimental and theoretical research design and psychology
+-   R (tidyverse, brms/SEM packages), Python, SPSS, Jamovi, Mplus.
 
-[Collaboration and Communication]{.h5}
+[Experimental & Neurocognitive Tools]{.h5}
 
--   Coordinating and facilitating meetings with intra- and inter-agency partners.
--   Writing, editing, and reviewing data communication products for technical, policy, and general public audiences.
+-   PsychoPy, BrainVision, EEG/TMS/fMRI protocols.
+
+[Languages]{.h5}
+
+-   English (native), Mandarin Chinese (native), Spanish (Intermediate).
