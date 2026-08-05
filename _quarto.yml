@@ -3,6 +3,7 @@ project:
   output-dir: docs
 
 website:
+  description: "PhD researcher exploring AI's impact on human cognition and behavior"
   page-navigation: true
   title: "Ho Chin Wei"
   favicon: "assets/favicon.webp"
