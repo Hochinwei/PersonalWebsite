@@ -1,7 +1,7 @@
 ---
 title: "LinkedIn games analysis pipeline"
 author: "Ho Chin Wei"
-date: "2025-06-01"
+date: last-modified
 format: 
   html:
     smooth-scroll: true

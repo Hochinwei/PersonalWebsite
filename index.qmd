@@ -30,9 +30,9 @@ about:
 
 I'm a PhD researcher in psychology at the [University of Hull](https://www.hull.ac.uk/), funded by the White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
 
-I explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies — uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.
+I explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies - uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.
 
-Learn more [about me](about.qmd), or read about some of my [opinions](blog.qmd) and [projects](projects.qmd)!
+Learn more [about me](about.qmd), or read about some of my [opinions](blog.qmd) and [projects](projects/index.qmd)!
 
 ::::
 

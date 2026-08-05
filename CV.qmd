@@ -20,8 +20,6 @@ format: html
 National Institute of Education (Singapore)
 :::
 
-:::
-
 [Research Assistant!]{.h5} [Jan 2022 -- Present]{.cv-date}
 
 -   Collect and process soil and climate data from diverse sources to compile in a statewide soil health database using Kisters WISKI software.
