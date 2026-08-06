@@ -1,8 +1,13 @@
 [
   {
+    "listing": "/blog.html",
+    "items": []
+  },
+  {
     "listing": "/projects/index.html",
     "items": [
-      "/projects/LinkedIn_games/Tango_analysis.html"
+      "/projects/LinkedIn_games/Tango_analysis.html",
+      "/projects/bayesian_analysis/Bayesian_simulation_workflow.html"
     ]
   }
 ]

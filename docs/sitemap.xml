@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hochinwei.com/about.html</loc>
-    <lastmod>2025-11-23T23:09:26.636Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hochinwei.com/projects/project_2/index.html</loc>
-    <lastmod>2025-05-26T16:33:23.492Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hochinwei.com/projects/pkg_2/index.html</loc>
-    <lastmod>2025-05-26T16:33:23.477Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hochinwei.com/projects/NLP/NLP.html</loc>
-    <lastmod>2025-11-11T16:07:13.142Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hochinwei.com/projects/index.html</loc>
-    <lastmod>2025-11-08T11:18:04.130Z</lastmod>
-  </url>
-  <url>
     <loc>https://hochinwei.com/projects/LinkedIn_games/Tango_analysis.html</loc>
-    <lastmod>2025-06-17T15:00:26.068Z</lastmod>
+    <lastmod>2026-08-05T15:34:12.101Z</lastmod>
   </url>
   <url>
-    <loc>https://hochinwei.com/projects/pkg_1/index.html</loc>
-    <lastmod>2025-05-26T16:33:23.474Z</lastmod>
+    <loc>https://hochinwei.com/projects/bayesian_analysis/Bayesian_simulation_workflow.html</loc>
+    <lastmod>2026-08-05T15:49:56.239Z</lastmod>
   </url>
   <url>
-    <loc>https://hochinwei.com/projects/project_1/index.html</loc>
-    <lastmod>2025-05-26T16:33:23.482Z</lastmod>
+    <loc>https://hochinwei.com/CV.html</loc>
+    <lastmod>2026-08-05T15:37:19.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/blog.html</loc>
+    <lastmod>2026-08-05T16:01:55.505Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/about.html</loc>
+    <lastmod>2026-08-06T13:13:49.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/contact.html</loc>
+    <lastmod>2025-06-14T13:45:45.340Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/index.html</loc>
-    <lastmod>2025-11-28T12:33:41.131Z</lastmod>
+    <lastmod>2026-08-05T15:34:07.711Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/projects/index.html</loc>
+    <lastmod>2026-08-05T15:57:01.159Z</lastmod>
   </url>
 </urlset>
