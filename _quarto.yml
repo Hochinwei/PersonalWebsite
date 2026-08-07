@@ -1,11 +1,6 @@
 project:
   type: website
   output-dir: docs
-  # copies CNAME into docs/ on every render so the custom domain
-  # (configured in GitHub repo Settings) survives future renders
-  # instead of getting silently left out of the published output
-  resources:
-    - CNAME
 
 website:
   description: "PhD researcher exploring AI's impact on human cognition and behavior"
