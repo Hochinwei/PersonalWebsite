@@ -79,9 +79,9 @@
   {
     "objectID": "CV.html",
     "href": "CV.html",
-    "title": "Curriculum Vitae",
+    "title": "Ho Chin Wei",
     "section": "",
-    "text": "Experimental social psychologist specialising in human-AI social interaction, digital well-being, and ageing with technology. Experienced in preregistered cognitive experiments, large-scale survey analysis, and advanced SEM/Bayesian methods. Skilled in R, Python, and PsychoPy, with cross-cultural experience in the UK and Singapore."
+    "text": "Curriculum vitae\n\n\nExperimental social psychologist specialising in human–AI social interaction, digital well-being and ageing with technology. Preregistered cognitive experiments, large-scale survey analysis and advanced SEM/Bayesian methods. R, Python and PsychoPy; cross-cultural experience in the UK and Singapore.\n\n\nDownload PDF"
   },
   {
     "objectID": "CV.html#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612067726164756174696f6e2d636170203e7d7d-education",
@@ -135,44 +135,44 @@
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "Chin Wei’s Blog",
+    "title": "Notes & opinions",
     "section": "",
-    "text": "No matching items"
+    "text": "Writing\n\nNotes & opinions\nWhere I think out loud about the things around my research — authenticity, misinformation, and living in an AI-saturated world. Mainly focused on my interests.\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "Ho Chin Wei",
+    "title": "A psychologist who kept following the machines.",
     "section": "",
-    "text": "I’m a PhD researcher in Psychology at the University of Hull, funded by the White Rose Doctoral Training Partnership (WRDTP). My work sits at the intersection of human cognition and artificial intelligence — I’m interested in how our minds adapt, resist, and evolve as AI becomes harder to tell apart from reality.\nMy MSc research (Distinction) explored how people judge the authenticity of AI-altered images: how we cognitively process AI-generated images differently from real photographs, and what happens when the line between the two blurs. My PhD is now extending that into joint-action settings, examining whether the social Inhibition of Return effect persists when the other actor in a task is an AI rather than a person. I’m also broadly interested in the wider social and philosophical fallout of an AI-saturated world — from AI-generated misinformation to what “real” and “fake” even mean anymore. (More of this shows up on my blog!)\nBefore Hull, I completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent, year-long research projects along the way. Full academic history is on my CV."
+    "text": "About"
   },
   {
     "objectID": "about.html#who-i-am",
     "href": "about.html#who-i-am",
-    "title": "Ho Chin Wei",
-    "section": "",
-    "text": "I’m a PhD researcher in Psychology at the University of Hull, funded by the White Rose Doctoral Training Partnership (WRDTP). My work sits at the intersection of human cognition and artificial intelligence — I’m interested in how our minds adapt, resist, and evolve as AI becomes harder to tell apart from reality.\nMy MSc research (Distinction) explored how people judge the authenticity of AI-altered images: how we cognitively process AI-generated images differently from real photographs, and what happens when the line between the two blurs. My PhD is now extending that into joint-action settings, examining whether the social Inhibition of Return effect persists when the other actor in a task is an AI rather than a person. I’m also broadly interested in the wider social and philosophical fallout of an AI-saturated world — from AI-generated misinformation to what “real” and “fake” even mean anymore. (More of this shows up on my blog!)\nBefore Hull, I completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent, year-long research projects along the way. Full academic history is on my CV."
+    "title": "A psychologist who kept following the machines.",
+    "section": "Who I am",
+    "text": "Who I am\n\n\nI’m a PhD researcher in Psychology at the University of Hull, funded by the White Rose Doctoral Training Partnership. My work sits at the intersection of human cognition and artificial intelligence — how our minds adapt, resist and evolve as AI becomes harder to tell apart from reality.\nI’m also broadly interested in the wider social and philosophical fallout of an AI-saturated world — from AI-generated misinformation to what “real” and “fake” even mean anymore. Most of that thinking ends up on the blog."
   },
   {
     "objectID": "contact.html",
     "href": "contact.html",
-    "title": "contact",
+    "title": "Say hello, or send me a problem.",
     "section": "",
-    "text": "Coming Soon!"
+    "text": "Contact\n\n\nI’m happy to hear from researchers working on human–agent interaction, students thinking about a psychology PhD in the UK, and anyone who wants a second pair of eyes on a Bayesian model."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Ho Chin Wei",
     "section": "",
-    "text": "Hello! I am Chin Wei.\nI’m a PhD researcher in psychology at the University of Hull, funded by the White Rose Doctoral Training Partnership (WRDTP).\nI explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies - uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.\nLearn more about me, or read about some of my opinions and projects!"
+    "text": "I study what shifts in cognition when the other actor in the task is an artificial one.\nPhD researcher in psychology at the University of Hull, funded by the White Rose DTP. How people extend — and withdraw — agency toward artificial agents, and what that does to social cognition."
   },
   {
     "objectID": "projects/index.html",
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "No matching items\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis\n\nProjects\nReproducible write-ups, rendered straight from R. Each one is a working document: the code is on the page, and the plots are the output of running it.\n\n\n\n\n\n\n\n\n\n\nLinkedIn games analysis pipeline\n\n\n\ncode\n\nanalysis\n\nbayesian\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\nBayesian Analysis of a 2×2 Factorial Reaction Time Experiment in R\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/index.html#analysis-projects",
@@ -180,5 +180,103 @@
     "title": "Projects",
     "section": "",
     "text": "No matching items\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#research",
+    "href": "index.html#research",
+    "title": "Ho Chin Wei",
+    "section": "Research",
+    "text": "Research\nSocial inhibition of return in human–agent joint action, and how people judge the authenticity of AI-altered images. Preregistered experiments, SEM, Bayesian estimation.\nAbout my work →"
+  },
+  {
+    "objectID": "index.html#writing",
+    "href": "index.html#writing",
+    "title": "Ho Chin Wei",
+    "section": "Writing",
+    "text": "Writing\nNotes on an AI-saturated world — misinformation, authenticity, and what “real” is doing in that sentence. Written for people outside the discipline as much as inside it.\nRead the blog →"
+  },
+  {
+    "objectID": "index.html#analysis",
+    "href": "index.html#analysis",
+    "title": "Ho Chin Wei",
+    "section": "Analysis",
+    "text": "Analysis\nReproducible R write-ups: Bayesian workflows in brms, live data pipelines, and the occasional argument settled with a Bayes factor.\nSee the projects →"
+  },
+  {
+    "objectID": "about.html#the-research",
+    "href": "about.html#the-research",
+    "title": "A psychologist who kept following the machines.",
+    "section": "The research",
+    "text": "The research\n\n\nPhD · 2025 — Joint action with an artificial partner\nDoes the social Inhibition of Return effect survive when the other actor in the task is an AI rather than a person?\n\n\nMSc · Distinction The ethics of seeing\nHow people judge the authenticity of AI-altered images, and how context moderates what we find acceptable. 700+ participants; multilevel SEM."
+  },
+  {
+    "objectID": "about.html#before-hull",
+    "href": "about.html#before-hull",
+    "title": "A psychologist who kept following the machines.",
+    "section": "Before Hull",
+    "text": "Before Hull\nI completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent year-long research projects along the way. The full academic history is on my CV."
+  },
+  {
+    "objectID": "about.html#where-to-next",
+    "href": "about.html#where-to-next",
+    "title": "A psychologist who kept following the machines.",
+    "section": "Where to next",
+    "text": "Where to next\n\nBlogOpinions, in longer formEssays on authenticity, misinformation and AI →\nProjectsReproducible analysesBayesian workflows and live R pipelines →\nCVThe full recordEducation, publications, funding, skills →"
+  },
+  {
+    "objectID": "CV.html#education",
+    "href": "CV.html#education",
+    "title": "Ho Chin Wei",
+    "section": "Education",
+    "text": "Education\n\nEducation\n\n\n\nPhD in Psychology University of Hull, United Kingdom\n\nFunded by White Rose Doctoral Training Partnership Award (1+3.5 Programme)\n\n\nSep 2025 — Present\n\n\n\nMaster of Science in Social Research University of Hull, United Kingdom\n\nDistinction (First), GPA: 82.1/100\nFunded by White Rose Doctoral Training Partnership Award (1+3.5 Programme)\n\n\nSep 2024 — Sep 2025\n\n\n\nBachelor of Social Sciences in Psychology Nanyang Technological University, Singapore\n\nHonours (Upper Second Class), CGPA: 4.32/5.00\nNTU President Research Scholar — URECA AY20/21 (Distinction)\nNTU President Research Scholar — URECA AY21/22 (Merit)\n\n\nAug 2020 — Jun 2024"
+  },
+  {
+    "objectID": "CV.html#publications",
+    "href": "CV.html#publications",
+    "title": "Ho Chin Wei",
+    "section": "Publications",
+    "text": "Publications\n\nPublications\n\n\nHo, C. W. & Skarratt, P. (Submitted). The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability. Journal of Computer-Mediated Communication.\n\n\nToh, W. X., Ho, C. W., & Khoo, S. S. A. (2024). Longitudinal relations of internet use frequency with cognitive and social functioning among older adults. Innovation in Aging, 8(Suppl 1), 788–789. doi:10.1093/geroni/igae098.2561"
+  },
+  {
+    "objectID": "CV.html#conference-presentations",
+    "href": "CV.html#conference-presentations",
+    "title": "Ho Chin Wei",
+    "section": "Conference Presentations",
+    "text": "Conference Presentations\n\nConference presentations\n\n\nHo, C. W., & Skarratt, P. (2026, April 1–3). The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability [Poster presentation]. The 1st International Online Conference on Behavioral Sciences.\n\n\nChai, Y. L., Lian, K. X., Ho, C. W., & Tilley, J. L. (2023, November 22–24). Perceived Sources of Achievement Pressures Among Emerging Adults in Singapore: A Qualitative Study [Poster presentation]. Educational Research Association of Singapore (ERAS) Conference & World Education Research Association (WERA) Focal Meeting 2023, Singapore.\n\n\nZhang, J., Lim, W., Tang, A., Tan, E., Ho, C. W., Teo, I., Chen, K., & Chen, S. A. (2023, July 22–26). HRV mediates the relationship between isthmus cingulate thickness and inhibitory control [Poster presentation]. Organization for Human Brain Mapping 29th Annual Meeting, Montréal, QC, Canada."
+  },
+  {
+    "objectID": "CV.html#academic-projects",
+    "href": "CV.html#academic-projects",
+    "title": "Ho Chin Wei",
+    "section": "Academic Projects",
+    "text": "Academic Projects\n\nAcademic projects\n\n\n\nMaster’s Dissertation — The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability University of Hull, United Kingdom\n\nConducted end-to-end research workflow: study setup, piloting, launch, monitoring recruitment progress, and exporting a clean analysis-ready dataset.\nRecruited 700+ participants via Prolific and administered participant payments/approvals to ensure timely compensation.\nConducted complex multi-level Structural Equation Modelling analysis to elucidate key processes behind acceptability of altered images.\n\n\nSep 2024 — Sep 2025\n\n\n\nHonours Thesis — Digital Age and Elderly Well-Being: Internet Use, Social Participation, and Life Satisfaction Nanyang Technological University, Singapore\n\nIntegrated concepts from psychology, gerontology, and digital literacy to conceptualize a moderated mediation model to analyse the social mechanisms between internet use and life satisfaction among the elderly.\nProbed the examination of a new dimension of internet use: “Variety of internet use”, and its connections to the proposed model.\nExecuted secondary analysis on the publicly available English Longitudinal Study of Ageing (ELSA).\n\n\nAug 2023 — Jun 2024\n\n\n\nURECA — Examining the effects of a scheduling nudge for freshmen undergraduates Nanyang Technological University, Singapore\n\nUtilized Qualtrics and Experience Sampling Method (ESM) to create an innovative experimental survey design.\nSelf-taught “R” analysis software to conduct data cleaning and complex analysis.\nAdministrated the collection of 1000+ data points for data analysis.\n\n\nSep 2022 — Aug 2023"
+  },
+  {
+    "objectID": "CV.html#research-experience",
+    "href": "CV.html#research-experience",
+    "title": "Ho Chin Wei",
+    "section": "Research Experience",
+    "text": "Research Experience\n\nResearch experience\n\n\n\nResearch Assistant National Institute of Education (NIE) — Achievement Pressures Project\n\nCreated protocols for title/abstract screening process for systematic review and meta-analysis.\nDeveloped concise search syntax for retrieving articles across 5 psychology databases.\nEfficiently managed qualitative data collection of over 60 participants.\nConducted over 10+ semi-structured qualitative interviews.\nExtracted and conducted full-text screening from 200+ journal articles and dissertations.\n\n\nApr 2023 — Jun 2023\n\n\n\nStudent Assistant Clinical Brain Lab (NTU) — Active Aging Lifestyle\n\nConducted over 60 neurocognitive data collection sessions (EEG, TMS, fMRI), consistently collecting high-quality data using Brain Vision Software.\nDeveloped comprehensive protocols and checklists for neurocognitive experiments and data collection, improving efficiency and ensuring data accuracy.\nExtensively conducted comprehensive literature reviews, utilizing advanced search techniques to synthesize information from multiple sources and inform research projects.\n\n\nNov 2022 — Apr 2023"
+  },
+  {
+    "objectID": "CV.html#funding-grants",
+    "href": "CV.html#funding-grants",
+    "title": "Ho Chin Wei",
+    "section": "Funding & Grants",
+    "text": "Funding & Grants\n\nFunding & grants\n\n\n\nMSc of Social Science Research Grant White Rose Doctoral Training Partnership\n\nAwarded £800 in competitive funding to support dissertation data collection.\n\n\n£800\n\n\n\nStudent-Led Network — LLM Learning Group White Rose Doctoral Training Partnership\n\nObtained funding to organize monthly meetings with PhD students across the Universities of Leeds, Hull, York, Sheffield, Manchester Metropolitan and Sheffield Hallam.\n\n\n£500"
+  },
+  {
+    "objectID": "CV.html#skills",
+    "href": "CV.html#skills",
+    "title": "Ho Chin Wei",
+    "section": "Skills",
+    "text": "Skills\n\nSkills\n\n\nResearch methods\nExperimental design, online experiments (Prolific, Qualtrics), longitudinal and secondary data analysis, SEM, moderated mediation, ESM, qualitative interviewing and thematic analysis.\n\n\nStatistical & programming\nR (tidyverse, brms, SEM packages), Python, SPSS, Jamovi, Mplus.\n\n\nExperimental & neurocognitive\nPsychoPy, BrainVision, EEG / TMS / fMRI protocols.\n\n\nLanguages\nEnglish (native), Mandarin Chinese (native), Spanish (intermediate)."
+  },
+  {
+    "objectID": "contact.html#send-a-message",
+    "href": "contact.html#send-a-message",
+    "title": "Say hello, or send me a problem.",
+    "section": "Send a message",
+    "text": "Send a message\n\n  Name\n  \n\n  Email\n  \n\n  Message\n  \n\n  Send\n\nThis is a static site, so the form posts to Formspree — create a free form and paste its id into the action above. If you’d rather not run a form at all, delete this card and keep the email link."
   }
 ]

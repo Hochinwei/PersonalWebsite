@@ -5,51 +5,42 @@ project:
 website:
   description: "PhD researcher exploring AI's impact on human cognition and behavior"
   page-navigation: true
-  title: "Ho Chin Wei"
+  title: "Ho Chin Wei"          # <- this text becomes the wordmark
   favicon: "assets/favicon.webp"
   site-url: "https://hochinwei.com"
-  
 
   page-footer:
-    left: "&copy; Copyright 2025, Ho Chin Wei"
-    right: "This page is built with [Quarto](https://quarto.org/) in {{< fa brands r-project >}}."
+    left: "&copy; 2025 Ho Chin Wei"
+    right: "Built with [Quarto](https://quarto.org/)"
 
   navbar:
     pinned: true
-    logo: "assets/favicon.webp"
+    # logo removed on purpose: the wordmark is the mark now
     right:
-
       - text: "About"
-        icon: person-raised-hand
         href: about.qmd
-        
       - text: "Blog"
-        icon: substack
         href: blog.qmd
-      
       - text: "Projects"
-        icon: tools
         href: projects/index.qmd
-        
       - text: "CV"
-        icon: file-earmark-richtext
         href: CV.qmd
-        
       - text: "Contact"
-        icon: person-lines-fill
         href: contact.qmd
-            
+
 format:
   html:
-    theme: 
-      - united
+    theme:
+      - default          # plain bootstrap; styles.scss carries the design
       - styles.scss
-    toc: true
+    toc: false
     smooth-scroll: true
     link-external-newwindow: true
-    # code highlight style
     highlight-style: arrow
     icon: fontawesome
+    include-after-body:
+      - text: |
+          <script src="/assets/site.js"></script>
 
 extensions:
   - quarto-ext/fontawesome

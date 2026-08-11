@@ -1,15 +1,22 @@
 ---
-title: "Chin Wei's Blog"
-description: |
-  Welcome to my personal blog, where I share more about my opinons and ideas regarding issues surrounding a range of global topics or issues *(Mainly focused on my interests!)*. 
+pagetitle: "Blog — Ho Chin Wei"
+description-meta: "Notes and opinions on authenticity, misinformation and living in an AI-saturated world."
+toc: false
 listing:
   contents: blog
   sort: "date desc"
   type: default
-  categories: true
-  sort-ui: true
+  fields: [date, title, description, categories]
+  categories: unnumbered
+  sort-ui: false
   filter-ui: false
   feed: true
 ---
 
+::: {.pagehead}
+[Writing]{.kicker}
 
+# Notes & opinions {.unlisted}
+
+[Where I think out loud about the things around my research --- authenticity, misinformation, and living in an AI-saturated world. Mainly focused on my interests.]{.lede}
+:::

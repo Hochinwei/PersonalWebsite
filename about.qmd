@@ -1,35 +1,67 @@
 ---
+pagetitle: "About — Ho Chin Wei"
+description-meta: "PhD researcher in psychology at the University of Hull, studying human cognition and artificial intelligence."
 lightbox: true
-toc: false
+toc: true
+toc-location: left
+toc-title: "On this page"
+toc-depth: 2
 ---
 
-::: {style="display:flex; align-items:flex-start; gap:2rem; margin-bottom:1.5rem;"}
-![](assets/Profile2.webp){width="240px" style="border-radius: 8px; flex-shrink: 0;"}
+::: {.pagehead}
+[About]{.kicker}
 
-::: {style="border-left: 2px solid #94D2BD; padding-left: 1.5rem; text-align: left;"}
-## Who I Am
+# A psychologist who kept following the machines. {.unlisted}
+:::
 
-I'm a PhD researcher in Psychology at the [University of Hull](https://www.hull.ac.uk/), funded by the [White Rose Doctoral Training Partnership (WRDTP)](https://wrdtp.ac.uk/). My work sits at the intersection of human cognition and artificial intelligence — I'm interested in how our minds adapt, resist, and evolve as AI becomes harder to tell apart from reality.
+## Who I am
 
-My MSc research (Distinction) explored how people judge the authenticity of AI-altered images: how we cognitively process AI-generated images differently from real photographs, and what happens when the line between the two blurs. My PhD is now extending that into joint-action settings, examining whether the social Inhibition of Return effect persists when the other actor in a task is an AI rather than a person. I'm also broadly interested in the wider social and philosophical fallout of an AI-saturated world — from AI-generated misinformation to what "real" and "fake" even mean anymore. (More of this shows up on my [blog](blog.qmd)!)
+::: {.split}
+::: {}
+I'm a PhD researcher in Psychology at the [University of Hull](https://www.hull.ac.uk/), funded by the [White Rose Doctoral Training Partnership](https://wrdtp.ac.uk/). My work sits at the intersection of human cognition and artificial intelligence --- how our minds adapt, resist and evolve as AI becomes harder to tell apart from reality.
 
-Before Hull, I completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent, year-long research projects along the way. Full academic history is on my [CV](CV.qmd).
+I'm also broadly interested in the wider social and philosophical fallout of an AI-saturated world --- from AI-generated misinformation to what "real" and "fake" even mean anymore. Most of that thinking ends up on the [blog](blog.qmd).
+:::
+
+::: {.plate}
+![](assets/profile-main.jpg){alt="Ho Chin Wei"}
 :::
 :::
 
-<!--
-  The two sections below (outreach/teaching involvement, and hobbies
-  outside research) are intentionally left as placeholders - real
-  content to come later. Left as HTML comments rather than visible
-  bracketed text so nothing half-finished shows on the live site in
-  the meantime. Uncomment and fill in when ready, or delete if these
-  don't end up fitting the page.
+## The research
 
-## What I Do (and Care About)
+::: {.cardgrid}
+::: {.tile}
+[PhD · 2025 —]{.tile-kicker}
+[Joint action with an artificial partner]{.tile-title}
 
-Beyond my formal research, I'm passionate about [FILL IN: e.g. open science, science communication, teaching, mentoring, public engagement]. I've been involved in [FILL IN: teaching, workshops, outreach, collaborations, side projects].
+Does the social Inhibition of Return effect survive when the other actor in the task is an AI rather than a person?
+:::
 
-## When I'm Not Researching
+::: {.tile}
+[MSc · Distinction]{.tile-kicker}
+[The ethics of seeing]{.tile-title}
 
-Outside the lab, I [FILL IN: hobbies, interests, passions].
--->
+How people judge the authenticity of AI-altered images, and how context moderates what we find acceptable. 700+ participants; multilevel SEM.
+:::
+:::
+
+## Before Hull
+
+I completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent year-long research projects along the way. The full academic history is on my [CV](CV.qmd).
+
+::: {.logos}
+![](assets/ntu_logo.webp){alt="Nanyang Technological University"}
+![](assets/WhiteRoseLogo.webp){alt="White Rose Doctoral Training Partnership"}
+![](assets/np_logo.webp){alt="Ngee Ann Polytechnic"}
+:::
+
+## Where to next
+
+::: {.cardgrid .three}
+[[Blog]{.tile-kicker}[Opinions, in longer form]{.tile-title}[Essays on authenticity, misinformation and AI →]{.tile-note}](blog.qmd){.tile}
+
+[[Projects]{.tile-kicker}[Reproducible analyses]{.tile-title}[Bayesian workflows and live R pipelines →]{.tile-note}](projects/index.qmd){.tile}
+
+[[CV]{.tile-kicker}[The full record]{.tile-title}[Education, publications, funding, skills →]{.tile-note}](CV.qmd){.tile}
+:::

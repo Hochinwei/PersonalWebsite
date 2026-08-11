@@ -1,134 +1,246 @@
 ---
-title: "Curriculum Vitae"
+pagetitle: "CV — Ho Chin Wei"
+description-meta: "Curriculum vitae: education, publications, conference presentations, research experience and skills."
 anchor-sections: false
-format: html
+toc: true
+toc-location: left
+toc-title: "On this page"
+toc-depth: 2
 ---
 
-Experimental social psychologist specialising in human-AI social interaction, digital well-being, and ageing with technology. Experienced in preregistered cognitive experiments, large-scale survey analysis, and advanced SEM/Bayesian methods. Skilled in R, Python, and PsychoPy, with cross-cultural experience in the UK and Singapore.
+::: {.pagehead .pagehead-row}
+::: {}
+[Curriculum vitae]{.kicker}
 
-## {{< fa graduation-cap >}} Education
+# Ho Chin Wei {.unlisted}
 
-::: h3
-University of Hull, United Kingdom
+[Experimental social psychologist specialising in human--AI social interaction, digital well-being and ageing with technology. Preregistered cognitive experiments, large-scale survey analysis and advanced SEM/Bayesian methods. R, Python and PsychoPy; cross-cultural experience in the UK and Singapore.]{.lede}
 :::
 
-[PhD in Psychology]{.h5} [Sep 2025 -- Present]{.cv-date}
+[Download PDF](assets/HoChinWei-CV.pdf){.btn .btn-primary}
+:::
+
+## Education
+
+::: {.cvsec}
+[Education]{.cvsec-label}
+
+::: {}
+::: {.cv-row}
+::: {}
+[PhD in Psychology]{.cv-role}
+[University of Hull, United Kingdom]{.cv-org}
 
 -   Funded by White Rose Doctoral Training Partnership Award (1+3.5 Programme)
-
-::: h3
-University of Hull, United Kingdom
 :::
 
-[Master of Science in Social Research]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
+[Sep 2025 — Present]{.cv-when}
+:::
+
+::: {.cv-row}
+::: {}
+[Master of Science in Social Research]{.cv-role}
+[University of Hull, United Kingdom]{.cv-org}
 
 -   Distinction (First), GPA: 82.1/100
 -   Funded by White Rose Doctoral Training Partnership Award (1+3.5 Programme)
-
-::: h3
-Nanyang Technological University, Singapore
 :::
 
-[Bachelor of Social Sciences in Psychology]{.h5} [Aug 2020 -- Jun 2024]{.cv-date}
+[Sep 2024 — Sep 2025]{.cv-when}
+:::
+
+::: {.cv-row}
+::: {}
+[Bachelor of Social Sciences in Psychology]{.cv-role}
+[Nanyang Technological University, Singapore]{.cv-org}
 
 -   Honours (Upper Second Class), CGPA: 4.32/5.00
--   NTU President Research Scholar -- URECA AY20/21 (Distinction)
--   NTU President Research Scholar -- URECA AY21/22 (Merit)
-
-## {{< fa book >}} Publications
-
-**Ho, C. W.** & Skarratt, P. (Submitted). *The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability*. Journal of Computer-Mediated Communication.
-
-Toh, W. X., **Ho, C. W.**, & Khoo, S. S. A. (2024). Longitudinal relations of internet use frequency with cognitive and social functioning among older adults. *Innovation in Aging*, 8(Suppl1), 788–789. [https://doi.org/10.1093/geroni/igae098.2561](https://doi.org/10.1093/geroni/igae098.2561)
-
-## {{< fa person-chalkboard >}} Conference Presentations
-
-**Ho, C. W.**, Skarrat, P. (2026, April 1-3). *The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability* [Poster Presentation]. The 1st International Online Conference on Behavioral Sciences.
-
-Chai, Y. L., Lian, K. X., **Ho, C. W.**, Tilley, J. L. (2023, November 22-24). *Perceived Sources of Achievement Pressures Among Emerging Adults in Singapore: A Qualitative Study* [Poster presentation]. Educational Research Association of Singapore (ERAS) Conference & World Education Research Association (WERA) Focal Meeting 2023, Singapore.
-
-Zhang, J., Lim, W., Tang, A., Tan, E., **Ho, C. W.**, Teo, I., Chen, K., & Chen, S. A. (2023, July 22-26). *HRV mediates the relationship between isthmus cingulate thickness and inhibitory control* [Poster presentation]. Organization for Human Brain Mapping 29th Annual Meeting, Montréal, QC, Canada.
-
-## {{< fa flask >}} Academic Projects
-
-::: h3
-University of Hull, United Kingdom
+-   NTU President Research Scholar --- URECA AY20/21 (Distinction)
+-   NTU President Research Scholar --- URECA AY21/22 (Merit)
 :::
 
-[Master's Dissertation -- The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability]{.h5} [Sep 2024 -- Sep 2025]{.cv-date}
+[Aug 2020 — Jun 2024]{.cv-when}
+:::
+:::
+:::
+
+## Publications
+
+::: {.cvsec}
+[Publications]{.cvsec-label}
+
+::: {}
+::: {.cv-ref}
+**Ho, C. W.** & Skarratt, P. (Submitted). *The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability*. Journal of Computer-Mediated Communication.
+:::
+
+::: {.cv-ref}
+Toh, W. X., **Ho, C. W.**, & Khoo, S. S. A. (2024). Longitudinal relations of internet use frequency with cognitive and social functioning among older adults. *Innovation in Aging*, 8(Suppl 1), 788–789. [doi:10.1093/geroni/igae098.2561](https://doi.org/10.1093/geroni/igae098.2561)
+:::
+:::
+:::
+
+## Conference Presentations
+
+::: {.cvsec}
+[Conference presentations]{.cvsec-label}
+
+::: {}
+::: {.cv-ref}
+**Ho, C. W.**, & Skarratt, P. (2026, April 1–3). *The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability* [Poster presentation]. The 1st International Online Conference on Behavioral Sciences.
+:::
+
+::: {.cv-ref}
+Chai, Y. L., Lian, K. X., **Ho, C. W.**, & Tilley, J. L. (2023, November 22–24). *Perceived Sources of Achievement Pressures Among Emerging Adults in Singapore: A Qualitative Study* [Poster presentation]. Educational Research Association of Singapore (ERAS) Conference & World Education Research Association (WERA) Focal Meeting 2023, Singapore.
+:::
+
+::: {.cv-ref}
+Zhang, J., Lim, W., Tang, A., Tan, E., **Ho, C. W.**, Teo, I., Chen, K., & Chen, S. A. (2023, July 22–26). *HRV mediates the relationship between isthmus cingulate thickness and inhibitory control* [Poster presentation]. Organization for Human Brain Mapping 29th Annual Meeting, Montréal, QC, Canada.
+:::
+:::
+:::
+
+## Academic Projects
+
+::: {.cvsec}
+[Academic projects]{.cvsec-label}
+
+::: {}
+::: {.cv-row}
+::: {}
+[Master's Dissertation --- The Ethics of Seeing: Contextual Moderation of Altered Image Acceptability]{.cv-role}
+[University of Hull, United Kingdom]{.cv-org}
 
 -   Conducted end-to-end research workflow: study setup, piloting, launch, monitoring recruitment progress, and exporting a clean analysis-ready dataset.
 -   Recruited 700+ participants via Prolific and administered participant payments/approvals to ensure timely compensation.
 -   Conducted complex multi-level Structural Equation Modelling analysis to elucidate key processes behind acceptability of altered images.
-
-::: h3
-Nanyang Technological University (NTU), Singapore
 :::
 
-[Honours Thesis -- Digital Age and Elderly Well-Being: Internet Use, Social Participation, and Life Satisfaction]{.h5} [Aug 2023 -- Jun 2024]{.cv-date}
+[Sep 2024 — Sep 2025]{.cv-when}
+:::
+
+::: {.cv-row}
+::: {}
+[Honours Thesis --- Digital Age and Elderly Well-Being: Internet Use, Social Participation, and Life Satisfaction]{.cv-role}
+[Nanyang Technological University, Singapore]{.cv-org}
 
 -   Integrated concepts from psychology, gerontology, and digital literacy to conceptualize a moderated mediation model to analyse the social mechanisms between internet use and life satisfaction among the elderly.
 -   Probed the examination of a new dimension of internet use: "Variety of internet use", and its connections to the proposed model.
 -   Executed secondary analysis on the publicly available English Longitudinal Study of Ageing (ELSA).
-
-::: h3
-Nanyang Technological University (NTU), Singapore
 :::
 
-[Undergraduate Research Experience on Campus (URECA) -- Examining the effects of a scheduling nudge for freshmen undergraduates]{.h5} [Sep 2022 -- Aug 2023]{.cv-date}
+[Aug 2023 — Jun 2024]{.cv-when}
+:::
+
+::: {.cv-row}
+::: {}
+[URECA --- Examining the effects of a scheduling nudge for freshmen undergraduates]{.cv-role}
+[Nanyang Technological University, Singapore]{.cv-org}
 
 -   Utilized Qualtrics and Experience Sampling Method (ESM) to create an innovative experimental survey design.
 -   Self-taught "R" analysis software to conduct data cleaning and complex analysis.
 -   Administrated the collection of 1000+ data points for data analysis.
-
-## {{< fa computer >}} Research Experience
-
-::: h3
-National Institute of Education (NIE) -- Achievement Pressures Project
 :::
 
-[Research Assistant (RA)]{.h5} [Apr 2023 -- Jun 2023]{.cv-date}
+[Sep 2022 — Aug 2023]{.cv-when}
+:::
+:::
+:::
+
+## Research Experience
+
+::: {.cvsec}
+[Research experience]{.cvsec-label}
+
+::: {}
+::: {.cv-row}
+::: {}
+[Research Assistant]{.cv-role}
+[National Institute of Education (NIE) --- Achievement Pressures Project]{.cv-org}
 
 -   Created protocols for title/abstract screening process for systematic review and meta-analysis.
 -   Developed concise search syntax for retrieving articles across 5 psychology databases.
 -   Efficiently managed qualitative data collection of over 60 participants.
 -   Conducted over 10+ semi-structured qualitative interviews.
 -   Extracted and conducted full-text screening from 200+ journal articles and dissertations.
-
-::: h3
-Clinical Brain Lab (NTU) -- Active Aging Lifestyle
 :::
 
-[Student Assistant (SA)]{.h5} [Nov 2022 -- Apr 2023]{.cv-date}
+[Apr 2023 — Jun 2023]{.cv-when}
+:::
 
--   Conducted over 60 neurocognitive data collection sessions (EEG, TMS, fMRI), consistently collect high-quality data using Brain Vision Software.
+::: {.cv-row}
+::: {}
+[Student Assistant]{.cv-role}
+[Clinical Brain Lab (NTU) --- Active Aging Lifestyle]{.cv-org}
+
+-   Conducted over 60 neurocognitive data collection sessions (EEG, TMS, fMRI), consistently collecting high-quality data using Brain Vision Software.
 -   Developed comprehensive protocols and checklists for neurocognitive experiments and data collection, improving efficiency and ensuring data accuracy.
 -   Extensively conducted comprehensive literature reviews, utilizing advanced search techniques to synthesize information from multiple sources and inform research projects.
+:::
 
-## {{< fa coins >}} Funding & Grants
+[Nov 2022 — Apr 2023]{.cv-when}
+:::
+:::
+:::
 
-[MSc of Social Science Research Grant]{.h5}
+## Funding & Grants
 
--   Awarded £800 in competitive funding from the White Rose Doctoral Training Partnership (WRDTP) to support dissertation data collection.
+::: {.cvsec}
+[Funding & grants]{.cvsec-label}
 
-[Student-Led Network -- LLM Learning Group]{.h5}
+::: {}
+::: {.cv-row}
+::: {}
+[MSc of Social Science Research Grant]{.cv-role}
+[White Rose Doctoral Training Partnership]{.cv-org}
 
--   Obtained funding of £500 to organize monthly meetings with PhD students across University of Leeds, Manchester Metropolitan University, University of Hull, University of York, Sheffield Hallam University and University of Sheffield.
+-   Awarded £800 in competitive funding to support dissertation data collection.
+:::
 
-## {{< fa user-gear >}} Skills
+[£800]{.cv-when}
+:::
 
-[Research Methods]{.h5}
+::: {.cv-row}
+::: {}
+[Student-Led Network --- LLM Learning Group]{.cv-role}
+[White Rose Doctoral Training Partnership]{.cv-org}
 
--   Experimental design, online experiments (Prolific, Qualtrics), longitudinal/secondary data analysis, SEM, moderated mediation, ESM, qualitative interviewing and thematic analysis.
+-   Obtained funding to organize monthly meetings with PhD students across the Universities of Leeds, Hull, York, Sheffield, Manchester Metropolitan and Sheffield Hallam.
+:::
 
-[Statistical & Programming]{.h5}
+[£500]{.cv-when}
+:::
+:::
+:::
 
--   R (tidyverse, brms/SEM packages), Python, SPSS, Jamovi, Mplus.
+## Skills
 
-[Experimental & Neurocognitive Tools]{.h5}
+::: {.cvsec}
+[Skills]{.cvsec-label}
 
--   PsychoPy, BrainVision, EEG/TMS/fMRI protocols.
+::: {.skillgrid}
+::: {}
+[Research methods]{.skill-head}
 
-[Languages]{.h5}
+Experimental design, online experiments (Prolific, Qualtrics), longitudinal and secondary data analysis, SEM, moderated mediation, ESM, qualitative interviewing and thematic analysis.
+:::
 
--   English (native), Mandarin Chinese (native), Spanish (Intermediate).
+::: {}
+[Statistical & programming]{.skill-head}
+
+R (tidyverse, brms, SEM packages), Python, SPSS, Jamovi, Mplus.
+:::
+
+::: {}
+[Experimental & neurocognitive]{.skill-head}
+
+PsychoPy, BrainVision, EEG / TMS / fMRI protocols.
+:::
+
+::: {}
+[Languages]{.skill-head}
+
+English (native), Mandarin Chinese (native), Spanish (intermediate).
+:::
+:::
+:::

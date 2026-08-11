@@ -1,45 +1,65 @@
 ---
-about:
-  template: jolla
-  links:
-    - text: "{{< fa brands linkedin >}} LinkedIn"
-      href: https://www.linkedin.com/in/hochinwei/
-    - text: "{{< fa brands researchgate >}} ResearchGate"
-      href: https://www.researchgate.net/profile/Chin-Wei-Ho?ev=hdr_xprf
-    - text: "{{< fa brands x-twitter >}}"
-      href: https://x.com/HoChinWei_
-    - text: "{{< fa brands github >}} Github"
-      href: https://github.com/Hochinwei
-    - text: "{{< fa brands orcid >}} ORCID"
-      href: https://orcid.org/my-orcid?orcid=0009-0003-4688-805X
+pagetitle: "Ho Chin Wei"
+toc: false
+page-layout: full
 ---
 
-::: {#hero-container}
-<div id="particles-js"></div>
-  
-:::: {#hero-content}
- <!-- Images can be added with Markdown or HTML syntax -->
-  ![Profile 4](assets/Profile4.webp){width="110px" .profile-img} 
-  ![Profile 2](assets/Profile2.webp){width="140px" .profile-img} 
-  ![Profile 1](assets/profile.webp){width="190px" .profile-img}
-  ![Profile 3](assets/Profile3.webp){width="140px" .profile-img} 
-  ![Profile 5](assets/Profile5.webp){width="110px" .profile-img} 
-  
-  
-#### Hello! I am *Chin Wei*.
+::::: {#hero}
 
-I'm a PhD researcher in psychology at the [University of Hull](https://www.hull.ac.uk/), funded by the White Rose Doctoral Training Partnership [(WRDTP)](https://wrdtp.ac.uk/).
+::: {#hero-field aria-hidden="true"}
+:::
+::: {#hero-veil}
+:::
 
-I explore how our minds and behaviours evolve as we increasingly interact with Artificial Intelligence (AI) technologies - uncovering the cognitive, social and neurological mechanisms that are reshaped with collaboration with AI tools.
+:::: {#hero-inner}
 
-Learn more [about me](about.qmd), or read about some of my [opinions](blog.qmd) and [projects](projects/index.qmd)!
+::: {.hero-plate}
+![](assets/Profile2.webp){.hero-portrait alt="Ho Chin Wei"}
+:::
+
+::: {.hero-copy}
+# Ho Chin Wei
+
+[I study what shifts in cognition when the other actor in the task is an artificial one.]{.hero-lede}
+
+PhD researcher in psychology at the University of Hull, funded by the White Rose DTP. How people extend --- and withdraw --- agency toward artificial agents, and what that does to social cognition.
+
+::: {.hero-social}
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/hochinwei/){.icon-btn title="LinkedIn"}
+[{{< fa brands researchgate >}}](https://www.researchgate.net/profile/Chin-Wei-Ho?ev=hdr_xprf){.icon-btn title="ResearchGate"}
+[{{< fa brands github >}}](https://github.com/Hochinwei){.icon-btn title="GitHub"}
+[{{< fa brands orcid >}}](https://orcid.org/my-orcid?orcid=0009-0003-4688-805X){.icon-btn title="ORCID"}
+[{{< fa brands x-twitter >}}](https://x.com/HoChinWei_){.icon-btn title="X"}
+:::
+:::
 
 ::::
+:::::
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+::: {.strands}
+::: {}
+## Research
 
-<!-- Initialize particle effect -->
-<script>
-  particlesJS.load('particles-js', 'assets/particles.json');
-</script>
+Social inhibition of return in human--agent joint action, and how people judge the authenticity of AI-altered images. Preregistered experiments, SEM, Bayesian estimation.
+
+[About my work →](about.qmd)
 :::
+
+::: {}
+## Writing
+
+Notes on an AI-saturated world --- misinformation, authenticity, and what "real" is doing in that sentence. Written for people outside the discipline as much as inside it.
+
+[Read the blog →](blog.qmd)
+:::
+
+::: {}
+## Analysis
+
+Reproducible R write-ups: Bayesian workflows in *brms*, live data pipelines, and the occasional argument settled with a Bayes factor.
+
+[See the projects →](projects/index.qmd)
+:::
+:::
+
+<script src="/assets/lattice.js"></script>

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="This page displays the different projects I have worked on.">
+<meta name="description" content="Reproducible analysis write-ups rendered straight from R.">
 
-<title>Projects – Ho Chin Wei</title>
+<title>Projects — Ho Chin Wei – Ho Chin Wei</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -45,9 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5aeffaa0a9602c5e613e9c90e0228eb2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-911783465bc93663321100c1b496ede8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -113,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -166,17 +164,13 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/favicon.webp" alt="" class="navbar-logo light-content">
-    <img src="../assets/favicon.webp" alt="" class="navbar-logo dark-content">
-    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ho Chin Wei</span>
     </a>
@@ -188,28 +182,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> <i class="bi bi-person-raised-hand" role="img">
-</i> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> <i class="bi bi-substack" role="img">
-</i> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../projects/index.html" aria-current="page"> <i class="bi bi-tools" role="img">
-</i> 
+    <a class="nav-link active" href="../projects/index.html" aria-current="page"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../CV.html"> <i class="bi bi-file-earmark-richtext" role="img">
-</i> 
+    <a class="nav-link" href="../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> <i class="bi bi-person-lines-fill" role="img">
-</i> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -223,54 +212,39 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#analysis-projects" id="toc-analysis-projects" class="nav-link active" data-scroll-target="#analysis-projects">Analysis Projects</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Projects</h1>
+
+
+
+<div class="pagehead">
+<p><span class="kicker">Analysis</span></p>
+<section id="projects" class="level1 unlisted">
+<h1 class="unlisted">Projects</h1>
+<p><span class="lede">Reproducible write-ups, rendered straight from R. Each one is a working document: the code is on the page, and the plots are the output of running it.</span></p>
+</section>
 </div>
-
-<div>
-  <div class="description">
-    <p>This page displays the different projects I have worked on.</p>
-  </div>
-</div>
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="analysis-projects" class="level2">
-<h2 class="anchored" data-anchor-id="analysis-projects">Analysis Projects</h2>
 <div id="listing-linkedin" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
+<div class="list grid quarto-listing-cols-2">
 <div class="g-col-1" data-index="0" data-categories="Y29kZSUyQ2FuYWx5c2lzJTJDYmF5ZXNpYW4=" data-listing-date-sort="1785944052000" data-listing-file-modified-sort="1785944052101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5315">
 <a href="../projects/LinkedIn_games/Tango_analysis.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top"><img loading='lazy' src="LinkedIn_games\Tango_analysis_files\figure-html\t-ts-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="LinkedIn_games\Tango_analysis_files\figure-html\t-ts-1.png" style="height: 168px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 LinkedIn games analysis pipeline
 </h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmF5ZXNpYW4='); return false;">bayesian</div>
+
+</div>
 <div class="card-text listing-description delink">
 This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between <code>PM</code> and <code>CW</code>.
 </div>
@@ -281,10 +255,11 @@ This is a personal project to create a live analysis pipeline that will show des
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 <div id="listing-bayesian" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
+<div class="list grid quarto-listing-cols-2">
 <div class="g-col-1" data-index="0" data-listing-date-sort="1785944996000" data-listing-file-modified-sort="1785944996239" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1459">
 <a href="../projects/bayesian_analysis/Bayesian_simulation_workflow.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top"><img loading='lazy' src="bayesian_analysis\data:image\png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAA\1BMVEUAAAAAW5YDOWwzMzNNTU1NTW5NTY5Nbm5Nbo5NbqtNjo5NjqtNjshuTU1uTW5ubk1ubm5ubo5ubqtujo5ujqtujshuq8huq+SOTU2OTW6OTY6Obk2Obm6Obo6ObquOjk2Ojm6OjquOjsiOq6uOq8iOq+SOyOSOyP+rbk2rbm6rbo6rjk2rjm6rjquryKuryMiryOSryP+r5Mir5OSr5P\Ijk3Ijm7Ijo7Iq27Iq47Iq6vIyI7I5OTI5P\I\8jI\+TI\kq27kq47kq6vkyI7kyKvk5Kvk5Mjk5OTk5P\k\+Tk\l5eX\yI7\yKv\5Kv\5Mj\5OT\8j\+T\HsUvrAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nO3da2Pc5nmg4ZgZSmIrJnVqmerKyaYbW1JTNXUbUknacisqVL02w1Ah5\lsUZmAMPmHCeEZ+5rg88zYsXIJy5BQwwzI+mAKzkR5veAICHSkABViSgACsSUIAVCSjAigQUYEUCCrAiAQVYkYACrEhAAVYkoAArElCAFQkowIoEFGBFAprHj9b2H\NPf1rXzPCgCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAY2tlZ+yoENA8BhSEBZQQBhYEdAWUEAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYUBAWUMAYWBnYCCCmgeAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgoDAsoYAgq9HQFlDAGF3s7OZwLK3Qko9ASUUQQUegLKKAIKPQFlFAGFnoAyioBCT0AZRUChJ6CMIqDQE1BGEVDoCSijCCj0BJRRBBR6AsooAgo9AWUUAYWegDKKgEJPQBlFQKEnoIwioNATUEYRUOgJKKMIKPQElFEEFHoCyigCCj0BZRQBhZ6AMoqAQk9AGUVAoSegjCKg0BNQRhFQ6Akoowgo9ASUUQQUegLKKAIKPQFlFAGFnoAyioBCT0AZRUChVwV03QUV0DwEFHpFQNd\CCqgeQgo9ASUUQQUegLKKAIKPQFlFAGFnoAyioBCT0AZRUChJ6CMIqDQE1BGEVDoCSijCCj0BJRRBBR6AsooAgo9AWUUAYWegDKKgEJPQBlFQKEnoIwioNATUEYRUOgJKKMIKPQElFEEFHoCyigCCj0BZRQBhZ6AMoqAQk9AGUVAoSegjCKg0BNQRhFQ6Akoowgo9ASUUQQUegLKKAIKPQFlFAGFnoAyioBCT0AZRUChJ6CMIqDQE1BGEVDoCSijCCj0BJRRBBQ6OwLKKAIKnaKdAsoIAgodAWUcAYWOgDKOgEJHQBlHQKEjoIwjoNARUMYRUOgIKOMIKHQElHEEFDoCyjgCCh0BZRwBhY6AMo6AQkdAGUdAoSOgjCOg0BFQxhFQ6Ago4wgodASUcQQUOgLKOAIKHQFlHAGFjoAyjoBCR0AZR0ChI6CMI6DQEVDGEVDoCCjjCCh0BJRxBBQ6Aso4AgodAWUcAYVOE9A1F1RA8xBQ6FQBnQoodyWg0BFQxhFQ6Ago4wgodASUcQQUOgLKOAIKHQFlHAGFjoAyjoBCR0AZR0ChI6CMI6DQEVDGEVDoCCjjCCh0BJRxBBQ6Aso4AgodAWUcAYWOgDKOgEJrR0AZR0ChVZZTQBlBQKEloIwkoNASUEYSUGgJKCMJKLQElJEEFFoCykgCCi0BZSQBhZaAMpKAQktAGUlAoSWgjCSg0BJQRhJQaAkoIwkotASUkQQUWgLKSAIKLQFlJAGFloAykoBCqwvoegsqoHkIKLQElJEEFFpNQNd9Di+geQgotAT0U3c+KRwsfehk0lj+8JoIKLQE9JN3fkMhT8t8vlz60OUvzu5h5UtmEVBo7AjoJ+9i\qAXj6fTB69W\rQ0d59BHTJLAIKjaqbAvpJWymgV28n9xDQpbMIKDQE9NO3SkCvXk\uIaDLZxFQaAwCutaCCujqqoBevJjsfrlYxDag5Ziidaf7k93yFdE\7\cXl67eFj98dlbnsBhz8WL3m\LHfyjGPP6mmqUbUk1zcFJ89\XZ7CylHzcEFCo7w4Cus6ACurqyap9\W15yXzwa7I5AL4ov9t5UvXs1HR47fnw+eVYsu9cUdO9\9qtHLl8UXTyaTJ7ODikvWP3dy3JdT6cLR6ACCkM7s9a4JgFdXXMKX9Zs4Uy+C2h9eHlcjp1JX\FF8XgxrFy0CObjL354XTxS\i8Wng4pFm+nPaVgMKNBPQhaF8DPVpyCDoT0N3D6vvuYLMcXB+31o0sZyi6eL5\UKaz\nFx4j4cMoj1UwGFT4SArm4Q0IXrRTMBrTM4G9CjtoRFXQczDGM8HDK7LgGFT4KAru6vCWh1Zj9pXxrtsjks48yQGwPacBUeggno6v7agPYJnAloO9fMEAGFT5CAru7Or4FeE9C+ujMBra7WT+eGCCh8ggR0dXe+Cr\sNdCT9j7OP74bJvhk0nz5l7OZIYOALl5EaggoBBPQ1fW3Fi2+52g+oMOr8I\enb6sb43\sqjk7IsA5bjJ3vH0w+fvZoYs3sZUzTJDQCGYgK6ujNruYXGgWF5In9P9NabyRvpH9VX0R8fT5i\dlbU8ra8PlVW9fFFM9G\9pJNJPeVgSPnjv\v67LS+m7SfZUhAIZiAru7iJy+\e1O07ovj+Uf6vwda93D3N\td8d7vT55UC3z8alK\M7O53N689PmxnPLZ99OZIfUp\IefNt8NZhkQUAgmoA\DTX+4pCWgEExAHwYBhU+QgD4MAgqfIAF9GAQUPkECej\OJ0Ov7n3+08myOz9nCSgEE9D7seaANjc33TyvgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmsc6ArpTfRRQWEpA87j\gO7sCCjcQEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOZx7wHdEVC4kYDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5rGWgFYFFVBYSkDzWENAPxNQuIGA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPO474DuCCjcTEDzuP+AfiagcBMBzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWge6wloWVABhaUENI91BPQzAYXrCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A87jmgOwIKtxDQPO49oFMBhRsJaB4CCsEENA8BhWACmseaArojoHANAc1jLQGdCihcS0DzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHN434DuiOgcBsBzeO+AzoVULiZgOYhoBBMQPMQUAgmoHmsK6A7AgrLCWgeAgrBBDSP9QR0KqBwHQHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHnca0B3BBRuJaB53HNApwIKtxDQPNYW0B0BhaUENA8BhWACmseaAjoVULjGww3o+aRwsOyRy+eTyqN3xTdH5VdPix++WD54dslbB51MGsW4i\1m7vtwp+1rVWvePZz7qYBCsIcb0Kqgy5tzdTToS\HNl2dVSBeKs+Aug07Lar6sv\6wX069gstfzC+3fNWL42pX\yygsHkPOKDlYdg1B23VMWj72El1jHhvAS3nro5tC1f\dOuU16xo724BXRx3w3ABhWA5A1odnTbtufyHw+rT\ZzC30tAr95OFsK4bNXLxjVO1hzQnZmA7ggoLJM0oFevi4K+qr48f3a\q\3rA1pu3HVhvOu49Qe0\CigcKOHHtCLF5PdZa9DnnSXd94eTptz+ro4V2\3J7vPzppLQAcn9eWm4tOj\9sMqh7ZOzstxtWvdV6d\rS\dLQQ0LnhVbv3zi5e7H4zWFvh\f7kyfH7w+mf95u5BiOH2\eH4vHHxbLduNlppsXGPDmcCeiPG2sKaHM4Csx74AH9\NsylUsO08oiVYW5+Fn1YBmr6vuPzyfPimX26oIWnz7sVz18W3zZDrooFt57U9XrVbPsy\LC1NN25tkj0CXD9\6nnrxfW\Hx6dnHF+X03ZHlYGS3fdWpfL2u\gh0ME35+768+t0v1xvQnXn3NjNk8sADelBnZsmZ\FFz7HZSn8i357zF6KJ+RQQP2h+Vy79qUtgPKtJ1XK7gaf3Turd14RYCOje8XPXjL354XWexXVvxZXX4+moYxn7k7PadV6sYhrbb6Pqh7t+HioDCZjz8gJYVWnIIWj5alubnTeuaQNUx7IpUFK\uXn2gOgho8bl8vBhcD6s+lTFeHtB+eN3uV9Pz\YPh2spHi3Pwk\mANiPbVZ+3Szw768cNN7o5ED5a8yn8LFfhYakcAW2DNtBcRjrvbmaqi9OdHDffPHp3\qv9Ik8nB4NBTbmaT3cK6N6gd\0GDdZWbc+Tw+l0LqCP3s1vX\evwXDCdppmY6brfg10loDCUmkDWt\J9EN3mbw\X2+8qoe8+t1\F2H6bT3uloDecAo\F9C97oXXbm3n+90VoWFA21z227cQ0OE0SwPauN+\BzokoLBU3oBWF7Z\1d3DtCRQ1ZC\+cVZ8dDf15ealga0fw20WnImoL8uv7gxoP3aLtqC3hLQ7pcZBrQdNnhdVkBh03IEdOndkiftZfH2u\lA1UMOBjeULg9oexX+SbXg8PpN\QrrjQEdrO3qzWT24tDygHbbPFx\O40jUPiEPPyAXnMVftreptToLyLVo\4rh5SX\1pYrQ8oNUtnJPdr+u5uhuOyuWftT9ZGtDh2qp3tZ\eFtBqiepHf5m9iNROMzgqFlDYtAce0Pq1yWVn8NMqT31Zm+JU59Ffnk3ri0ZX1R1ExcA+eIOAdpfVT2aOcPs\YtK8EWl+eP+awmBt1Q1M9ZrqI8rTl8suIlUvPOwdTz98\q4fN9zo+jamqqmvprMEFII98IAWzTm59u9\nA\KWp0bl28NOq2vxnTFPKgGHswMKu+Mf1S\I+nRcTnob2deIijjVb4r6Luv6oTNDb98UWzXv9VD+7VdvS4OYT8+r6rXvPtpOLLbvvqV0vp3asfNbHT1z8KHX04mCwfeAgrBHnJAf\LyuzdFar44vmbA1evub3U2fyK0\P7jV\3peDHH4bT\eyPNoLphu7\Zb\p11FwC79b08U351s7HX39fzzE7vLlm3hwedmu7+pcf3u5Pnnxb\bR6V+d0MHK4feXv9Oz7wbjZjb76ffnDk8f\+K\fz\2+AgrBHnBAw3R\RPkOfxBvkwQUggnoHfQFvfsfjd8AAYVgAnq731cvThbn0a8FFBgQ0FtdPu+ulDuFBwaSBPR8MjR\f89f6Wjy5L+KT3\5w\4nfQAqoBBNQO\gw1flFfbH117u\0QIKARLElCmAgrhBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENI+NBnRnZ10rh0+XgOaxyYDuCCjbSEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPPYcEAVlO0joHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzWODAd0RULaSgOax0YB+JqBsIQHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDSPTQdUQdk6ApqHgEIwAc1jswF1Ds8WEtA8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOaxuYDuCCjbSUDz2GRAPxNQtpGA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHlsPKAKyrYR0DwEFIIJaB4bDuhUQNk6ApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDz2FhAdwSULSWgeWwwoFMBZSsJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageWw+oArKlhHQPAQUggloHpsOqHN4to6A5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDz2FRAdwSUbSWgeWwuoFMBZTsJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHp9AQBWU7SKgeQgoBBPQPDYeUOfwbBsBzUNAIZiA5iGgEExA8xBQCCageWwooDsCytYS0PNJ4WDpQyeTxqtVJ798cc3UQx+\Klbx+bfT371bdTW1jQV02gdUQdkqAloV9LrKvS\z+XKFSS9\cVZ+OppMdg9vXf\e8fTqdH\ySEDhYRHQ6cX+9QEtH1upa0d7dw3oxX69go\PH35AncOzZQR0HQG9ejupA3qHU\iT9hWCcwGFB0ZA1xDQq9eTJqB3UB6kVi8SXP36QQZ0R0DZXgJaB\TixWT3y8XmLQb045sieF8c199c\aF4\PE39ZflpaAn3xZf\nm\vvR0cPl80p7C94uVUxZ5Pd1vunk0aZf747vZearFH70rN60Y+fHFZPJFvYVXb4uFn\Vb++PGhgJafuwCKqFsEwGtivb5t+Wp9OJR40JAz\cn30xPJ7vVWXd1gl4E8Gk5sAjlx+f16Xh3BFp+UQV0uNhFMWrvTXd1\7yubZXMuXmK+SeP\rMeeV5VuZq1ePhZsbn91m4yoDsL1rUR8OkR0PYUvozdwpn8fECLg8Li22JomcXiU\HNeTWiymgbzv4U\qQO6PxixcPH5dRPyzFvm3ulqsPLmXmqo9O947Knjz8\vjqqt6VebTFlt7WfVEDXtQ3wCRLQ7jXQoyWHoPMBbQ5Tj6olzqtvip4VZ9PFAeKXVfiaxM0GdGax5rC0PEGvB71vTvnL72bmmTbJbD7NTFZntLbRU3jYYgI6DOjC9aK5gJZlezptWztf3O9eTJYHdHax5tHBlaaPb5oXTefmWR7Q+jWD5nC2IqCwGQI6JqDlUePTdujctfaPb3Z\e80R6MxiSwLaJrRa02CepQGtXgFY+gapTb0XHraWgN49oO8PFwLaL3C6P3l13Sn8jQH9j7OZNQ3nuTagy++RElAIJqB3fg306tfvZs7Fq0PB9iDwvP3J6FP4t4fdqupLUv081wZ0+a2pAgrBBPTOV+HLdwp1F3DKIJ609xX95az+yS0XkZrF5gLavOmz\P7pdHaeay8i1Rv6x7mMCigEE9Bpcz9RfavRksean14+L0pXDKo\NjcnlXcZTT98\q788tFxO7oO4OnL4W1M\WJNOdur8EdNti+fNyf7\TzLA1rdif\l2fRkPvcCCsEEtApSEaaTZX\247T7a0wfXlRn4dUd8e+bG+kv6vuPuis7z44mXeq6lzsn38wtVt5I\+iwbvNxVccn\1W+0ah8cHaey\qGp\I9SOU6jprJTvu7nmYIKAQT0OnFT15+N3x\Zq\7e6C16rb3+o93NkOrN2g++76c5EX5XqLL4uNh+cD7\cmT4\oQtV6uX6yu7u5v9pvIvj28Ov1pt\rhPPXiu\9efzo86m51Kifb\XrhQpKAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQGeczV41W\v+S2wwBhWACOkNAlxJQWEpA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPNYX0J2dnXVNDQ+ZgOYhoBBMQPNYa0AVFBYJaB4CCsEENA8BhWACmsfaArojoLCUgOaxxoB+JqCwhIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgAprHegOqoLBAQPMQUAgmoHmsM6DO4WEJAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzUNAIZiA5rGugO4IKCwnoHmsL6CfCSgsI6B5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1jzQFVUJgnoHmsNaAOQWGRgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmoeAQjABzWNNAd0RULiGgOaxtoBOBRSWEtA8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENA8BhWACmse6A6qgMEdA8xBQCCageaw3oFMBhXkCmoeAQjABzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPNYT0B0BhesIaB7rCuhUQGE5Ac1DQCGYgOYhoBBMQPMQUAgmoHkIKAQT0DwEFIIJaB4CCsEENI+1B1RBYZaA5iGgEExA81hzQJ3DwzwBzUNAIZiA5iGgEExA8xBQCCageQgoBBPQPAQUggloHmsJ6I6AwrUENI81BXQqoHANAc1DQCGYgOax\oAqKMwQ0DwEFIIJaB7rDjjmMuUAAAu1SURBVKhzeJgjoHkIKAQT0DwEFIIJaB4CCsEENI91BHRHQOF6AprHegJafhRQWEpA8xBQCCageQQEVEFhSEDzWHtAHYLCLAHNQ0Ah2Pxz7nxSOFg28vL5pPLoXfHNUfnV0+KHL5YPnl3y1kEnk0Yx7mK\mfs+3Gn7WtWadw+XbNarta7\41fFKj7\dvq7d6uupraGgO4IKNxg4Tl3fl1Ap1dHg74U33x5VoV0WJzl7jLotOzUy\rrD\vl1Cu4\MX8cstXvTiudvXP88PfDzZrlU25y69+Ptk7nl6d7tf\NP0V1hLQ6pOAwlILz7nyMOyag6bqGLR97KQ6Rry3gJZztwG5+qdbp7xmRXt3C+jiuOuGl3tjpa41q7jDr36xX6\g43MBhQdmTECro9OmPZf\cFh9up9T+HsJ6NXbyUIYl6162bjGyT0FtFvFHX71k\YVgvOHEFAFhYFRAb163b0eeP7sfrfjrw9ouXHXhfGu4+4poHfdlEp5kFq9SHD1608uoDsCCjdZHtCLF5PdZa9DnnSXd94eTptz+ro4V2\3J7vPzppLQAcn9eWm4tOj\9sMqh7ZOzvdb3oxvTr9aX\paCGgc8Ordu+dXbzY\WawtsL7\cmT4\eH0z\vN3MNRg637w\F44+LZbtxs9NMi415ctgG9OrN5Mm7dm\MBvTjm2LMF8fNlrazll+Wl4KefDsdrGKw\n6x+f1QXY+rlvvju9l5qsUfvSv\YxQjP76YTL6ot3W43aUfN9YQ0PpzG9CyoBIKnaUB\fzbMpVLjqHKp3QVhIufVQ+Wsaq+\h88qxYZq8uaPHpQ31N5G3xZTvoolh47013Vbv88cvywtTTdubZI9Alw\f+p568X1vx8enZxxfl9N1h32Bkt33VqXS9rv7wcDBN+fu+vPrdL5vh3T8UCwE93598Mz2d7FbH4YNZL\aLBYsJ+21tN6WacLjY3C92Xte2SubcPMX8k0f\WY88r6pczTrc7sqaArpzjftdCzxg153Cl0\9JWfyR82x20lzY09zyFaMLjJTRPCg\VG5\Ksmhf2gogDH5Qqe1j+te1sXbiGgc8PLVT\+4ofXdRbbtRVfVoevr4Zh7EfObt95tYph3bqNrh\q\n24NqDFiHqK+VmrjLZT95vSrH9+sZlf7G1zHF4dXs7MU+3uveOyp48\Py7\sSm3ZbjdNQGFzbj2NdCjpYegTVAuf95EpQlEHcPumV00oM5DfaA6CGjxuXy8GFwPqz5VB1tLA9oPr2PyqjiUOxiurXy0OJc9mQ9oM7Jd9Xm7xLOzftxwo5sD4aPbTuGbA\OjSVPdbtbiAPHLauomcbMBnVls\hcrX4WYtIeXM\NMm2Q2n5bs7NraTuFbf\rTumaGB+2mgC65etJcRjrvbmaqn9PdyXHzzaN357\aL57mJweDQU1Wmk93Cuje2czRWDNgsLZqe54cTqdzAX30bn77un8NhhO20zQbc+tFpHLZJrTFFPP\xnz3YrI8oLOLzf9i9QukgzcwdPMsD+jMzq4IKGzGyIDWdzL90F0m7wPRv2enHPLqd\9dPMF\W4+7JaA3nMLPBXSve+G1W1v90uDBdC6gbdj67VsI6HCauwa0HVftnLlr7R\f7P72miPQmcWWBLRNaLWmwTxLAzq7s2f+WwooxBob0OrK8K+6e5iWBKoa8je\OCse+vufDc9j58LRvQZaLTkT0Op+nhsD2q\toi3oLQHtfpnFFyqn08HrsjcE9P3hQkD7XXS6P3l13Sn8jQH9j7OZNQ3nuTagy++RElAINvI10Ob94a8G380Hqh5yMLihdHlA26vw9YuN3fWb8uuf3xrQ4Wn1m8nsxaHlAe22ebj+dpo7HYEWXZ85F5+Z9bz9yehT+LeH3arqS1L9PNcGdPmtqQIKwUZehZ+2tyk1+usa9ejqVsb6ynp7cn5dQOuLJ7tfN7c2vu7bdfGs\cnSgA7XVr3l\PS2gFZLVD\6y+xFpHaawVFxe9fT4kWk8p1C3QWcMoiDWeuf3HIRqVls7hdr31dafP90OjvPtReRBjt7+N9SQCHW0oA+bW+8WeZoWNbmOV2dR395Nq0vGl29bq4598EbBLS7+nwyc4Tb\xGT5o1I88P71xQGa6tuYKrXVFfn9OWyi0jVCw97x9MPn7\rxw03+rxL1KSecPE2psvn9dbUH+dmrV6BOG5H95vSr79fbO4XO2p+7cvnzcl+P8\ygM7u7OF\SwGFWEsDWjxNT679Ixjng7JWZ7HlG3FO+xtxpuUz\aAaeDAzqLyB\FH9jqRHx+Wgv515iaCMV\numu++qk+L54aXN5Xv\ls9tF\b1eviEPbj86p6zbufhiO77atfKe1v8qxfbhxsdPXPwodfNq+ndgGthlRvGPrwovpJdUf8++ZG+n7W+srOs6NJH+L2qLha\3CxuV+sWObJf5VvNNp9NZ2b57I+LC\fg1Su42jpzh78txRQiLUY0J+8\G74bsUFV6+7v9XZ\InQ8vvyb1q2p+PFHIfT\u+NNIPq2uz+Zr+Jy1FzKblb08c35Vs7H3\9fT3H7PDm2nPzkmO3tqt\+eHtfvsunupdndPByOH2lb\Ts+8H42Y3+ur35Q9PHv\jv5ZjmlP47u+BTrp5mj\e2W1yO+vFi3IryuUO+1XM7Z96sfn98Pawek9rsxuG89SL7\57\emw3mEH8zt78N9SQCHW5v4ifV+n2\8gHnchoBBscwEdFPTufzSeGwgoBNtcQH9fvZ5XnI++FtD7IaAQbGMBvez+APuJU\j7IaAQ7Mbn3PnMNZSV\5\VljuqLj5P\KHfQeg90NAIdjmAjr98FV5IfrxtZf7GUlAIdgGLyJxzwQUggloHgIKwQQ0DwGFYAKah4BCMAHNQ0AhmIDmIaAQTEDzEFAIJqB5CCgEE9A8BBSCCWgeAgrBBDQPAYVgApqHgEIwAc1DQCGYgOYhoBBMQPMQUAgmoHn8CFivhSfdJp7prMf6\mfz4\VN\WDZJ4vy75OF59wmnug8ND\e9AZ8guyTRdu3TwSUO9i+J8bt7JNF27dPBJQ72L4nxu3sk0Xbt08ElDvYvifG7eyTRdu3TwSUO9i+J8bt7JNF27dPBJQ72L4nxu3sk0Xbt08ElDvYvifG7eyTRdu3TwQUYEUCCrAiAQVYkYACrEhAAVYkoAArElCAFQkowIoEFGBFAspt3u9Pdl9ueiM27vSnk8njbjfM7JOt3kEX+wfNV1u5TwSUWxztfjv90D1LttXbSeVp\d3MPtnqHXT1erJsN2zNPhFQbnZSPUFOJq82vSEbdV4eTn18MalrMbNPtnsHnTS7ZFv3iYByo8vnj95NyxO16tPWentYfiwOt\bO5vbJdu+gy5\7zqg27pPBJQbnVTJKNOR\2jiepf\p\5c742ZfbLdO+jtq6P2oHw794mAcqOj+mW\4rnwdNOb8gk4r\bCzD7Z6h10\mzaBHRb94mAcpPL581LXEf1QcWWO9k9nNsnW72DLr86bAK6tftEQLnJNj0Xbnf1ujyi2tpYLDg5mAooXG+bngu3Oy8PQLc3FvMufnYmoJveAD5p2\RcuNXl81f1py2NxZyrfyp3h4DCtQbPhfTXA271tt4VM\tki3fQybPy40JAt2ufCCg3aS+k9m842V51MOb2yfbuoMv\Vd3kWQd0a\eJgHKj5pa+4qAi\S19tzh\1p6OzuyTrd1BJ5NOsQe2dZ8IKDdq3k1ysZ\+1axbnP+s3gH\b26fbPsOau4D3dZ9IqDcrH5D8za8rflGTT+v3vdv8u7e973VO+ioey\8Vu4TAeVmV68fHU9P87+YdbPT9my1upFpZp9s+Q46WrYbtmefCCi3uPr9\uTJt5veis06Hb7cN53bJ9u9g9qAbuk+EVCAFQkowIoEFGBFAgqwIgEFWJGAAqxIQAFWJKAAKxJQgBUJKMCKBBRgRQIKsCIBBViRgAKsSEABViSgACsSUIAVCSjAigQUYEUCCrAiAQVY0f8HS7i3A9v61AQAAAAASUVORK5CYII=" style="height: 168px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Bayesian Analysis of a 2×2 Factorial Reaction Time Experiment in R
@@ -301,7 +276,6 @@ This document demonstrates a complete <strong>Bayesian analysis pipeline in R</s
 
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -713,16 +687,17 @@ This document demonstrates a complete <strong>Bayesian analysis pipeline in R</s
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Copyright 2025, Ho Chin Wei</p>
+<p>© 2025 Ho Chin Wei</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with <a href="https://quarto.org/">Quarto</a> in <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
 </div>
   </div>
 </footer>
+<script src="../assets/site.js"></script>
 
 
 
