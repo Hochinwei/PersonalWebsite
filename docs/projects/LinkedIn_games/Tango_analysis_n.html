@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ho Chin Wei">
-<meta name="dcterms.date" content="2026-08-05">
+<meta name="dcterms.date" content="2026-08-11">
+<meta name="description" content="A live pipeline tracking two players’ daily LinkedIn game scores, with descriptive summaries and Bayesian t-tests that update every time the document is rendered.">
 
 <title>LinkedIn games analysis pipeline – Ho Chin Wei</title>
 <style>
@@ -79,9 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5aeffaa0a9602c5e613e9c90e0228eb2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8a13c42f7975cad99bf864700344cc9d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,17 +117,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/favicon.webp" alt="" class="navbar-logo light-content">
-    <img src="../../assets/favicon.webp" alt="" class="navbar-logo dark-content">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ho Chin Wei</span>
     </a>
@@ -140,28 +135,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> <i class="bi bi-person-raised-hand" role="img">
-</i> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> <i class="bi bi-substack" role="img">
-</i> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects/index.html"> <i class="bi bi-tools" role="img">
-</i> 
+    <a class="nav-link" href="../../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../CV.html"> <i class="bi bi-file-earmark-richtext" role="img">
-</i> 
+    <a class="nav-link" href="../../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../contact.html"> <i class="bi bi-person-lines-fill" role="img">
-</i> 
+    <a class="nav-link" href="../../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -174,9 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -190,6 +179,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -204,6 +197,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   </div>
 
+<div>
+  <div class="description">
+    A live pipeline tracking two players’ daily LinkedIn game scores, with descriptive summaries and Bayesian t-tests that update every time the document is rendered.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -218,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 5, 2026</p>
+      <p class="date">11 August 2026</p>
     </div>
   </div>
   
@@ -230,8 +228,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><a href="../../projects/index.html" class="backlink">← Projects</a></p>
 <p>This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between <code>PM</code> and <code>CW</code>.</p>
-<p>This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players <code>PM</code> and <code>CW</code>. Beginning from April 29th till today, <strong>August 06, 2026</strong>, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered.</p>
+<p>This pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players <code>PM</code> and <code>CW</code>. Beginning from April 29th till today, <strong>August 11, 2026</strong>, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered.</p>
 <p>In addition to summarizing means, medians, standard deviations, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF<sub>10</sub>) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see <a href="#nte-impt" class="quarto-xref">Note&nbsp;1</a> below).</p>
 <p>This document aims to describe, visualize, and evaluate, using both descriptive statistics and Bayesian hypothesis tests, to assess the differences in scores between the two players.</p>
 <div class="cell">
@@ -266,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="descriptive-statistics" class="level1">
-<h1>Descriptive statistics</h1>
+<section id="descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h2>
 <p>This section summarizes the central tendencies and variability in the players’ daily game performance across the four game types (Tango (T), Zip(Z), Pinpoint(P), and Crossclimb(C)), using standard measures of mean, median and standard deviation.</p>
 <div class="cell">
 <details class="code-fold">
@@ -419,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>As of April 29 2025 through August 06, 2026, for <strong>Tango</strong>:</p>
+<p>As of April 29 2025 through August 11, 2026, for <strong>Tango</strong>:</p>
 <ul>
 <li>PM’s average time is <strong>61.2</strong> seconds, with the median time being <strong>46</strong> seconds.</li>
 <li>CW’s average time is <strong>49.2</strong> seconds, with the median time being <strong>39</strong> seconds.</li>
@@ -441,8 +440,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>CW’s average time is <strong>61.6</strong> seconds, with the median time being <strong>57</strong> seconds.</li>
 </ul>
 </section>
-<section id="time-series-visualizations" class="level1">
-<h1>Time-series visualizations</h1>
+<section id="time-series-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="time-series-visualizations">Time-series visualizations</h2>
 <p>The time‐series plots display each player’s daily performance (e.g., completion time (seconds) or number of tries) on the x‐axis (date) and the corresponding score on the y‐axis.</p>
 <p>These visualizations provide comparisons of variability and stability to assess player score fluctuations and identify any days with unusually high or low values (and identify and potential outliers). It provides an intuitive and chronological overview of how PM and CW’s LinkedIn game scores evolve.</p>
 <p>The data is first subset into the four game type prior to visualizations.</p>
@@ -479,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/t-ts-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/t-ts-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -501,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/z-ts-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/z-ts-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -523,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/p-ts-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/p-ts-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -545,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/c-ts-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/c-ts-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -554,8 +553,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="boxplot-comparisons" class="level1">
-<h1>Boxplot comparisons</h1>
+<section id="boxplot-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="boxplot-comparisons">Boxplot comparisons</h2>
 <p>In this section, boxplots are created to provide a concise visual summary of the score distributions for each game type, comparing PM and CW’s performance at a glance. The boxplots show the median, interquartile range (IQR), and potential outliers for each player.</p>
 <p>Visual inspection of these boxplots can highlight difference or overlaps in score distributions, which can inform interpretation of subsequent Bayesian independent-samples t-test results later.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -584,7 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/boxplot_tango-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/boxplot_tango-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -613,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/boxplot_zip-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/boxplot_zip-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -642,7 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/boxplot_pinpoint-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/boxplot_pinpoint-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -671,7 +670,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/outlier_visualization-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/outlier_visualization-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -680,8 +679,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="bayesian-independent-t-test-comparisons" class="level1">
-<h1>Bayesian Independent T-test comparisons</h1>
+<section id="bayesian-independent-t-test-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-independent-t-test-comparisons">Bayesian Independent T-test comparisons</h2>
 <p>Here, using Bayesian Independent-samples t-tests, evidence for or against a difference in performance between PM and CW for each game type will be quantified. For each comparison, the Bayes factor (BF<sub>10</sub>) ia computed to measure the relative support for the alternative hypothesis (that the two players differ in average game scores) over the null hypothesis (no difference).</p>
 <p>Additionally, prior (default) and posterior distributions of the standardized effect size will be calculated to assess how the observed data update beliefs under the default Cauchy prior (scale = 0.707)</p>
 <div id="nte-impt" class="callout callout-style-default callout-note callout-titled">
@@ -702,8 +701,8 @@ Note&nbsp;1: IMPORTANT NOTE
 <p><strong>These results can only be used as informal visualization and intuitive understanding rather than confirmatory statistical proof.</strong></p>
 </div>
 </div>
-<section id="homogenity-of-variance-assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="homogenity-of-variance-assumptions">Homogenity of Variance Assumptions</h2>
+<section id="homogenity-of-variance-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="homogenity-of-variance-assumptions">Homogenity of Variance Assumptions</h3>
 <p>Runs Levene’s test as a check of homogenity of variance for each game type subsets. Although Bayesian t‐tests are typically robust to mild heterogeneity of variance, it remains good practice to understand whether this assumption might be violated.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Tango</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Zip</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Pinpoint</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false" href="">Crossclimb</a></li></ul>
@@ -931,8 +930,8 @@ Note&nbsp;1: IMPORTANT NOTE
 </div>
 </div>
 </section>
-<section id="bayes-factor-computation" class="level2">
-<h2 class="anchored" data-anchor-id="bayes-factor-computation">Bayes Factor computation</h2>
+<section id="bayes-factor-computation" class="level3">
+<h3 class="anchored" data-anchor-id="bayes-factor-computation">Bayes Factor computation</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Tango</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Zip</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">Pinpoint</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false" href="">Crossclimb</a></li></ul>
 <div class="tab-content">
@@ -1056,7 +1055,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/T-pd-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/T-pd-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1182,7 +1181,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/Z-pd-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/Z-pd-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1308,7 +1307,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/pp-pd-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/pp-pd-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1434,7 +1433,7 @@ Note&nbsp;1: IMPORTANT NOTE
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Tango_analysis_files/figure-html/cc-pd-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Tango_analysis_n_files/figure-html/cc-pd-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1857,16 +1856,17 @@ Note&nbsp;1: IMPORTANT NOTE
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Copyright 2025, Ho Chin Wei</p>
+<p>© 2025 Ho Chin Wei</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with <a href="https://quarto.org/">Quarto</a> in <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
 </div>
   </div>
 </footer>
+<script src="../../assets/site.js"></script>
 
 
 

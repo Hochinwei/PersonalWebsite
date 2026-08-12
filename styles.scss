@@ -892,3 +892,106 @@ div.callout .callout-body > :last-child { margin-bottom: 0; }
 
 // Back-to-listing link Quarto puts at the top of a post
 .quarto-title-block .back-to-top, .listing-back { font-size: .85rem; }
+
+// ============================================================
+//  13. Tabsets, folded code, kable tables
+// ============================================================
+// ::: {.panel-tabset} - Bootstrap's pill tabs, flattened to a
+// hairline rule with a 2px accent marker under the live tab.
+.panel-tabset > ul.nav-tabs {
+  border-bottom: 1px solid var(--rule);
+  gap: 1.75rem;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+.panel-tabset > ul.nav-tabs .nav-item { margin: 0; }
+.panel-tabset > ul.nav-tabs .nav-link {
+  font-family: "Lora", Georgia, serif;
+  font-size: .92rem;
+  color: rgba(32, 31, 29, .6);
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0;
+  padding: 0 0 .65rem;
+  margin-bottom: -1px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.panel-tabset > ul.nav-tabs .nav-link:hover { color: var(--ink); }
+.panel-tabset > ul.nav-tabs .nav-link.active {
+  color: var(--ink);
+  border-bottom-color: var(--accent) !important;
+}
+.panel-tabset > .tab-content {
+  border: none;
+  padding: 1.5rem 0 0;
+}
+
+// #| code-fold: true - the disclosure row, quiet until you want it
+details.code-fold {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  margin: 1.9rem 0;
+}
+details.code-fold > summary {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .78rem;
+  color: var(--accent-deep);
+  padding: .55rem .9rem;
+  cursor: pointer;
+  list-style: none;
+}
+details.code-fold > summary::-webkit-details-marker { display: none; }
+details.code-fold > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: .5rem;
+  font-size: .7rem;
+  transition: transform .2s ease;
+}
+details.code-fold[open] > summary { border-bottom: 1px solid var(--rule); }
+details.code-fold[open] > summary::before { transform: rotate(90deg); }
+details.code-fold > div.sourceCode,
+details.code-fold div.cell-code div.sourceCode {
+  border: none;
+  border-radius: 0 0 4px 4px;
+  margin: 0;
+}
+
+// kable / kableExtra tables
+table caption, caption {
+  caption-side: top;
+  font-family: "Lora", Georgia, serif;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(32, 31, 29, .55);
+  padding: 0 0 .8rem;
+  text-align: left;
+}
+table.table, div.cell-output-display > table {
+  width: auto;
+  min-width: 340px;
+  border-collapse: collapse;
+  font-size: .92rem;
+  margin: 1.9rem 0;
+}
+table.table thead tr, div.cell-output-display > table thead tr {
+  border-bottom: 1px solid var(--ink);
+}
+table.table th, div.cell-output-display > table th {
+  font-weight: 500;
+  padding: .5rem .9rem .6rem 0;
+  border: none;
+}
+table.table td, div.cell-output-display > table td {
+  padding: .55rem .9rem .55rem 0;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  font-variant-numeric: tabular-nums;
+  color: rgba(32, 31, 29, .84);
+}
+table.table tbody tr:last-child td,
+div.cell-output-display > table tbody tr:last-child td { border-bottom: none; }
+table.table tbody tr:hover,
+div.cell-output-display > table tbody tr:hover { background: var(--accent-tint); }

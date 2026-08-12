@@ -1,12 +1,14 @@
 [
   {
     "listing": "/blog.html",
-    "items": []
+    "items": [
+      "/blog/template-post/index.html"
+    ]
   },
   {
     "listing": "/projects/index.html",
     "items": [
-      "/projects/LinkedIn_games/Tango_analysis.html",
+      "/projects/LinkedIn_games/Tango_analysis_n.html",
       "/projects/bayesian_analysis/Bayesian_simulation_workflow.html"
     ]
   }

@@ -1,12 +1,21 @@
 ---
 title: "LinkedIn games analysis pipeline"
+description: "A live pipeline tracking two players' daily LinkedIn game scores, with descriptive summaries and Bayesian t-tests that update every time the document is rendered."
+image: thumbnail.png
 author: "Ho Chin Wei"
 date: last-modified
-format: 
+date-format: "D MMMM YYYY"
+categories: [code, analysis, bayesian]
+toc: true
+toc-location: left
+toc-title: "On this page"
+toc-depth: 3
+format:
   html:
     smooth-scroll: true
-categories: [code, analysis, bayesian]
 ---
+
+[← Projects](../index.qmd){.backlink}
 
 This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between `PM` and `CW`. 
 
@@ -51,7 +60,7 @@ dat_long <- dat %>%
   )
 ```
 
-# Descriptive statistics
+## Descriptive statistics
 
 This section summarizes the central tendencies and variability in the players’ daily game performance across the four game types (Tango (T), Zip(Z), Pinpoint(P), and Crossclimb(C)), using standard measures of mean, median and standard deviation.
 
@@ -155,7 +164,7 @@ For **Crossclimb**:
 - PM’s average time is **`r mean_c_PM`** seconds, with the median time being **`r median_c_PM`** seconds.
 - CW’s average time is **`r mean_c_CW`** seconds, with the median time being **`r median_c_CW`** seconds.
 
-# Time-series visualizations
+## Time-series visualizations
 
 The time‐series plots display each player’s daily performance (e.g., completion time (seconds) or number of tries) on the x‐axis (date) and the corresponding score on the y‐axis. 
 
@@ -180,7 +189,7 @@ dat_longC <- dat_long %>%
 
 ::: {.panel-tabset}
 
-## Tango
+### Tango
 
 ```{r t-ts, warning = FALSE}
 #| code-fold: true
@@ -196,7 +205,7 @@ ggplot(dat_longT, aes(x = date, y = value, color = Player)) +
   theme_minimal()
 ```
 
-## Zip
+### Zip
 
 ```{r z-ts, warning = FALSE}
 #| code-fold: true
@@ -212,7 +221,7 @@ ggplot(dat_longZ, aes(x = date, y = value, color = Player)) +
   theme_minimal()
 ```
 
-## Pinpoint
+### Pinpoint
 
 ```{r p-ts, warning = FALSE}
 #| code-fold: true
@@ -228,7 +237,7 @@ ggplot(dat_longP, aes(x = date, y = value, color = Player)) +
   theme_minimal()
 ```
 
-## Crossclimb
+### Crossclimb
 
 ```{r c-ts, warning = FALSE}
 #| code-fold: true
@@ -246,7 +255,7 @@ ggplot(dat_longC, aes(x = date, y = value, color = Player)) +
 
 :::
 
-# Boxplot comparisons
+## Boxplot comparisons
 
 In this section, boxplots are created to provide a concise visual summary of the score distributions for each game type, comparing PM and CW's performance at a glance. The boxplots show the median, interquartile range (IQR), and potential outliers for each player. 
 
@@ -254,7 +263,7 @@ Visual inspection of these boxplots can highlight difference or overlaps in scor
 
 ::: {.panel-tabset}
 
-## Tango
+### Tango
 ```{r boxplot_tango, warning = FALSE, message = FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -275,7 +284,7 @@ Tango_box <- ggplot(subset(dat_long, Game_type == "T"), aes(x = Player, y = valu
 Tango_box
 ```
 
-## Zip
+### Zip
 
 ```{r boxplot_zip, warning = FALSE, message = FALSE}
 #| code-fold: true
@@ -297,7 +306,7 @@ Zip_box <- ggplot(subset(dat_long, Game_type == "Z"), aes(x = Player, y = value,
 Zip_box
 ```
 
-## Pinpoint
+### Pinpoint
 
 ```{r boxplot_pinpoint, warning = FALSE, message = FALSE}
 #| code-fold: true
@@ -319,7 +328,7 @@ Pinpoint_box <- ggplot(subset(dat_long, Game_type == "P"), aes(x = Player, y = v
 Pinpoint_box
 ```
 
-## Crossclimb
+### Crossclimb
 
 ```{r outlier_visualization, warning = FALSE, message = FALSE}
 #| code-fold: true
@@ -343,14 +352,14 @@ Crossclimb_box
 
 :::
 
-# Bayesian Independent T-test comparisons
+## Bayesian Independent T-test comparisons
 
 Here, using Bayesian Independent-samples t-tests, evidence for or against a difference in performance between PM and CW for each game type will be quantified. For each comparison, the Bayes factor (BF~10~) ia computed to measure the relative support for the alternative hypothesis (that the two players differ in average game scores) over the null hypothesis (no difference). 
 
 Additionally, prior (default) and posterior distributions of the standardized effect size will be calculated to assess how the observed data update beliefs under the default Cauchy prior (scale = 0.707)
 
 ::: {#nte-impt .callout-note}
-# IMPORTANT NOTE
+## IMPORTANT NOTE
 The subsequent analysis is made purely for fun. This is not a formalized statistics project, and even though Bayesian analysis is more robust to [optional-stopping](https://www.analytics-toolkit.com/glossary/peeking/) than frequentist methods, there are important considerations.
 
 - Continously re-running the analysis with the same default prior (Cauchy scale = 0.707) without formally updating it in light of past data can produce Bayes factors that are not strictly coherent under sequential updating. 
@@ -360,13 +369,13 @@ The subsequent analysis is made purely for fun. This is not a formalized statist
 **These results can only be used as informal visualization and intuitive understanding rather than confirmatory statistical proof.**
 :::
 
-## Homogenity of Variance Assumptions
+### Homogenity of Variance Assumptions
 
 Runs Levene's test as a check of homogenity of variance for each game type subsets. Although Bayesian t‐tests are typically robust to mild heterogeneity of variance, it remains good practice to understand whether this assumption might be violated.
 
 ::: {.panel-tabset}
 
-## Tango
+#### Tango
 ```{r T-HoV}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -395,7 +404,7 @@ levene_T_df %>%
 
 ```
 
-## Zip
+#### Zip
 ```{r Z-HoV}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -423,7 +432,7 @@ levene_Z_df %>%
   kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
 ```
 
-## Pinpoint
+#### Pinpoint
 ```{r P-HoV}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -451,7 +460,7 @@ levene_P_df %>%
   kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
 ```
 
-## Crossclimb
+#### Crossclimb
 ```{r C-HoV}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -480,11 +489,11 @@ levene_C_df %>%
 ```
 :::
 
-## Bayes Factor computation 
+### Bayes Factor computation 
 
 ::: {.panel-tabset}
 
-## Tango
+#### Tango
 
 Bayes factor computation for Tango between PM and CW.
 
@@ -588,7 +597,7 @@ ggplot(combined_df_T, aes(x = delta, y = density, color = Distribution, fill = D
   theme_minimal(base_size = 14)
 ```
 
-## Zip
+#### Zip
 
 Bayes factor computation for Zip.
 
@@ -692,7 +701,7 @@ ggplot(combined_df_Z, aes(x = delta, y = density, color = Distribution, fill = D
   theme_minimal(base_size = 14)
 ```
 
-## Pinpoint
+#### Pinpoint
 
 Bayes factor computation for Pinpoint.
 
@@ -796,7 +805,7 @@ ggplot(combined_df_pp, aes(x = delta, y = density, color = Distribution, fill = 
   theme_minimal(base_size = 14)
 ```
 
-## Crossclimb
+#### Crossclimb
 
 Bayes factor computation for Crossclimb.
 

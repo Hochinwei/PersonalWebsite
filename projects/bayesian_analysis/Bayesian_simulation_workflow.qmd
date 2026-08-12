@@ -1,6 +1,9 @@
 ---
 title: "Bayesian Analysis of a 2×2 Factorial Reaction Time Experiment in R"
 subtitle: "Demonstrating Simple Bayesian Workflows in Psychology Research"
+description: "A complete Bayesian workflow in R, from simulating a 2×2 reaction time experiment through to fitting a mixed-effects model with brms and interpreting the posterior."
+image: thumbnail.png
+categories: [code, analysis, bayesian]
 author: "Ho Chin Wei"
 date: last-modified
 date-format: "DD MMMM YYYY"
