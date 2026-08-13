@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="This page displays the different projects I have worked on.">
+<meta name="description" content="Reproducible analysis write-ups rendered straight from R.">
 
-<title>Projects – Ho Chin Wei</title>
+<title>Projects — Ho Chin Wei – Ho Chin Wei</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -45,9 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5aeffaa0a9602c5e613e9c90e0228eb2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2517dbe17360d9fc34737e80c756bc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -113,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -166,17 +164,13 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/favicon.webp" alt="" class="navbar-logo light-content">
-    <img src="../assets/favicon.webp" alt="" class="navbar-logo dark-content">
-    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ho Chin Wei</span>
     </a>
@@ -188,28 +182,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> <i class="bi bi-person-raised-hand" role="img">
-</i> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> <i class="bi bi-substack" role="img">
-</i> 
+    <a class="nav-link" href="../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../projects/index.html" aria-current="page"> <i class="bi bi-tools" role="img">
-</i> 
+    <a class="nav-link active" href="../projects/index.html" aria-current="page"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../CV.html"> <i class="bi bi-file-earmark-richtext" role="img">
-</i> 
+    <a class="nav-link" href="../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> <i class="bi bi-person-lines-fill" role="img">
-</i> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -223,56 +212,43 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#analysis-projects" id="toc-analysis-projects" class="nav-link active" data-scroll-target="#analysis-projects">Analysis Projects</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Projects</h1>
+
+
+
+<div class="pagehead">
+<p><span class="kicker">Analysis</span></p>
+<section id="projects" class="level1 unlisted">
+<h1 class="unlisted">Projects</h1>
+<p><span class="lede">Reproducible write-ups, rendered straight from R. Each one is a working document: the code is on the page, and the plots are the output of running it.</span></p>
+</section>
 </div>
-
-<div>
-  <div class="description">
-    <p>This page displays the different projects I have worked on.</p>
-  </div>
-</div>
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="analysis-projects" class="level2">
-<h2 class="anchored" data-anchor-id="analysis-projects">Analysis Projects</h2>
 <div id="listing-linkedin" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Y29kZSUyQ2FuYWx5c2lzJTJDYmF5ZXNpYW4=" data-listing-date-sort="1785944052000" data-listing-file-modified-sort="1785944052101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5315">
-<a href="../projects/LinkedIn_games/Tango_analysis.html" class="quarto-grid-link">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-categories="Y29kZSUyQ2FuYWx5c2lzJTJDYmF5ZXNpYW4=" data-listing-date-sort="1786454024000" data-listing-file-modified-sort="1786454024828" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="27" data-listing-word-count-sort="5316">
+<a href="../projects/LinkedIn_games/Tango_analysis_n.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
-<p class="card-img-top"><img loading='lazy' src="LinkedIn_games\Tango_analysis_files\figure-html\t-ts-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top">
+<img loading="lazy" src="../projects/LinkedIn_games/thumbnail.png" class="thumbnail-image card-img" style="height: 168px;">
+</p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 LinkedIn games analysis pipeline
 </h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmF5ZXNpYW4='); return false;">bayesian</div>
+
+</div>
 <div class="card-text listing-description delink">
-This is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between <code>PM</code> and <code>CW</code>.
+<p>A live pipeline tracking two players’ daily LinkedIn game scores, with descriptive summaries and Bayesian t-tests that update every time the document is rendered.</p>
 </div>
 </div>
 </div></a>
@@ -281,16 +257,28 @@ This is a personal project to create a live analysis pipeline that will show des
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 <div id="listing-bayesian" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1785944996000" data-listing-file-modified-sort="1785944996239" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1459">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-categories="Y29kZSUyQ2FuYWx5c2lzJTJDYmF5ZXNpYW4=" data-listing-date-sort="1786454027000" data-listing-file-modified-sort="1786454027734" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1459">
 <a href="../projects/bayesian_analysis/Bayesian_simulation_workflow.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left borderless">
+<p class="card-img-top">
+<img loading="lazy" src="../projects/bayesian_analysis/thumbnail.png" class="thumbnail-image card-img" style="height: 168px;">
+</p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Bayesian Analysis of a 2×2 Factorial Reaction Time Experiment in R
 </h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmF5ZXNpYW4='); return false;">bayesian</div>
+
+</div>
 <div class="card-text listing-description delink">
-This document demonstrates a complete <strong>Bayesian analysis pipeline in R</strong> for a simple reaction time experiment with a 2×2 factorial design. The goal is to show, in a clear and reproducible way, how to move from a simulated dataset to a fitted Bayesian mixed-effects model, and then on to interpretation of the posterior, predictions, and basic hypothesis tests.
+<p>A complete Bayesian workflow in R, from simulating a 2×2 reaction time experiment through to fitting a mixed-effects model with brms and interpreting the posterior.</p>
 </div>
 </div>
 </div></a>
@@ -301,7 +289,6 @@ This document demonstrates a complete <strong>Bayesian analysis pipeline in R</s
 
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -713,16 +700,17 @@ This document demonstrates a complete <strong>Bayesian analysis pipeline in R</s
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Copyright 2025, Ho Chin Wei</p>
+<p>© 2025 Ho Chin Wei</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with <a href="https://quarto.org/">Quarto</a> in <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
 </div>
   </div>
 </footer>
+<script src="../assets/site.js"></script>
 
 
 

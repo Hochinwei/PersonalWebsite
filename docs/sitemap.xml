@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hochinwei.com/projects/LinkedIn_games/Tango_analysis.html</loc>
-    <lastmod>2026-08-05T15:34:12.101Z</lastmod>
+    <loc>https://hochinwei.com/projects/LinkedIn_games/Tango_analysis_n.html</loc>
+    <lastmod>2026-08-11T13:13:44.828Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/projects/bayesian_analysis/Bayesian_simulation_workflow.html</loc>
-    <lastmod>2026-08-05T15:49:56.239Z</lastmod>
+    <lastmod>2026-08-11T13:13:47.734Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/CV.html</loc>
-    <lastmod>2026-08-05T15:37:19.295Z</lastmod>
+    <lastmod>2026-08-11T09:56:28.354Z</lastmod>
   </url>
   <url>
-    <loc>https://hochinwei.com/blog.html</loc>
-    <lastmod>2026-08-05T16:01:55.505Z</lastmod>
+    <loc>https://hochinwei.com/blog/template-post/index.html</loc>
+    <lastmod>2026-08-11T09:50:28.570Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/blog/example-post/index.html</loc>
+    <lastmod>2026-08-13T09:06:36.775Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/about.html</loc>
-    <lastmod>2026-08-06T13:13:49.725Z</lastmod>
+    <lastmod>2026-08-13T09:06:25.446Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/blog/index.html</loc>
+    <lastmod>2026-08-13T09:30:02.207Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/contact.html</loc>
-    <lastmod>2025-06-14T13:45:45.340Z</lastmod>
+    <lastmod>2026-08-11T10:01:40.665Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/index.html</loc>
-    <lastmod>2026-08-05T15:34:07.711Z</lastmod>
+    <lastmod>2026-08-13T09:06:19.748Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/projects/index.html</loc>
-    <lastmod>2026-08-05T15:57:01.159Z</lastmod>
+    <lastmod>2026-08-11T11:07:51.959Z</lastmod>
   </url>
 </urlset>

@@ -1,5 +1,77 @@
 ---
-title: "contact"
+pagetitle: "Contact — Ho Chin Wei"
+description-meta: "Get in touch with Ho Chin Wei, PhD researcher in psychology at the University of Hull."
+toc: false
 ---
 
-Coming Soon!
+::: {.pagehead}
+[Contact]{.kicker}
+
+# Say hello, or send me a problem. {.unlisted}
+
+[I'm happy to hear from researchers working on human--agent interaction, students thinking about a psychology PhD in the UK, and anyone who wants a second pair of eyes on a Bayesian model.]{.lede}
+:::
+
+------------------------------------------------------------------------
+
+::: {.contact}
+::: {}
+
+::: {.factgrid}
+::: {}
+[Email]{.fact-label}
+[[c.ho-2023@hull.ac.uk](mailto:c.ho-2023@hull.ac.uk)]{.fact-value}
+:::
+
+::: {}
+[Where]{.fact-label}
+[Department of Psychology\
+University of Hull\
+Cottingham Road, Hull HU6 7RX]{.fact-value}
+:::
+
+::: {}
+[Elsewhere]{.fact-label}
+
+::: {.linkstack}
+[LinkedIn ↗](https://www.linkedin.com/in/hochinwei/)
+
+[ResearchGate ↗](https://www.researchgate.net/profile/Chin-Wei-Ho?ev=hdr_xprf)
+
+[GitHub ↗](https://github.com/Hochinwei)
+
+[ORCID ↗](https://orcid.org/my-orcid?orcid=0009-0003-4688-805X)
+
+[X ↗](https://x.com/HoChinWei_)
+:::
+:::
+
+::: {}
+[Response time]{.fact-label}
+[Usually within a few days. Slower during data collection.]{.fact-value}
+:::
+:::
+
+:::
+
+::: {.formcard}
+## Send a message {.unlisted}
+
+```{=html}
+<form action="https://formspree.io/f/xnpaddpk" method="POST">
+  <label for="cf-name">Name</label>
+  <input id="cf-name" type="text" name="name" placeholder="Your name" required>
+
+  <label for="cf-email">Email</label>
+  <input id="cf-email" type="email" name="email" placeholder="you@example.com" required>
+
+  <label for="cf-message">Message</label>
+  <textarea id="cf-message" name="message" rows="5" placeholder="What do you want to tell me?!" required></textarea>
+
+  <button type="submit">Send</button>
+</form>
+```
+
+[This is a static site, so the form posts to [Formspree](https://formspree.io) --- create a free form and paste its id into the `action` above. If you'd rather not run a form at all, delete this card and keep the email link.]{.formnote}
+:::
+:::

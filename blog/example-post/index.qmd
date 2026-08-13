@@ -1,6 +1,6 @@
 ---
 # The page title. Shown at the top of the post, in browser tabs, and as
-# the headline in the blog listing page (blog.qmd).
+# the headline in the blog listing page (blog/index.qmd).
 title: "Example Post: Blogging Template"
 
 # Your name as the post's author. Shown under the title.
@@ -13,8 +13,8 @@ author: "Ho Chin Wei"
 # even if you re-render the site later.
 date: last-modified
 
-# One or more tags. Because blog.qmd's listing has "categories: true",
-# these become clickable filter buttons on the blog listing page.
+# One or more tags. Because blog/index.qmd's listing sets "categories:
+# unnumbered", these become clickable filter chips on the listing page.
 categories: [tutorial, template]
 
 # A short one- or two-sentence summary. Shown under the title on this
@@ -25,13 +25,14 @@ description: "A commented template showing the correct front matter, heading str
 # listing (e.g. image: thumbnail.jpg, a file placed in this same
 # folder). If you leave it out, Quarto automatically uses the first
 # image it finds in the post's own content instead.
+
 # image: thumbnail.jpg
 
 # Keeps this template out of the public blog listing and RSS feed -
 # Quarto skips anything marked as a draft. Delete this line when you
 # copy this folder to start a real post, or it will never appear on
 # the live site.
-draft: true
+draft: false
 ---
 
 <!--

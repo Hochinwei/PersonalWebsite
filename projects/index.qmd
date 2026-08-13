@@ -1,36 +1,41 @@
 ---
-title: "Projects"
-description: |
-  This page displays the different projects I have worked on.
+pagetitle: "Projects — Ho Chin Wei"
+description-meta: "Reproducible analysis write-ups rendered straight from R."
+toc: false
 listing:
   - id: linkedin
     max-description-length: 500
-    image-height: 150px
-    fields: [image, title, description]
+    image-height: 168px
+    fields: [image, title, description, categories]
     contents:
       - LinkedIn_games
     type: grid
+    grid-columns: 2
     grid-item-border: false
+    categories: false
 
   - id: bayesian
     max-description-length: 500
-    image-height: 150px
-    fields: [title, description]
+    image-height: 168px
+    fields: [image, title, description, categories]
     contents:
       - bayesian_analysis
     type: grid
+    grid-columns: 2
     grid-item-border: false
+    categories: false
 ---
 
+::: {.pagehead}
+[Analysis]{.kicker}
 
-## Analysis Projects
+# Projects {.unlisted}
+
+[Reproducible write-ups, rendered straight from R. Each one is a working document: the code is on the page, and the plots are the output of running it.]{.lede}
+:::
 
 ::: {#linkedin}
 :::
 
 ::: {#bayesian}
 :::
-
-
-
-
