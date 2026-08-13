@@ -11,7 +11,7 @@ toc-depth: 2
 ::: {.pagehead}
 [About]{.kicker}
 
-# A psychologist who kept following the machines. {.unlisted}
+# A researcher who's following the machines. {.unlisted}
 :::
 
 ## Who I am
@@ -20,7 +20,7 @@ toc-depth: 2
 ::: {}
 I'm a PhD researcher in Psychology at the [University of Hull](https://www.hull.ac.uk/), funded by the [White Rose Doctoral Training Partnership](https://wrdtp.ac.uk/). My work sits at the intersection of human cognition and artificial intelligence --- how our minds adapt, resist and evolve as AI becomes harder to tell apart from reality.
 
-I'm also broadly interested in the wider social and philosophical fallout of an AI-saturated world --- from AI-generated misinformation to what "real" and "fake" even mean anymore. Most of that thinking ends up on the [blog](blog.qmd).
+I'm also broadly interested in the wider social and philosophical fallout of an AI-saturated world --- from AI-generated misinformation to what "real" and "fake" even mean anymore. Most of that thinking ends up on the [blog](blog/index.qmd).
 :::
 
 ::: {.plate}
@@ -28,18 +28,18 @@ I'm also broadly interested in the wider social and philosophical fallout of an 
 :::
 :::
 
-## The research
+## My research
 
 ::: {.cardgrid}
 ::: {.tile}
 [PhD · 2025 —]{.tile-kicker}
 [Joint action with an artificial partner]{.tile-title}
 
-Does the social Inhibition of Return effect survive when the other actor in the task is an AI rather than a person?
+Does the social Inhibition of Return (sIOR) effect survive when the other actor in the task is an artificial rather than a person?
 :::
 
 ::: {.tile}
-[MSc · Distinction]{.tile-kicker}
+[MSc · 2024 Distinction]{.tile-kicker}
 [The ethics of seeing]{.tile-title}
 
 How people judge the authenticity of AI-altered images, and how context moderates what we find acceptable. 700+ participants; multilevel SEM.
@@ -48,7 +48,7 @@ How people judge the authenticity of AI-altered images, and how context moderate
 
 ## Before Hull
 
-I completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent year-long research projects along the way. The full academic history is on my [CV](CV.qmd).
+I completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent year-long research projects along the way. My full academic history is on my [CV](CV.qmd).
 
 ::: {.logos}
 ![](assets/ntu_logo.webp){alt="Nanyang Technological University"}
@@ -59,9 +59,9 @@ I completed my BSc in Psychology at Nanyang Technological University in Singapor
 ## Where to next
 
 ::: {.cardgrid .three}
-[[Blog]{.tile-kicker}[Opinions, in longer form]{.tile-title}[Essays on authenticity, misinformation and AI →]{.tile-note}](blog.qmd){.tile}
+[[Blog]{.tile-kicker}[Thoughts, in longer form]{.tile-title}[Ponderings about everything under the sun →]{.tile-note}](blog/index.qmd){.tile}
 
 [[Projects]{.tile-kicker}[Reproducible analyses]{.tile-title}[Bayesian workflows and live R pipelines →]{.tile-note}](projects/index.qmd){.tile}
 
-[[CV]{.tile-kicker}[The full record]{.tile-title}[Education, publications, funding, skills →]{.tile-note}](CV.qmd){.tile}
+[[CV]{.tile-kicker}[My full record]{.tile-title}[Education, publications, funding, skills →]{.tile-note}](CV.qmd){.tile}
 :::

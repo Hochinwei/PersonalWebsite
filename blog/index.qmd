@@ -1,0 +1,31 @@
+---
+pagetitle: "Blog — Ho Chin Wei"
+description-meta: "Personal blogs about my research in human-robot cognition."
+toc: false
+
+# blog/_metadata.yml sets these for the posts; the listing page is not a post.
+title-block-banner: false
+freeze: false
+
+listing:
+  # Every post is a folder next to this file with its own index.qmd. The "*/"
+  # is what keeps this page out of its own listing - a bare "." or a recursive
+  # glob would match index.qmd and list the blog inside itself.
+  contents:
+    - "*/index.qmd"
+  sort: "date desc"
+  type: default
+  fields: [date, title, description, categories]
+  categories: unnumbered
+  sort-ui: false
+  filter-ui: false
+  feed: true
+---
+
+::: {.pagehead}
+[Writing]{.kicker}
+
+# Notes & opinions {.unlisted}
+
+[To capture some of the 50 billion thoughts zipping through my head every day.]{.lede}
+:::

@@ -1,7 +1,8 @@
 [
   {
-    "listing": "/blog.html",
+    "listing": "/blog/index.html",
     "items": [
+      "/blog/example-post/index.html",
       "/blog/template-post/index.html"
     ]
   },

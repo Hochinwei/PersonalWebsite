@@ -20,7 +20,7 @@ website:
       - text: "About"
         href: about.qmd
       - text: "Blog"
-        href: blog.qmd
+        href: blog/index.qmd
       - text: "Projects"
         href: projects/index.qmd
       - text: "CV"

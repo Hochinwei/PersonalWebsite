@@ -4,14 +4,14 @@
     "href": "projects/LinkedIn_games/Tango_analysis_n.html",
     "title": "LinkedIn games analysis pipeline",
     "section": "",
-    "text": "← Projects\nThis is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between PM and CW.\nThis pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players PM and CW. Beginning from April 29th till today, August 11, 2026, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered.\nIn addition to summarizing means, medians, standard deviations, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF10) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see Note 1 below).\nThis document aims to describe, visualize, and evaluate, using both descriptive statistics and Bayesian hypothesis tests, to assess the differences in scores between the two players.\n# Libraries utilized\nlibrary(tidyverse)\nlibrary(readxl)\nlibrary(car)\nlibrary(patchwork)\nlibrary(knitr)\nlibrary(kableExtra)\nlibrary(BayesFactor)\n\n# Load the data in\ndat &lt;- read_xlsx(\"LinkedIn_games_data.xlsx\")\nTo account for missing data (e.g., failure to complete Pinpoint guesses), “-” will be recoded into N.A. and listwise deletion will be conducted to remove the data for the day. Additionally, since the data is manually entered, it is recorded in wide format. The code below pivots the wide format into long format, which is simpler for analysis.\nShow the code\n# Convert \"-\" into NA and all columns into double\ndat &lt;- dat %&gt;% \n  mutate(across(where(is.character), ~ na_if(., \"-\"))) %&gt;% \n  mutate(across(where(is.character), as.double)) \n\n# Change to long format\ndat_long &lt;- dat %&gt;% \n  pivot_longer(\n    cols = -date,\n    names_to = c(\"Player\", \"Game_type\"),\n    names_sep = \"_\",\n    values_to = \"value\"\n  )"
+    "text": "← Projects\nThis is a personal project to create a live analysis pipeline that will show descriptive analysis of daily LinkedIn games records between PM and CW.\nThis pipeline will serve to elucidate who is the better overall player in LinkedIn games (Tango, Zip, Pinpoint and Cross climb) to date; between players PM and CW. Beginning from April 29th till today, August 13, 2026, data will continually be updated manually in the raw .xlsx file and ran through the pipeline for analysis when rendered.\nIn addition to summarizing means, medians, standard deviations, and visualizing score distributions over time, this document also employs Bayesian independent‐samples t‐tests for each game type to quantify the strength of evidence for performance differences between PM and CW. In each case, Bayes factors (BF10) is computed along with prior and posterior distributions plotted to illustrate how observed data update our beliefs about any effect (see Note 1 below).\nThis document aims to describe, visualize, and evaluate, using both descriptive statistics and Bayesian hypothesis tests, to assess the differences in scores between the two players.\n# Libraries utilized\nlibrary(tidyverse)\nlibrary(readxl)\nlibrary(car)\nlibrary(patchwork)\nlibrary(knitr)\nlibrary(kableExtra)\nlibrary(BayesFactor)\n\n# Load the data in\ndat &lt;- read_xlsx(\"LinkedIn_games_data.xlsx\")\nTo account for missing data (e.g., failure to complete Pinpoint guesses), “-” will be recoded into N.A. and listwise deletion will be conducted to remove the data for the day. Additionally, since the data is manually entered, it is recorded in wide format. The code below pivots the wide format into long format, which is simpler for analysis.\nShow the code\n# Convert \"-\" into NA and all columns into double\ndat &lt;- dat %&gt;% \n  mutate(across(where(is.character), ~ na_if(., \"-\"))) %&gt;% \n  mutate(across(where(is.character), as.double)) \n\n# Change to long format\ndat_long &lt;- dat %&gt;% \n  pivot_longer(\n    cols = -date,\n    names_to = c(\"Player\", \"Game_type\"),\n    names_sep = \"_\",\n    values_to = \"value\"\n  )"
   },
   {
     "objectID": "projects/LinkedIn_games/Tango_analysis_n.html#descriptive-statistics",
     "href": "projects/LinkedIn_games/Tango_analysis_n.html#descriptive-statistics",
     "title": "LinkedIn games analysis pipeline",
     "section": "Descriptive statistics",
-    "text": "Descriptive statistics\nThis section summarizes the central tendencies and variability in the players’ daily game performance across the four game types (Tango (T), Zip(Z), Pinpoint(P), and Crossclimb(C)), using standard measures of mean, median and standard deviation.\n\n\nShow the code\n# Calculate mean, median and SD for understanding average\nsummary_stats &lt;- dat_long %&gt;% \n  group_by(Player, Game_type) %&gt;% \n  summarise(\n    Mean = round(mean(value, na.rm = TRUE), 1),\n    Median = round(median(value, na.rm = TRUE), 1),\n    Standard_Deviation = round(sd(value, na.rm = TRUE), 1),\n    .groups = \"drop\"\n  )\n\n# Store central tendencies scores for inline updating\n## Tango (Mean)\nmean_t_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_t_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"CW\") %&gt;%\n  pull(Mean)\n## Zip (Mean)\nmean_z_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_z_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"CW\") %&gt;%\n  pull(Mean)\n## Pinpoint (Mean)\nmean_p_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_p_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"CW\") %&gt;%\n  pull(Mean)\n## Crossclimb (Mean)\nmean_c_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_c_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"CW\") %&gt;%\n  pull(Mean)\n\n## Tango (Median)\nmedian_t_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_t_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"CW\") %&gt;%\n  pull(Median)\n## Zip (Median)\nmedian_z_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_z_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"CW\") %&gt;%\n  pull(Median)\n## Pinpoint (Median)\nmedian_p_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_p_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"CW\") %&gt;%\n  pull(Median)\n## Crossclimb (Median)\nmedian_c_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_c_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"CW\") %&gt;%\n  pull(Median)\n\n# Build table for visualization\nkable(summary_stats, \n        caption = \"Summary statistics for each player and game type.\", \n        align = \"c\")  \n\n\n\nSummary statistics for each player and game type.\n\n\nPlayer\nGame_type\nMean\nMedian\nStandard_Deviation\n\n\n\n\nCW\nC\n61.6\n57.0\n22.8\n\n\nCW\nP\n3.7\n4.0\n1.2\n\n\nCW\nT\n49.2\n39.0\n32.6\n\n\nCW\nZ\n31.7\n19.0\n41.6\n\n\nPM\nC\n67.2\n63.5\n27.0\n\n\nPM\nP\n3.0\n3.0\n1.1\n\n\nPM\nT\n61.2\n46.0\n48.4\n\n\nPM\nZ\n36.8\n16.5\n51.3\n\n\n\n\n\nAs of April 29 2025 through August 11, 2026, for Tango:\n\nPM’s average time is 61.2 seconds, with the median time being 46 seconds.\nCW’s average time is 49.2 seconds, with the median time being 39 seconds.\n\nFor Zip:\n\nPM’s average time is 36.8 seconds, with the median time being 16.5 seconds.\nCW’s average time is 31.7 seconds, with the median time being 19 seconds.\n\nFor Pinpoint:\n\nPM’s average number of tries is 3, the number of median tries being 3.\n\nCW’s average number of tries is 3.7, the number of median tries being 4.\n\nFor Crossclimb:\n\nPM’s average time is 67.2 seconds, with the median time being 63.5 seconds.\nCW’s average time is 61.6 seconds, with the median time being 57 seconds."
+    "text": "Descriptive statistics\nThis section summarizes the central tendencies and variability in the players’ daily game performance across the four game types (Tango (T), Zip(Z), Pinpoint(P), and Crossclimb(C)), using standard measures of mean, median and standard deviation.\n\n\nShow the code\n# Calculate mean, median and SD for understanding average\nsummary_stats &lt;- dat_long %&gt;% \n  group_by(Player, Game_type) %&gt;% \n  summarise(\n    Mean = round(mean(value, na.rm = TRUE), 1),\n    Median = round(median(value, na.rm = TRUE), 1),\n    Standard_Deviation = round(sd(value, na.rm = TRUE), 1),\n    .groups = \"drop\"\n  )\n\n# Store central tendencies scores for inline updating\n## Tango (Mean)\nmean_t_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_t_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"CW\") %&gt;%\n  pull(Mean)\n## Zip (Mean)\nmean_z_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_z_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"CW\") %&gt;%\n  pull(Mean)\n## Pinpoint (Mean)\nmean_p_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_p_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"CW\") %&gt;%\n  pull(Mean)\n## Crossclimb (Mean)\nmean_c_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"PM\") %&gt;%\n  pull(Mean)\nmean_c_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"CW\") %&gt;%\n  pull(Mean)\n\n## Tango (Median)\nmedian_t_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_t_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"T\", Player == \"CW\") %&gt;%\n  pull(Median)\n## Zip (Median)\nmedian_z_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_z_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"Z\", Player == \"CW\") %&gt;%\n  pull(Median)\n## Pinpoint (Median)\nmedian_p_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_p_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"P\", Player == \"CW\") %&gt;%\n  pull(Median)\n## Crossclimb (Median)\nmedian_c_PM &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"PM\") %&gt;%\n  pull(Median)\nmedian_c_CW &lt;- summary_stats %&gt;%\n  filter(Game_type == \"C\", Player == \"CW\") %&gt;%\n  pull(Median)\n\n# Build table for visualization\nkable(summary_stats, \n        caption = \"Summary statistics for each player and game type.\", \n        align = \"c\")  \n\n\n\nSummary statistics for each player and game type.\n\n\nPlayer\nGame_type\nMean\nMedian\nStandard_Deviation\n\n\n\n\nCW\nC\n61.6\n57.0\n22.8\n\n\nCW\nP\n3.7\n4.0\n1.2\n\n\nCW\nT\n49.2\n39.0\n32.6\n\n\nCW\nZ\n31.7\n19.0\n41.6\n\n\nPM\nC\n67.2\n63.5\n27.0\n\n\nPM\nP\n3.0\n3.0\n1.1\n\n\nPM\nT\n61.2\n46.0\n48.4\n\n\nPM\nZ\n36.8\n16.5\n51.3\n\n\n\n\n\nAs of April 29 2025 through August 13, 2026, for Tango:\n\nPM’s average time is 61.2 seconds, with the median time being 46 seconds.\nCW’s average time is 49.2 seconds, with the median time being 39 seconds.\n\nFor Zip:\n\nPM’s average time is 36.8 seconds, with the median time being 16.5 seconds.\nCW’s average time is 31.7 seconds, with the median time being 19 seconds.\n\nFor Pinpoint:\n\nPM’s average number of tries is 3, the number of median tries being 3.\n\nCW’s average number of tries is 3.7, the number of median tries being 4.\n\nFor Crossclimb:\n\nPM’s average time is 67.2 seconds, with the median time being 63.5 seconds.\nCW’s average time is 61.6 seconds, with the median time being 57 seconds."
   },
   {
     "objectID": "projects/LinkedIn_games/Tango_analysis_n.html#time-series-visualizations",
@@ -147,48 +147,6 @@
     "text": "Skills\n\nSkills\n\n\nResearch methods\nExperimental design, online experiments (Prolific, Qualtrics), longitudinal and secondary data analysis, SEM, moderated mediation, ESM, qualitative interviewing and thematic analysis.\n\n\nStatistical & programming\nR (tidyverse, brms, SEM packages), Python, SPSS, Jamovi, Mplus.\n\n\nExperimental & neurocognitive\nPsychoPy, BrainVision, EEG / TMS / fMRI protocols.\n\n\nLanguages\nEnglish (native), Mandarin Chinese (native), Spanish (intermediate)."
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Notes & opinions",
-    "section": "",
-    "text": "Writing\n\nNotes & opinions\nWhere I think out loud about the things around my research — authenticity, misinformation, and living in an AI-saturated world. Mainly focused on my interests.\n\n\n\n\n\n\n\n\n\n\n\nWhat we lose when we stop being able to tell\n\n\n\nauthenticity\n\nAI\n\ncognition\n\n\n\nDetection is the wrong test for AI-altered images. A note on why the interesting question is not whether people can tell, but what changes once they assume they can’t.\n\n\n\n\n\nAug 11, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "A psychologist who kept following the machines.",
-    "section": "",
-    "text": "About"
-  },
-  {
-    "objectID": "about.html#who-i-am",
-    "href": "about.html#who-i-am",
-    "title": "A psychologist who kept following the machines.",
-    "section": "Who I am",
-    "text": "Who I am\n\n\nI’m a PhD researcher in Psychology at the University of Hull, funded by the White Rose Doctoral Training Partnership. My work sits at the intersection of human cognition and artificial intelligence — how our minds adapt, resist and evolve as AI becomes harder to tell apart from reality.\nI’m also broadly interested in the wider social and philosophical fallout of an AI-saturated world — from AI-generated misinformation to what “real” and “fake” even mean anymore. Most of that thinking ends up on the blog."
-  },
-  {
-    "objectID": "about.html#the-research",
-    "href": "about.html#the-research",
-    "title": "A psychologist who kept following the machines.",
-    "section": "The research",
-    "text": "The research\n\n\nPhD · 2025 — Joint action with an artificial partner\nDoes the social Inhibition of Return effect survive when the other actor in the task is an AI rather than a person?\n\n\nMSc · Distinction The ethics of seeing\nHow people judge the authenticity of AI-altered images, and how context moderates what we find acceptable. 700+ participants; multilevel SEM."
-  },
-  {
-    "objectID": "about.html#before-hull",
-    "href": "about.html#before-hull",
-    "title": "A psychologist who kept following the machines.",
-    "section": "Before Hull",
-    "text": "Before Hull\nI completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent year-long research projects along the way. The full academic history is on my CV."
-  },
-  {
-    "objectID": "about.html#where-to-next",
-    "href": "about.html#where-to-next",
-    "title": "A psychologist who kept following the machines.",
-    "section": "Where to next",
-    "text": "Where to next\n\nBlogOpinions, in longer formEssays on authenticity, misinformation and AI →\nProjectsReproducible analysesBayesian workflows and live R pipelines →\nCVThe full recordEducation, publications, funding, skills →"
-  },
-  {
     "objectID": "blog/template-post/index.html",
     "href": "blog/template-post/index.html",
     "title": "What we lose when we stop being able to tell",
@@ -238,6 +196,69 @@
     "text": "Footnotes\n\n\nFootnotes are good for the caveat you don’t want in the main sentence.↩︎"
   },
   {
+    "objectID": "blog/example-post/index.html",
+    "href": "blog/example-post/index.html",
+    "title": "Example Post: Blogging Template",
+    "section": "",
+    "text": "This page is a working template, not a real post - it exists to show the correct pattern for writing one. Everything below demonstrates something worth copying."
+  },
+  {
+    "objectID": "blog/example-post/index.html#heading-structure",
+    "href": "blog/example-post/index.html#heading-structure",
+    "title": "Example Post: Blogging Template",
+    "section": "Heading Structure",
+    "text": "Heading Structure\nQuarto turns the title: field above into the page’s main heading automatically, so headings inside the post body should start one level down, at ## (not # - using # here would create a second, duplicate top-level heading).\n\n## (H2) marks a major section of the post, like this one.\n### (H3) marks a subsection within it, like the one directly below.\n\nQuarto builds the page’s table of contents from these headings, so keeping them in order (H2 before H3, no skipped levels) keeps the TOC sensible.\n\nA Subsection Example\nThis is what a subsection looks like - one level below the section it belongs to."
+  },
+  {
+    "objectID": "blog/example-post/index.html#code-chunks",
+    "href": "blog/example-post/index.html#code-chunks",
+    "title": "Example Post: Blogging Template",
+    "section": "Code Chunks",
+    "text": "Code Chunks\nCode chunks use three backticks and curly braces naming the language, e.g. ```{r} or ```{python}. The #| lines at the top of a chunk are chunk options - settings for that one chunk only. Two of the most useful:\n\necho - whether the code itself is shown on the page (true) or hidden, showing only its output (false).\neval - whether the code actually runs when the site is rendered (true), or is just displayed as text without being executed (false). Useful for showing code that depends on something not guaranteed to be available at render time - a package, an API key, a large dataset - without breaking the build.\n\n\nR example\nThis site’s other R pages (the LinkedIn games and Bayesian analysis projects) both use this same R engine, so this is the more “native” language for this site.\n\nmean(c(4, 8, 15, 16, 23, 42))\n\n[1] 18\n\n\n\n\nPython example\nPython chunks work the same way, through the same R-based engine (via a package called reticulate that lets R call out to Python) - as long as the post’s front matter does not add a jupyter: python3 line. Setting eval: false here on purpose, just to demonstrate the option; remove it in a real post if you want the code to actually run.\n\nimport statistics\nstatistics.mean([4, 8, 15, 16, 23, 42])"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "A researcher who’s following the machines.",
+    "section": "",
+    "text": "About"
+  },
+  {
+    "objectID": "about.html#who-i-am",
+    "href": "about.html#who-i-am",
+    "title": "A researcher who’s following the machines.",
+    "section": "Who I am",
+    "text": "Who I am\n\n\nI’m a PhD researcher in Psychology at the University of Hull, funded by the White Rose Doctoral Training Partnership. My work sits at the intersection of human cognition and artificial intelligence — how our minds adapt, resist and evolve as AI becomes harder to tell apart from reality.\nI’m also broadly interested in the wider social and philosophical fallout of an AI-saturated world — from AI-generated misinformation to what “real” and “fake” even mean anymore. Most of that thinking ends up on the blog."
+  },
+  {
+    "objectID": "about.html#my-research",
+    "href": "about.html#my-research",
+    "title": "A researcher who’s following the machines.",
+    "section": "My research",
+    "text": "My research\n\n\nPhD · 2025 — Joint action with an artificial partner\nDoes the social Inhibition of Return (sIOR) effect survive when the other actor in the task is an artificial rather than a person?\n\n\nMSc · 2024 Distinction The ethics of seeing\nHow people judge the authenticity of AI-altered images, and how context moderates what we find acceptable. 700+ participants; multilevel SEM."
+  },
+  {
+    "objectID": "about.html#before-hull",
+    "href": "about.html#before-hull",
+    "title": "A researcher who’s following the machines.",
+    "section": "Before Hull",
+    "text": "Before Hull\nI completed my BSc in Psychology at Nanyang Technological University in Singapore, where I was twice named an NTU President Research Scholar through the Undergraduate Research Experience on Campus (URECA) programme, leading two independent year-long research projects along the way. My full academic history is on my CV."
+  },
+  {
+    "objectID": "about.html#where-to-next",
+    "href": "about.html#where-to-next",
+    "title": "A researcher who’s following the machines.",
+    "section": "Where to next",
+    "text": "Where to next\n\nBlogThoughts, in longer formPonderings about everything under the sun →\nProjectsReproducible analysesBayesian workflows and live R pipelines →\nCVMy full recordEducation, publications, funding, skills →"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Notes & opinions",
+    "section": "",
+    "text": "Writing\n\nNotes & opinions\nTo capture some of the 50 billion thoughts zipping through my head every day.\n\n\n\n\n\n\n\n\n\n\n\nExample Post: Blogging Template\n\n\n\ntutorial\n\ntemplate\n\n\n\nA commented template showing the correct front matter, heading structure, and code chunk options for writing a new blog post.\n\n\n\n\n\nAug 13, 2026\n\n\n\n\n\n\n\nWhat we lose when we stop being able to tell\n\n\n\nauthenticity\n\nAI\n\ncognition\n\n\n\nDetection is the wrong test for AI-altered images. A note on why the interesting question is not whether people can tell, but what changes once they assume they can’t.\n\n\n\n\n\nAug 11, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "contact.html",
     "href": "contact.html",
     "title": "Say hello, or send me a problem.",
@@ -254,30 +275,30 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Ho Chin Wei",
+    "title": "Hello! I’m Chin Wei.",
     "section": "",
     "text": "I study what shifts in cognition when the other actor in the task is an artificial one.\nPhD researcher in psychology at the University of Hull, funded by the White Rose DTP. How people extend — and withdraw — agency toward artificial agents, and what that does to social cognition."
   },
   {
     "objectID": "index.html#research",
     "href": "index.html#research",
-    "title": "Ho Chin Wei",
+    "title": "Hello! I’m Chin Wei.",
     "section": "Research",
-    "text": "Research\nSocial inhibition of return in human–agent joint action, and how people judge the authenticity of AI-altered images. Preregistered experiments, SEM, Bayesian estimation.\nAbout my work →"
+    "text": "Research\nSocial inhibition of return in human–agent joint action, and how people judge the authenticity of AI-altered images. Preregistered experiments, SEM, Bayesian estimation.\nLearn more about me →"
   },
   {
     "objectID": "index.html#writing",
     "href": "index.html#writing",
-    "title": "Ho Chin Wei",
+    "title": "Hello! I’m Chin Wei.",
     "section": "Writing",
-    "text": "Writing\nNotes on an AI-saturated world — misinformation, authenticity, and what “real” is doing in that sentence. Written for people outside the discipline as much as inside it.\nRead the blog →"
+    "text": "Writing\nNotes on an AI-saturated world — misinformation, authenticity, and what “real” is doing in that sentence. Written for people outside the discipline as much as inside it.\nRead my blog →"
   },
   {
-    "objectID": "index.html#analysis",
-    "href": "index.html#analysis",
-    "title": "Ho Chin Wei",
-    "section": "Analysis",
-    "text": "Analysis\nReproducible R write-ups: Bayesian workflows in brms, live data pipelines, and the occasional argument settled with a Bayes factor.\nSee the projects →"
+    "objectID": "index.html#projects",
+    "href": "index.html#projects",
+    "title": "Hello! I’m Chin Wei.",
+    "section": "Projects",
+    "text": "Projects\nReproducible R write-ups: Bayesian workflows in brms, live data pipelines, and the occasional argument settled with a Bayes factor.\nSee my projects →"
   },
   {
     "objectID": "projects/index.html",
