@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Personal blogs about my research in human-robot cognition.">
+<meta name="author" content="Ho Chin Wei">
+<meta name="dcterms.date" content="2026-08-11">
+<meta name="description" content="Detection is the wrong test for AI-altered images. A note on why the interesting question is not whether people can tell, but what changes once they assume they can’t.">
 
-<title>Blog — Ho Chin Wei – Ho Chin Wei</title>
+<title>What we lose when we stop being able to tell – Ho Chin Wei</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,28 +26,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../assets/favicon.webp" rel="icon">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2517dbe17360d9fc34737e80c756bc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/favicon.webp" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-2517dbe17360d9fc34737e80c756bc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,77 +108,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+</head>
 
-<link rel="alternate" type="application/rss+xml" title="Ho Chin Wei" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Ho Chin Wei</span>
     </a>
   </div>
@@ -154,23 +131,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html"> 
+    <a class="nav-link" href="../../../projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../CV.html"> 
+    <a class="nav-link" href="../../../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> 
+    <a class="nav-link" href="../../../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -183,81 +160,157 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">In this post</h2>
+   
+  <ul>
+  <li><a href="#the-usual-framing" id="toc-the-usual-framing" class="nav-link active" data-scroll-target="#the-usual-framing">The usual framing</a>
+  <ul class="collapse">
+  <li><a href="#a-sub-point" id="toc-a-sub-point" class="nav-link" data-scroll-target="#a-sub-point">A sub-point</a></li>
+  </ul></li>
+  <li><a href="#something-worth-flagging" id="toc-something-worth-flagging" class="nav-link" data-scroll-target="#something-worth-flagging">Something worth flagging</a></li>
+  <li><a href="#showing-your-work" id="toc-showing-your-work" class="nav-link" data-scroll-target="#showing-your-work">Showing your work</a></li>
+  <li><a href="#closing" id="toc-closing" class="nav-link" data-scroll-target="#closing">Closing</a></li>
+  <li><a href="#how-to-use-this-file" id="toc-how-to-use-this-file" class="nav-link" data-scroll-target="#how-to-use-this-file">How to use this file</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-unnumbered"><div class="category" data-category="QUk=">AI</div><div class="category" data-category="YXV0aGVudGljaXR5">authenticity</div><div class="category" data-category="Y29nbml0aW9u">cognition</div><div class="category" data-category="dGVtcGxhdGU=">template</div><div class="category" data-category="dHV0b3JpYWw=">tutorial</div></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">What we lose when we stop being able to tell</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">authenticity</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">cognition</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>Detection is the wrong test for AI-altered images. A note on why the interesting question is not whether people <em>can</em> tell, but what changes once they assume they can’t.</p>
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ho Chin Wei </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 11, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
-<div class="pagehead">
-<p><span class="kicker">Writing</span></p>
-<section id="notes-opinions" class="level1 unlisted">
-<h1 class="unlisted">Notes &amp; opinions</h1>
-<p><span class="lede">To capture some of the 50 billion thoughts zipping through my head every day.</span></p>
+</header>
+
+
+<p>Open with the claim, not the background. One short paragraph that tells the reader what the post argues, so they can decide in ten seconds whether to keep going. Assume they have not read anything else on this site.</p>
+<p>Then the second paragraph does the setup — why the question matters, what the usual framing gets wrong. Prose runs at a 68-character measure and is justified, so paragraphs of three to six sentences sit better than very long or very short ones.</p>
+<section id="the-usual-framing" class="level2">
+<h2 class="anchored" data-anchor-id="the-usual-framing">The usual framing</h2>
+<p>Use <code>##</code> for sections. Each one gets a hairline rule above it, which is what gives a long post its rhythm — so use them generously, roughly every three or four paragraphs, and give them real titles rather than “Background” or “Discussion”.</p>
+<p>Inline formatting works as you’d expect: <em>emphasis</em>, <strong>strong</strong>, <code>inline code</code>, and <a href="https://quarto.org">a link</a>. A footnote goes like this<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and collects at the bottom of the post.</p>
+<blockquote class="blockquote">
+<p>A pull quote is a hairline on the left and larger type. Use one when a sentence is worth stopping on — not to break up text you think is boring.</p>
+</blockquote>
+<section id="a-sub-point" class="level3">
+<h3 class="anchored" data-anchor-id="a-sub-point">A sub-point</h3>
+<p><code>###</code> is available for a level below, though most posts don’t need it.</p>
 </section>
+</section>
+<section id="something-worth-flagging" class="level2">
+<h2 class="anchored" data-anchor-id="something-worth-flagging">Something worth flagging</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A note to one side
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Callouts render as a hairline box with an accent rule on the left. <code>.callout-note</code> is the neutral one; <code>.callout-warning</code>, <code>.callout-important</code> and <code>.callout-tip</code> all work and look the same in this theme. Good for a methodological caveat or an aside that would derail the paragraph.</p>
+</div>
+</div>
+</section>
+<section id="showing-your-work" class="level2">
+<h2 class="anchored" data-anchor-id="showing-your-work">Showing your work</h2>
+<p>If the post needs numbers, write the chunk and let it run — the output is framed automatically and the code block keeps its highlighting:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Any R works here. Keep chunks short enough to read on screen.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars<span class="sc">$</span>speed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    4.0    12.0    15.0    15.4    19.0    25.0 </code></pre>
+</div>
+</div>
+<p>Plots get a caption and are matted like a photograph. <code>fig-cap</code> writes the caption; <code>fig-alt</code> is the screen-reader description and is worth filling in:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars<span class="sc">$</span>speed, cars<span class="sc">$</span>dist,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#4b7a55"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Speed (mph)"</span>, <span class="at">ylab =</span> <span class="st">"Stopping distance (ft)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-demo" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatterplot showing stopping distance increasing with speed.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-demo-1.png" class="img-fluid figure-img" alt="Scatterplot showing stopping distance increasing with speed." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Figure 1. Stopping distance against speed, from the built-in <code>cars</code> data.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Refer to it in the text as <a href="#fig-demo" class="quarto-xref">Figure&nbsp;1</a> and Quarto numbers and links it for you.</p>
+<p>An ordinary image, if you want one without R:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/profile-main.jpg" class="img-fluid figure-img" alt="Placeholder image." width="480"></p>
+<figcaption>A caption sits under the plate, left-aligned.</figcaption>
+</figure>
+</div>
+</section>
+<section id="closing" class="level2">
+<h2 class="anchored" data-anchor-id="closing">Closing</h2>
+<p>Land the argument. One paragraph, no summary of what you just said — say the thing you were building toward, or the question you’re leaving open.</p>
+<hr>
+</section>
+<section id="how-to-use-this-file" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-file">How to use this file</h2>
+<p>Copy the whole <code>template-post/</code> folder, rename it to a slug (<code>blog/detection-is-the-wrong-test/</code>), replace the front matter and the body, and delete this last section. The folder name becomes the URL. Keep each post’s images inside its own folder so a post stays self-contained.</p>
 
 
+</section>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="dHV0b3JpYWwlMkN0ZW1wbGF0ZQ==" data-listing-date-sort="1786613373000" data-listing-file-modified-sort="1786613373950" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="505">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/example-post/index.html" class="no-external">Example Post: Blogging Template</a>
-</h3>
-<div class="listing-categories">
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
-<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVtcGxhdGU='); return false;">template</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/example-post/index.html" class="no-external">
-<p>A commented template showing the correct front matter, heading structure, and code chunk options for writing a new blog post.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/example-post/index.html" class="no-external">
-<div class="listing-date">
-Aug 13, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="YXV0aGVudGljaXR5JTJDQUklMkNjb2duaXRpb24=" data-listing-date-sort="1786402800000" data-listing-file-modified-sort="1786614947362" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/template-post/index.html" class="no-external">What we lose when we stop being able to tell</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YXV0aGVudGljaXR5'); return false;">authenticity</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29nbml0aW9u'); return false;">cognition</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/template-post/index.html" class="no-external">
-<p>Detection is the wrong test for AI-altered images. A note on why the interesting question is not whether people <em>can</em> tell, but what changes once they assume they can’t.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/template-post/index.html" class="no-external">
-<div class="listing-date">
-Aug 11, 2026
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<ol>
+<li id="fn1"><p>Footnotes are good for the caveat you don’t want in the main sentence.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -677,10 +730,10 @@ Aug 11, 2026
 </div>
   </div>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../../../assets/site.js"></script>
 
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

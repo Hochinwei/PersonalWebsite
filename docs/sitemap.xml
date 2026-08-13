@@ -14,11 +14,11 @@
   </url>
   <url>
     <loc>https://hochinwei.com/blog/template-post/index.html</loc>
-    <lastmod>2026-08-11T09:50:28.570Z</lastmod>
+    <lastmod>2026-08-13T09:55:47.362Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/blog/example-post/index.html</loc>
-    <lastmod>2026-08-13T09:06:36.775Z</lastmod>
+    <lastmod>2026-08-13T09:29:33.950Z</lastmod>
   </url>
   <url>
     <loc>https://hochinwei.com/about.html</loc>
@@ -39,5 +39,9 @@
   <url>
     <loc>https://hochinwei.com/projects/index.html</loc>
     <lastmod>2026-08-11T11:07:51.959Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hochinwei.com/docs/blog/template-post/index.html</loc>
+    <lastmod>2026-08-13T09:55:47.362Z</lastmod>
   </url>
 </urlset>
