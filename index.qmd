@@ -14,7 +14,7 @@ page-layout: full
 :::: {#hero-inner}
 
 ::: {.hero-plate}
-![](assets/Profile2.webp){.hero-portrait alt="Ho Chin Wei"}
+![](assets/Profile2.webp){.hero-portrait alt="Picture of Ho Chin Wei"}
 :::
 
 ::: {.hero-copy}
