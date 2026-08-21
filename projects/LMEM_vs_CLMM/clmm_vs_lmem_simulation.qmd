@@ -1,0 +1,745 @@
+---
+title: "Simulation study: CLMM vs LMEM for 5-category ordinal outcomes"
+author: "Your Name Here"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    number-sections: true
+    theme: cosmo
+execute:
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| label: setup
+#| include: true
+
+# ---- Package loading -------------------------------------------------------
+# Core modelling packages
+library(lme4)      # LMEM: linear mixed-effects models
+library(ordinal)   # CLMM: cumulative link mixed models (clmm())
+
+# Data wrangling / tidyverse
+library(tidyverse) # dplyr, tidyr, purrr, ggplot2, tibble, etc.
+library(broom.mixed) # tidy() extraction for mixed models
+
+# Optional: parallel simulation (uncomment if using furrr instead of for-loops)
+# library(furrr)
+# library(future)
+
+# Tables
+library(knitr)
+library(kableExtra)
+
+# Reproducibility - see USER_SEED in Simulation Parameters section below
+```
+
+## Abstract
+
+Ordinal outcomes with a small number of categories (e.g., 5-point Likert-type
+ratings) are common in psychology and cognitive science, yet they are
+routinely analysed with linear mixed-effects models (LMEM) that treat
+category scores as continuous, interval-scaled data. Cumulative link mixed
+models (CLMM) explicitly respect the ordinal, bounded nature of such
+outcomes, but it is unclear how much this matters in realistic
+repeated-measures designs with multiple between-subjects Likert-scored
+predictors. This simulation study, structured according to the ADEMP
+framework (Aims, Data-generating mechanisms, Estimands, Methods, Performance
+measures; Morris, White, & Crowther, 2019), compares CLMM and LMEM for a
+5-category ordinal outcome with three between-subjects predictors (Group1,
+Group2, Group3) and one within-subject factor (Condition). Data are
+generated from a true cumulative logit mixed model containing only main
+effects, and both CLMM and LMEM are fitted with a Group x Condition
+interaction term to allow evaluation of Type I error alongside power. We
+vary distributional shape, intraclass correlation (ICC), effect size, and
+sample size. Performance is assessed via bias, empirical standard deviation,
+mean squared error, Type I error, power, and confidence interval coverage.
+**Results are not yet available and will be inserted by the user after
+running the simulation locally.**
+
+## Introduction
+
+Likert-type and other ordered-categorical response scales pervade
+psychological and cognitive science research: confidence ratings, agreement
+scales, symptom severity scores, and many experimental judgement tasks
+produce outcomes with a small, fixed number of ordered categories (often 5
+or 7). Despite the ordinal nature of these data, it remains standard
+practice to code categories as consecutive integers and to analyse them
+with linear (mixed-effects) models, implicitly assuming equal spacing
+between categories and normally distributed, homoscedastic residuals
+(Liddell & Kruschke, 2018). This "metric" treatment of ordinal data can
+distort estimated effect sizes, inflate or deflate Type I error rates, and
+produce biased inferences, particularly when response distributions are
+skewed, polarised, or bounded near the scale limits (Bürkner & Vuorre,
+2019; Liddell & Kruschke, 2018).
+
+Cumulative link (mixed) models (CLMMs) provide a principled alternative:
+they model the probability of being in category k or below as a function
+of latent thresholds and a linear predictor, without assuming equal
+inter-category distances (McCullagh, 1980; Agresti, 2010). Extending this
+to hierarchical/repeated-measures designs, CLMMs incorporate participant-
+level random effects in the same way LMEMs do, but on the latent (logit or
+probit) scale rather than the observed integer scale (Christensen, 2022,
+`ordinal` package). Foundational and applied work on ordinal versus normal
+mixed models (e.g., Hedeker & Gibbons, 1994; Hedeker, 2008; Johnson, 2003)
+has long argued that treating ordinal data as continuous can bias
+inference, but direct, systematic comparisons in designs typical of
+psychology — repeated within-subject conditions crossed with *multiple*
+continuous/Likert-scored between-subjects predictors — remain relatively
+scarce.
+
+This study addresses that gap using a Monte Carlo simulation designed
+according to the ADEMP framework (Morris, White, & Crowther, 2019), which
+structures simulation studies around explicit statements of Aims,
+Data-generating mechanisms, Estimands, Methods, and Performance measures.
+We simulate 5-category ordinal outcomes from a true cumulative logit mixed
+model with three between-subjects Likert-scored predictors and one
+within-subject factor, and compare CLMM and LMEM fits — each including a
+Group x Condition interaction term whose true value is zero — across
+variations in distributional shape, ICC, effect size, and sample size.
+
+## Aims
+
+- **Aim 1:** How do CLMM and LMEM compare in terms of Type I error and
+  power for detecting Group main effects and the Group x Condition
+  interaction (whose true value is zero in the data-generating model)?
+- **Aim 2:** How does this comparison depend on distributional shape
+  (symmetric vs skewed vs polarised), intraclass correlation (ICC), and
+  sample size?
+- **Aim 3:** Does CLMM provide less biased estimates of fixed effects than
+  LMEM when the true outcome is ordinal with 5 categories?
+
+## Methods (ADEMP)
+
+The simulation follows the ADEMP structure of Morris et al. (2019).
+Sub-sections below correspond to Data-generating mechanisms, Estimands,
+Methods of analysis, and Performance measures. All user-editable simulation
+values are isolated in a single chunk (@sec-user-params) so nothing below
+needs hard-coded numbers changed by hand.
+
+### Data-generating mechanisms (D)
+
+Data are generated from a cumulative logit (or probit) mixed model:
+
+$$
+\text{logit}\,P(Y_{it} \le k) = \alpha_k - \big(\beta_0 + \beta_1 \text{Group1}_i + \beta_2 \text{Group2}_i + \beta_3 \text{Group3}_i + \beta_4 \text{Condition}_t + b_{0i} + b_{1i}\text{Condition}_t\big)
+$$
+
+for $k = 1, \dots, 4$ thresholds separating $K = 5$ ordered categories, with
+$b_{0i}, b_{1i} \sim N(0, \Sigma)$ jointly normal participant-level random
+intercept and slope for Condition. Group1, Group2, and Group3 are
+participant-level, between-subjects predictors, each generated on a 1-5
+Likert scale and (optionally) centered/standardised before entering the
+linear predictor. Condition is a within-subject factor with multiple
+levels. **No Group x Condition interaction terms are included in the true
+DGM** — all true interaction coefficients are zero — but both analysis
+models below still include a Group1:Condition interaction term so that its
+Type I error rate can be evaluated directly.
+
+We vary:
+
+- **Effect size** for Group and Condition main effects (null vs small vs
+  medium vs large, on the latent logit/probit scale).
+- **Distributional shape**, via the threshold set $\alpha_1 < \dots <
+  \alpha_4$: symmetric, skewed, and polarised (extreme-heavy) category
+  probability profiles.
+- **ICC**, via the random-intercept/slope variances and their correlation
+  (low, medium, high).
+- **Sample size** ($N$ participants), at least two levels.
+
+The true interaction coefficient is fixed at zero across *all* scenarios.
+
+### Estimands (E)
+
+- **Primary:** $\beta_1, \beta_2, \beta_3$ (Group1/2/3 main effects on the
+  latent scale), and the Group1:Condition interaction coefficient fitted by
+  each analysis model (true value = 0).
+- **Secondary:** $\beta_4$ (Condition main effect), thresholds $\alpha_k$,
+  random-effect variances/correlation, and implied ICC.
+
+### Methods of analysis (M)
+
+For every simulated dataset we fit:
+
+- **CLMM:** `ordinal::clmm(Y ~ Group1 + Group2 + Group3 + Condition + Group1:Condition + (1 + Condition | id), link = "logit")`
+  (switch `link = "probit"` to compare link functions). Wald z-tests are
+  used for fixed-effect p-values (the default reported by `clmm`); an LRT
+  alternative via `anova()` on nested models is noted in comments for users
+  who prefer it.
+- **LMEM:** `lme4::lmer(Ynum ~ Group1 + Group2 + Group3 + Condition + Group1:Condition + (1 + Condition | id))` on `Ynum = as.numeric(Y)`,
+  with Wald (or Satterthwaite/`lmerTest`, noted in comments) p-values.
+
+### Performance measures (P)
+
+For each estimand, method, and scenario, across simulation repetitions we
+compute: bias, empirical SD, MSE, Type I error (for null effects, including
+the interaction), power (for non-null main effects), and 95% CI coverage,
+each with Monte Carlo standard errors (MCSE), following the formulae in
+Morris et al. (2019, Table 6).
+
+---
+
+## Simulation Parameters (User-Specified) {#sec-user-params}
+
+```{r sim-params}
+#| label: sim-params
+
+# =============================================================================
+# SIMULATION PARAMETERS -- USER SPECIFIED
+# Edit the values below to match your own study. All downstream code
+# references these objects; do NOT hard-code numbers elsewhere.
+# =============================================================================
+
+## --- Reproducibility -------------------------------------------------------
+USER_SEED <- 20260819L  # random seed; change to your own preferred seed
+
+## --- Sample sizes -----------------------------------------------------------
+# Number of participants per scenario. Provide >= 2 levels to study how
+# performance scales with N.
+N_LEVELS <- c(100, 200)
+
+## --- Within-subject Condition factor ----------------------------------------
+N_CONDITION_LEVELS <- 4          # number of within-subject Condition levels
+# Coding/spacing of Condition in the linear predictor. If TRUE, Condition is
+# treated as a numeric/ordered variable with equally spaced scores
+# (e.g., -1.5, -0.5, 0.5, 1.5 for 4 levels); if FALSE, Condition is entered
+# as a factor with (e.g.) treatment/contrast coding -- edit CONDITION_CONTRASTS.
+CONDITION_NUMERIC <- TRUE
+CONDITION_SCORES  <- scale(seq_len(N_CONDITION_LEVELS), center = TRUE, scale = FALSE)[, 1]
+# If CONDITION_NUMERIC == FALSE, specify a contrast matrix, e.g.:
+# CONDITION_CONTRASTS <- contr.sum(N_CONDITION_LEVELS)
+
+## --- Monte Carlo repetitions -------------------------------------------------
+N_SIM_REPS <- 500   # simulation repetitions per scenario (increase to 1000+ for final runs)
+
+## --- True fixed-effect values (latent logit/probit scale) -------------------
+# Group1/Group2/Group3 main effects: null value (for Type I error) plus
+# small/medium/large non-null values (for power). Edit magnitudes to reflect
+# effect sizes plausible for your substantive area (these are placeholder
+# defaults on the latent logistic scale, loosely following Cohen-like
+# conventions rescaled for cumulative logit models).
+BETA_GROUP_NULL   <- 0.00
+BETA_GROUP_SMALL  <- 0.20
+BETA_GROUP_MEDIUM <- 0.50
+BETA_GROUP_LARGE  <- 0.80
+BETA_GROUP_LEVELS <- c(null = BETA_GROUP_NULL, small = BETA_GROUP_SMALL,
+                       medium = BETA_GROUP_MEDIUM, large = BETA_GROUP_LARGE)
+
+# True Condition main effect (latent scale). Edit as needed; can also be
+# varied across a vector of levels analogous to BETA_GROUP_LEVELS.
+BETA_CONDITION <- 0.40
+
+# True Group x Condition interaction is ALWAYS zero in the DGM (do not edit
+# to a non-zero value -- this is required for the Type I error evaluation
+# described in the Aims).
+BETA_INTERACTION_TRUE <- 0.00
+
+## --- Threshold sets (alpha_1..alpha_4) for K = 5 categories -----------------
+# Each vector must be strictly increasing (4 thresholds for 5 categories).
+# Symmetric: roughly equal mass across categories.
+THRESH_SYMMETRIC <- c(-1.5, -0.5, 0.5, 1.5)
+# Skewed: more mass concentrated in lower categories (positive skew in
+# category counts); reverse signs/order for negative skew.
+THRESH_SKEWED    <- c(-2.5, -1.0, 0.2, 1.2)
+# Polarized: more mass at the extreme categories, little in the middle.
+THRESH_POLARIZED <- c(-2.0, -0.3, 0.3, 2.0)
+
+THRESHOLD_SETS <- list(
+  symmetric = THRESH_SYMMETRIC,
+  skewed    = THRESH_SKEWED,
+  polarized = THRESH_POLARIZED
+)
+
+## --- Random-effects structure (participant intercept + Condition slope) -----
+# SDs and correlation for low/medium/high ICC scenarios. Increasing the
+# random-intercept SD relative to residual/latent-scale variance increases
+# ICC; edit magnitudes to bracket the range plausible for your paradigm.
+RANEF_SETTINGS <- tibble::tribble(
+  ~icc_level, ~sd_intercept, ~sd_slope, ~cor_int_slope,
+  "low",       0.5,           0.2,       0.0,
+  "medium",    1.0,           0.3,       0.1,
+  "high",      1.8,           0.4,       0.2
+)
+
+## --- Between-subjects Likert predictors (Group1/Group2/Group3) -------------
+# Distribution used to generate each Group predictor on a 1-5 Likert scale.
+# Options implemented below: "discrete_uniform" (equal probability 1-5) or
+# "rounded_normal" (normal draw rounded and clipped to [1, 5]).
+GROUP_GEN_METHOD <- "rounded_normal"   # "discrete_uniform" or "rounded_normal"
+GROUP_NORMAL_MEAN <- 3      # midpoint of 1-5 scale, used if rounded_normal
+GROUP_NORMAL_SD   <- 1      # spread, used if rounded_normal
+
+# Whether to center (mean 0) and/or standardize (SD 1) Group1/2/3 before
+# they enter the linear predictor. Centering is recommended at minimum so
+# that beta_0 / thresholds retain a sensible reference (average participant).
+GROUP_CENTER    <- TRUE
+GROUP_STANDARDIZE <- FALSE
+
+## --- Link function ----------------------------------------------------------
+LINK_FUNCTION <- "logit"   # "logit" or "probit"; used both in DGM and in clmm()
+
+## --- Derived / convenience objects (do not need editing) --------------------
+set.seed(USER_SEED)
+```
+
+### Helper functions
+
+```{r helper-functions}
+#| label: helper-functions
+
+#' Generate a 1-5 Likert-scale between-subjects predictor
+#'
+#' @param n number of participants
+#' @param method "discrete_uniform" or "rounded_normal"
+#' @param mean_ mean for rounded_normal method
+#' @param sd_ sd for rounded_normal method
+#' @return integer vector length n, values in 1:5
+generate_likert_predictor <- function(n,
+                                       method = GROUP_GEN_METHOD,
+                                       mean_ = GROUP_NORMAL_MEAN,
+                                       sd_ = GROUP_NORMAL_SD) {
+  if (method == "discrete_uniform") {
+    sample(1:5, size = n, replace = TRUE)
+  } else if (method == "rounded_normal") {
+    x <- round(rnorm(n, mean = mean_, sd = sd_))
+    pmin(pmax(x, 1), 5)
+  } else {
+    stop("Unknown method for generate_likert_predictor()")
+  }
+}
+
+#' Rescale a raw 1-5 predictor according to user preferences (center/standardize)
+rescale_predictor <- function(x, center = GROUP_CENTER, standardize = GROUP_STANDARDIZE) {
+  out <- x
+  if (center) out <- out - mean(out)
+  if (standardize) out <- out / sd(out)
+  out
+}
+
+#' Simulate one dataset from the true CLMM data-generating model
+#'
+#' @param n_participants number of participants (N)
+#' @param n_condition number of within-subject Condition levels
+#' @param condition_scores numeric vector of Condition scores (length n_condition)
+#' @param thresholds numeric vector of K-1 increasing thresholds
+#' @param beta_group numeric vector length 3: true Group1/2/3 coefficients
+#' @param beta_condition true Condition main-effect coefficient
+#' @param beta_interaction true Group1:Condition interaction coefficient
+#'   (should be 0 for all scenarios per study design)
+#' @param sd_intercept random-intercept SD
+#' @param sd_slope random Condition-slope SD
+#' @param cor_int_slope correlation between random intercept and slope
+#' @param link "logit" or "probit"
+#' @return tibble, one row per observation (long format), columns:
+#'   id, Group1, Group2, Group3, Condition (factor), Condition_num, Y (ordered
+#'   factor), Ynum (numeric copy of Y)
+simulate_clmm_data <- function(n_participants,
+                                n_condition = N_CONDITION_LEVELS,
+                                condition_scores = CONDITION_SCORES,
+                                thresholds = THRESH_SYMMETRIC,
+                                beta_group = c(0, 0, 0),
+                                beta_condition = BETA_CONDITION,
+                                beta_interaction = BETA_INTERACTION_TRUE,
+                                sd_intercept = 1,
+                                sd_slope = 0.3,
+                                cor_int_slope = 0,
+                                link = LINK_FUNCTION) {
+
+  K <- length(thresholds) + 1
+
+  # Participant-level between-subjects Likert predictors
+  Group1 <- rescale_predictor(generate_likert_predictor(n_participants))
+  Group2 <- rescale_predictor(generate_likert_predictor(n_participants))
+  Group3 <- rescale_predictor(generate_likert_predictor(n_participants))
+
+  # Correlated random intercept/slope via bivariate normal
+  ranef_cov <- matrix(
+    c(sd_intercept^2, cor_int_slope * sd_intercept * sd_slope,
+      cor_int_slope * sd_intercept * sd_slope, sd_slope^2),
+    nrow = 2
+  )
+  ranef_draws <- MASS::mvrnorm(n_participants, mu = c(0, 0), Sigma = ranef_cov)
+  b0 <- ranef_draws[, 1]
+  b1 <- ranef_draws[, 2]
+
+  participant_df <- tibble(
+    id = seq_len(n_participants),
+    Group1 = Group1, Group2 = Group2, Group3 = Group3,
+    b0 = b0, b1 = b1
+  )
+
+  # Expand to long format: one row per participant x Condition level
+  long_df <- participant_df %>%
+    tidyr::expand_grid(cond_index = seq_len(n_condition)) %>%
+    dplyr::mutate(
+      Condition_num = condition_scores[cond_index],
+      Condition = factor(cond_index, labels = paste0("C", seq_len(n_condition)))
+    ) %>%
+    dplyr::arrange(id, cond_index)
+
+  # Linear predictor (eta), NOTE: no true Group:Condition interaction term
+  long_df <- long_df %>%
+    dplyr::mutate(
+      eta = beta_group[1] * Group1 + beta_group[2] * Group2 + beta_group[3] * Group3 +
+        beta_condition * Condition_num +
+        beta_interaction * Group1 * Condition_num +  # kept for completeness; should be 0
+        b0 + b1 * Condition_num
+    )
+
+  # Convert linear predictor into category probabilities via cumulative link
+  link_fun    <- if (link == "probit") pnorm else plogis
+  cum_probs <- sapply(thresholds, function(a) link_fun(a - long_df$eta))
+  cum_probs <- cbind(cum_probs, 1)  # P(Y <= K) = 1
+  cat_probs <- cbind(cum_probs[, 1], t(diff(t(cum_probs))))
+  cat_probs[cat_probs < 0] <- 0
+  cat_probs <- cat_probs / rowSums(cat_probs)
+
+  y_draw <- apply(cat_probs, 1, function(p) sample.int(K, size = 1, prob = p))
+
+  long_df %>%
+    dplyr::mutate(
+      Y = factor(y_draw, levels = 1:K, ordered = TRUE),
+      Ynum = as.numeric(y_draw)
+    ) %>%
+    dplyr::select(id, Group1, Group2, Group3, Condition, Condition_num, Y, Ynum)
+}
+
+#' Fit the CLMM analysis model to one simulated dataset
+#'
+#' Analysis model always includes the Group1:Condition interaction, even
+#' though the true DGM has no interaction, so that Type I error for the
+#' interaction term can be assessed. Fixed-effect inference uses Wald
+#' z-tests as returned by summary(clmm_fit); see comment below for an LRT
+#' alternative.
+fit_clmm <- function(dat, link = LINK_FUNCTION) {
+  fit <- tryCatch(
+    ordinal::clmm(
+      Y ~ Group1 + Group2 + Group3 + Condition_num + Group1:Condition_num +
+        (1 + Condition_num | id),
+      data = dat, link = link
+    ),
+    error = function(e) NULL
+  )
+  if (is.null(fit)) return(NULL)
+
+  # Wald-based tidy summary (default). For an LRT alternative on a specific
+  # term, fit a reduced model without that term and compare via anova():
+  #   fit_reduced <- update(fit, . ~ . - Group1:Condition_num)
+  #   anova(fit_reduced, fit)
+  broom.mixed::tidy(fit, effects = "fixed") %>%
+    dplyr::mutate(method = "CLMM")
+}
+
+#' Fit the LMEM analysis model to the numeric-coded version of the same data
+fit_lmem <- function(dat) {
+  fit <- tryCatch(
+    lme4::lmer(
+      Ynum ~ Group1 + Group2 + Group3 + Condition_num + Group1:Condition_num +
+        (1 + Condition_num | id),
+      data = dat, REML = TRUE
+    ),
+    error = function(e) NULL
+  )
+  if (is.null(fit)) return(NULL)
+
+  # Wald p-values from lme4 by default (no df correction). For
+  # Satterthwaite/Kenward-Roger df, refit with lmerTest::lmer() instead.
+  broom.mixed::tidy(fit, effects = "fixed") %>%
+    dplyr::mutate(
+      p.value = 2 * pnorm(abs(statistic), lower.tail = FALSE),  # Wald z-approx
+      method = "LMEM"
+    )
+}
+```
+
+### Scenario grid
+
+```{r scenario-grid}
+#| label: scenario-grid
+
+# One row per unique combination of design factors. Each row is later
+# expanded into N_SIM_REPS simulated datasets.
+scenario_grid <- tidyr::expand_grid(
+  N               = N_LEVELS,
+  shape           = names(THRESHOLD_SETS),
+  icc_level       = RANEF_SETTINGS$icc_level,
+  group_effect    = names(BETA_GROUP_LEVELS)
+) %>%
+  dplyr::left_join(RANEF_SETTINGS, by = "icc_level") %>%
+  dplyr::mutate(
+    scenario_id  = dplyr::row_number(),
+    beta_group1  = BETA_GROUP_LEVELS[group_effect],
+    beta_group2  = BETA_GROUP_LEVELS[group_effect],  # edit if Group2/3 should differ
+    beta_group3  = BETA_GROUP_LEVELS[group_effect],
+    thresholds   = THRESHOLD_SETS[shape]
+  )
+
+# Inspect the grid before running the full simulation:
+# print(scenario_grid, n = Inf)
+```
+
+### Simulation run
+
+```{r simulation-run}
+#| label: simulation-run
+#| eval: false
+
+# -----------------------------------------------------------------------
+# NOTE: This chunk can be slow (N_SIM_REPS x nrow(scenario_grid) model
+# fits, each involving both a CLMM and an LMEM fit). Set eval: true only
+# when ready to run the full simulation. For quicker iteration, reduce
+# N_SIM_REPS temporarily, or parallelize with furrr::future_map_dfr()
+# (commented alternative below).
+# -----------------------------------------------------------------------
+
+run_one_replicate <- function(scenario_row, rep_id) {
+  dat <- simulate_clmm_data(
+    n_participants   = scenario_row$N,
+    thresholds       = scenario_row$thresholds[[1]],
+    beta_group       = c(scenario_row$beta_group1, scenario_row$beta_group2, scenario_row$beta_group3),
+    beta_condition   = BETA_CONDITION,
+    beta_interaction = BETA_INTERACTION_TRUE,
+    sd_intercept     = scenario_row$sd_intercept,
+    sd_slope         = scenario_row$sd_slope,
+    cor_int_slope    = scenario_row$cor_int_slope
+  )
+
+  clmm_est <- fit_clmm(dat)
+  lmem_est <- fit_lmem(dat)
+
+  dplyr::bind_rows(clmm_est, lmem_est) %>%
+    dplyr::mutate(
+      scenario_id = scenario_row$scenario_id,
+      rep_id = rep_id,
+      N = scenario_row$N,
+      shape = scenario_row$shape,
+      icc_level = scenario_row$icc_level,
+      group_effect = scenario_row$group_effect
+    )
+}
+
+# Simple (sequential) loop version:
+sim_results <- purrr::map_dfr(seq_len(nrow(scenario_grid)), function(i) {
+  scenario_row <- scenario_grid[i, ]
+  purrr::map_dfr(seq_len(N_SIM_REPS), function(r) {
+    run_one_replicate(scenario_row, rep_id = r)
+  })
+})
+
+# Parallelized alternative (uncomment and adapt; requires furrr + future):
+# future::plan(future::multisession, workers = parallel::detectCores() - 1)
+# sim_results <- furrr::future_map_dfr(
+#   seq_len(nrow(scenario_grid)),
+#   function(i) {
+#     scenario_row <- scenario_grid[i, ]
+#     purrr::map_dfr(seq_len(N_SIM_REPS), ~ run_one_replicate(scenario_row, rep_id = .x))
+#   },
+#   .options = furrr::furrr_options(seed = TRUE)
+# )
+
+# Save raw simulation output for later reuse without re-running:
+# saveRDS(sim_results, "sim_results.rds")
+```
+
+### Performance measure computation
+
+```{r performance-measures}
+#| label: performance-measures
+#| eval: false
+
+# True values for each estimand, keyed by scenario characteristics, used to
+# compute bias / Type I error / power / coverage. Edit mapping if term names
+# differ after tidy() (check unique(sim_results$term) first).
+true_value_lookup <- function(term, group_effect) {
+  dplyr::case_when(
+    term == "Group1" ~ BETA_GROUP_LEVELS[group_effect],
+    term == "Group2" ~ BETA_GROUP_LEVELS[group_effect],
+    term == "Group3" ~ BETA_GROUP_LEVELS[group_effect],
+    term == "Condition_num" ~ BETA_CONDITION,
+    term == "Group1:Condition_num" ~ BETA_INTERACTION_TRUE,
+    TRUE ~ NA_real_
+  )
+}
+
+perf_summary <- sim_results %>%
+  dplyr::filter(term %in% c("Group1", "Group2", "Group3",
+                             "Condition_num", "Group1:Condition_num")) %>%
+  dplyr::mutate(
+    true_value = true_value_lookup(term, group_effect),
+    is_null_true = near(true_value, 0),
+    ci_lower = estimate - 1.96 * std.error,
+    ci_upper = estimate + 1.96 * std.error,
+    covered  = true_value >= ci_lower & true_value <= ci_upper,
+    rejected = p.value < 0.05
+  ) %>%
+  dplyr::group_by(method, term, N, shape, icc_level, group_effect, true_value) %>%
+  dplyr::summarise(
+    n_reps      = dplyr::n(),
+    bias        = mean(estimate - true_value, na.rm = TRUE),
+    bias_mcse   = sd(estimate - true_value, na.rm = TRUE) / sqrt(n_reps),
+    emp_sd      = sd(estimate, na.rm = TRUE),
+    mse         = mean((estimate - true_value)^2, na.rm = TRUE),
+    mse_mcse    = sd((estimate - true_value)^2, na.rm = TRUE) / sqrt(n_reps),
+    reject_rate = mean(rejected, na.rm = TRUE),           # Type I error if true_value == 0, else power
+    reject_mcse = sqrt(reject_rate * (1 - reject_rate) / n_reps),
+    coverage    = mean(covered, na.rm = TRUE),
+    coverage_mcse = sqrt(coverage * (1 - coverage) / n_reps),
+    .groups = "drop"
+  )
+
+# saveRDS(perf_summary, "perf_summary.rds")
+```
+
+---
+
+## Results
+
+*Placeholder: this section intentionally contains no results yet. After
+running the simulation chunks above (`simulation-run` and
+`performance-measures`) locally, populate `sim_results` and `perf_summary`,
+then set `eval: true` on the chunks below to generate the tables and plots.*
+
+```{r results-table-bias}
+#| label: results-table-bias
+#| eval: false
+
+perf_summary %>%
+  dplyr::filter(term %in% c("Group1", "Group2", "Group3")) %>%
+  dplyr::select(method, term, N, shape, icc_level, group_effect,
+                bias, bias_mcse, emp_sd, mse, mse_mcse) %>%
+  knitr::kable(digits = 3, caption = "Bias, empirical SD, and MSE for Group main effects, by method and scenario.") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+```{r results-table-typeI-power}
+#| label: results-table-typeI-power
+#| eval: false
+
+perf_summary %>%
+  dplyr::select(method, term, N, shape, icc_level, group_effect,
+                true_value, reject_rate, reject_mcse, coverage, coverage_mcse) %>%
+  knitr::kable(digits = 3, caption = "Type I error / power (reject_rate) and 95% CI coverage, by method, term, and scenario.") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+```{r results-plot-power-icc}
+#| label: results-plot-power-icc
+#| eval: false
+
+perf_summary %>%
+  dplyr::filter(term == "Group1") %>%
+  ggplot2::ggplot(ggplot2::aes(x = icc_level, y = reject_rate, colour = method, group = method)) +
+  ggplot2::geom_point(position = ggplot2::position_dodge(width = 0.2)) +
+  ggplot2::geom_line(ggplot2::aes(group = interaction(method)), position = ggplot2::position_dodge(width = 0.2)) +
+  ggplot2::facet_grid(shape ~ group_effect) +
+  ggplot2::labs(
+    x = "ICC level", y = "Rejection rate (Type I error / power)",
+    colour = "Method",
+    title = "Rejection rate for Group1 effect across ICC, shape, and effect-size scenarios"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+```{r results-plot-bias-shape}
+#| label: results-plot-bias-shape
+#| eval: false
+
+perf_summary %>%
+  dplyr::filter(term %in% c("Group1", "Group2", "Group3")) %>%
+  ggplot2::ggplot(ggplot2::aes(x = shape, y = bias, colour = method, group = method)) +
+  ggplot2::geom_point(position = ggplot2::position_dodge(width = 0.2)) +
+  ggplot2::geom_hline(yintercept = 0, linetype = "dashed") +
+  ggplot2::facet_grid(term ~ N, labeller = ggplot2::label_both) +
+  ggplot2::labs(
+    x = "Distribution shape", y = "Bias",
+    colour = "Method",
+    title = "Bias of Group main-effect estimates across distributional shapes and sample sizes"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+```{r results-plot-interaction-typeI}
+#| label: results-plot-interaction-typeI
+#| eval: false
+
+perf_summary %>%
+  dplyr::filter(term == "Group1:Condition_num") %>%
+  ggplot2::ggplot(ggplot2::aes(x = icc_level, y = reject_rate, colour = method, group = method)) +
+  ggplot2::geom_point(position = ggplot2::position_dodge(width = 0.2)) +
+  ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed") +
+  ggplot2::facet_wrap(~ shape) +
+  ggplot2::labs(
+    x = "ICC level", y = "Type I error rate (interaction term)",
+    colour = "Method",
+    title = "Type I error rate for the Group1:Condition interaction (true value = 0)"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## Discussion
+
+*This section is a generic outline only; specific conclusions should be
+added once results are available.*
+
+- **When CLMM would be preferred:** CLMMs are expected to show advantages
+  over LMEMs particularly when the outcome distribution is skewed or
+  polarised rather than symmetric, when the number of categories is small
+  (as here, K = 5), and when effect sizes on the latent scale are
+  moderate-to-large. Discuss whether the simulation supports this pattern.
+- **When the two methods converge:** Under symmetric distributions with
+  many categories and low ICC, LMEM often approximates CLMM reasonably
+  well; discuss whether this held here, and for which estimands (Group
+  main effects vs the interaction Type I error) the two methods diverged
+  most.
+- **Practical recommendations:** Provide guidance for applied researchers
+  on choosing between CLMM and LMEM for 5-point Likert outcomes in
+  repeated-measures designs with multiple between-subjects Likert-scored
+  predictors, referencing the specific bias/power/Type I error patterns
+  found.
+- **Limitations:** Note constraints such as the number of scenarios
+  simulated, the specific random-effects structure assumed (random
+  intercept + Condition slope only), the use of Wald-based inference for
+  both models, and the restriction to a single true DGM form (cumulative
+  logit with only main effects).
+- **Future work:** Extensions could include non-cumulative-logit DGMs
+  (e.g., adjacent-category or continuation-ratio models), true non-zero
+  interaction effects, model misspecification scenarios (e.g., fitting
+  CLMM with the wrong link), and comparison against Bayesian ordinal models
+  (e.g., via `brms`).
+
+## References
+
+Agresti, A. (2010). *Analysis of Ordinal Categorical Data* (2nd ed.). Wiley.
+
+Bürkner, P.-C., & Vuorre, M. (2019). Ordinal regression models in
+psychology: A tutorial. *Advances in Methods and Practices in Psychological
+Science*, 2(1), 77-101.
+
+Christensen, R. H. B. (2022). *ordinal: Regression Models for Ordinal Data*
+[R package]. Retrieved from https://CRAN.R-project.org/package=ordinal
+
+Hedeker, D. (2008). Multilevel models for ordinal and nominal variables. In
+J. de Leeuw & E. Meijer (Eds.), *Handbook of Multilevel Analysis* (pp.
+237-274). Springer.
+
+Hedeker, D., & Gibbons, R. D. (1994). A random-effects ordinal regression
+model for multilevel analysis. *Biometrics*, 50(4), 933-944.
+
+Johnson, T. R. (2003). On the use of heterogeneous thresholds ordinal
+regression models to account for individual differences in response style.
+*Psychometrika*, 68(4), 563-583.
+
+Liddell, T. M., & Kruschke, J. K. (2018). Analyzing ordinal data with
+metric models: What could possibly go wrong? *Journal of Experimental
+Social Psychology*, 79, 328-348.
+
+McCullagh, P. (1980). Regression models for ordinal data. *Journal of the
+Royal Statistical Society: Series B*, 42(2), 109-127.
+
+Morris, T. P., White, I. R., & Crowther, M. J. (2019). Using simulation
+studies to evaluate statistical methods. *Statistics in Medicine*, 38(11),
+2074-2102.

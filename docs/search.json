@@ -306,5 +306,54 @@
     "title": "Projects",
     "section": "",
     "text": "Analysis\n\nProjects\nReproducible write-ups, rendered straight from R. Each one is a working document: the code is on the page, and the plots are the output of running it.\n\n\n\n\n\n\n\n\n\n\n\n\nLinkedIn games analysis pipeline\n\n\n\ncode\n\nanalysis\n\nbayesian\n\n\n\nA live pipeline tracking two players’ daily LinkedIn game scores, with descriptive summaries and Bayesian t-tests that update every time the document is rendered.\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\n\nBayesian Analysis of a 2×2 Factorial Reaction Time Experiment in R\n\n\n\ncode\n\nanalysis\n\nbayesian\n\n\n\nA complete Bayesian workflow in R, from simulating a 2×2 reaction time experiment through to fitting a mixed-effects model with brms and interpreting the posterior.\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "docs/blog/template-post/index.html",
+    "href": "docs/blog/template-post/index.html",
+    "title": "What we lose when we stop being able to tell",
+    "section": "",
+    "text": "Open with the claim, not the background. One short paragraph that tells the reader what the post argues, so they can decide in ten seconds whether to keep going. Assume they have not read anything else on this site.\nThen the second paragraph does the setup — why the question matters, what the usual framing gets wrong. Prose runs at a 68-character measure and is justified, so paragraphs of three to six sentences sit better than very long or very short ones."
+  },
+  {
+    "objectID": "docs/blog/template-post/index.html#the-usual-framing",
+    "href": "docs/blog/template-post/index.html#the-usual-framing",
+    "title": "What we lose when we stop being able to tell",
+    "section": "The usual framing",
+    "text": "The usual framing\nUse ## for sections. Each one gets a hairline rule above it, which is what gives a long post its rhythm — so use them generously, roughly every three or four paragraphs, and give them real titles rather than “Background” or “Discussion”.\nInline formatting works as you’d expect: emphasis, strong, inline code, and a link. A footnote goes like this1 and collects at the bottom of the post.\n\nA pull quote is a hairline on the left and larger type. Use one when a sentence is worth stopping on — not to break up text you think is boring.\n\n\nA sub-point\n### is available for a level below, though most posts don’t need it."
+  },
+  {
+    "objectID": "docs/blog/template-post/index.html#something-worth-flagging",
+    "href": "docs/blog/template-post/index.html#something-worth-flagging",
+    "title": "What we lose when we stop being able to tell",
+    "section": "Something worth flagging",
+    "text": "Something worth flagging\n\n\n\n\n\n\nNoteA note to one side\n\n\n\nCallouts render as a hairline box with an accent rule on the left. .callout-note is the neutral one; .callout-warning, .callout-important and .callout-tip all work and look the same in this theme. Good for a methodological caveat or an aside that would derail the paragraph."
+  },
+  {
+    "objectID": "docs/blog/template-post/index.html#showing-your-work",
+    "href": "docs/blog/template-post/index.html#showing-your-work",
+    "title": "What we lose when we stop being able to tell",
+    "section": "Showing your work",
+    "text": "Showing your work\nIf the post needs numbers, write the chunk and let it run — the output is framed automatically and the code block keeps its highlighting:\n\n# Any R works here. Keep chunks short enough to read on screen.\nsummary(cars$speed)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    4.0    12.0    15.0    15.4    19.0    25.0 \n\n\nPlots get a caption and are matted like a photograph. fig-cap writes the caption; fig-alt is the screen-reader description and is worth filling in:\n\nplot(cars$speed, cars$dist,\n     pch = 16, col = \"#4b7a55\",\n     xlab = \"Speed (mph)\", ylab = \"Stopping distance (ft)\")\n\n\n\n\n\n\n\nFigure 1: Figure 1. Stopping distance against speed, from the built-in cars data.\n\n\n\n\n\nRefer to it in the text as Figure 1 and Quarto numbers and links it for you.\nAn ordinary image, if you want one without R:\n\n\n\nA caption sits under the plate, left-aligned."
+  },
+  {
+    "objectID": "docs/blog/template-post/index.html#closing",
+    "href": "docs/blog/template-post/index.html#closing",
+    "title": "What we lose when we stop being able to tell",
+    "section": "Closing",
+    "text": "Closing\nLand the argument. One paragraph, no summary of what you just said — say the thing you were building toward, or the question you’re leaving open."
+  },
+  {
+    "objectID": "docs/blog/template-post/index.html#how-to-use-this-file",
+    "href": "docs/blog/template-post/index.html#how-to-use-this-file",
+    "title": "What we lose when we stop being able to tell",
+    "section": "How to use this file",
+    "text": "How to use this file\nCopy the whole template-post/ folder, rename it to a slug (blog/detection-is-the-wrong-test/), replace the front matter and the body, and delete this last section. The folder name becomes the URL. Keep each post’s images inside its own folder so a post stays self-contained."
+  },
+  {
+    "objectID": "docs/blog/template-post/index.html#footnotes",
+    "href": "docs/blog/template-post/index.html#footnotes",
+    "title": "What we lose when we stop being able to tell",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nFootnotes are good for the caveat you don’t want in the main sentence.↩︎"
   }
 ]

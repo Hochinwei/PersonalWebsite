@@ -1,0 +1,110 @@
+---
+# ── Required ────────────────────────────────────────────────────────────
+# Shown as the post headline, in the listing, and in the browser tab.
+title: "What we lose when we stop being able to tell"
+
+# One or two sentences. This is the grey line under the title on the post,
+# and the summary text in the blog listing. Keep it under ~200 characters.
+description: |
+  Detection is the wrong test for AI-altered images. A note on why the
+  interesting question is not whether people *can* tell, but what changes
+  once they assume they can't.
+
+author: "Ho Chin Wei"
+
+# ISO format. The listing sorts on this, newest first.
+date: "2026-08-11"
+
+# These become the chips on the post and the filter chips on the listing.
+# Reuse existing ones where you can - every new category adds a chip.
+categories: [authenticity, AI, cognition]
+
+# ── Optional ────────────────────────────────────────────────────────────
+# Thumbnail for the listing. Delete both lines if the post has no image.
+# image: thumbnail.jpg
+# image-alt: "Describe the image for screen readers."
+
+# Set to true while writing: the post renders locally but is left out of
+# the listing and the site. Delete the line (or set false) to publish.
+draft: false
+
+# A table of contents in the left rail. Worth turning on for anything
+# with more than about three sections.
+toc: true
+toc-location: left
+toc-title: "In this post"
+
+# Only needed if the post runs R. Leave out for prose-only posts.
+# execute:
+#   echo: true
+#   warning: false
+---
+
+Open with the claim, not the background. One short paragraph that tells the reader what the post argues, so they can decide in ten seconds whether to keep going. Assume they have not read anything else on this site.
+
+Then the second paragraph does the setup — why the question matters, what the usual framing gets wrong. Prose runs at a 68-character measure and is justified, so paragraphs of three to six sentences sit better than very long or very short ones.
+
+## The usual framing
+
+Use `##` for sections. Each one gets a hairline rule above it, which is what gives a long post its rhythm — so use them generously, roughly every three or four paragraphs, and give them real titles rather than "Background" or "Discussion".
+
+Inline formatting works as you'd expect: *emphasis*, **strong**, `inline code`, and [a link](https://quarto.org). A footnote goes like this[^1] and collects at the bottom of the post.
+
+[^1]: Footnotes are good for the caveat you don't want in the main sentence.
+
+> A pull quote is a hairline on the left and larger type. Use one when a sentence is worth stopping on — not to break up text you think is boring.
+
+### A sub-point
+
+`###` is available for a level below, though most posts don't need it.
+
+## Something worth flagging
+
+::: {.callout-note}
+## A note to one side
+
+Callouts render as a hairline box with an accent rule on the left. `.callout-note` is the neutral one; `.callout-warning`, `.callout-important` and `.callout-tip` all work and look the same in this theme. Good for a methodological caveat or an aside that would derail the paragraph.
+:::
+
+## Showing your work
+
+If the post needs numbers, write the chunk and let it run — the output is framed automatically and the code block keeps its highlighting:
+
+```{r}
+#| label: demo-summary
+#| echo: true
+
+# Any R works here. Keep chunks short enough to read on screen.
+summary(cars$speed)
+```
+
+Plots get a caption and are matted like a photograph. `fig-cap` writes the caption; `fig-alt` is the screen-reader description and is worth filling in:
+
+```{r}
+#| label: fig-demo
+#| fig-cap: "Figure 1. Stopping distance against speed, from the built-in `cars` data."
+#| fig-alt: "Scatterplot showing stopping distance increasing with speed."
+#| echo: true
+#| fig-width: 7
+#| fig-height: 4
+
+plot(cars$speed, cars$dist,
+     pch = 16, col = "#4b7a55",
+     xlab = "Speed (mph)", ylab = "Stopping distance (ft)")
+```
+
+Refer to it in the text as @fig-demo and Quarto numbers and links it for you.
+
+An ordinary image, if you want one without R:
+
+![A caption sits under the plate, left-aligned.](../../assets/profile-main.jpg){fig-alt="Placeholder image." width="480"}
+
+## Closing
+
+Land the argument. One paragraph, no summary of what you just said — say the thing you were building toward, or the question you're leaving open.
+
+------------------------------------------------------------------------
+
+## How to use this file
+
+Copy the whole `template-post/` folder, rename it to a slug (`blog/detection-is-the-wrong-test/`), replace the front matter and the body, and delete this last section. The folder name becomes the URL. Keep each post's images inside its own folder so a post stays self-contained.
