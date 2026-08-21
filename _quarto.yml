@@ -5,7 +5,7 @@ project:
 website:
   description: "PhD researcher exploring AI's impact on human cognition and behavior"
   page-navigation: true
-  title: "Ho Chin Wei"          # <- this text becomes the wordmark
+  title: "Ho Chin Wei"          
   favicon: "assets/favicon.webp"
   site-url: "https://hochinwei.com"
 
@@ -15,7 +15,6 @@ website:
 
   navbar:
     pinned: true
-    # logo removed on purpose: the wordmark is the mark now
     right:
       - text: "About"
         href: about.qmd
@@ -31,7 +30,7 @@ website:
 format:
   html:
     theme:
-      - default          # plain bootstrap; styles.scss carries the design
+      - default          
       - styles.scss
     toc: false
     smooth-scroll: true

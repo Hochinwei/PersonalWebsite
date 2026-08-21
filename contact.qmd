@@ -9,7 +9,7 @@ toc: false
 
 # Say hello, or send me a problem. {.unlisted}
 
-[I'm happy to hear from researchers working on human--agent interaction, students thinking about a psychology PhD in the UK, and anyone who wants a second pair of eyes on a Bayesian model.]{.lede}
+[I'm happy to hear from researchers working on human-robot interaction, or anyone who wants a second pair of eyes on any kind of statistics model. Excited for opportunities to learn and collaborate :) ]{.lede}
 :::
 
 ------------------------------------------------------------------------
@@ -25,7 +25,7 @@ toc: false
 
 ::: {}
 [Where]{.fact-label}
-[Department of Psychology\
+[School of Psychology and Social Work\
 University of Hull\
 Cottingham Road, Hull HU6 7RX]{.fact-value}
 :::
@@ -71,7 +71,5 @@ Cottingham Road, Hull HU6 7RX]{.fact-value}
   <button type="submit">Send</button>
 </form>
 ```
-
-[This is a static site, so the form posts to [Formspree](https://formspree.io) --- create a free form and paste its id into the `action` above. If you'd rather not run a form at all, delete this card and keep the email link.]{.formnote}
 :::
 :::

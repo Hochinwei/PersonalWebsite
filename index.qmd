@@ -20,9 +20,11 @@ page-layout: full
 ::: {.hero-copy}
 # Hello! I'm Chin Wei.
 
-[I study what shifts in cognition when the other actor in the task is an artificial one.]{.hero-lede}
+[I'm curious about what happens to our cognition when we start treating "artificial" agents like social partners.]{.hero-lede}
 
-PhD researcher in psychology at the University of Hull, funded by the White Rose DTP. How people extend --- and withdraw --- agency toward artificial agents, and what that does to social cognition.
+PhD researcher in psychology at the University of Hull, funded by the White Rose Doctoral Training Partnership (WRDTP).
+
+Part cognitive experimentalist, part data nerd, part builder.
 
 ::: {.hero-social}
 [{{< fa brands linkedin >}}](https://www.linkedin.com/in/hochinwei/){.icon-btn title="LinkedIn"}
@@ -40,15 +42,15 @@ PhD researcher in psychology at the University of Hull, funded by the White Rose
 ::: {}
 ## Research
 
-Social inhibition of return in human--agent joint action, and how people judge the authenticity of AI-altered images. Preregistered experiments, SEM, Bayesian estimation.
+Find out more about my doctoral thesis on using the social Inhibition of Return (sIOR) paradigm to understand human interaction with artificial agents, some background about myself and my other curiousities.
 
 [Learn more about me →](about.qmd)
 :::
 
 ::: {}
-## Writing
+## Blog
 
-Notes on an AI-saturated world --- misinformation, authenticity, and what "real" is doing in that sentence. Written for people outside the discipline as much as inside it.
+My personal takes and notes written by hand (to preserve the lost art of writing without AI). I discuss questions arising from living in an increasingly automated world, alongside many of my other interests.
 
 [Read my blog →](blog/index.qmd)
 :::
@@ -56,7 +58,7 @@ Notes on an AI-saturated world --- misinformation, authenticity, and what "real"
 ::: {}
 ## Projects
 
-Reproducible R write-ups: Bayesian workflows in *brms*, live data pipelines, and the occasional argument settled with a Bayes factor.
+My (reproducible) projects experimenting with various forms of statistical questions, personal curiosities and fun little software creations using LLMs.
 
 [See my projects →](projects/index.qmd)
 :::
