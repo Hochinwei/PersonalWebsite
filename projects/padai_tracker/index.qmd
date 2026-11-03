@@ -1,0 +1,615 @@
+---
+title: "Public Attitudes to Data & AI: Longitudinal Tracker"
+subtitle: "Inferential Shifts, Uncertainty & Cohort Dynamics Across Waves 1–4 (UK DSIT / Savanta)"
+author: "Lead Data Engineer & Statistical Visualization Portfolio"
+format:
+  dashboard:
+    orientation: rows
+    scrolling: true
+---
+
+## Row {height="auto"}
+
+::: {.card title="Survey Origins, Inferential Design & Analytical Scope"}
+The **Public Attitudes to Data and AI (PADAI) Tracker Survey**, commissioned by the UK Department for Science, Innovation and Technology (**DSIT**) and the Responsible Technology Adoption (**RTA**) Unit and conducted by **Savanta**, monitors longitudinal shifts in how the UK public perceives data governance, institutional trustworthiness, and artificial intelligence across four waves (**Wave 1** $n=4,250$; **Wave 2** $n=4,320$; **Wave 3** $n=4,225$; **Wave 4** $n=4,947$).
+
+Rather than presenting static point estimates, this interactive dashboard surfaces **statistical power, finite-sample volatility, and demographic interaction effects**:
+
+1. **Significance-Mapped Slopegraph:** Evaluates structural shifts between Wave 1 (`col a`) and Wave 4 (`col d`). Line weight and stroke encoding are driven directly by two-tailed column proportion $Z$-tests ($p < .05$).
+2. **Dynamic Uncertainty Ribbons:** Computes finite-sample binomial standard errors ($SE = \sqrt{p(1-p)/n}$) natively in the browser, visibly expanding confidence intervals as you drill down from national aggregates ($n \approx 4,947$) to smaller regional or ethnic cohorts ($n < 150$).
+3. **Longitudinal Cohort Transitions (Rosling Bubble Scatter):** Animates joint trajectories of **AI Awareness** (`Table 82`) versus **Institutional Trust & Data Utility** (`Table 1` / `Table 22`), weighted by subgroup sample size ($n$).
+4. **Cross-Highlighted Distributional Ridge Plots:** Compares full 4-point Likert trust distributions (`Tables 3–12`) across sectors and demographic strata with synchronized cross-panel hover highlighting.
+:::
+
+```{ojs}
+//| output: false
+
+// Load pre-processed tidy dataset produced by scripts/etl_padai_tracker.py
+raw_data = FileAttachment("data/padai_dashboard.csv").csv({ typed: true });
+
+// Parse bidirectional significance and normalize waves
+dataset = raw_data.map(d => {
+  const wave_num = +String(d.Wave).replace("Wave ", "");
+  const parts = String(d.Significance_Flag || "").split(":");
+  const col_letter = parts[0] || "";
+  const beaten_letters = parts[1] || "";
+  return {
+    ...d,
+    wave_num,
+    col_letter,
+    beaten_letters,
+    // Exclude unasked wave placeholders where Value == 0 and no letters exist on Wave 1/2
+    is_valid: !(d.Value === 0 && beaten_letters === "" && wave_num < 3 && (
+      String(d.Metric_Type).includes("pharmaceutical") ||
+      String(d.Metric_Type).includes("Regulators") ||
+      String(d.Metric_Type).includes("Banks") ||
+      String(d.Metric_Type).includes("HR and recruitment") ||
+      String(d.Metric_Type).includes("held accountable")
+    ))
+  };
+}).filter(d => d.is_valid);
+
+// Helper lookup for Z-critical values
+z_lookup = { "0.90": 1.6449, "0.95": 1.96, "0.99": 2.5758 };
+```
+
+## Row {height="560px"}
+
+### Column {width="50%"}
+
+```{ojs}
+//| title: "1. Significance-Mapped Slopegraph: Wave 1 vs. Wave 4 Structural Shifts"
+
+slope_data = {
+  const sub_rows = dataset.filter(
+    d => d.Table_Name === selected_table_focus &&
+         d.Demographic_Category === selected_demog_cat &&
+         (d.Wave === "Wave 1" || d.Wave === "Wave 4") &&
+         !["Total", "Unweighted Total", "Mean"].includes(d.Metric_Type)
+  );
+
+  // Group by Subgroup + Metric_Type to evaluate bidirectional significance (col 'a' vs col 'd')
+  const grouped = d3.group(sub_rows, d => `${d.Subgroup}|||${d.Metric_Type}`);
+  const pairs = [];
+
+  for (const [key, rows] of grouped.entries()) {
+    const w1 = rows.find(r => r.Wave === "Wave 1");
+    const w4 = rows.find(r => r.Wave === "Wave 4");
+    if (!w1 || !w4) continue;
+
+    // p < .05 if Wave 1 beats Wave 4 ('d' in w1.beaten_letters) or Wave 4 beats Wave 1 ('a' in w4.beaten_letters)
+    const is_sig = w1.beaten_letters.includes("d") || w4.beaten_letters.includes("a");
+    const delta = w4.Value - w1.Value;
+    const short_metric = w1.Metric_Type.replace(/\s*\(e\.g\..*?\)/g, "").trim();
+
+    pairs.push(
+      {
+        Subgroup: w1.Subgroup,
+        Metric_Type: short_metric,
+        Wave: "Wave 1",
+        wave_x: 1,
+        Value: w1.Value,
+        Unweighted_N: w1.Unweighted_N,
+        Sig_Flag: w1.Significance_Flag,
+        is_sig,
+        delta,
+        pair_id: key
+      },
+      {
+        Subgroup: w4.Subgroup,
+        Metric_Type: short_metric,
+        Wave: "Wave 4",
+        wave_x: 4,
+        Value: w4.Value,
+        Unweighted_N: w4.Unweighted_N,
+        Sig_Flag: w4.Significance_Flag,
+        is_sig,
+        delta,
+        pair_id: key
+      }
+    );
+  }
+  return pairs.filter(d => d.Subgroup === selected_subgroup);
+}
+
+Plot.plot({
+  height: 460,
+  marginLeft: 65,
+  marginRight: 185,
+  marginTop: 30,
+  marginBottom: 40,
+  style: {
+    background: "transparent",
+    fontFamily: "Inter, system-ui, sans-serif",
+    fontSize: "12px"
+  },
+  x: {
+    domain: ["Wave 1", "Wave 4"],
+    label: null,
+    padding: 0.25
+  },
+  y: {
+    domain: [0.15, 1.0],
+    grid: true,
+    tickFormat: d3.format(".0%"),
+    label: "Proportion (Weighted %)"
+  },
+  color: {
+    legend: true,
+    domain: [
+      "Significant Shift (p < .05)",
+      "Non-Significant Drift (p ≥ .05)"
+    ],
+    range: ["#0f62fe", "#8d8d8d"]
+  },
+  marks: [
+    // Non-significant lines: dashed & semi-transparent
+    Plot.line(
+      slope_data.filter(d => !d.is_sig),
+      {
+        x: "Wave",
+        y: "Value",
+        z: "pair_id",
+        stroke: () => "Non-Significant Drift (p ≥ .05)",
+        strokeWidth: 1.5,
+        strokeDasharray: "5,4",
+        strokeOpacity: 0.45
+      }
+    ),
+    // Statistically significant lines (p < .05): thick, bold, high contrast
+    Plot.line(
+      slope_data.filter(d => d.is_sig),
+      {
+        x: "Wave",
+        y: "Value",
+        z: "pair_id",
+        stroke: () => "Significant Shift (p < .05)",
+        strokeWidth: 3.4,
+        strokeOpacity: 0.95
+      }
+    ),
+    Plot.dot(slope_data, {
+      x: "Wave",
+      y: "Value",
+      fill: d => d.is_sig ? "Significant Shift (p < .05)" : "Non-Significant Drift (p ≥ .05)",
+      r: d => d.is_sig ? 5.5 : 3.5,
+      title: d => `${d.Metric_Type} (${d.Subgroup})\n${d.Wave}: ${(d.Value * 100).toFixed(1)}% (n = ${d.Unweighted_N})\nΔ(W4-W1): ${(d.delta * 100 >= 0 ? "+" : "") + (d.delta * 100).toFixed(1)} pp\nStatus: ${d.is_sig ? "p < .05 (Significant)" : "Not Significant"}`
+    }),
+    // Left labels (Wave 1)
+    Plot.text(
+      slope_data.filter(d => d.Wave === "Wave 1"),
+      {
+        x: "Wave",
+        y: "Value",
+        text: d => `${(d.Value * 100).toFixed(1)}%`,
+        dx: -12,
+        textAnchor: "end",
+        fontWeight: d => d.is_sig ? "700" : "400",
+        fill: d => d.is_sig ? "#161616" : "#6f6f6f"
+      }
+    ),
+    // Right labels (Wave 4 + Delta + Metric Name)
+    Plot.text(
+      slope_data.filter(d => d.Wave === "Wave 4"),
+      {
+        x: "Wave",
+        y: "Value",
+        text: d => `${(d.Value * 100).toFixed(1)}% (${d.delta >= 0 ? "+" : ""}${(d.delta * 100).toFixed(1)}pp) ${d.Metric_Type.slice(0, 24)}`,
+        dx: 10,
+        textAnchor: "start",
+        fontWeight: d => d.is_sig ? "700" : "400",
+        fill: d => d.is_sig ? "#0f62fe" : "#6f6f6f"
+      }
+    )
+  ]
+})
+```
+
+### Column {width="50%"}
+
+```{ojs}
+//| title: "2. Dynamic Uncertainty Ribbons: Sample Size & Standard Error Sensitivity"
+
+ribbon_data = {
+  const z_crit = z_lookup[ci_level];
+  return dataset
+    .filter(
+      d => d.Table_Name === selected_table_focus &&
+           d.Demographic_Category === selected_demog_cat &&
+           d.Subgroup === selected_subgroup &&
+           !["Total", "Unweighted Total", "Mean"].includes(d.Metric_Type)
+    )
+    .map(d => {
+      const p = d.Value;
+      const n = d.Unweighted_N;
+      // Native Binomial Standard Error: SE = sqrt(p * (1 - p) / n)
+      const se = n > 0 ? Math.sqrt((p * (1 - p)) / n) : 0;
+      const ci_low = Math.max(0, p - z_crit * se);
+      const ci_high = Math.min(1, p + z_crit * se);
+      return {
+        ...d,
+        short_metric: d.Metric_Type.replace(/\s*\(e\.g\..*?\)/g, "").trim(),
+        se,
+        ci_low,
+        ci_high,
+        half_width_pp: z_crit * se * 100
+      };
+    });
+}
+
+mean_sample_n = d3.mean(ribbon_data, d => d.Unweighted_N) || 0
+mean_moe_pp = d3.mean(ribbon_data, d => d.half_width_pp) || 0
+
+html`<div style="font-size: 0.85rem; color: #4b5563; margin-bottom: 6px;">
+  <strong>Active Cohort:</strong> <code>${selected_demog_cat} → ${selected_subgroup}</code> |
+  <strong>Mean Unweighted $n$:</strong> <code>${Math.round(mean_sample_n).toLocaleString()}</code> |
+  <strong>Mean ±Margin of Error (${(Number(ci_level)*100).toFixed(0)}% CI):</strong> <code>±${mean_moe_pp.toFixed(2)} pp</code>
+</div>`
+
+Plot.plot({
+  height: 430,
+  marginLeft: 55,
+  marginRight: 30,
+  marginBottom: 40,
+  style: {
+    background: "transparent",
+    fontFamily: "Inter, system-ui, sans-serif",
+    fontSize: "12px"
+  },
+  x: {
+    domain: [1, 2, 3, 4],
+    tickFormat: d => `Wave ${d}`,
+    label: "Survey Wave"
+  },
+  y: {
+    domain: [0, 1],
+    grid: true,
+    tickFormat: d3.format(".0%"),
+    label: "Point Estimate ± Dynamic CI Ribbon"
+  },
+  color: {
+    legend: true
+  },
+  marks: [
+    // Dynamic confidence interval ribbon: widens automatically when Subgroup N shrinks
+    Plot.areaY(ribbon_data, {
+      x: "wave_num",
+      y1: "ci_low",
+      y2: "ci_high",
+      fill: "short_metric",
+      fillOpacity: 0.22,
+      curve: "monotone-x"
+    }),
+    Plot.lineY(ribbon_data, {
+      x: "wave_num",
+      y: "Value",
+      stroke: "short_metric",
+      strokeWidth: 2.5,
+      curve: "monotone-x"
+    }),
+    Plot.dot(ribbon_data, {
+      x: "wave_num",
+      y: "Value",
+      fill: "short_metric",
+      r: 4,
+      title: d => `${d.short_metric}\n${d.Wave} (${d.Subgroup})\nEstimate: ${(d.Value * 100).toFixed(1)}%\nUnweighted n: ${d.Unweighted_N}\nSE: ±${(d.se * 100).toFixed(2)} pp\n${(Number(ci_level)*100).toFixed(0)}% CI: [${(d.ci_low * 100).toFixed(1)}%, ${(d.ci_high * 100).toFixed(1)}%]`
+    })
+  ]
+})
+```
+
+## Row {height="610px"}
+
+### Column {width="48%"}
+
+```{ojs}
+//| title: "3. Longitudinal Cohort Transitions: AI Awareness vs. Institutional Trust (Rosling Scatter)"
+
+// Scrubber / Playback controls for Wave 1 -> Wave 4 interpolation
+viewof wave_scrubber = Inputs.range([1, 4], {
+  value: 4,
+  step: 0.05,
+  label: "Playback Wave (1 → 4):"
+})
+
+viewof y_trust_target = Inputs.select(
+  [
+    "The NHS",
+    "Academic researchers at universities",
+    "The Government",
+    "Big technology companies (e.g., Amazon, Microsoft, Google, Apple)",
+    "Social media companies (e.g., Facebook, Instagram, TikTok, X)"
+  ],
+  { value: "The Government", label: "Y-Axis Trust Target (Table 1):" }
+)
+
+rosling_trajectories = {
+  // X-axis: Table 82 ' NET: Could explain at least partially ' (or 'NET: Heard of ')
+  const x_rows = dataset.filter(
+    d => d.Table_Name === "Table 82" &&
+         d.Metric_Type.trim() === "NET: Could explain at least partially" &&
+         d.Demographic_Category !== "Digital engagement"
+  );
+  // Y-axis: Table 1 selected organisation Net Trust
+  const y_rows = dataset.filter(
+    d => d.Table_Name === "Table 1" &&
+         d.Metric_Type.trim() === y_trust_target &&
+         d.Demographic_Category !== "Digital engagement"
+  );
+
+  const y_map = new Map(
+    y_rows.map(d => [`${d.Demographic_Category}|${d.Subgroup}|${d.wave_num}`, d])
+  );
+
+  const joined = [];
+  for (const x of x_rows) {
+    const key = `${x.Demographic_Category}|${x.Subgroup}|${x.wave_num}`;
+    const y = y_map.get(key);
+    if (y) {
+      joined.push({
+        Demographic_Category: x.Demographic_Category,
+        Subgroup: x.Subgroup,
+        wave_num: x.wave_num,
+        ai_awareness: x.Value,
+        net_trust: y.Value,
+        Unweighted_N: x.Unweighted_N
+      });
+    }
+  }
+
+  // Interpolate smoothly at current wave_scrubber position
+  const by_cohort = d3.group(joined, d => `${d.Demographic_Category}|${d.Subgroup}`);
+  const current_points = [];
+  const trail_segments = [];
+
+  const w_floor = Math.floor(wave_scrubber);
+  const w_ceil = Math.min(4, Math.ceil(wave_scrubber));
+  const alpha = wave_scrubber - w_floor;
+
+  for (const [cohort_key, pts] of by_cohort.entries()) {
+    pts.sort((a, b) => a.wave_num - b.wave_num);
+    for (const pt of pts) {
+      if (pt.wave_num <= wave_scrubber) {
+        trail_segments.push({ ...pt, cohort_key });
+      }
+    }
+    const p0 = pts.find(d => d.wave_num === w_floor);
+    const p1 = pts.find(d => d.wave_num === w_ceil) || p0;
+    if (p0 && p1) {
+      const interp_x = p0.ai_awareness + alpha * (p1.ai_awareness - p0.ai_awareness);
+      const interp_y = p0.net_trust + alpha * (p1.net_trust - p0.net_trust);
+      const interp_n = Math.round(p0.Unweighted_N + alpha * (p1.Unweighted_N - p0.Unweighted_N));
+      current_points.push({
+        cohort_key,
+        Demographic_Category: p0.Demographic_Category,
+        Subgroup: p0.Subgroup,
+        ai_awareness: interp_x,
+        net_trust: interp_y,
+        Unweighted_N: interp_n
+      });
+      trail_segments.push({
+        cohort_key,
+        Demographic_Category: p0.Demographic_Category,
+        Subgroup: p0.Subgroup,
+        wave_num: wave_scrubber,
+        ai_awareness: interp_x,
+        net_trust: interp_y,
+        Unweighted_N: interp_n
+      });
+    }
+  }
+  return { current_points, trail_segments };
+}
+
+Plot.plot({
+  height: 440,
+  marginLeft: 55,
+  marginRight: 30,
+  marginBottom: 45,
+  style: {
+    background: "transparent",
+    fontFamily: "Inter, system-ui, sans-serif",
+    fontSize: "12px"
+  },
+  x: {
+    domain: [0.35, 0.90],
+    grid: true,
+    tickFormat: d3.format(".0%"),
+    label: "Net AI Explanation Capability (Table 82: Could Explain AI)"
+  },
+  y: {
+    domain: [0.15, 0.95],
+    grid: true,
+    tickFormat: d3.format(".0%"),
+    label: `Net Trust in ${y_trust_target.slice(0, 28)} (Table 1)`
+  },
+  r: {
+    range: [5, 26]
+  },
+  color: {
+    legend: true
+  },
+  marks: [
+    // Longitudinal comet trails showing path from Wave 1 to current slider wave
+    Plot.line(rosling_trajectories.trail_segments, {
+      x: "ai_awareness",
+      y: "net_trust",
+      z: "cohort_key",
+      stroke: "Demographic_Category",
+      strokeOpacity: 0.35,
+      strokeWidth: 1.8,
+      curve: "catmull-rom"
+    }),
+    // Cohort bubbles sized by Unweighted_N
+    Plot.dot(rosling_trajectories.current_points, {
+      x: "ai_awareness",
+      y: "net_trust",
+      r: "Unweighted_N",
+      fill: "Demographic_Category",
+      fillOpacity: 0.78,
+      stroke: "#111827",
+      strokeWidth: 1.2,
+      title: d => `${d.Subgroup} (${d.Demographic_Category})\nWave: ${wave_scrubber.toFixed(2)}\nAI Explanation: ${(d.ai_awareness * 100).toFixed(1)}%\nNet Trust: ${(d.net_trust * 100).toFixed(1)}%\nUnweighted n: ${d.Unweighted_N.toLocaleString()}`
+    }),
+    Plot.text(rosling_trajectories.current_points, {
+      x: "ai_awareness",
+      y: "net_trust",
+      text: "Subgroup",
+      dy: -12,
+      fontSize: 10,
+      fontWeight: "600",
+      fill: "#1f2937"
+    })
+  ]
+})
+```
+
+### Column {width="52%"}
+
+```{ojs}
+//| title: "4. Cross-Highlighted Sector Trust Ridge Plots (Joyplots Across Demographics)"
+
+// Full 4-point Likert scales across sectors (Tables 3, 4, 5, 6, 7, 12)
+sector_table_map = new Map([
+  ["Table 3", "The NHS"],
+  ["Table 5", "Academic Researchers"],
+  ["Table 12", "Banks & Finance"],
+  ["Table 7", "Big Tech Companies"],
+  ["Table 4", "The Government"],
+  ["Table 6", "Social Media"]
+])
+
+likert_points = new Map([
+  ["Do not trust at all (1.0)", 1.0],
+  ["Do not trust much (2.0)", 2.0],
+  ["Somewhat trust (3.0)", 3.0],
+  ["Trust a lot (4.0)", 4.0]
+])
+
+// Smooth continuous density interpolation across the 4 Likert anchor points for ridgelines
+ridge_density_data = {
+  const raw_likert = dataset.filter(
+    d => sector_table_map.has(d.Table_Name) &&
+         d.Wave === "Wave 4" &&
+         d.Demographic_Category === selected_demog_cat &&
+         likert_points.has(d.Metric_Type)
+  );
+
+  const grouped = d3.group(raw_likert, d => `${d.Table_Name}|${d.Subgroup}`);
+  const grid_x = d3.range(1.0, 4.05, 0.1);
+  const curves = [];
+
+  for (const [key, rows] of grouped.entries()) {
+    const [t_name, subgroup] = key.split("|");
+    const sector = sector_table_map.get(t_name);
+    const weights = rows.map(r => ({
+      score: likert_points.get(r.Metric_Type),
+      prob: r.Value,
+      n: r.Unweighted_N
+    }));
+
+    // Gaussian kernel smoothing (bandwidth = 0.42) over discrete Likert mass
+    const bw = 0.42;
+    for (const x of grid_x) {
+      let density = 0;
+      for (const w of weights) {
+        const u = (x - w.score) / bw;
+        density += w.prob * Math.exp(-0.5 * u * u);
+      }
+      curves.push({
+        Sector: sector,
+        Subgroup: subgroup,
+        likert_x: Number(x.toFixed(2)),
+        density,
+        Unweighted_N: weights[0]?.n || 0
+      });
+    }
+  }
+  return curves;
+}
+
+// Reactive hover state for cross-panel ridge synchronization
+mutable hovered_ridge_subgroup = null
+
+ridge_chart = {
+  const active_sub = hovered_ridge_subgroup || selected_subgroup;
+
+  const plot = Plot.plot({
+    height: 485,
+    marginLeft: 135,
+    marginRight: 25,
+    marginTop: 35,
+    marginBottom: 40,
+    style: {
+      background: "transparent",
+      fontFamily: "Inter, system-ui, sans-serif",
+      fontSize: "11.5px"
+    },
+    fx: {
+      label: null,
+      domain: [
+        "The NHS",
+        "Academic Researchers",
+        "Banks & Finance",
+        "Big Tech Companies",
+        "The Government",
+        "Social Media"
+      ]
+    },
+    x: {
+      domain: [1, 4],
+      ticks: [1, 2, 3, 4],
+      tickFormat: d => `${d}`,
+      label: "Trust Scale (1 = Not at all → 4 = Trust a lot)"
+    },
+    y: {
+      axis: null,
+      domain: [0, 0.95]
+    },
+    fy: {
+      label: null,
+      domain: available_subgroups,
+      padding: 0.08
+    },
+    marks: [
+      Plot.areaY(ridge_density_data, {
+        fx: "Sector",
+        fy: "Subgroup",
+        x: "likert_x",
+        y: "density",
+        fill: d => d.Subgroup === active_sub ? "#0f62fe" : "#94a3b8",
+        fillOpacity: d => d.Subgroup === active_sub ? 0.65 : 0.22,
+        curve: "basis"
+      }),
+      Plot.lineY(ridge_density_data, {
+        fx: "Sector",
+        fy: "Subgroup",
+        x: "likert_x",
+        y: "density",
+        stroke: d => d.Subgroup === active_sub ? "#0043ce" : "#64748b",
+        strokeWidth: d => d.Subgroup === active_sub ? 2.4 : 1.1,
+        curve: "basis",
+        title: d => `${d.Sector} — ${d.Subgroup}\nScale Score: ${d.likert_x}\nRelative Density: ${d.density.toFixed(2)} (Wave 4, n=${d.Unweighted_N})`
+      }),
+      Plot.ruleY([0], { stroke: "#cbd5e1", strokeWidth: 0.75 })
+    ]
+  });
+
+  // Attach cross-panel hover listener to synchronize subgroup highlighting across all 6 sector facets
+  d3.select(plot)
+    .selectAll("path")
+    .style("cursor", "pointer")
+    .on("mouseenter", function (event) {
+      const title_el = d3.select(this).select("title");
+      if (!title_el.empty()) {
+        const raw_title = title_el.text();
+        const match = raw_title.match(/—\s*(.+?)\n/);
+        if (match && match[1]) {
+          mutable hovered_ridge_subgroup = match[1].trim();
+        }
+      }
+    });
+
+  return plot;
+}
+```

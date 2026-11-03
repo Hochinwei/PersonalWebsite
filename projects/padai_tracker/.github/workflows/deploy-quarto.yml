@@ -1,0 +1,55 @@
+name: Build & Deploy PADAI Quarto Dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.xlsx"
+      - "scripts/**"
+      - "index.qmd"
+      - "custom.scss"
+      - ".github/workflows/deploy-quarto.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python ETL dependencies
+        run: |
+          pip install --upgrade pip
+          pip install openpyxl pandas
+
+      - name: Execute Savanta Wave-on-Wave ETL Pipeline
+        run: |
+          python scripts/etl_padai_tracker.py
+
+      - name: Set up Quarto CLI
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "release"
+
+      - name: Render & Publish Quarto Dashboard to GitHub Pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lead Data Engineer &amp; Statistical Visualization Portfolio">
+
+<title>Public Attitudes to Data &amp; AI: Longitudinal Tracker – Ho Chin Wei</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.webp" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2517dbe17360d9fc34737e80c756bc91.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-2517dbe17360d9fc34737e80c756bc91.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2517dbe17360d9fc34737e80c756bc91.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="../../site_libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="../../site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="../../site_libs/quarto-dashboard/components.js"></script>
+
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="quarto-dashboard nav-fixed fullcontent quarto-light">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Ho Chin Wei</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">
+
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Public Attitudes to Data &amp; AI: Longitudinal Tracker</a></div>
+        <div class="navbar-subtitle">Inferential Shifts, Uncertainty &amp; Cohort Dynamics Across Waves 1–4 (UK DSIT / Savanta)</div>
+        <div class="navbar-author">Lead Data Engineer &amp; Statistical Visualization Portfolio</div>
+      </div>
+    </div>
+</div>
+</nav>
+</header></header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container dashboard-scrolling">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, auto) 560px 610px; grid-auto-columns: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card bslib-card html-fill-container" data-title="Survey Origins, Inferential Design &amp; Analytical Scope" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Survey Origins, Inferential Design &amp; Analytical Scope
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<p>The <strong>Public Attitudes to Data and AI (PADAI) Tracker Survey</strong>, commissioned by the UK Department for Science, Innovation and Technology (<strong>DSIT</strong>) and the Responsible Technology Adoption (<strong>RTA</strong>) Unit and conducted by <strong>Savanta</strong>, monitors longitudinal shifts in how the UK public perceives data governance, institutional trustworthiness, and artificial intelligence across four waves (<strong>Wave 1</strong> <span class="math inline">\(n=4,250\)</span>; <strong>Wave 2</strong> <span class="math inline">\(n=4,320\)</span>; <strong>Wave 3</strong> <span class="math inline">\(n=4,225\)</span>; <strong>Wave 4</strong> <span class="math inline">\(n=4,947\)</span>).</p>
+<p>Rather than presenting static point estimates, this interactive dashboard surfaces <strong>statistical power, finite-sample volatility, and demographic interaction effects</strong>:</p>
+<ol type="1">
+<li><strong>Significance-Mapped Slopegraph:</strong> Evaluates structural shifts between Wave 1 (<code>col a</code>) and Wave 4 (<code>col d</code>). Line weight and stroke encoding are driven directly by two-tailed column proportion <span class="math inline">\(Z\)</span>-tests (<span class="math inline">\(p &lt; .05\)</span>).</li>
+<li><strong>Dynamic Uncertainty Ribbons:</strong> Computes finite-sample binomial standard errors (<span class="math inline">\(SE = \sqrt{p(1-p)/n}\)</span>) natively in the browser, visibly expanding confidence intervals as you drill down from national aggregates (<span class="math inline">\(n \approx 4,947\)</span>) to smaller regional or ethnic cohorts (<span class="math inline">\(n &lt; 150\)</span>).</li>
+<li><strong>Longitudinal Cohort Transitions (Rosling Bubble Scatter):</strong> Animates joint trajectories of <strong>AI Awareness</strong> (<code>Table 82</code>) versus <strong>Institutional Trust &amp; Data Utility</strong> (<code>Table 1</code> / <code>Table 22</code>), weighted by subgroup sample size (<span class="math inline">\(n\)</span>).</li>
+<li><strong>Cross-Highlighted Distributional Ridge Plots:</strong> Compares full 4-point Likert trust distributions (<code>Tables 3–12</code>) across sectors and demographic strata with synchronized cross-panel hover highlighting.</li>
+</ol>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="quarto-ojs-syntax-error html-fill-item html-fill-container">
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode html-fill-item html-fill-container" id="cb1" data-startfrom="24" data-syntax-error-position="1081" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 23;"><span id="cb1-24"><a href="#cb1-24"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co">//| output: false</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co">// Load pre-processed tidy dataset produced by scripts/etl_padai_tracker.py</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>raw_data <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/padai_dashboard.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">({</span> typed<span class="op">:</span> <span class="kw">true</span> <span class="op">});</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="co">// Parse bidirectional significance and normalize waves</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>dataset <span class="op">=</span> raw_data<span class="op">.</span><span class="fu">map</span><span class="op">(</span>d <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>  <span class="dt">const</span> wave_num <span class="op">=</span> <span class="op">+</span><span class="bu">String</span><span class="op">(</span>d<span class="op">.</span><span class="fu">Wave</span><span class="op">).</span><span class="fu">replace</span><span class="op">(</span><span class="st">"Wave "</span><span class="op">,</span> <span class="st">""</span><span class="op">);</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>  <span class="dt">const</span> parts <span class="op">=</span> <span class="bu">String</span><span class="op">(</span>d<span class="op">.</span><span class="fu">Significance_Flag</span> <span class="op">||</span> <span class="st">""</span><span class="op">).</span><span class="fu">split</span><span class="op">(</span><span class="st">":"</span><span class="op">);</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>  <span class="dt">const</span> col_letter <span class="op">=</span> parts<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">||</span> <span class="st">""</span><span class="op">;</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>  <span class="dt">const</span> beaten_letters <span class="op">=</span> parts<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">||</span> <span class="st">""</span><span class="op">;</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>  <span class="cf">return</span> <span class="op">{</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>    <span class="kw">...</span>d<span class="op">,</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a>    wave_num<span class="op">,</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>    col_letter<span class="op">,</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>    beaten_letters<span class="op">,</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a>    <span class="co">// Exclude unasked wave placeholders where Value == 0 and no letters exist on Wave 1/2</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a>    is_valid<span class="op">:</span> <span class="op">!(</span>d<span class="op">.</span><span class="fu">Value</span> <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> beaten_letters <span class="op">===</span> <span class="st">""</span> <span class="op">&amp;&amp;</span> wave_num <span class="op">&lt;</span> <span class="dv">3</span> <span class="op">&amp;&amp;</span> <span class="op">(</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>      <span class="bu">String</span><span class="op">(</span>d<span class="op">.</span><span class="fu">Metric_Type</span><span class="op">).</span><span class="fu">includes</span><span class="op">(</span><span class="st">"pharmaceutical"</span><span class="op">)</span> <span class="op">||</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a>      <span class="bu">String</span><span class="op">(</span>d<span class="op">.</span><span class="fu">Metric_Type</span><span class="op">).</span><span class="fu">includes</span><span class="op">(</span><span class="st">"Regulators"</span><span class="op">)</span> <span class="op">||</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a>      <span class="bu">String</span><span class="op">(</span>d<span class="op">.</span><span class="fu">Metric_Type</span><span class="op">).</span><span class="fu">includes</span><span class="op">(</span><span class="st">"Banks"</span><span class="op">)</span> <span class="op">||</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a>      <span class="bu">String</span><span class="op">(</span>d<span class="op">.</span><span class="fu">Metric_Type</span><span class="op">).</span><span class="fu">includes</span><span class="op">(</span><span class="st">"HR and recruitment"</span><span class="op">)</span> <span class="op">||</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>      <span class="bu">String</span><span class="op">(</span>d<span class="op">.</span><span class="fu">Metric_Type</span><span class="op">).</span><span class="fu">includes</span><span class="op">(</span><span class="st">"held accountable"</span><span class="op">)</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a>    <span class="op">))</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a>  <span class="op">};</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="op">}).</span><span class="fu">filter</span><span class="op">(</span>d <span class="op">=&gt;</span> d<span class="op">.</span><span class="fu">is_valid</span><span class="op">);</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a></span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="co">// Helper lookup for Z-critical values</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a>z_lookup <span class="op">=</span> <span class="op">{</span> <span class="st">"0.90"</span><span class="op">:</span> <span class="fl">1.6449</span><span class="op">,</span> <span class="st">"0.95"</span><span class="op">:</span> <span class="fl">1.96</span><span class="op">,</span> <span class="st">"0.99"</span><span class="op">:</span> <span class="fl">2.5758</span> <span class="op">};</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error html-fill-item html-fill-container">
+<div class="callout callout-style-default callout-important callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center html-fill-item html-fill-container">
+<div class="callout-icon-container html-fill-item html-fill-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill html-fill-item html-fill-container">
+<span class="screen-reader-only">Important</span>OJS Syntax Error (line 53, column 20)Unexpected token
+</div>
+</div>
+<div class="callout-body-container callout-body html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 50fr) minmax(3em, 50fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-title="1. Significance-Mapped Slopegraph: Wave 1 vs. Wave 4 Structural Shifts" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Significance-Mapped Slopegraph: Wave 1 vs.&nbsp;Wave 4 Structural Shifts
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb2" data-startfrom="63" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 62;"><span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>slope_data <span class="op">=</span> {</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> sub_rows <span class="op">=</span> dataset<span class="op">.</span><span class="fu">filter</span>(</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Table_Name</span> <span class="op">===</span> selected_table_focus <span class="op">&amp;&amp;</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>         d<span class="op">.</span><span class="at">Demographic_Category</span> <span class="op">===</span> selected_demog_cat <span class="op">&amp;&amp;</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>         (d<span class="op">.</span><span class="at">Wave</span> <span class="op">===</span> <span class="st">"Wave 1"</span> <span class="op">||</span> d<span class="op">.</span><span class="at">Wave</span> <span class="op">===</span> <span class="st">"Wave 4"</span>) <span class="op">&amp;&amp;</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>         <span class="op">!</span>[<span class="st">"Total"</span><span class="op">,</span> <span class="st">"Unweighted Total"</span><span class="op">,</span> <span class="st">"Mean"</span>]<span class="op">.</span><span class="fu">includes</span>(d<span class="op">.</span><span class="at">Metric_Type</span>)</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Group by Subgroup + Metric_Type to evaluate bidirectional significance (col 'a' vs col 'd')</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> grouped <span class="op">=</span> d3<span class="op">.</span><span class="fu">group</span>(sub_rows<span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs">|||</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Metric_Type</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> pairs <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> rows] <span class="kw">of</span> grouped<span class="op">.</span><span class="fu">entries</span>()) {</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> w1 <span class="op">=</span> rows<span class="op">.</span><span class="fu">find</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">Wave</span> <span class="op">===</span> <span class="st">"Wave 1"</span>)<span class="op">;</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> w4 <span class="op">=</span> rows<span class="op">.</span><span class="fu">find</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">Wave</span> <span class="op">===</span> <span class="st">"Wave 4"</span>)<span class="op">;</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>w1 <span class="op">||</span> <span class="op">!</span>w4) <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="co">// p &lt; .05 if Wave 1 beats Wave 4 ('d' in w1.beaten_letters) or Wave 4 beats Wave 1 ('a' in w4.beaten_letters)</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> is_sig <span class="op">=</span> w1<span class="op">.</span><span class="at">beaten_letters</span><span class="op">.</span><span class="fu">includes</span>(<span class="st">"d"</span>) <span class="op">||</span> w4<span class="op">.</span><span class="at">beaten_letters</span><span class="op">.</span><span class="fu">includes</span>(<span class="st">"a"</span>)<span class="op">;</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> delta <span class="op">=</span> w4<span class="op">.</span><span class="at">Value</span> <span class="op">-</span> w1<span class="op">.</span><span class="at">Value</span><span class="op">;</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> short_metric <span class="op">=</span> w1<span class="op">.</span><span class="at">Metric_Type</span><span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\s*\(</span><span class="ss">e</span><span class="sc">\.</span><span class="ss">g</span><span class="sc">\.</span><span class="ss">.</span><span class="sc">*?\)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    pairs<span class="op">.</span><span class="fu">push</span>(</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Subgroup</span><span class="op">:</span> w1<span class="op">.</span><span class="at">Subgroup</span><span class="op">,</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Metric_Type</span><span class="op">:</span> short_metric<span class="op">,</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Wave</span><span class="op">:</span> <span class="st">"Wave 1"</span><span class="op">,</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        <span class="dt">wave_x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Value</span><span class="op">:</span> w1<span class="op">.</span><span class="at">Value</span><span class="op">,</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Unweighted_N</span><span class="op">:</span> w1<span class="op">.</span><span class="at">Unweighted_N</span><span class="op">,</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Sig_Flag</span><span class="op">:</span> w1<span class="op">.</span><span class="at">Significance_Flag</span><span class="op">,</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>        is_sig<span class="op">,</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>        delta<span class="op">,</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>        <span class="dt">pair_id</span><span class="op">:</span> key</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Subgroup</span><span class="op">:</span> w4<span class="op">.</span><span class="at">Subgroup</span><span class="op">,</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Metric_Type</span><span class="op">:</span> short_metric<span class="op">,</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Wave</span><span class="op">:</span> <span class="st">"Wave 4"</span><span class="op">,</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>        <span class="dt">wave_x</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Value</span><span class="op">:</span> w4<span class="op">.</span><span class="at">Value</span><span class="op">,</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Unweighted_N</span><span class="op">:</span> w4<span class="op">.</span><span class="at">Unweighted_N</span><span class="op">,</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Sig_Flag</span><span class="op">:</span> w4<span class="op">.</span><span class="at">Significance_Flag</span><span class="op">,</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>        is_sig<span class="op">,</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>        delta<span class="op">,</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>        <span class="dt">pair_id</span><span class="op">:</span> key</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pairs<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Subgroup</span> <span class="op">===</span> selected_subgroup)<span class="op">;</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">460</span><span class="op">,</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">65</span><span class="op">,</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">185</span><span class="op">,</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>    <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, system-ui, sans-serif"</span><span class="op">,</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Wave 1"</span><span class="op">,</span> <span class="st">"Wave 4"</span>]<span class="op">,</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>    <span class="dt">padding</span><span class="op">:</span> <span class="fl">0.25</span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="fl">0.15</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">,</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tickFormat</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".0%"</span>)<span class="op">,</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Proportion (Weighted %)"</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Significant Shift (p &lt; .05)"</span><span class="op">,</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Non-Significant Drift (p ≥ .05)"</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>    <span class="dt">range</span><span class="op">:</span> [<span class="st">"#0f62fe"</span><span class="op">,</span> <span class="st">"#8d8d8d"</span>]</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Non-significant lines: dashed &amp; semi-transparent</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>      slope_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> <span class="op">!</span>d<span class="op">.</span><span class="at">is_sig</span>)<span class="op">,</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"Wave"</span><span class="op">,</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"Value"</span><span class="op">,</span></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>        <span class="dt">z</span><span class="op">:</span> <span class="st">"pair_id"</span><span class="op">,</span></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>        <span class="dt">stroke</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="st">"Non-Significant Drift (p ≥ .05)"</span><span class="op">,</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,4"</span><span class="op">,</span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.45</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Statistically significant lines (p &lt; .05): thick, bold, high contrast</span></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>      slope_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">is_sig</span>)<span class="op">,</span></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"Wave"</span><span class="op">,</span></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"Value"</span><span class="op">,</span></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>        <span class="dt">z</span><span class="op">:</span> <span class="st">"pair_id"</span><span class="op">,</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>        <span class="dt">stroke</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="st">"Significant Shift (p &lt; .05)"</span><span class="op">,</span></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">3.4</span><span class="op">,</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.95</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(slope_data<span class="op">,</span> {</span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"Wave"</span><span class="op">,</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"Value"</span><span class="op">,</span></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">is_sig</span> <span class="op">?</span> <span class="st">"Significant Shift (p &lt; .05)"</span> <span class="op">:</span> <span class="st">"Non-Significant Drift (p ≥ .05)"</span><span class="op">,</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">is_sig</span> <span class="op">?</span> <span class="fl">5.5</span> <span class="op">:</span> <span class="fl">3.5</span><span class="op">,</span></span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Metric_Type</span><span class="sc">}</span><span class="vs"> (</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs">)</span><span class="sc">\n${</span>d<span class="op">.</span><span class="at">Wave</span><span class="sc">}</span><span class="vs">: </span><span class="sc">${</span>(d<span class="op">.</span><span class="at">Value</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% (n = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">Unweighted_N</span><span class="sc">}</span><span class="vs">)</span><span class="sc">\n</span><span class="vs">Δ(W4-W1): </span><span class="sc">${</span>(d<span class="op">.</span><span class="at">delta</span> <span class="op">*</span> <span class="dv">100</span> <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"+"</span> <span class="op">:</span> <span class="st">""</span>) <span class="op">+</span> (d<span class="op">.</span><span class="at">delta</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> pp</span><span class="sc">\n</span><span class="vs">Status: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">is_sig</span> <span class="op">?</span> <span class="st">"p &lt; .05 (Significant)"</span> <span class="op">:</span> <span class="st">"Not Significant"</span><span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Left labels (Wave 1)</span></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a>      slope_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Wave</span> <span class="op">===</span> <span class="st">"Wave 1"</span>)<span class="op">,</span></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"Wave"</span><span class="op">,</span></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"Value"</span><span class="op">,</span></span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>        <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>(d<span class="op">.</span><span class="at">Value</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%`</span><span class="op">,</span></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>        <span class="dt">dx</span><span class="op">:</span> <span class="op">-</span><span class="dv">12</span><span class="op">,</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>        <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"end"</span><span class="op">,</span></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fontWeight</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">is_sig</span> <span class="op">?</span> <span class="st">"700"</span> <span class="op">:</span> <span class="st">"400"</span><span class="op">,</span></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">is_sig</span> <span class="op">?</span> <span class="st">"#161616"</span> <span class="op">:</span> <span class="st">"#6f6f6f"</span></span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Right labels (Wave 4 + Delta + Metric Name)</span></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>      slope_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Wave</span> <span class="op">===</span> <span class="st">"Wave 4"</span>)<span class="op">,</span></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"Wave"</span><span class="op">,</span></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"Value"</span><span class="op">,</span></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>        <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>(d<span class="op">.</span><span class="at">Value</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% (</span><span class="sc">${</span>d<span class="op">.</span><span class="at">delta</span> <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"+"</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}${</span>(d<span class="op">.</span><span class="at">delta</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">pp) </span><span class="sc">${</span>d<span class="op">.</span><span class="at">Metric_Type</span><span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">24</span>)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>        <span class="dt">dx</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>        <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span></span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fontWeight</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">is_sig</span> <span class="op">?</span> <span class="st">"700"</span> <span class="op">:</span> <span class="st">"400"</span><span class="op">,</span></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">is_sig</span> <span class="op">?</span> <span class="st">"#0f62fe"</span> <span class="op">:</span> <span class="st">"#6f6f6f"</span></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-2-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-2-2" data-nodetype="expression" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-title="2. Dynamic Uncertainty Ribbons: Sample Size &amp; Standard Error Sensitivity" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Dynamic Uncertainty Ribbons: Sample Size &amp; Standard Error Sensitivity
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb3" data-startfrom="213" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 212;"><span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>ribbon_data <span class="op">=</span> {</span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> z_crit <span class="op">=</span> z_lookup[ci_level]<span class="op">;</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> dataset</span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">filter</span>(</span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>      d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Table_Name</span> <span class="op">===</span> selected_table_focus <span class="op">&amp;&amp;</span></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>           d<span class="op">.</span><span class="at">Demographic_Category</span> <span class="op">===</span> selected_demog_cat <span class="op">&amp;&amp;</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>           d<span class="op">.</span><span class="at">Subgroup</span> <span class="op">===</span> selected_subgroup <span class="op">&amp;&amp;</span></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>           <span class="op">!</span>[<span class="st">"Total"</span><span class="op">,</span> <span class="st">"Unweighted Total"</span><span class="op">,</span> <span class="st">"Mean"</span>]<span class="op">.</span><span class="fu">includes</span>(d<span class="op">.</span><span class="at">Metric_Type</span>)</span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> {</span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> p <span class="op">=</span> d<span class="op">.</span><span class="at">Value</span><span class="op">;</span></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> n <span class="op">=</span> d<span class="op">.</span><span class="at">Unweighted_N</span><span class="op">;</span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Native Binomial Standard Error: SE = sqrt(p * (1 - p) / n)</span></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> se <span class="op">=</span> n <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>((p <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> p)) <span class="op">/</span> n) <span class="op">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> ci_low <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> p <span class="op">-</span> z_crit <span class="op">*</span> se)<span class="op">;</span></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> ci_high <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span><span class="op">,</span> p <span class="op">+</span> z_crit <span class="op">*</span> se)<span class="op">;</span></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span>d<span class="op">,</span></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>        <span class="dt">short_metric</span><span class="op">:</span> d<span class="op">.</span><span class="at">Metric_Type</span><span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\s*\(</span><span class="ss">e</span><span class="sc">\.</span><span class="ss">g</span><span class="sc">\.</span><span class="ss">.</span><span class="sc">*?\)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">trim</span>()<span class="op">,</span></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>        se<span class="op">,</span></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>        ci_low<span class="op">,</span></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>        ci_high<span class="op">,</span></span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>        <span class="dt">half_width_pp</span><span class="op">:</span> z_crit <span class="op">*</span> se <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>mean_sample_n <span class="op">=</span> d3<span class="op">.</span><span class="fu">mean</span>(ribbon_data<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Unweighted_N</span>) <span class="op">||</span> <span class="dv">0</span></span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>mean_moe_pp <span class="op">=</span> d3<span class="op">.</span><span class="fu">mean</span>(ribbon_data<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">half_width_pp</span>) <span class="op">||</span> <span class="dv">0</span></span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="font-size: 0.85rem; color: #4b5563; margin-bottom: 6px;"&gt;</span></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;strong&gt;Active Cohort:&lt;/strong&gt; &lt;code&gt;</span><span class="sc">${</span>selected_demog_cat<span class="sc">}</span><span class="vs"> → </span><span class="sc">${</span>selected_subgroup<span class="sc">}</span><span class="vs">&lt;/code&gt; |</span></span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;strong&gt;Mean Unweighted $n$:&lt;/strong&gt; &lt;code&gt;</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(mean_sample_n)<span class="op">.</span><span class="fu">toLocaleString</span>()<span class="sc">}</span><span class="vs">&lt;/code&gt; |</span></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;strong&gt;Mean ±Margin of Error (</span><span class="sc">${</span>(<span class="bu">Number</span>(ci_level)<span class="op">*</span><span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">% CI):&lt;/strong&gt; &lt;code&gt;±</span><span class="sc">${</span>mean_moe_pp<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> pp&lt;/code&gt;</span></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-3-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-3-2" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-3-3" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-3-4" data-nodetype="expression" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb4" data-startfrom="249" data-source-offset="-1408"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 248;"><span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">430</span><span class="op">,</span></span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span></span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {</span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a>    <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span></span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, system-ui, sans-serif"</span><span class="op">,</span></span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span></span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span></span>
+<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`Wave </span><span class="sc">${</span>d<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Survey Wave"</span></span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tickFormat</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".0%"</span>)<span class="op">,</span></span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Point Estimate ± Dynamic CI Ribbon"</span></span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dynamic confidence interval ribbon: widens automatically when Subgroup N shrinks</span></span>
+<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(ribbon_data<span class="op">,</span> {</span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"wave_num"</span><span class="op">,</span></span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y1</span><span class="op">:</span> <span class="st">"ci_low"</span><span class="op">,</span></span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y2</span><span class="op">:</span> <span class="st">"ci_high"</span><span class="op">,</span></span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"short_metric"</span><span class="op">,</span></span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.22</span><span class="op">,</span></span>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a>      <span class="dt">curve</span><span class="op">:</span> <span class="st">"monotone-x"</span></span>
+<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(ribbon_data<span class="op">,</span> {</span>
+<span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"wave_num"</span><span class="op">,</span></span>
+<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"Value"</span><span class="op">,</span></span>
+<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"short_metric"</span><span class="op">,</span></span>
+<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
+<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a>      <span class="dt">curve</span><span class="op">:</span> <span class="st">"monotone-x"</span></span>
+<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(ribbon_data<span class="op">,</span> {</span>
+<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"wave_num"</span><span class="op">,</span></span>
+<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"Value"</span><span class="op">,</span></span>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"short_metric"</span><span class="op">,</span></span>
+<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">short_metric</span><span class="sc">}\n${</span>d<span class="op">.</span><span class="at">Wave</span><span class="sc">}</span><span class="vs"> (</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs">)</span><span class="sc">\n</span><span class="vs">Estimate: </span><span class="sc">${</span>(d<span class="op">.</span><span class="at">Value</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%</span><span class="sc">\n</span><span class="vs">Unweighted n: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">Unweighted_N</span><span class="sc">}\n</span><span class="vs">SE: ±</span><span class="sc">${</span>(d<span class="op">.</span><span class="at">se</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> pp</span><span class="sc">\n${</span>(<span class="bu">Number</span>(ci_level)<span class="op">*</span><span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">% CI: [</span><span class="sc">${</span>(d<span class="op">.</span><span class="at">ci_low</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%, </span><span class="sc">${</span>(d<span class="op">.</span><span class="at">ci_high</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%]`</span></span>
+<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-3-5" data-nodetype="expression" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 48fr) minmax(3em, 52fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-title="3. Longitudinal Cohort Transitions: AI Awareness vs. Institutional Trust (Rosling Scatter)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Longitudinal Cohort Transitions: AI Awareness vs.&nbsp;Institutional Trust (Rosling Scatter)
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb5" data-startfrom="309" data-source-offset="-70"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 308;"><span id="cb5-309"><a href="#cb5-309" aria-hidden="true" tabindex="-1"></a>viewof wave_scrubber <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> {</span>
+<span id="cb5-310"><a href="#cb5-310" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb5-311"><a href="#cb5-311" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span></span>
+<span id="cb5-312"><a href="#cb5-312" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Playback Wave (1 → 4):"</span></span>
+<span id="cb5-313"><a href="#cb5-313" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-314"><a href="#cb5-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-315"><a href="#cb5-315" aria-hidden="true" tabindex="-1"></a>viewof y_trust_target <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb5-316"><a href="#cb5-316" aria-hidden="true" tabindex="-1"></a>  [</span>
+<span id="cb5-317"><a href="#cb5-317" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The NHS"</span><span class="op">,</span></span>
+<span id="cb5-318"><a href="#cb5-318" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Academic researchers at universities"</span><span class="op">,</span></span>
+<span id="cb5-319"><a href="#cb5-319" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The Government"</span><span class="op">,</span></span>
+<span id="cb5-320"><a href="#cb5-320" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Big technology companies (e.g., Amazon, Microsoft, Google, Apple)"</span><span class="op">,</span></span>
+<span id="cb5-321"><a href="#cb5-321" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Social media companies (e.g., Facebook, Instagram, TikTok, X)"</span></span>
+<span id="cb5-322"><a href="#cb5-322" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb5-323"><a href="#cb5-323" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">value</span><span class="op">:</span> <span class="st">"The Government"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Y-Axis Trust Target (Table 1):"</span> }</span>
+<span id="cb5-324"><a href="#cb5-324" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-325"><a href="#cb5-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-326"><a href="#cb5-326" aria-hidden="true" tabindex="-1"></a>rosling_trajectories <span class="op">=</span> {</span>
+<span id="cb5-327"><a href="#cb5-327" aria-hidden="true" tabindex="-1"></a>  <span class="co">// X-axis: Table 82 ' NET: Could explain at least partially ' (or 'NET: Heard of ')</span></span>
+<span id="cb5-328"><a href="#cb5-328" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x_rows <span class="op">=</span> dataset<span class="op">.</span><span class="fu">filter</span>(</span>
+<span id="cb5-329"><a href="#cb5-329" aria-hidden="true" tabindex="-1"></a>    d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Table_Name</span> <span class="op">===</span> <span class="st">"Table 82"</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb5-330"><a href="#cb5-330" aria-hidden="true" tabindex="-1"></a>         d<span class="op">.</span><span class="at">Metric_Type</span><span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">"NET: Could explain at least partially"</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb5-331"><a href="#cb5-331" aria-hidden="true" tabindex="-1"></a>         d<span class="op">.</span><span class="at">Demographic_Category</span> <span class="op">!==</span> <span class="st">"Digital engagement"</span></span>
+<span id="cb5-332"><a href="#cb5-332" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb5-333"><a href="#cb5-333" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Y-axis: Table 1 selected organisation Net Trust</span></span>
+<span id="cb5-334"><a href="#cb5-334" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y_rows <span class="op">=</span> dataset<span class="op">.</span><span class="fu">filter</span>(</span>
+<span id="cb5-335"><a href="#cb5-335" aria-hidden="true" tabindex="-1"></a>    d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Table_Name</span> <span class="op">===</span> <span class="st">"Table 1"</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb5-336"><a href="#cb5-336" aria-hidden="true" tabindex="-1"></a>         d<span class="op">.</span><span class="at">Metric_Type</span><span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> y_trust_target <span class="op">&amp;&amp;</span></span>
+<span id="cb5-337"><a href="#cb5-337" aria-hidden="true" tabindex="-1"></a>         d<span class="op">.</span><span class="at">Demographic_Category</span> <span class="op">!==</span> <span class="st">"Digital engagement"</span></span>
+<span id="cb5-338"><a href="#cb5-338" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb5-339"><a href="#cb5-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-340"><a href="#cb5-340" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y_map <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(</span>
+<span id="cb5-341"><a href="#cb5-341" aria-hidden="true" tabindex="-1"></a>    y_rows<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [<span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Demographic_Category</span><span class="sc">}</span><span class="vs">|</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs">|</span><span class="sc">${</span>d<span class="op">.</span><span class="at">wave_num</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span> d])</span>
+<span id="cb5-342"><a href="#cb5-342" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb5-343"><a href="#cb5-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-344"><a href="#cb5-344" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> joined <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb5-345"><a href="#cb5-345" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> x <span class="kw">of</span> x_rows) {</span>
+<span id="cb5-346"><a href="#cb5-346" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> key <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>x<span class="op">.</span><span class="at">Demographic_Category</span><span class="sc">}</span><span class="vs">|</span><span class="sc">${</span>x<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs">|</span><span class="sc">${</span>x<span class="op">.</span><span class="at">wave_num</span><span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb5-347"><a href="#cb5-347" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> y <span class="op">=</span> y_map<span class="op">.</span><span class="fu">get</span>(key)<span class="op">;</span></span>
+<span id="cb5-348"><a href="#cb5-348" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (y) {</span>
+<span id="cb5-349"><a href="#cb5-349" aria-hidden="true" tabindex="-1"></a>      joined<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb5-350"><a href="#cb5-350" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Demographic_Category</span><span class="op">:</span> x<span class="op">.</span><span class="at">Demographic_Category</span><span class="op">,</span></span>
+<span id="cb5-351"><a href="#cb5-351" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Subgroup</span><span class="op">:</span> x<span class="op">.</span><span class="at">Subgroup</span><span class="op">,</span></span>
+<span id="cb5-352"><a href="#cb5-352" aria-hidden="true" tabindex="-1"></a>        <span class="dt">wave_num</span><span class="op">:</span> x<span class="op">.</span><span class="at">wave_num</span><span class="op">,</span></span>
+<span id="cb5-353"><a href="#cb5-353" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ai_awareness</span><span class="op">:</span> x<span class="op">.</span><span class="at">Value</span><span class="op">,</span></span>
+<span id="cb5-354"><a href="#cb5-354" aria-hidden="true" tabindex="-1"></a>        <span class="dt">net_trust</span><span class="op">:</span> y<span class="op">.</span><span class="at">Value</span><span class="op">,</span></span>
+<span id="cb5-355"><a href="#cb5-355" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Unweighted_N</span><span class="op">:</span> x<span class="op">.</span><span class="at">Unweighted_N</span></span>
+<span id="cb5-356"><a href="#cb5-356" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb5-357"><a href="#cb5-357" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-358"><a href="#cb5-358" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-359"><a href="#cb5-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-360"><a href="#cb5-360" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Interpolate smoothly at current wave_scrubber position</span></span>
+<span id="cb5-361"><a href="#cb5-361" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> by_cohort <span class="op">=</span> d3<span class="op">.</span><span class="fu">group</span>(joined<span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Demographic_Category</span><span class="sc">}</span><span class="vs">|</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb5-362"><a href="#cb5-362" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> current_points <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb5-363"><a href="#cb5-363" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> trail_segments <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb5-364"><a href="#cb5-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-365"><a href="#cb5-365" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> w_floor <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(wave_scrubber)<span class="op">;</span></span>
+<span id="cb5-366"><a href="#cb5-366" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> w_ceil <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">4</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(wave_scrubber))<span class="op">;</span></span>
+<span id="cb5-367"><a href="#cb5-367" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> alpha <span class="op">=</span> wave_scrubber <span class="op">-</span> w_floor<span class="op">;</span></span>
+<span id="cb5-368"><a href="#cb5-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-369"><a href="#cb5-369" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> [cohort_key<span class="op">,</span> pts] <span class="kw">of</span> by_cohort<span class="op">.</span><span class="fu">entries</span>()) {</span>
+<span id="cb5-370"><a href="#cb5-370" aria-hidden="true" tabindex="-1"></a>    pts<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">wave_num</span> <span class="op">-</span> b<span class="op">.</span><span class="at">wave_num</span>)<span class="op">;</span></span>
+<span id="cb5-371"><a href="#cb5-371" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> pt <span class="kw">of</span> pts) {</span>
+<span id="cb5-372"><a href="#cb5-372" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (pt<span class="op">.</span><span class="at">wave_num</span> <span class="op">&lt;=</span> wave_scrubber) {</span>
+<span id="cb5-373"><a href="#cb5-373" aria-hidden="true" tabindex="-1"></a>        trail_segments<span class="op">.</span><span class="fu">push</span>({ <span class="op">...</span>pt<span class="op">,</span> cohort_key })<span class="op">;</span></span>
+<span id="cb5-374"><a href="#cb5-374" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb5-375"><a href="#cb5-375" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-376"><a href="#cb5-376" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> p0 <span class="op">=</span> pts<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">wave_num</span> <span class="op">===</span> w_floor)<span class="op">;</span></span>
+<span id="cb5-377"><a href="#cb5-377" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> p1 <span class="op">=</span> pts<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">wave_num</span> <span class="op">===</span> w_ceil) <span class="op">||</span> p0<span class="op">;</span></span>
+<span id="cb5-378"><a href="#cb5-378" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (p0 <span class="op">&amp;&amp;</span> p1) {</span>
+<span id="cb5-379"><a href="#cb5-379" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> interp_x <span class="op">=</span> p0<span class="op">.</span><span class="at">ai_awareness</span> <span class="op">+</span> alpha <span class="op">*</span> (p1<span class="op">.</span><span class="at">ai_awareness</span> <span class="op">-</span> p0<span class="op">.</span><span class="at">ai_awareness</span>)<span class="op">;</span></span>
+<span id="cb5-380"><a href="#cb5-380" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> interp_y <span class="op">=</span> p0<span class="op">.</span><span class="at">net_trust</span> <span class="op">+</span> alpha <span class="op">*</span> (p1<span class="op">.</span><span class="at">net_trust</span> <span class="op">-</span> p0<span class="op">.</span><span class="at">net_trust</span>)<span class="op">;</span></span>
+<span id="cb5-381"><a href="#cb5-381" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> interp_n <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(p0<span class="op">.</span><span class="at">Unweighted_N</span> <span class="op">+</span> alpha <span class="op">*</span> (p1<span class="op">.</span><span class="at">Unweighted_N</span> <span class="op">-</span> p0<span class="op">.</span><span class="at">Unweighted_N</span>))<span class="op">;</span></span>
+<span id="cb5-382"><a href="#cb5-382" aria-hidden="true" tabindex="-1"></a>      current_points<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb5-383"><a href="#cb5-383" aria-hidden="true" tabindex="-1"></a>        cohort_key<span class="op">,</span></span>
+<span id="cb5-384"><a href="#cb5-384" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Demographic_Category</span><span class="op">:</span> p0<span class="op">.</span><span class="at">Demographic_Category</span><span class="op">,</span></span>
+<span id="cb5-385"><a href="#cb5-385" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Subgroup</span><span class="op">:</span> p0<span class="op">.</span><span class="at">Subgroup</span><span class="op">,</span></span>
+<span id="cb5-386"><a href="#cb5-386" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ai_awareness</span><span class="op">:</span> interp_x<span class="op">,</span></span>
+<span id="cb5-387"><a href="#cb5-387" aria-hidden="true" tabindex="-1"></a>        <span class="dt">net_trust</span><span class="op">:</span> interp_y<span class="op">,</span></span>
+<span id="cb5-388"><a href="#cb5-388" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Unweighted_N</span><span class="op">:</span> interp_n</span>
+<span id="cb5-389"><a href="#cb5-389" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb5-390"><a href="#cb5-390" aria-hidden="true" tabindex="-1"></a>      trail_segments<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb5-391"><a href="#cb5-391" aria-hidden="true" tabindex="-1"></a>        cohort_key<span class="op">,</span></span>
+<span id="cb5-392"><a href="#cb5-392" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Demographic_Category</span><span class="op">:</span> p0<span class="op">.</span><span class="at">Demographic_Category</span><span class="op">,</span></span>
+<span id="cb5-393"><a href="#cb5-393" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Subgroup</span><span class="op">:</span> p0<span class="op">.</span><span class="at">Subgroup</span><span class="op">,</span></span>
+<span id="cb5-394"><a href="#cb5-394" aria-hidden="true" tabindex="-1"></a>        <span class="dt">wave_num</span><span class="op">:</span> wave_scrubber<span class="op">,</span></span>
+<span id="cb5-395"><a href="#cb5-395" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ai_awareness</span><span class="op">:</span> interp_x<span class="op">,</span></span>
+<span id="cb5-396"><a href="#cb5-396" aria-hidden="true" tabindex="-1"></a>        <span class="dt">net_trust</span><span class="op">:</span> interp_y<span class="op">,</span></span>
+<span id="cb5-397"><a href="#cb5-397" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Unweighted_N</span><span class="op">:</span> interp_n</span>
+<span id="cb5-398"><a href="#cb5-398" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb5-399"><a href="#cb5-399" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-400"><a href="#cb5-400" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-401"><a href="#cb5-401" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> { current_points<span class="op">,</span> trail_segments }<span class="op">;</span></span>
+<span id="cb5-402"><a href="#cb5-402" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-403"><a href="#cb5-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-404"><a href="#cb5-404" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb5-405"><a href="#cb5-405" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">440</span><span class="op">,</span></span>
+<span id="cb5-406"><a href="#cb5-406" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
+<span id="cb5-407"><a href="#cb5-407" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span></span>
+<span id="cb5-408"><a href="#cb5-408" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb5-409"><a href="#cb5-409" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {</span>
+<span id="cb5-410"><a href="#cb5-410" aria-hidden="true" tabindex="-1"></a>    <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span></span>
+<span id="cb5-411"><a href="#cb5-411" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, system-ui, sans-serif"</span><span class="op">,</span></span>
+<span id="cb5-412"><a href="#cb5-412" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span></span>
+<span id="cb5-413"><a href="#cb5-413" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-414"><a href="#cb5-414" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb5-415"><a href="#cb5-415" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="fl">0.35</span><span class="op">,</span> <span class="fl">0.90</span>]<span class="op">,</span></span>
+<span id="cb5-416"><a href="#cb5-416" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-417"><a href="#cb5-417" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tickFormat</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".0%"</span>)<span class="op">,</span></span>
+<span id="cb5-418"><a href="#cb5-418" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Net AI Explanation Capability (Table 82: Could Explain AI)"</span></span>
+<span id="cb5-419"><a href="#cb5-419" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-420"><a href="#cb5-420" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb5-421"><a href="#cb5-421" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="fl">0.15</span><span class="op">,</span> <span class="fl">0.95</span>]<span class="op">,</span></span>
+<span id="cb5-422"><a href="#cb5-422" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-423"><a href="#cb5-423" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tickFormat</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".0%"</span>)<span class="op">,</span></span>
+<span id="cb5-424"><a href="#cb5-424" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="vs">`Net Trust in </span><span class="sc">${</span>y_trust_target<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">28</span>)<span class="sc">}</span><span class="vs"> (Table 1)`</span></span>
+<span id="cb5-425"><a href="#cb5-425" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-426"><a href="#cb5-426" aria-hidden="true" tabindex="-1"></a>  <span class="dt">r</span><span class="op">:</span> {</span>
+<span id="cb5-427"><a href="#cb5-427" aria-hidden="true" tabindex="-1"></a>    <span class="dt">range</span><span class="op">:</span> [<span class="dv">5</span><span class="op">,</span> <span class="dv">26</span>]</span>
+<span id="cb5-428"><a href="#cb5-428" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-429"><a href="#cb5-429" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb5-430"><a href="#cb5-430" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-431"><a href="#cb5-431" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-432"><a href="#cb5-432" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb5-433"><a href="#cb5-433" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Longitudinal comet trails showing path from Wave 1 to current slider wave</span></span>
+<span id="cb5-434"><a href="#cb5-434" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(rosling_trajectories<span class="op">.</span><span class="at">trail_segments</span><span class="op">,</span> {</span>
+<span id="cb5-435"><a href="#cb5-435" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"ai_awareness"</span><span class="op">,</span></span>
+<span id="cb5-436"><a href="#cb5-436" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"net_trust"</span><span class="op">,</span></span>
+<span id="cb5-437"><a href="#cb5-437" aria-hidden="true" tabindex="-1"></a>      <span class="dt">z</span><span class="op">:</span> <span class="st">"cohort_key"</span><span class="op">,</span></span>
+<span id="cb5-438"><a href="#cb5-438" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"Demographic_Category"</span><span class="op">,</span></span>
+<span id="cb5-439"><a href="#cb5-439" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span></span>
+<span id="cb5-440"><a href="#cb5-440" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.8</span><span class="op">,</span></span>
+<span id="cb5-441"><a href="#cb5-441" aria-hidden="true" tabindex="-1"></a>      <span class="dt">curve</span><span class="op">:</span> <span class="st">"catmull-rom"</span></span>
+<span id="cb5-442"><a href="#cb5-442" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb5-443"><a href="#cb5-443" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Cohort bubbles sized by Unweighted_N</span></span>
+<span id="cb5-444"><a href="#cb5-444" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(rosling_trajectories<span class="op">.</span><span class="at">current_points</span><span class="op">,</span> {</span>
+<span id="cb5-445"><a href="#cb5-445" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"ai_awareness"</span><span class="op">,</span></span>
+<span id="cb5-446"><a href="#cb5-446" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"net_trust"</span><span class="op">,</span></span>
+<span id="cb5-447"><a href="#cb5-447" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="st">"Unweighted_N"</span><span class="op">,</span></span>
+<span id="cb5-448"><a href="#cb5-448" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"Demographic_Category"</span><span class="op">,</span></span>
+<span id="cb5-449"><a href="#cb5-449" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.78</span><span class="op">,</span></span>
+<span id="cb5-450"><a href="#cb5-450" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#111827"</span><span class="op">,</span></span>
+<span id="cb5-451"><a href="#cb5-451" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.2</span><span class="op">,</span></span>
+<span id="cb5-452"><a href="#cb5-452" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs"> (</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Demographic_Category</span><span class="sc">}</span><span class="vs">)</span><span class="sc">\n</span><span class="vs">Wave: </span><span class="sc">${</span>wave_scrubber<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}\n</span><span class="vs">AI Explanation: </span><span class="sc">${</span>(d<span class="op">.</span><span class="at">ai_awareness</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%</span><span class="sc">\n</span><span class="vs">Net Trust: </span><span class="sc">${</span>(d<span class="op">.</span><span class="at">net_trust</span> <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%</span><span class="sc">\n</span><span class="vs">Unweighted n: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">Unweighted_N</span><span class="op">.</span><span class="fu">toLocaleString</span>()<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb5-453"><a href="#cb5-453" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb5-454"><a href="#cb5-454" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(rosling_trajectories<span class="op">.</span><span class="at">current_points</span><span class="op">,</span> {</span>
+<span id="cb5-455"><a href="#cb5-455" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"ai_awareness"</span><span class="op">,</span></span>
+<span id="cb5-456"><a href="#cb5-456" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"net_trust"</span><span class="op">,</span></span>
+<span id="cb5-457"><a href="#cb5-457" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"Subgroup"</span><span class="op">,</span></span>
+<span id="cb5-458"><a href="#cb5-458" aria-hidden="true" tabindex="-1"></a>      <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">12</span><span class="op">,</span></span>
+<span id="cb5-459"><a href="#cb5-459" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb5-460"><a href="#cb5-460" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"600"</span><span class="op">,</span></span>
+<span id="cb5-461"><a href="#cb5-461" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"#1f2937"</span></span>
+<span id="cb5-462"><a href="#cb5-462" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb5-463"><a href="#cb5-463" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb5-464"><a href="#cb5-464" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-4-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-4-2" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-4-3" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-4-4" data-nodetype="expression" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-title="4. Cross-Highlighted Sector Trust Ridge Plots (Joyplots Across Demographics)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Cross-Highlighted Sector Trust Ridge Plots (Joyplots Across Demographics)
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb6" data-startfrom="473" data-source-offset="-75"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 472;"><span id="cb6-473"><a href="#cb6-473" aria-hidden="true" tabindex="-1"></a>sector_table_map <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>([</span>
+<span id="cb6-474"><a href="#cb6-474" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Table 3"</span><span class="op">,</span> <span class="st">"The NHS"</span>]<span class="op">,</span></span>
+<span id="cb6-475"><a href="#cb6-475" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Table 5"</span><span class="op">,</span> <span class="st">"Academic Researchers"</span>]<span class="op">,</span></span>
+<span id="cb6-476"><a href="#cb6-476" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Table 12"</span><span class="op">,</span> <span class="st">"Banks &amp; Finance"</span>]<span class="op">,</span></span>
+<span id="cb6-477"><a href="#cb6-477" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Table 7"</span><span class="op">,</span> <span class="st">"Big Tech Companies"</span>]<span class="op">,</span></span>
+<span id="cb6-478"><a href="#cb6-478" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Table 4"</span><span class="op">,</span> <span class="st">"The Government"</span>]<span class="op">,</span></span>
+<span id="cb6-479"><a href="#cb6-479" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Table 6"</span><span class="op">,</span> <span class="st">"Social Media"</span>]</span>
+<span id="cb6-480"><a href="#cb6-480" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb6-481"><a href="#cb6-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-482"><a href="#cb6-482" aria-hidden="true" tabindex="-1"></a>likert_points <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>([</span>
+<span id="cb6-483"><a href="#cb6-483" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Do not trust at all (1.0)"</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">,</span></span>
+<span id="cb6-484"><a href="#cb6-484" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Do not trust much (2.0)"</span><span class="op">,</span> <span class="fl">2.0</span>]<span class="op">,</span></span>
+<span id="cb6-485"><a href="#cb6-485" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Somewhat trust (3.0)"</span><span class="op">,</span> <span class="fl">3.0</span>]<span class="op">,</span></span>
+<span id="cb6-486"><a href="#cb6-486" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"Trust a lot (4.0)"</span><span class="op">,</span> <span class="fl">4.0</span>]</span>
+<span id="cb6-487"><a href="#cb6-487" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb6-488"><a href="#cb6-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-489"><a href="#cb6-489" aria-hidden="true" tabindex="-1"></a><span class="co">// Smooth continuous density interpolation across the 4 Likert anchor points for ridgelines</span></span>
+<span id="cb6-490"><a href="#cb6-490" aria-hidden="true" tabindex="-1"></a>ridge_density_data <span class="op">=</span> {</span>
+<span id="cb6-491"><a href="#cb6-491" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> raw_likert <span class="op">=</span> dataset<span class="op">.</span><span class="fu">filter</span>(</span>
+<span id="cb6-492"><a href="#cb6-492" aria-hidden="true" tabindex="-1"></a>    d <span class="kw">=&gt;</span> sector_table_map<span class="op">.</span><span class="fu">has</span>(d<span class="op">.</span><span class="at">Table_Name</span>) <span class="op">&amp;&amp;</span></span>
+<span id="cb6-493"><a href="#cb6-493" aria-hidden="true" tabindex="-1"></a>         d<span class="op">.</span><span class="at">Wave</span> <span class="op">===</span> <span class="st">"Wave 4"</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb6-494"><a href="#cb6-494" aria-hidden="true" tabindex="-1"></a>         d<span class="op">.</span><span class="at">Demographic_Category</span> <span class="op">===</span> selected_demog_cat <span class="op">&amp;&amp;</span></span>
+<span id="cb6-495"><a href="#cb6-495" aria-hidden="true" tabindex="-1"></a>         likert_points<span class="op">.</span><span class="fu">has</span>(d<span class="op">.</span><span class="at">Metric_Type</span>)</span>
+<span id="cb6-496"><a href="#cb6-496" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb6-497"><a href="#cb6-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-498"><a href="#cb6-498" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> grouped <span class="op">=</span> d3<span class="op">.</span><span class="fu">group</span>(raw_likert<span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Table_Name</span><span class="sc">}</span><span class="vs">|</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb6-499"><a href="#cb6-499" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> grid_x <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="fl">1.0</span><span class="op">,</span> <span class="fl">4.05</span><span class="op">,</span> <span class="fl">0.1</span>)<span class="op">;</span></span>
+<span id="cb6-500"><a href="#cb6-500" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> curves <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb6-501"><a href="#cb6-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-502"><a href="#cb6-502" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> rows] <span class="kw">of</span> grouped<span class="op">.</span><span class="fu">entries</span>()) {</span>
+<span id="cb6-503"><a href="#cb6-503" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [t_name<span class="op">,</span> subgroup] <span class="op">=</span> key<span class="op">.</span><span class="fu">split</span>(<span class="st">"|"</span>)<span class="op">;</span></span>
+<span id="cb6-504"><a href="#cb6-504" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> sector <span class="op">=</span> sector_table_map<span class="op">.</span><span class="fu">get</span>(t_name)<span class="op">;</span></span>
+<span id="cb6-505"><a href="#cb6-505" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> weights <span class="op">=</span> rows<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> ({</span>
+<span id="cb6-506"><a href="#cb6-506" aria-hidden="true" tabindex="-1"></a>      <span class="dt">score</span><span class="op">:</span> likert_points<span class="op">.</span><span class="fu">get</span>(r<span class="op">.</span><span class="at">Metric_Type</span>)<span class="op">,</span></span>
+<span id="cb6-507"><a href="#cb6-507" aria-hidden="true" tabindex="-1"></a>      <span class="dt">prob</span><span class="op">:</span> r<span class="op">.</span><span class="at">Value</span><span class="op">,</span></span>
+<span id="cb6-508"><a href="#cb6-508" aria-hidden="true" tabindex="-1"></a>      <span class="dt">n</span><span class="op">:</span> r<span class="op">.</span><span class="at">Unweighted_N</span></span>
+<span id="cb6-509"><a href="#cb6-509" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb6-510"><a href="#cb6-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-511"><a href="#cb6-511" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Gaussian kernel smoothing (bandwidth = 0.42) over discrete Likert mass</span></span>
+<span id="cb6-512"><a href="#cb6-512" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> bw <span class="op">=</span> <span class="fl">0.42</span><span class="op">;</span></span>
+<span id="cb6-513"><a href="#cb6-513" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> x <span class="kw">of</span> grid_x) {</span>
+<span id="cb6-514"><a href="#cb6-514" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> density <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-515"><a href="#cb6-515" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">const</span> w <span class="kw">of</span> weights) {</span>
+<span id="cb6-516"><a href="#cb6-516" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> u <span class="op">=</span> (x <span class="op">-</span> w<span class="op">.</span><span class="at">score</span>) <span class="op">/</span> bw<span class="op">;</span></span>
+<span id="cb6-517"><a href="#cb6-517" aria-hidden="true" tabindex="-1"></a>        density <span class="op">+=</span> w<span class="op">.</span><span class="at">prob</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> u <span class="op">*</span> u)<span class="op">;</span></span>
+<span id="cb6-518"><a href="#cb6-518" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb6-519"><a href="#cb6-519" aria-hidden="true" tabindex="-1"></a>      curves<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb6-520"><a href="#cb6-520" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Sector</span><span class="op">:</span> sector<span class="op">,</span></span>
+<span id="cb6-521"><a href="#cb6-521" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Subgroup</span><span class="op">:</span> subgroup<span class="op">,</span></span>
+<span id="cb6-522"><a href="#cb6-522" aria-hidden="true" tabindex="-1"></a>        <span class="dt">likert_x</span><span class="op">:</span> <span class="bu">Number</span>(x<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>))<span class="op">,</span></span>
+<span id="cb6-523"><a href="#cb6-523" aria-hidden="true" tabindex="-1"></a>        density<span class="op">,</span></span>
+<span id="cb6-524"><a href="#cb6-524" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Unweighted_N</span><span class="op">:</span> weights[<span class="dv">0</span>]<span class="op">?.</span><span class="at">n</span> <span class="op">||</span> <span class="dv">0</span></span>
+<span id="cb6-525"><a href="#cb6-525" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb6-526"><a href="#cb6-526" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-527"><a href="#cb6-527" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-528"><a href="#cb6-528" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> curves<span class="op">;</span></span>
+<span id="cb6-529"><a href="#cb6-529" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-530"><a href="#cb6-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-531"><a href="#cb6-531" aria-hidden="true" tabindex="-1"></a><span class="co">// Reactive hover state for cross-panel ridge synchronization</span></span>
+<span id="cb6-532"><a href="#cb6-532" aria-hidden="true" tabindex="-1"></a>mutable hovered_ridge_subgroup <span class="op">=</span> <span class="kw">null</span></span>
+<span id="cb6-533"><a href="#cb6-533" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-534"><a href="#cb6-534" aria-hidden="true" tabindex="-1"></a>ridge_chart <span class="op">=</span> {</span>
+<span id="cb6-535"><a href="#cb6-535" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> active_sub <span class="op">=</span> hovered_ridge_subgroup <span class="op">||</span> selected_subgroup<span class="op">;</span></span>
+<span id="cb6-536"><a href="#cb6-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-537"><a href="#cb6-537" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> plot <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb6-538"><a href="#cb6-538" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">485</span><span class="op">,</span></span>
+<span id="cb6-539"><a href="#cb6-539" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">135</span><span class="op">,</span></span>
+<span id="cb6-540"><a href="#cb6-540" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span></span>
+<span id="cb6-541"><a href="#cb6-541" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span></span>
+<span id="cb6-542"><a href="#cb6-542" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
+<span id="cb6-543"><a href="#cb6-543" aria-hidden="true" tabindex="-1"></a>    <span class="dt">style</span><span class="op">:</span> {</span>
+<span id="cb6-544"><a href="#cb6-544" aria-hidden="true" tabindex="-1"></a>      <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span></span>
+<span id="cb6-545"><a href="#cb6-545" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, system-ui, sans-serif"</span><span class="op">,</span></span>
+<span id="cb6-546"><a href="#cb6-546" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"11.5px"</span></span>
+<span id="cb6-547"><a href="#cb6-547" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb6-548"><a href="#cb6-548" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fx</span><span class="op">:</span> {</span>
+<span id="cb6-549"><a href="#cb6-549" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb6-550"><a href="#cb6-550" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [</span>
+<span id="cb6-551"><a href="#cb6-551" aria-hidden="true" tabindex="-1"></a>        <span class="st">"The NHS"</span><span class="op">,</span></span>
+<span id="cb6-552"><a href="#cb6-552" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Academic Researchers"</span><span class="op">,</span></span>
+<span id="cb6-553"><a href="#cb6-553" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Banks &amp; Finance"</span><span class="op">,</span></span>
+<span id="cb6-554"><a href="#cb6-554" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Big Tech Companies"</span><span class="op">,</span></span>
+<span id="cb6-555"><a href="#cb6-555" aria-hidden="true" tabindex="-1"></a>        <span class="st">"The Government"</span><span class="op">,</span></span>
+<span id="cb6-556"><a href="#cb6-556" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Social Media"</span></span>
+<span id="cb6-557"><a href="#cb6-557" aria-hidden="true" tabindex="-1"></a>      ]</span>
+<span id="cb6-558"><a href="#cb6-558" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb6-559"><a href="#cb6-559" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb6-560"><a href="#cb6-560" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span></span>
+<span id="cb6-561"><a href="#cb6-561" aria-hidden="true" tabindex="-1"></a>      <span class="dt">ticks</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span></span>
+<span id="cb6-562"><a href="#cb6-562" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb6-563"><a href="#cb6-563" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"Trust Scale (1 = Not at all → 4 = Trust a lot)"</span></span>
+<span id="cb6-564"><a href="#cb6-564" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb6-565"><a href="#cb6-565" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb6-566"><a href="#cb6-566" aria-hidden="true" tabindex="-1"></a>      <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb6-567"><a href="#cb6-567" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="fl">0.95</span>]</span>
+<span id="cb6-568"><a href="#cb6-568" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb6-569"><a href="#cb6-569" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fy</span><span class="op">:</span> {</span>
+<span id="cb6-570"><a href="#cb6-570" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb6-571"><a href="#cb6-571" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> available_subgroups<span class="op">,</span></span>
+<span id="cb6-572"><a href="#cb6-572" aria-hidden="true" tabindex="-1"></a>      <span class="dt">padding</span><span class="op">:</span> <span class="fl">0.08</span></span>
+<span id="cb6-573"><a href="#cb6-573" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb6-574"><a href="#cb6-574" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb6-575"><a href="#cb6-575" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(ridge_density_data<span class="op">,</span> {</span>
+<span id="cb6-576"><a href="#cb6-576" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fx</span><span class="op">:</span> <span class="st">"Sector"</span><span class="op">,</span></span>
+<span id="cb6-577"><a href="#cb6-577" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fy</span><span class="op">:</span> <span class="st">"Subgroup"</span><span class="op">,</span></span>
+<span id="cb6-578"><a href="#cb6-578" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"likert_x"</span><span class="op">,</span></span>
+<span id="cb6-579"><a href="#cb6-579" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"density"</span><span class="op">,</span></span>
+<span id="cb6-580"><a href="#cb6-580" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Subgroup</span> <span class="op">===</span> active_sub <span class="op">?</span> <span class="st">"#0f62fe"</span> <span class="op">:</span> <span class="st">"#94a3b8"</span><span class="op">,</span></span>
+<span id="cb6-581"><a href="#cb6-581" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fillOpacity</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Subgroup</span> <span class="op">===</span> active_sub <span class="op">?</span> <span class="fl">0.65</span> <span class="op">:</span> <span class="fl">0.22</span><span class="op">,</span></span>
+<span id="cb6-582"><a href="#cb6-582" aria-hidden="true" tabindex="-1"></a>        <span class="dt">curve</span><span class="op">:</span> <span class="st">"basis"</span></span>
+<span id="cb6-583"><a href="#cb6-583" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
+<span id="cb6-584"><a href="#cb6-584" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">lineY</span>(ridge_density_data<span class="op">,</span> {</span>
+<span id="cb6-585"><a href="#cb6-585" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fx</span><span class="op">:</span> <span class="st">"Sector"</span><span class="op">,</span></span>
+<span id="cb6-586"><a href="#cb6-586" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fy</span><span class="op">:</span> <span class="st">"Subgroup"</span><span class="op">,</span></span>
+<span id="cb6-587"><a href="#cb6-587" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"likert_x"</span><span class="op">,</span></span>
+<span id="cb6-588"><a href="#cb6-588" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"density"</span><span class="op">,</span></span>
+<span id="cb6-589"><a href="#cb6-589" aria-hidden="true" tabindex="-1"></a>        <span class="dt">stroke</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Subgroup</span> <span class="op">===</span> active_sub <span class="op">?</span> <span class="st">"#0043ce"</span> <span class="op">:</span> <span class="st">"#64748b"</span><span class="op">,</span></span>
+<span id="cb6-590"><a href="#cb6-590" aria-hidden="true" tabindex="-1"></a>        <span class="dt">strokeWidth</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Subgroup</span> <span class="op">===</span> active_sub <span class="op">?</span> <span class="fl">2.4</span> <span class="op">:</span> <span class="fl">1.1</span><span class="op">,</span></span>
+<span id="cb6-591"><a href="#cb6-591" aria-hidden="true" tabindex="-1"></a>        <span class="dt">curve</span><span class="op">:</span> <span class="st">"basis"</span><span class="op">,</span></span>
+<span id="cb6-592"><a href="#cb6-592" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Sector</span><span class="sc">}</span><span class="vs"> — </span><span class="sc">${</span>d<span class="op">.</span><span class="at">Subgroup</span><span class="sc">}\n</span><span class="vs">Scale Score: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">likert_x</span><span class="sc">}\n</span><span class="vs">Relative Density: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">density</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> (Wave 4, n=</span><span class="sc">${</span>d<span class="op">.</span><span class="at">Unweighted_N</span><span class="sc">}</span><span class="vs">)`</span></span>
+<span id="cb6-593"><a href="#cb6-593" aria-hidden="true" tabindex="-1"></a>      })<span class="op">,</span></span>
+<span id="cb6-594"><a href="#cb6-594" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> { <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#cbd5e1"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">0.75</span> })</span>
+<span id="cb6-595"><a href="#cb6-595" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb6-596"><a href="#cb6-596" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb6-597"><a href="#cb6-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-598"><a href="#cb6-598" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Attach cross-panel hover listener to synchronize subgroup highlighting across all 6 sector facets</span></span>
+<span id="cb6-599"><a href="#cb6-599" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">select</span>(plot)</span>
+<span id="cb6-600"><a href="#cb6-600" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)</span>
+<span id="cb6-601"><a href="#cb6-601" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"cursor"</span><span class="op">,</span> <span class="st">"pointer"</span>)</span>
+<span id="cb6-602"><a href="#cb6-602" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"mouseenter"</span><span class="op">,</span> <span class="kw">function</span> (<span class="bu">event</span>) {</span>
+<span id="cb6-603"><a href="#cb6-603" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> title_el <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">select</span>(<span class="st">"title"</span>)<span class="op">;</span></span>
+<span id="cb6-604"><a href="#cb6-604" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span>title_el<span class="op">.</span><span class="fu">empty</span>()) {</span>
+<span id="cb6-605"><a href="#cb6-605" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> raw_title <span class="op">=</span> title_el<span class="op">.</span><span class="fu">text</span>()<span class="op">;</span></span>
+<span id="cb6-606"><a href="#cb6-606" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> match <span class="op">=</span> raw_title<span class="op">.</span><span class="fu">match</span>(<span class="ss">/—</span><span class="sc">\s*(</span><span class="ss">.</span><span class="sc">+?)\n</span><span class="ss">/</span>)<span class="op">;</span></span>
+<span id="cb6-607"><a href="#cb6-607" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (match <span class="op">&amp;&amp;</span> match[<span class="dv">1</span>]) {</span>
+<span id="cb6-608"><a href="#cb6-608" aria-hidden="true" tabindex="-1"></a>          mutable hovered_ridge_subgroup <span class="op">=</span> match[<span class="dv">1</span>]<span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb6-609"><a href="#cb6-609" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-610"><a href="#cb6-610" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb6-611"><a href="#cb6-611" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb6-612"><a href="#cb6-612" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-613"><a href="#cb6-613" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> plot<span class="op">;</span></span>
+<span id="cb6-614"><a href="#cb6-614" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-5-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-5-2" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-5-3" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-5-4" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-5-5" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5zbG9wZV9kYXRhID0ge1xyXG4gIGNvbnN0IHN1Yl9yb3dzID0gZGF0YXNldC5maWx0ZXIoXHJcbiAgICBkID0+IGQuVGFibGVfTmFtZSA9PT0gc2VsZWN0ZWRfdGFibGVfZm9jdXMgJiZcclxuICAgICAgICAgZC5EZW1vZ3JhcGhpY19DYXRlZ29yeSA9PT0gc2VsZWN0ZWRfZGVtb2dfY2F0ICYmXHJcbiAgICAgICAgIChkLldhdmUgPT09IFwiV2F2ZSAxXCIgfHwgZC5XYXZlID09PSBcIldhdmUgNFwiKSAmJlxyXG4gICAgICAgICAhW1wiVG90YWxcIiwgXCJVbndlaWdodGVkIFRvdGFsXCIsIFwiTWVhblwiXS5pbmNsdWRlcyhkLk1ldHJpY19UeXBlKVxyXG4gICk7XHJcblxyXG4gIC8vIEdyb3VwIGJ5IFN1Ymdyb3VwICsgTWV0cmljX1R5cGUgdG8gZXZhbHVhdGUgYmlkaXJlY3Rpb25hbCBzaWduaWZpY2FuY2UgKGNvbCAnYScgdnMgY29sICdkJylcclxuICBjb25zdCBncm91cGVkID0gZDMuZ3JvdXAoc3ViX3Jvd3MsIGQgPT4gYCR7ZC5TdWJncm91cH18fHwke2QuTWV0cmljX1R5cGV9YCk7XHJcbiAgY29uc3QgcGFpcnMgPSBbXTtcclxuXHJcbiAgZm9yIChjb25zdCBba2V5LCByb3dzXSBvZiBncm91cGVkLmVudHJpZXMoKSkge1xyXG4gICAgY29uc3QgdzEgPSByb3dzLmZpbmQociA9PiByLldhdmUgPT09IFwiV2F2ZSAxXCIpO1xyXG4gICAgY29uc3QgdzQgPSByb3dzLmZpbmQociA9PiByLldhdmUgPT09IFwiV2F2ZSA0XCIpO1xyXG4gICAgaWYgKCF3MSB8fCAhdzQpIGNvbnRpbnVlO1xyXG5cclxuICAgIC8vIHAgPCAuMDUgaWYgV2F2ZSAxIGJlYXRzIFdhdmUgNCAoJ2QnIGluIHcxLmJlYXRlbl9sZXR0ZXJzKSBvciBXYXZlIDQgYmVhdHMgV2F2ZSAxICgnYScgaW4gdzQuYmVhdGVuX2xldHRlcnMpXHJcbiAgICBjb25zdCBpc19zaWcgPSB3MS5iZWF0ZW5fbGV0dGVycy5pbmNsdWRlcyhcImRcIikgfHwgdzQuYmVhdGVuX2xldHRlcnMuaW5jbHVkZXMoXCJhXCIpO1xyXG4gICAgY29uc3QgZGVsdGEgPSB3NC5WYWx1ZSAtIHcxLlZhbHVlO1xyXG4gICAgY29uc3Qgc2hvcnRfbWV0cmljID0gdzEuTWV0cmljX1R5cGUucmVwbGFjZSgvXFxzKlxcKGVcXC5nXFwuLio/XFwpL2csIFwiXCIpLnRyaW0oKTtcclxuXHJcbiAgICBwYWlycy5wdXNoKFxyXG4gICAgICB7XHJcbiAgICAgICAgU3ViZ3JvdXA6IHcxLlN1Ymdyb3VwLFxyXG4gICAgICAgIE1ldHJpY19UeXBlOiBzaG9ydF9tZXRyaWMsXHJcbiAgICAgICAgV2F2ZTogXCJXYXZlIDFcIixcclxuICAgICAgICB3YXZlX3g6IDEsXHJcbiAgICAgICAgVmFsdWU6IHcxLlZhbHVlLFxyXG4gICAgICAgIFVud2VpZ2h0ZWRfTjogdzEuVW53ZWlnaHRlZF9OLFxyXG4gICAgICAgIFNpZ19GbGFnOiB3MS5TaWduaWZpY2FuY2VfRmxhZyxcclxuICAgICAgICBpc19zaWcsXHJcbiAgICAgICAgZGVsdGEsXHJcbiAgICAgICAgcGFpcl9pZDoga2V5XHJcbiAgICAgIH0sXHJcbiAgICAgIHtcclxuICAgICAgICBTdWJncm91cDogdzQuU3ViZ3JvdXAsXHJcbiAgICAgICAgTWV0cmljX1R5cGU6IHNob3J0X21ldHJpYyxcclxuICAgICAgICBXYXZlOiBcIldhdmUgNFwiLFxyXG4gICAgICAgIHdhdmVfeDogNCxcclxuICAgICAgICBWYWx1ZTogdzQuVmFsdWUsXHJcbiAgICAgICAgVW53ZWlnaHRlZF9OOiB3NC5VbndlaWdodGVkX04sXHJcbiAgICAgICAgU2lnX0ZsYWc6IHc0LlNpZ25pZmljYW5jZV9GbGFnLFxyXG4gICAgICAgIGlzX3NpZyxcclxuICAgICAgICBkZWx0YSxcclxuICAgICAgICBwYWlyX2lkOiBrZXlcclxuICAgICAgfVxyXG4gICAgKTtcclxuICB9XHJcbiAgcmV0dXJuIHBhaXJzLmZpbHRlcihkID0+IGQuU3ViZ3JvdXAgPT09IHNlbGVjdGVkX3N1Ymdyb3VwKTtcclxufVxyXG5cclxuUGxvdC5wbG90KHtcclxuICBoZWlnaHQ6IDQ2MCxcclxuICBtYXJnaW5MZWZ0OiA2NSxcclxuICBtYXJnaW5SaWdodDogMTg1LFxyXG4gIG1hcmdpblRvcDogMzAsXHJcbiAgbWFyZ2luQm90dG9tOiA0MCxcclxuICBzdHlsZToge1xyXG4gICAgYmFja2dyb3VuZDogXCJ0cmFuc3BhcmVudFwiLFxyXG4gICAgZm9udEZhbWlseTogXCJJbnRlciwgc3lzdGVtLXVpLCBzYW5zLXNlcmlmXCIsXHJcbiAgICBmb250U2l6ZTogXCIxMnB4XCJcclxuICB9LFxyXG4gIHg6IHtcclxuICAgIGRvbWFpbjogW1wiV2F2ZSAxXCIsIFwiV2F2ZSA0XCJdLFxyXG4gICAgbGFiZWw6IG51bGwsXHJcbiAgICBwYWRkaW5nOiAwLjI1XHJcbiAgfSxcclxuICB5OiB7XHJcbiAgICBkb21haW46IFswLjE1LCAxLjBdLFxyXG4gICAgZ3JpZDogdHJ1ZSxcclxuICAgIHRpY2tGb3JtYXQ6IGQzLmZvcm1hdChcIi4wJVwiKSxcclxuICAgIGxhYmVsOiBcIlByb3BvcnRpb24gKFdlaWdodGVkICUpXCJcclxuICB9LFxyXG4gIGNvbG9yOiB7XHJcbiAgICBsZWdlbmQ6IHRydWUsXHJcbiAgICBkb21haW46IFtcclxuICAgICAgXCJTaWduaWZpY2FudCBTaGlmdCAocCA8IC4wNSlcIixcclxuICAgICAgXCJOb24tU2lnbmlmaWNhbnQgRHJpZnQgKHAg4omlIC4wNSlcIlxyXG4gICAgXSxcclxuICAgIHJhbmdlOiBbXCIjMGY2MmZlXCIsIFwiIzhkOGQ4ZFwiXVxyXG4gIH0sXHJcbiAgbWFya3M6IFtcclxuICAgIC8vIE5vbi1zaWduaWZpY2FudCBsaW5lczogZGFzaGVkICYgc2VtaS10cmFuc3BhcmVudFxyXG4gICAgUGxvdC5saW5lKFxyXG4gICAgICBzbG9wZV9kYXRhLmZpbHRlcihkID0+ICFkLmlzX3NpZyksXHJcbiAgICAgIHtcclxuICAgICAgICB4OiBcIldhdmVcIixcclxuICAgICAgICB5OiBcIlZhbHVlXCIsXHJcbiAgICAgICAgejogXCJwYWlyX2lkXCIsXHJcbiAgICAgICAgc3Ryb2tlOiAoKSA9PiBcIk5vbi1TaWduaWZpY2FudCBEcmlmdCAocCDiiaUgLjA1KVwiLFxyXG4gICAgICAgIHN0cm9rZVdpZHRoOiAxLjUsXHJcbiAgICAgICAgc3Ryb2tlRGFzaGFycmF5OiBcIjUsNFwiLFxyXG4gICAgICAgIHN0cm9rZU9wYWNpdHk6IDAuNDVcclxuICAgICAgfVxyXG4gICAgKSxcclxuICAgIC8vIFN0YXRpc3RpY2FsbHkgc2lnbmlmaWNhbnQgbGluZXMgKHAgPCAuMDUpOiB0aGljaywgYm9sZCwgaGlnaCBjb250cmFzdFxyXG4gICAgUGxvdC5saW5lKFxyXG4gICAgICBzbG9wZV9kYXRhLmZpbHRlcihkID0+IGQuaXNfc2lnKSxcclxuICAgICAge1xyXG4gICAgICAgIHg6IFwiV2F2ZVwiLFxyXG4gICAgICAgIHk6IFwiVmFsdWVcIixcclxuICAgICAgICB6OiBcInBhaXJfaWRcIixcclxuICAgICAgICBzdHJva2U6ICgpID0+IFwiU2lnbmlmaWNhbnQgU2hpZnQgKHAgPCAuMDUpXCIsXHJcbiAgICAgICAgc3Ryb2tlV2lkdGg6IDMuNCxcclxuICAgICAgICBzdHJva2VPcGFjaXR5OiAwLjk1XHJcbiAgICAgIH1cclxuICAgICksXHJcbiAgICBQbG90LmRvdChzbG9wZV9kYXRhLCB7XHJcbiAgICAgIHg6IFwiV2F2ZVwiLFxyXG4gICAgICB5OiBcIlZhbHVlXCIsXHJcbiAgICAgIGZpbGw6IGQgPT4gZC5pc19zaWcgPyBcIlNpZ25pZmljYW50IFNoaWZ0IChwIDwgLjA1KVwiIDogXCJOb24tU2lnbmlmaWNhbnQgRHJpZnQgKHAg4omlIC4wNSlcIixcclxuICAgICAgcjogZCA9PiBkLmlzX3NpZyA/IDUuNSA6IDMuNSxcclxuICAgICAgdGl0bGU6IGQgPT4gYCR7ZC5NZXRyaWNfVHlwZX0gKCR7ZC5TdWJncm91cH0pXFxuJHtkLldhdmV9OiAkeyhkLlZhbHVlICogMTAwKS50b0ZpeGVkKDEpfSUgKG4gPSAke2QuVW53ZWlnaHRlZF9OfSlcXG7OlChXNC1XMSk6ICR7KGQuZGVsdGEgKiAxMDAgPj0gMCA/IFwiK1wiIDogXCJcIikgKyAoZC5kZWx0YSAqIDEwMCkudG9GaXhlZCgxKX0gcHBcXG5TdGF0dXM6ICR7ZC5pc19zaWcgPyBcInAgPCAuMDUgKFNpZ25pZmljYW50KVwiIDogXCJOb3QgU2lnbmlmaWNhbnRcIn1gXHJcbiAgICB9KSxcclxuICAgIC8vIExlZnQgbGFiZWxzIChXYXZlIDEpXHJcbiAgICBQbG90LnRleHQoXHJcbiAgICAgIHNsb3BlX2RhdGEuZmlsdGVyKGQgPT4gZC5XYXZlID09PSBcIldhdmUgMVwiKSxcclxuICAgICAge1xyXG4gICAgICAgIHg6IFwiV2F2ZVwiLFxyXG4gICAgICAgIHk6IFwiVmFsdWVcIixcclxuICAgICAgICB0ZXh0OiBkID0+IGAkeyhkLlZhbHVlICogMTAwKS50b0ZpeGVkKDEpfSVgLFxyXG4gICAgICAgIGR4OiAtMTIsXHJcbiAgICAgICAgdGV4dEFuY2hvcjogXCJlbmRcIixcclxuICAgICAgICBmb250V2VpZ2h0OiBkID0+IGQuaXNfc2lnID8gXCI3MDBcIiA6IFwiNDAwXCIsXHJcbiAgICAgICAgZmlsbDogZCA9PiBkLmlzX3NpZyA/IFwiIzE2MTYxNlwiIDogXCIjNmY2ZjZmXCJcclxuICAgICAgfVxyXG4gICAgKSxcclxuICAgIC8vIFJpZ2h0IGxhYmVscyAoV2F2ZSA0ICsgRGVsdGEgKyBNZXRyaWMgTmFtZSlcclxuICAgIFBsb3QudGV4dChcclxuICAgICAgc2xvcGVfZGF0YS5maWx0ZXIoZCA9PiBkLldhdmUgPT09IFwiV2F2ZSA0XCIpLFxyXG4gICAgICB7XHJcbiAgICAgICAgeDogXCJXYXZlXCIsXHJcbiAgICAgICAgeTogXCJWYWx1ZVwiLFxyXG4gICAgICAgIHRleHQ6IGQgPT4gYCR7KGQuVmFsdWUgKiAxMDApLnRvRml4ZWQoMSl9JSAoJHtkLmRlbHRhID49IDAgPyBcIitcIiA6IFwiXCJ9JHsoZC5kZWx0YSAqIDEwMCkudG9GaXhlZCgxKX1wcCkgJHtkLk1ldHJpY19UeXBlLnNsaWNlKDAsIDI0KX1gLFxyXG4gICAgICAgIGR4OiAxMCxcclxuICAgICAgICB0ZXh0QW5jaG9yOiBcInN0YXJ0XCIsXHJcbiAgICAgICAgZm9udFdlaWdodDogZCA9PiBkLmlzX3NpZyA/IFwiNzAwXCIgOiBcIjQwMFwiLFxyXG4gICAgICAgIGZpbGw6IGQgPT4gZC5pc19zaWcgPyBcIiMwZjYyZmVcIiA6IFwiIzZmNmY2ZlwiXHJcbiAgICAgIH1cclxuICAgIClcclxuICBdXHJcbn0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5yaWJib25fZGF0YSA9IHtcclxuICBjb25zdCB6X2NyaXQgPSB6X2xvb2t1cFtjaV9sZXZlbF07XHJcbiAgcmV0dXJuIGRhdGFzZXRcclxuICAgIC5maWx0ZXIoXHJcbiAgICAgIGQgPT4gZC5UYWJsZV9OYW1lID09PSBzZWxlY3RlZF90YWJsZV9mb2N1cyAmJlxyXG4gICAgICAgICAgIGQuRGVtb2dyYXBoaWNfQ2F0ZWdvcnkgPT09IHNlbGVjdGVkX2RlbW9nX2NhdCAmJlxyXG4gICAgICAgICAgIGQuU3ViZ3JvdXAgPT09IHNlbGVjdGVkX3N1Ymdyb3VwICYmXHJcbiAgICAgICAgICAgIVtcIlRvdGFsXCIsIFwiVW53ZWlnaHRlZCBUb3RhbFwiLCBcIk1lYW5cIl0uaW5jbHVkZXMoZC5NZXRyaWNfVHlwZSlcclxuICAgIClcclxuICAgIC5tYXAoZCA9PiB7XHJcbiAgICAgIGNvbnN0IHAgPSBkLlZhbHVlO1xyXG4gICAgICBjb25zdCBuID0gZC5VbndlaWdodGVkX047XHJcbiAgICAgIC8vIE5hdGl2ZSBCaW5vbWlhbCBTdGFuZGFyZCBFcnJvcjogU0UgPSBzcXJ0KHAgKiAoMSAtIHApIC8gbilcclxuICAgICAgY29uc3Qgc2UgPSBuID4gMCA/IE1hdGguc3FydCgocCAqICgxIC0gcCkpIC8gbikgOiAwO1xyXG4gICAgICBjb25zdCBjaV9sb3cgPSBNYXRoLm1heCgwLCBwIC0gel9jcml0ICogc2UpO1xyXG4gICAgICBjb25zdCBjaV9oaWdoID0gTWF0aC5taW4oMSwgcCArIHpfY3JpdCAqIHNlKTtcclxuICAgICAgcmV0dXJuIHtcclxuICAgICAgICAuLi5kLFxyXG4gICAgICAgIHNob3J0X21ldHJpYzogZC5NZXRyaWNfVHlwZS5yZXBsYWNlKC9cXHMqXFwoZVxcLmdcXC4uKj9cXCkvZywgXCJcIikudHJpbSgpLFxyXG4gICAgICAgIHNlLFxyXG4gICAgICAgIGNpX2xvdyxcclxuICAgICAgICBjaV9oaWdoLFxyXG4gICAgICAgIGhhbGZfd2lkdGhfcHA6IHpfY3JpdCAqIHNlICogMTAwXHJcbiAgICAgIH07XHJcbiAgICB9KTtcclxufVxyXG5cclxubWVhbl9zYW1wbGVfbiA9IGQzLm1lYW4ocmliYm9uX2RhdGEsIGQgPT4gZC5VbndlaWdodGVkX04pIHx8IDBcclxubWVhbl9tb2VfcHAgPSBkMy5tZWFuKHJpYmJvbl9kYXRhLCBkID0+IGQuaGFsZl93aWR0aF9wcCkgfHwgMFxyXG5cclxuaHRtbGA8ZGl2IHN0eWxlPVwiZm9udC1zaXplOiAwLjg1cmVtOyBjb2xvcjogIzRiNTU2MzsgbWFyZ2luLWJvdHRvbTogNnB4O1wiPlxyXG4gIDxzdHJvbmc+QWN0aXZlIENvaG9ydDo8L3N0cm9uZz4gPGNvZGU+JHtzZWxlY3RlZF9kZW1vZ19jYXR9IOKGkiAke3NlbGVjdGVkX3N1Ymdyb3VwfTwvY29kZT4gfFxyXG4gIDxzdHJvbmc+TWVhbiBVbndlaWdodGVkICRuJDo8L3N0cm9uZz4gPGNvZGU+JHtNYXRoLnJvdW5kKG1lYW5fc2FtcGxlX24pLnRvTG9jYWxlU3RyaW5nKCl9PC9jb2RlPiB8XHJcbiAgPHN0cm9uZz5NZWFuIMKxTWFyZ2luIG9mIEVycm9yICgkeyhOdW1iZXIoY2lfbGV2ZWwpKjEwMCkudG9GaXhlZCgwKX0lIENJKTo8L3N0cm9uZz4gPGNvZGU+wrEke21lYW5fbW9lX3BwLnRvRml4ZWQoMil9IHBwPC9jb2RlPlxyXG48L2Rpdj5gXHJcblxyXG5QbG90LnBsb3Qoe1xyXG4gIGhlaWdodDogNDMwLFxyXG4gIG1hcmdpbkxlZnQ6IDU1LFxyXG4gIG1hcmdpblJpZ2h0OiAzMCxcclxuICBtYXJnaW5Cb3R0b206IDQwLFxyXG4gIHN0eWxlOiB7XHJcbiAgICBiYWNrZ3JvdW5kOiBcInRyYW5zcGFyZW50XCIsXHJcbiAgICBmb250RmFtaWx5OiBcIkludGVyLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWZcIixcclxuICAgIGZvbnRTaXplOiBcIjEycHhcIlxyXG4gIH0sXHJcbiAgeDoge1xyXG4gICAgZG9tYWluOiBbMSwgMiwgMywgNF0sXHJcbiAgICB0aWNrRm9ybWF0OiBkID0+IGBXYXZlICR7ZH1gLFxyXG4gICAgbGFiZWw6IFwiU3VydmV5IFdhdmVcIlxyXG4gIH0sXHJcbiAgeToge1xyXG4gICAgZG9tYWluOiBbMCwgMV0sXHJcbiAgICBncmlkOiB0cnVlLFxyXG4gICAgdGlja0Zvcm1hdDogZDMuZm9ybWF0KFwiLjAlXCIpLFxyXG4gICAgbGFiZWw6IFwiUG9pbnQgRXN0aW1hdGUgwrEgRHluYW1pYyBDSSBSaWJib25cIlxyXG4gIH0sXHJcbiAgY29sb3I6IHtcclxuICAgIGxlZ2VuZDogdHJ1ZVxyXG4gIH0sXHJcbiAgbWFya3M6IFtcclxuICAgIC8vIER5bmFtaWMgY29uZmlkZW5jZSBpbnRlcnZhbCByaWJib246IHdpZGVucyBhdXRvbWF0aWNhbGx5IHdoZW4gU3ViZ3JvdXAgTiBzaHJpbmtzXHJcbiAgICBQbG90LmFyZWFZKHJpYmJvbl9kYXRhLCB7XHJcbiAgICAgIHg6IFwid2F2ZV9udW1cIixcclxuICAgICAgeTE6IFwiY2lfbG93XCIsXHJcbiAgICAgIHkyOiBcImNpX2hpZ2hcIixcclxuICAgICAgZmlsbDogXCJzaG9ydF9tZXRyaWNcIixcclxuICAgICAgZmlsbE9wYWNpdHk6IDAuMjIsXHJcbiAgICAgIGN1cnZlOiBcIm1vbm90b25lLXhcIlxyXG4gICAgfSksXHJcbiAgICBQbG90LmxpbmVZKHJpYmJvbl9kYXRhLCB7XHJcbiAgICAgIHg6IFwid2F2ZV9udW1cIixcclxuICAgICAgeTogXCJWYWx1ZVwiLFxyXG4gICAgICBzdHJva2U6IFwic2hvcnRfbWV0cmljXCIsXHJcbiAgICAgIHN0cm9rZVdpZHRoOiAyLjUsXHJcbiAgICAgIGN1cnZlOiBcIm1vbm90b25lLXhcIlxyXG4gICAgfSksXHJcbiAgICBQbG90LmRvdChyaWJib25fZGF0YSwge1xyXG4gICAgICB4OiBcIndhdmVfbnVtXCIsXHJcbiAgICAgIHk6IFwiVmFsdWVcIixcclxuICAgICAgZmlsbDogXCJzaG9ydF9tZXRyaWNcIixcclxuICAgICAgcjogNCxcclxuICAgICAgdGl0bGU6IGQgPT4gYCR7ZC5zaG9ydF9tZXRyaWN9XFxuJHtkLldhdmV9ICgke2QuU3ViZ3JvdXB9KVxcbkVzdGltYXRlOiAkeyhkLlZhbHVlICogMTAwKS50b0ZpeGVkKDEpfSVcXG5VbndlaWdodGVkIG46ICR7ZC5VbndlaWdodGVkX059XFxuU0U6IMKxJHsoZC5zZSAqIDEwMCkudG9GaXhlZCgyKX0gcHBcXG4keyhOdW1iZXIoY2lfbGV2ZWwpKjEwMCkudG9GaXhlZCgwKX0lIENJOiBbJHsoZC5jaV9sb3cgKiAxMDApLnRvRml4ZWQoMSl9JSwgJHsoZC5jaV9oaWdoICogMTAwKS50b0ZpeGVkKDEpfSVdYFxyXG4gICAgfSlcclxuICBdXHJcbn0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG4vLyBTY3J1YmJlciAvIFBsYXliYWNrIGNvbnRyb2xzIGZvciBXYXZlIDEgLT4gV2F2ZSA0IGludGVycG9sYXRpb25cclxudmlld29mIHdhdmVfc2NydWJiZXIgPSBJbnB1dHMucmFuZ2UoWzEsIDRdLCB7XHJcbiAgdmFsdWU6IDQsXHJcbiAgc3RlcDogMC4wNSxcclxuICBsYWJlbDogXCJQbGF5YmFjayBXYXZlICgxIOKGkiA0KTpcIlxyXG59KVxyXG5cclxudmlld29mIHlfdHJ1c3RfdGFyZ2V0ID0gSW5wdXRzLnNlbGVjdChcclxuICBbXHJcbiAgICBcIlRoZSBOSFNcIixcclxuICAgIFwiQWNhZGVtaWMgcmVzZWFyY2hlcnMgYXQgdW5pdmVyc2l0aWVzXCIsXHJcbiAgICBcIlRoZSBHb3Zlcm5tZW50XCIsXHJcbiAgICBcIkJpZyB0ZWNobm9sb2d5IGNvbXBhbmllcyAoZS5nLiwgQW1hem9uLCBNaWNyb3NvZnQsIEdvb2dsZSwgQXBwbGUpXCIsXHJcbiAgICBcIlNvY2lhbCBtZWRpYSBjb21wYW5pZXMgKGUuZy4sIEZhY2Vib29rLCBJbnN0YWdyYW0sIFRpa1RvaywgWClcIlxyXG4gIF0sXHJcbiAgeyB2YWx1ZTogXCJUaGUgR292ZXJubWVudFwiLCBsYWJlbDogXCJZLUF4aXMgVHJ1c3QgVGFyZ2V0IChUYWJsZSAxKTpcIiB9XHJcbilcclxuXHJcbnJvc2xpbmdfdHJhamVjdG9yaWVzID0ge1xyXG4gIC8vIFgtYXhpczogVGFibGUgODIgJyBORVQ6IENvdWxkIGV4cGxhaW4gYXQgbGVhc3QgcGFydGlhbGx5ICcgKG9yICdORVQ6IEhlYXJkIG9mICcpXHJcbiAgY29uc3QgeF9yb3dzID0gZGF0YXNldC5maWx0ZXIoXHJcbiAgICBkID0+IGQuVGFibGVfTmFtZSA9PT0gXCJUYWJsZSA4MlwiICYmXHJcbiAgICAgICAgIGQuTWV0cmljX1R5cGUudHJpbSgpID09PSBcIk5FVDogQ291bGQgZXhwbGFpbiBhdCBsZWFzdCBwYXJ0aWFsbHlcIiAmJlxyXG4gICAgICAgICBkLkRlbW9ncmFwaGljX0NhdGVnb3J5ICE9PSBcIkRpZ2l0YWwgZW5nYWdlbWVudFwiXHJcbiAgKTtcclxuICAvLyBZLWF4aXM6IFRhYmxlIDEgc2VsZWN0ZWQgb3JnYW5pc2F0aW9uIE5ldCBUcnVzdFxyXG4gIGNvbnN0IHlfcm93cyA9IGRhdGFzZXQuZmlsdGVyKFxyXG4gICAgZCA9PiBkLlRhYmxlX05hbWUgPT09IFwiVGFibGUgMVwiICYmXHJcbiAgICAgICAgIGQuTWV0cmljX1R5cGUudHJpbSgpID09PSB5X3RydXN0X3RhcmdldCAmJlxyXG4gICAgICAgICBkLkRlbW9ncmFwaGljX0NhdGVnb3J5ICE9PSBcIkRpZ2l0YWwgZW5nYWdlbWVudFwiXHJcbiAgKTtcclxuXHJcbiAgY29uc3QgeV9tYXAgPSBuZXcgTWFwKFxyXG4gICAgeV9yb3dzLm1hcChkID0+IFtgJHtkLkRlbW9ncmFwaGljX0NhdGVnb3J5fXwke2QuU3ViZ3JvdXB9fCR7ZC53YXZlX251bX1gLCBkXSlcclxuICApO1xyXG5cclxuICBjb25zdCBqb2luZWQgPSBbXTtcclxuICBmb3IgKGNvbnN0IHggb2YgeF9yb3dzKSB7XHJcbiAgICBjb25zdCBrZXkgPSBgJHt4LkRlbW9ncmFwaGljX0NhdGVnb3J5fXwke3guU3ViZ3JvdXB9fCR7eC53YXZlX251bX1gO1xyXG4gICAgY29uc3QgeSA9IHlfbWFwLmdldChrZXkpO1xyXG4gICAgaWYgKHkpIHtcclxuICAgICAgam9pbmVkLnB1c2goe1xyXG4gICAgICAgIERlbW9ncmFwaGljX0NhdGVnb3J5OiB4LkRlbW9ncmFwaGljX0NhdGVnb3J5LFxyXG4gICAgICAgIFN1Ymdyb3VwOiB4LlN1Ymdyb3VwLFxyXG4gICAgICAgIHdhdmVfbnVtOiB4LndhdmVfbnVtLFxyXG4gICAgICAgIGFpX2F3YXJlbmVzczogeC5WYWx1ZSxcclxuICAgICAgICBuZXRfdHJ1c3Q6IHkuVmFsdWUsXHJcbiAgICAgICAgVW53ZWlnaHRlZF9OOiB4LlVud2VpZ2h0ZWRfTlxyXG4gICAgICB9KTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC8vIEludGVycG9sYXRlIHNtb290aGx5IGF0IGN1cnJlbnQgd2F2ZV9zY3J1YmJlciBwb3NpdGlvblxyXG4gIGNvbnN0IGJ5X2NvaG9ydCA9IGQzLmdyb3VwKGpvaW5lZCwgZCA9PiBgJHtkLkRlbW9ncmFwaGljX0NhdGVnb3J5fXwke2QuU3ViZ3JvdXB9YCk7XHJcbiAgY29uc3QgY3VycmVudF9wb2ludHMgPSBbXTtcclxuICBjb25zdCB0cmFpbF9zZWdtZW50cyA9IFtdO1xyXG5cclxuICBjb25zdCB3X2Zsb29yID0gTWF0aC5mbG9vcih3YXZlX3NjcnViYmVyKTtcclxuICBjb25zdCB3X2NlaWwgPSBNYXRoLm1pbig0LCBNYXRoLmNlaWwod2F2ZV9zY3J1YmJlcikpO1xyXG4gIGNvbnN0IGFscGhhID0gd2F2ZV9zY3J1YmJlciAtIHdfZmxvb3I7XHJcblxyXG4gIGZvciAoY29uc3QgW2NvaG9ydF9rZXksIHB0c10gb2YgYnlfY29ob3J0LmVudHJpZXMoKSkge1xyXG4gICAgcHRzLnNvcnQoKGEsIGIpID0+IGEud2F2ZV9udW0gLSBiLndhdmVfbnVtKTtcclxuICAgIGZvciAoY29uc3QgcHQgb2YgcHRzKSB7XHJcbiAgICAgIGlmIChwdC53YXZlX251bSA8PSB3YXZlX3NjcnViYmVyKSB7XHJcbiAgICAgICAgdHJhaWxfc2VnbWVudHMucHVzaCh7IC4uLnB0LCBjb2hvcnRfa2V5IH0pO1xyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgICBjb25zdCBwMCA9IHB0cy5maW5kKGQgPT4gZC53YXZlX251bSA9PT0gd19mbG9vcik7XHJcbiAgICBjb25zdCBwMSA9IHB0cy5maW5kKGQgPT4gZC53YXZlX251bSA9PT0gd19jZWlsKSB8fCBwMDtcclxuICAgIGlmIChwMCAmJiBwMSkge1xyXG4gICAgICBjb25zdCBpbnRlcnBfeCA9IHAwLmFpX2F3YXJlbmVzcyArIGFscGhhICogKHAxLmFpX2F3YXJlbmVzcyAtIHAwLmFpX2F3YXJlbmVzcyk7XHJcbiAgICAgIGNvbnN0IGludGVycF95ID0gcDAubmV0X3RydXN0ICsgYWxwaGEgKiAocDEubmV0X3RydXN0IC0gcDAubmV0X3RydXN0KTtcclxuICAgICAgY29uc3QgaW50ZXJwX24gPSBNYXRoLnJvdW5kKHAwLlVud2VpZ2h0ZWRfTiArIGFscGhhICogKHAxLlVud2VpZ2h0ZWRfTiAtIHAwLlVud2VpZ2h0ZWRfTikpO1xyXG4gICAgICBjdXJyZW50X3BvaW50cy5wdXNoKHtcclxuICAgICAgICBjb2hvcnRfa2V5LFxyXG4gICAgICAgIERlbW9ncmFwaGljX0NhdGVnb3J5OiBwMC5EZW1vZ3JhcGhpY19DYXRlZ29yeSxcclxuICAgICAgICBTdWJncm91cDogcDAuU3ViZ3JvdXAsXHJcbiAgICAgICAgYWlfYXdhcmVuZXNzOiBpbnRlcnBfeCxcclxuICAgICAgICBuZXRfdHJ1c3Q6IGludGVycF95LFxyXG4gICAgICAgIFVud2VpZ2h0ZWRfTjogaW50ZXJwX25cclxuICAgICAgfSk7XHJcbiAgICAgIHRyYWlsX3NlZ21lbnRzLnB1c2goe1xyXG4gICAgICAgIGNvaG9ydF9rZXksXHJcbiAgICAgICAgRGVtb2dyYXBoaWNfQ2F0ZWdvcnk6IHAwLkRlbW9ncmFwaGljX0NhdGVnb3J5LFxyXG4gICAgICAgIFN1Ymdyb3VwOiBwMC5TdWJncm91cCxcclxuICAgICAgICB3YXZlX251bTogd2F2ZV9zY3J1YmJlcixcclxuICAgICAgICBhaV9hd2FyZW5lc3M6IGludGVycF94LFxyXG4gICAgICAgIG5ldF90cnVzdDogaW50ZXJwX3ksXHJcbiAgICAgICAgVW53ZWlnaHRlZF9OOiBpbnRlcnBfblxyXG4gICAgICB9KTtcclxuICAgIH1cclxuICB9XHJcbiAgcmV0dXJuIHsgY3VycmVudF9wb2ludHMsIHRyYWlsX3NlZ21lbnRzIH07XHJcbn1cclxuXHJcblBsb3QucGxvdCh7XHJcbiAgaGVpZ2h0OiA0NDAsXHJcbiAgbWFyZ2luTGVmdDogNTUsXHJcbiAgbWFyZ2luUmlnaHQ6IDMwLFxyXG4gIG1hcmdpbkJvdHRvbTogNDUsXHJcbiAgc3R5bGU6IHtcclxuICAgIGJhY2tncm91bmQ6IFwidHJhbnNwYXJlbnRcIixcclxuICAgIGZvbnRGYW1pbHk6IFwiSW50ZXIsIHN5c3RlbS11aSwgc2Fucy1zZXJpZlwiLFxyXG4gICAgZm9udFNpemU6IFwiMTJweFwiXHJcbiAgfSxcclxuICB4OiB7XHJcbiAgICBkb21haW46IFswLjM1LCAwLjkwXSxcclxuICAgIGdyaWQ6IHRydWUsXHJcbiAgICB0aWNrRm9ybWF0OiBkMy5mb3JtYXQoXCIuMCVcIiksXHJcbiAgICBsYWJlbDogXCJOZXQgQUkgRXhwbGFuYXRpb24gQ2FwYWJpbGl0eSAoVGFibGUgODI6IENvdWxkIEV4cGxhaW4gQUkpXCJcclxuICB9LFxyXG4gIHk6IHtcclxuICAgIGRvbWFpbjogWzAuMTUsIDAuOTVdLFxyXG4gICAgZ3JpZDogdHJ1ZSxcclxuICAgIHRpY2tGb3JtYXQ6IGQzLmZvcm1hdChcIi4wJVwiKSxcclxuICAgIGxhYmVsOiBgTmV0IFRydXN0IGluICR7eV90cnVzdF90YXJnZXQuc2xpY2UoMCwgMjgpfSAoVGFibGUgMSlgXHJcbiAgfSxcclxuICByOiB7XHJcbiAgICByYW5nZTogWzUsIDI2XVxyXG4gIH0sXHJcbiAgY29sb3I6IHtcclxuICAgIGxlZ2VuZDogdHJ1ZVxyXG4gIH0sXHJcbiAgbWFya3M6IFtcclxuICAgIC8vIExvbmdpdHVkaW5hbCBjb21ldCB0cmFpbHMgc2hvd2luZyBwYXRoIGZyb20gV2F2ZSAxIHRvIGN1cnJlbnQgc2xpZGVyIHdhdmVcclxuICAgIFBsb3QubGluZShyb3NsaW5nX3RyYWplY3Rvcmllcy50cmFpbF9zZWdtZW50cywge1xyXG4gICAgICB4OiBcImFpX2F3YXJlbmVzc1wiLFxyXG4gICAgICB5OiBcIm5ldF90cnVzdFwiLFxyXG4gICAgICB6OiBcImNvaG9ydF9rZXlcIixcclxuICAgICAgc3Ryb2tlOiBcIkRlbW9ncmFwaGljX0NhdGVnb3J5XCIsXHJcbiAgICAgIHN0cm9rZU9wYWNpdHk6IDAuMzUsXHJcbiAgICAgIHN0cm9rZVdpZHRoOiAxLjgsXHJcbiAgICAgIGN1cnZlOiBcImNhdG11bGwtcm9tXCJcclxuICAgIH0pLFxyXG4gICAgLy8gQ29ob3J0IGJ1YmJsZXMgc2l6ZWQgYnkgVW53ZWlnaHRlZF9OXHJcbiAgICBQbG90LmRvdChyb3NsaW5nX3RyYWplY3Rvcmllcy5jdXJyZW50X3BvaW50cywge1xyXG4gICAgICB4OiBcImFpX2F3YXJlbmVzc1wiLFxyXG4gICAgICB5OiBcIm5ldF90cnVzdFwiLFxyXG4gICAgICByOiBcIlVud2VpZ2h0ZWRfTlwiLFxyXG4gICAgICBmaWxsOiBcIkRlbW9ncmFwaGljX0NhdGVnb3J5XCIsXHJcbiAgICAgIGZpbGxPcGFjaXR5OiAwLjc4LFxyXG4gICAgICBzdHJva2U6IFwiIzExMTgyN1wiLFxyXG4gICAgICBzdHJva2VXaWR0aDogMS4yLFxyXG4gICAgICB0aXRsZTogZCA9PiBgJHtkLlN1Ymdyb3VwfSAoJHtkLkRlbW9ncmFwaGljX0NhdGVnb3J5fSlcXG5XYXZlOiAke3dhdmVfc2NydWJiZXIudG9GaXhlZCgyKX1cXG5BSSBFeHBsYW5hdGlvbjogJHsoZC5haV9hd2FyZW5lc3MgKiAxMDApLnRvRml4ZWQoMSl9JVxcbk5ldCBUcnVzdDogJHsoZC5uZXRfdHJ1c3QgKiAxMDApLnRvRml4ZWQoMSl9JVxcblVud2VpZ2h0ZWQgbjogJHtkLlVud2VpZ2h0ZWRfTi50b0xvY2FsZVN0cmluZygpfWBcclxuICAgIH0pLFxyXG4gICAgUGxvdC50ZXh0KHJvc2xpbmdfdHJhamVjdG9yaWVzLmN1cnJlbnRfcG9pbnRzLCB7XHJcbiAgICAgIHg6IFwiYWlfYXdhcmVuZXNzXCIsXHJcbiAgICAgIHk6IFwibmV0X3RydXN0XCIsXHJcbiAgICAgIHRleHQ6IFwiU3ViZ3JvdXBcIixcclxuICAgICAgZHk6IC0xMixcclxuICAgICAgZm9udFNpemU6IDEwLFxyXG4gICAgICBmb250V2VpZ2h0OiBcIjYwMFwiLFxyXG4gICAgICBmaWxsOiBcIiMxZjI5MzdcIlxyXG4gICAgfSlcclxuICBdXHJcbn0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG4vLyBGdWxsIDQtcG9pbnQgTGlrZXJ0IHNjYWxlcyBhY3Jvc3Mgc2VjdG9ycyAoVGFibGVzIDMsIDQsIDUsIDYsIDcsIDEyKVxyXG5zZWN0b3JfdGFibGVfbWFwID0gbmV3IE1hcChbXHJcbiAgW1wiVGFibGUgM1wiLCBcIlRoZSBOSFNcIl0sXHJcbiAgW1wiVGFibGUgNVwiLCBcIkFjYWRlbWljIFJlc2VhcmNoZXJzXCJdLFxyXG4gIFtcIlRhYmxlIDEyXCIsIFwiQmFua3MgJiBGaW5hbmNlXCJdLFxyXG4gIFtcIlRhYmxlIDdcIiwgXCJCaWcgVGVjaCBDb21wYW5pZXNcIl0sXHJcbiAgW1wiVGFibGUgNFwiLCBcIlRoZSBHb3Zlcm5tZW50XCJdLFxyXG4gIFtcIlRhYmxlIDZcIiwgXCJTb2NpYWwgTWVkaWFcIl1cclxuXSlcclxuXHJcbmxpa2VydF9wb2ludHMgPSBuZXcgTWFwKFtcclxuICBbXCJEbyBub3QgdHJ1c3QgYXQgYWxsICgxLjApXCIsIDEuMF0sXHJcbiAgW1wiRG8gbm90IHRydXN0IG11Y2ggKDIuMClcIiwgMi4wXSxcclxuICBbXCJTb21ld2hhdCB0cnVzdCAoMy4wKVwiLCAzLjBdLFxyXG4gIFtcIlRydXN0IGEgbG90ICg0LjApXCIsIDQuMF1cclxuXSlcclxuXHJcbi8vIFNtb290aCBjb250aW51b3VzIGRlbnNpdHkgaW50ZXJwb2xhdGlvbiBhY3Jvc3MgdGhlIDQgTGlrZXJ0IGFuY2hvciBwb2ludHMgZm9yIHJpZGdlbGluZXNcclxucmlkZ2VfZGVuc2l0eV9kYXRhID0ge1xyXG4gIGNvbnN0IHJhd19saWtlcnQgPSBkYXRhc2V0LmZpbHRlcihcclxuICAgIGQgPT4gc2VjdG9yX3RhYmxlX21hcC5oYXMoZC5UYWJsZV9OYW1lKSAmJlxyXG4gICAgICAgICBkLldhdmUgPT09IFwiV2F2ZSA0XCIgJiZcclxuICAgICAgICAgZC5EZW1vZ3JhcGhpY19DYXRlZ29yeSA9PT0gc2VsZWN0ZWRfZGVtb2dfY2F0ICYmXHJcbiAgICAgICAgIGxpa2VydF9wb2ludHMuaGFzKGQuTWV0cmljX1R5cGUpXHJcbiAgKTtcclxuXHJcbiAgY29uc3QgZ3JvdXBlZCA9IGQzLmdyb3VwKHJhd19saWtlcnQsIGQgPT4gYCR7ZC5UYWJsZV9OYW1lfXwke2QuU3ViZ3JvdXB9YCk7XHJcbiAgY29uc3QgZ3JpZF94ID0gZDMucmFuZ2UoMS4wLCA0LjA1LCAwLjEpO1xyXG4gIGNvbnN0IGN1cnZlcyA9IFtdO1xyXG5cclxuICBmb3IgKGNvbnN0IFtrZXksIHJvd3NdIG9mIGdyb3VwZWQuZW50cmllcygpKSB7XHJcbiAgICBjb25zdCBbdF9uYW1lLCBzdWJncm91cF0gPSBrZXkuc3BsaXQoXCJ8XCIpO1xyXG4gICAgY29uc3Qgc2VjdG9yID0gc2VjdG9yX3RhYmxlX21hcC5nZXQodF9uYW1lKTtcclxuICAgIGNvbnN0IHdlaWdodHMgPSByb3dzLm1hcChyID0+ICh7XHJcbiAgICAgIHNjb3JlOiBsaWtlcnRfcG9pbnRzLmdldChyLk1ldHJpY19UeXBlKSxcclxuICAgICAgcHJvYjogci5WYWx1ZSxcclxuICAgICAgbjogci5VbndlaWdodGVkX05cclxuICAgIH0pKTtcclxuXHJcbiAgICAvLyBHYXVzc2lhbiBrZXJuZWwgc21vb3RoaW5nIChiYW5kd2lkdGggPSAwLjQyKSBvdmVyIGRpc2NyZXRlIExpa2VydCBtYXNzXHJcbiAgICBjb25zdCBidyA9IDAuNDI7XHJcbiAgICBmb3IgKGNvbnN0IHggb2YgZ3JpZF94KSB7XHJcbiAgICAgIGxldCBkZW5zaXR5ID0gMDtcclxuICAgICAgZm9yIChjb25zdCB3IG9mIHdlaWdodHMpIHtcclxuICAgICAgICBjb25zdCB1ID0gKHggLSB3LnNjb3JlKSAvIGJ3O1xyXG4gICAgICAgIGRlbnNpdHkgKz0gdy5wcm9iICogTWF0aC5leHAoLTAuNSAqIHUgKiB1KTtcclxuICAgICAgfVxyXG4gICAgICBjdXJ2ZXMucHVzaCh7XHJcbiAgICAgICAgU2VjdG9yOiBzZWN0b3IsXHJcbiAgICAgICAgU3ViZ3JvdXA6IHN1Ymdyb3VwLFxyXG4gICAgICAgIGxpa2VydF94OiBOdW1iZXIoeC50b0ZpeGVkKDIpKSxcclxuICAgICAgICBkZW5zaXR5LFxyXG4gICAgICAgIFVud2VpZ2h0ZWRfTjogd2VpZ2h0c1swXT8ubiB8fCAwXHJcbiAgICAgIH0pO1xyXG4gICAgfVxyXG4gIH1cclxuICByZXR1cm4gY3VydmVzO1xyXG59XHJcblxyXG4vLyBSZWFjdGl2ZSBob3ZlciBzdGF0ZSBmb3IgY3Jvc3MtcGFuZWwgcmlkZ2Ugc3luY2hyb25pemF0aW9uXHJcbm11dGFibGUgaG92ZXJlZF9yaWRnZV9zdWJncm91cCA9IG51bGxcclxuXHJcbnJpZGdlX2NoYXJ0ID0ge1xyXG4gIGNvbnN0IGFjdGl2ZV9zdWIgPSBob3ZlcmVkX3JpZGdlX3N1Ymdyb3VwIHx8IHNlbGVjdGVkX3N1Ymdyb3VwO1xyXG5cclxuICBjb25zdCBwbG90ID0gUGxvdC5wbG90KHtcclxuICAgIGhlaWdodDogNDg1LFxyXG4gICAgbWFyZ2luTGVmdDogMTM1LFxyXG4gICAgbWFyZ2luUmlnaHQ6IDI1LFxyXG4gICAgbWFyZ2luVG9wOiAzNSxcclxuICAgIG1hcmdpbkJvdHRvbTogNDAsXHJcbiAgICBzdHlsZToge1xyXG4gICAgICBiYWNrZ3JvdW5kOiBcInRyYW5zcGFyZW50XCIsXHJcbiAgICAgIGZvbnRGYW1pbHk6IFwiSW50ZXIsIHN5c3RlbS11aSwgc2Fucy1zZXJpZlwiLFxyXG4gICAgICBmb250U2l6ZTogXCIxMS41cHhcIlxyXG4gICAgfSxcclxuICAgIGZ4OiB7XHJcbiAgICAgIGxhYmVsOiBudWxsLFxyXG4gICAgICBkb21haW46IFtcclxuICAgICAgICBcIlRoZSBOSFNcIixcclxuICAgICAgICBcIkFjYWRlbWljIFJlc2VhcmNoZXJzXCIsXHJcbiAgICAgICAgXCJCYW5rcyAmIEZpbmFuY2VcIixcclxuICAgICAgICBcIkJpZyBUZWNoIENvbXBhbmllc1wiLFxyXG4gICAgICAgIFwiVGhlIEdvdmVybm1lbnRcIixcclxuICAgICAgICBcIlNvY2lhbCBNZWRpYVwiXHJcbiAgICAgIF1cclxuICAgIH0sXHJcbiAgICB4OiB7XHJcbiAgICAgIGRvbWFpbjogWzEsIDRdLFxyXG4gICAgICB0aWNrczogWzEsIDIsIDMsIDRdLFxyXG4gICAgICB0aWNrRm9ybWF0OiBkID0+IGAke2R9YCxcclxuICAgICAgbGFiZWw6IFwiVHJ1c3QgU2NhbGUgKDEgPSBOb3QgYXQgYWxsIOKGkiA0ID0gVHJ1c3QgYSBsb3QpXCJcclxuICAgIH0sXHJcbiAgICB5OiB7XHJcbiAgICAgIGF4aXM6IG51bGwsXHJcbiAgICAgIGRvbWFpbjogWzAsIDAuOTVdXHJcbiAgICB9LFxyXG4gICAgZnk6IHtcclxuICAgICAgbGFiZWw6IG51bGwsXHJcbiAgICAgIGRvbWFpbjogYXZhaWxhYmxlX3N1Ymdyb3VwcyxcclxuICAgICAgcGFkZGluZzogMC4wOFxyXG4gICAgfSxcclxuICAgIG1hcmtzOiBbXHJcbiAgICAgIFBsb3QuYXJlYVkocmlkZ2VfZGVuc2l0eV9kYXRhLCB7XHJcbiAgICAgICAgZng6IFwiU2VjdG9yXCIsXHJcbiAgICAgICAgZnk6IFwiU3ViZ3JvdXBcIixcclxuICAgICAgICB4OiBcImxpa2VydF94XCIsXHJcbiAgICAgICAgeTogXCJkZW5zaXR5XCIsXHJcbiAgICAgICAgZmlsbDogZCA9PiBkLlN1Ymdyb3VwID09PSBhY3RpdmVfc3ViID8gXCIjMGY2MmZlXCIgOiBcIiM5NGEzYjhcIixcclxuICAgICAgICBmaWxsT3BhY2l0eTogZCA9PiBkLlN1Ymdyb3VwID09PSBhY3RpdmVfc3ViID8gMC42NSA6IDAuMjIsXHJcbiAgICAgICAgY3VydmU6IFwiYmFzaXNcIlxyXG4gICAgICB9KSxcclxuICAgICAgUGxvdC5saW5lWShyaWRnZV9kZW5zaXR5X2RhdGEsIHtcclxuICAgICAgICBmeDogXCJTZWN0b3JcIixcclxuICAgICAgICBmeTogXCJTdWJncm91cFwiLFxyXG4gICAgICAgIHg6IFwibGlrZXJ0X3hcIixcclxuICAgICAgICB5OiBcImRlbnNpdHlcIixcclxuICAgICAgICBzdHJva2U6IGQgPT4gZC5TdWJncm91cCA9PT0gYWN0aXZlX3N1YiA/IFwiIzAwNDNjZVwiIDogXCIjNjQ3NDhiXCIsXHJcbiAgICAgICAgc3Ryb2tlV2lkdGg6IGQgPT4gZC5TdWJncm91cCA9PT0gYWN0aXZlX3N1YiA/IDIuNCA6IDEuMSxcclxuICAgICAgICBjdXJ2ZTogXCJiYXNpc1wiLFxyXG4gICAgICAgIHRpdGxlOiBkID0+IGAke2QuU2VjdG9yfSDigJQgJHtkLlN1Ymdyb3VwfVxcblNjYWxlIFNjb3JlOiAke2QubGlrZXJ0X3h9XFxuUmVsYXRpdmUgRGVuc2l0eTogJHtkLmRlbnNpdHkudG9GaXhlZCgyKX0gKFdhdmUgNCwgbj0ke2QuVW53ZWlnaHRlZF9OfSlgXHJcbiAgICAgIH0pLFxyXG4gICAgICBQbG90LnJ1bGVZKFswXSwgeyBzdHJva2U6IFwiI2NiZDVlMVwiLCBzdHJva2VXaWR0aDogMC43NSB9KVxyXG4gICAgXVxyXG4gIH0pO1xyXG5cclxuICAvLyBBdHRhY2ggY3Jvc3MtcGFuZWwgaG92ZXIgbGlzdGVuZXIgdG8gc3luY2hyb25pemUgc3ViZ3JvdXAgaGlnaGxpZ2h0aW5nIGFjcm9zcyBhbGwgNiBzZWN0b3IgZmFjZXRzXHJcbiAgZDMuc2VsZWN0KHBsb3QpXHJcbiAgICAuc2VsZWN0QWxsKFwicGF0aFwiKVxyXG4gICAgLnN0eWxlKFwiY3Vyc29yXCIsIFwicG9pbnRlclwiKVxyXG4gICAgLm9uKFwibW91c2VlbnRlclwiLCBmdW5jdGlvbiAoZXZlbnQpIHtcclxuICAgICAgY29uc3QgdGl0bGVfZWwgPSBkMy5zZWxlY3QodGhpcykuc2VsZWN0KFwidGl0bGVcIik7XHJcbiAgICAgIGlmICghdGl0bGVfZWwuZW1wdHkoKSkge1xyXG4gICAgICAgIGNvbnN0IHJhd190aXRsZSA9IHRpdGxlX2VsLnRleHQoKTtcclxuICAgICAgICBjb25zdCBtYXRjaCA9IHJhd190aXRsZS5tYXRjaCgv4oCUXFxzKiguKz8pXFxuLyk7XHJcbiAgICAgICAgaWYgKG1hdGNoICYmIG1hdGNoWzFdKSB7XHJcbiAgICAgICAgICBtdXRhYmxlIGhvdmVyZWRfcmlkZ2Vfc3ViZ3JvdXAgPSBtYXRjaFsxXS50cmltKCk7XHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICB9KTtcclxuXHJcbiAgcmV0dXJuIHBsb3Q7XHJcbn1cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd3YXZlX3NjcnViYmVyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3lfdHJ1c3RfdGFyZ2V0JykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../projects/padai_tracker";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/hochinwei\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Ho Chin Wei</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>

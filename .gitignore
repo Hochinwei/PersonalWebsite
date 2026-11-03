@@ -12,3 +12,5 @@
 # personal CV source (contains phone/email) - never publish to this public repo
 CW_CV_UK_PhD.pdf
 **/*.quarto_ipynb
+
+.claude
