@@ -1,0 +1,683 @@
+---
+title: "Familiarity Breeds Nuance: Four Waves of UK Public Attitudes Toward AI"
+description: "A longitudinal descriptive analysis of the UK DSIT Public Attitudes to Data and AI Tracker Survey (Waves 1–4), tracking how mainstream generative AI reshaped public literacy, domain optimism, risk perception, and regulatory confidence."
+image: thumbnail.png
+author: "Ho Chin Wei"
+date: last-modified
+date-format: "D MMMM YYYY"
+categories: [code, analysis, longitudinal, public-policy, AI]
+toc: true
+toc-location: left
+toc-title: "On this page"
+toc-depth: 3
+format:
+  html:
+    smooth-scroll: true
+    code-fold: true
+    code-summary: "Show R code"
+    fig-width: 9
+    fig-height: 5.8
+    fig-dpi: 300
+execute:
+  warning: false
+  message: false
+---
+
+## Overview and Dataset Architecture
+
+Between Wave 1 and Wave 4 of the UK Department for Science, Innovation and Technology (DSIT) *Public Attitudes to Data and AI (PADAI) Tracker Survey* ($N = 17,742$ total unweighted responses across waves: Wave 1 $N = 4,250$; Wave 2 $N = 4,320$; Wave 3 $N = 4,225$; Wave 4 $N = 4,947$), generative AI moved from specialist research into everyday consumer tools. 
+
+Rather than shifting public opinion uniformly toward optimism or pessimism, the longitudinal data in `padai_tidy_full.csv` show a structural recalibration across three measurement horizons:
+
+1. **Four-Wave Core Trajectories (Waves 1–4):** Public ability to explain AI (`Table 82`) and appreciation for personal data utility (`Table 22`) rose steadily after Wave 2, while overall belief that the technology sector makes life better (`Table 146`) and is adequately regulated (`Table 140`) declined.
+2. **Three-Wave Domain Divergence (Waves 2–4):** Expected AI impacts (`Tables 84–90`) split sharply between scientific and medical public goods (climate monitoring, healthcare diagnostics, policing) and socio-epistemic or economic domains (news trustworthiness, job opportunities, societal fairness).
+3. **Two-Wave Post-GenAI Risk Recalibration (Waves 3–4):** As hands-on chatbot usage (`Tables 122–124`) crossed 56% of the adult population for personal use, abstract anxieties around mass unemployment and human loss of control (`Table 83`) receded, replaced by immediate concerns over misinformation and non-consensual data harvesting.
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(ggiraph)
+library(scales)
+library(patchwork)
+
+# Load canonical tidy dataset produced by etl_padai_tracker.py
+df <- read_csv("data/padai_tidy_full.csv", show_col_types = FALSE) |>
+  mutate(
+    Wave_Num = as.integer(str_extract(Wave, "\\d+")),
+    Pct = Value * 100,
+    Sig_Beat = str_replace(Significance_Flag, "^[a-z]:", ""),
+    Has_Sig = nchar(Sig_Beat) > 0
+  )
+
+# Shared visual theme applying Tufte/Few principles:
+# high data-ink ratio, subtle horizontal gridlines, clear hierarchy
+theme_padai <- function(base_size = 11.5) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      plot.title = element_text(face = "bold", size = base_size * 1.22, color = "#0f172a", margin = margin(b = 4)),
+      plot.subtitle = element_text(size = base_size * 0.96, color = "#475569", lineheight = 1.25, margin = margin(b = 14)),
+      plot.caption = element_text(size = base_size * 0.78, color = "#64748b", margin = margin(t = 12), hjust = 0),
+      axis.title = element_text(size = base_size * 0.88, face = "bold", color = "#334155"),
+      axis.text = element_text(size = base_size * 0.86, color = "#334155"),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.x = element_line(color = "#e2e8f0", linewidth = 0.35),
+      panel.grid.major.y = element_line(color = "#e2e8f0", linewidth = 0.35),
+      strip.text = element_text(face = "bold", size = base_size * 0.92, color = "#1e293b", hjust = 0),
+      legend.position = "top",
+      legend.justification = "left",
+      legend.title = element_text(face = "bold", size = base_size * 0.85),
+      legend.text = element_text(size = base_size * 0.85)
+    )
+}
+
+# Shared HTML tooltip styling for ggiraph
+tooltip_css <- paste0(
+  "background-color:#0f172a;color:#f8fafc;padding:9px 12px;",
+  "border-radius:6px;font-family:system-ui,-apple-system,sans-serif;",
+  "font-size:12.5px;line-height:1.45;box-shadow:0 4px 12px rgba(0,0,0,0.22);",
+  "max-width:320px;border:1px solid #334155;"
+)
+```
+
+---
+
+## 1. The Four-Wave Macro Divergence: Rising AI Literacy vs. Eroding Tech Optimism
+
+The overarching narrative across Waves 1 to 4 is a divergence between **cognitive familiarity with AI** and **macro confidence in the technology sector**. Between Wave 2 and Wave 3, the proportion of UK adults able to explain what AI means at least partially jumped from 56.5% to 66.4%, reaching 70.5% in Wave 4 (`Table 82`). Over the same four-wave window, respondents who agreed that personal data collection leads to personally beneficial products climbed from 51.3% to 57.9% (`Table 22`).
+
+Increased familiarity did not translate into blanket enthusiasm for the technology industry. The share of adults believing the technology sector has made life better fell from 56.7% in Wave 1 to 50.8% in Wave 4 (`Table 146`), while disagreement that the digital sector is regulated enough climbed steadily from 29.5% to 38.0% (`Table 140`).
+
+```{r}
+#| label: fig-macro-divergence
+#| fig-cap: "Wave 1 to Wave 4 trajectories for core literacy, data utility, tech optimism, and regulatory skepticism among all UK respondents (Hover over points for sample sizes and significance tests)."
+
+macro_specs <- tribble(
+  ~Table_Name, ~Metric_Type, ~Series_Label, ~Direction_Group, ~Desc,
+  "Table 82", "NET: Could explain at least partially", "Can explain AI (at least partially)", "Rising Literacy & Utility", "Self-assessed ability to explain what AI means in detail or partially (Q21).",
+  "Table 22", "NET: Agree", "Data creates beneficial products for me", "Rising Literacy & Utility", "Agreement that data about me leads to products/services that benefit me personally (Q12_1).",
+  "Table 146", "NET: Better", "Tech sector has made life better", "Eroding Sector & Regulatory Confidence", "Belief that the technology sector overall has made life a lot or a little better (Q28).",
+  "Table 140", "NET: Disagree", "Digital sector is NOT regulated enough", "Eroding Sector & Regulatory Confidence", "Disagreement with the statement 'The digital sector is regulated enough' (Q27_1)."
+)
+
+macro_df <- df |>
+  filter(Subgroup == "All Respondents") |>
+  inner_join(macro_specs, by = c("Table_Name", "Metric_Type")) |>
+  group_by(Series_Label) |>
+  mutate(
+    W1_Val = Pct[Wave_Num == 1],
+    Delta_W1 = Pct - W1_Val,
+    tooltip = sprintf(
+      "<b>%s</b><br><span style='color:#94a3b8;'>%s</span><hr style='margin:5px 0;border-color:#334155;'><b>%s:</b> %.1f%% (%+.1f pp vs. Wave 1)<br><b>Unweighted N:</b> %s<br><b>Savanta 95%% Sig Flag:</b> <code>%s</code>",
+      Series_Label, Desc, Wave, Pct, Delta_W1, comma(Unweighted_N), Significance_Flag
+    ),
+    data_id = paste(Table_Name, Wave, sep = "_")
+  ) |>
+  ungroup()
+
+pal_macro <- c(
+  "Can explain AI (at least partially)" = "#0f766e",
+  "Data creates beneficial products for me" = "#0284c7",
+  "Tech sector has made life better" = "#d97706",
+  "Digital sector is NOT regulated enough" = "#b91c1c"
+)
+
+end_labels <- macro_df |> filter(Wave_Num == 4)
+
+p_macro <- ggplot(macro_df, aes(x = Wave_Num, y = Pct, color = Series_Label, group = Series_Label)) +
+  annotate("rect", xmin = 2, xmax = 3, ymin = 24, ymax = 76, fill = "#f1f5f9", alpha = 0.7) +
+  annotate(
+    "text", x = 2.5, y = 74.2,
+    label = "Mainstream GenAI Inflection\n(Wave 2 -> Wave 3)",
+    size = 3.1, fontface = "bold", color = "#475569", lineheight = 1.1
+  ) +
+  geom_line(linewidth = 1.15) +
+  geom_point_interactive(
+    aes(tooltip = tooltip, data_id = data_id),
+    size = 3.4, fill = "white", shape = 21, stroke = 1.4
+  ) +
+  geom_text(
+    data = end_labels,
+    aes(
+      x = 4.08, y = Pct,
+      label = sprintf("%s\n%.1f%% (%+.1f pp vs W1)", Series_Label, Pct, Delta_W1)
+    ),
+    hjust = 0, size = 3.15, fontface = "bold", lineheight = 1.05, show.legend = FALSE
+  ) +
+  scale_color_manual(values = pal_macro) +
+  scale_x_continuous(
+    breaks = 1:4,
+    labels = c("Wave 1\n(n = 4,250)", "Wave 2\n(n = 4,320)", "Wave 3\n(n = 4,225)", "Wave 4\n(n = 4,947)"),
+    limits = c(0.95, 5.45)
+  ) +
+  scale_y_continuous(labels = label_percent(scale = 1), limits = c(24, 76), breaks = seq(30, 70, 10)) +
+  labs(
+    title = "AI Literacy Surged After Wave 2, While Tech Optimism and Regulatory Confidence Eroded",
+    subtitle = "Proportion of all UK adults endorsing each core tracker statement across Waves 1–4 (all Wave 1 to Wave 4 shifts significant at p < .05)",
+    x = NULL,
+    y = "Percentage of Respondents (%)",
+    caption = "Source: UK DSIT Public Attitudes to Data and AI Tracker Survey (Tables 22, 82, 140, 146). Shaded band marks the Wave 2–3 generative AI inflection."
+  ) +
+  theme_padai() +
+  theme(
+    legend.position = "none",
+    panel.grid.major.x = element_blank()
+  )
+
+girafe(
+  ggobj = p_macro,
+  width_svg = 9.2,
+  height_svg = 5.4,
+  options = list(
+    opts_tooltip(css = tooltip_css),
+    opts_hover(css = "fill:#0f172a;stroke-width:2.5px;cursor:pointer;")
+  )
+)
+```
+
+### Reading the Macro Trajectory
+
+* **The Wave 2 Dip and Wave 3 Jump in Literacy:** Between Wave 1 and Wave 2, self-reported ability to explain AI dipped from 62.6% to 56.5%, before surging by **+9.9 percentage points** in Wave 3 (66.4%) and climbing further to **70.5%** in Wave 4 (`Table 82`, `d:abc`). Concurrently, the proportion of UK adults who had never heard of AI dropped by nearly two-thirds, from 11.2% in Wave 2 to 3.7% in Wave 4.
+* **Growing Appetite for Utility alongside Demand for Guardrails:** Public skepticism is not aimed at data science itself. Agreement that personal data creates beneficial products rose **+6.6 pp** over the four waves (`Table 22`, 51.3% to 57.9%). Instead, dissatisfaction targets governance: disagreement that the digital sector is adequately regulated climbed **+8.5 pp** from Wave 1 to Wave 4 (`Table 140`, 29.5% to 38.0%). When asked specifically about AI regulation in Waves 3 and 4 (`Table 145`), active disagreement that AI is regulated enough rose from **40.9%** to **44.7%** ($p < .05$), nearly double the 24.7% who believe current regulation is sufficient.
+
+---
+
+## 2. Domain-Contingent AI Sentiment: Public Goods vs. Socio-Epistemic Risk
+
+Public attitudes toward AI are strongly domain-specific (`Tables 84–90`, Question 25b). Rather than viewing AI as a monolithic technology, respondents evaluate its expected impact by weighing the domain's tangible societal utility against threats to economic security, fairness, and truth.
+
+To visualize both the current Wave 4 hierarchy and the longitudinal trajectory since Wave 2, the figure below plots **Net Expected Impact** ($\text{NET Positive} - \text{NET Negative}$, in percentage points). Domains sitting to the right of the vertical zero threshold enjoy net public backing; domains to the left face net public opposition.
+
+```{r}
+#| label: fig-domain-diverging
+#| fig-cap: "Net expected impact of AI (% Positive minus % Negative) across application domains in Waves 2–4 (Hover over bars and trajectory points for exact positive/negative breakdowns)."
+
+domain_map <- tribble(
+  ~Table_Name, ~Domain_Clean,
+  "Table 88", "Healthcare (diagnosis & treatment)",
+  "Table 90", "Policing & crime prevention",
+  "Table 89", "Access to & quality of education",
+  "Table 86", "Fairness in society",
+  "Table 87", "Job opportunities",
+  "Table 84", "Monitoring climate change",
+  "Table 85", "Trustworthiness of news & info"
+)
+
+# Extract Positive and Negative NETs from the individual domain tables (Tables 86-90)
+# and supplement with Wave 4-only domains from Table 84 (Positive) and Table 85 (Negative)
+dom_long <- df |>
+  filter(
+    Subgroup == "All Respondents",
+    Table_Name %in% c("Table 86", "Table 87", "Table 88", "Table 89", "Table 90"),
+    Metric_Type %in% c("NET: Positive", "NET: Negative")
+  ) |>
+  select(Table_Name, Wave, Wave_Num, Metric_Type, Pct, Unweighted_N, Significance_Flag) |>
+  pivot_wider(
+    names_from = Metric_Type,
+    values_from = c(Pct, Significance_Flag)
+  ) |>
+  rename(
+    Pos = `Pct_NET: Positive`,
+    Neg = `Pct_NET: Negative`,
+    Sig_Pos = `Significance_Flag_NET: Positive`,
+    Sig_Neg = `Significance_Flag_NET: Negative`
+  ) |>
+  left_join(domain_map, by = "Table_Name")
+
+# Add the three Wave 4-only domains from Tables 84 and 85
+w4_extra_pos <- df |>
+  filter(
+    Subgroup == "All Respondents",
+    Table_Name == "Table 84",
+    Wave == "Wave 4",
+    Metric_Type %in% c(
+      "Monitoring climate change",
+      "The quality of public services",
+      "The trustworthiness of news and information"
+    )
+  ) |>
+  select(Metric_Type, Wave, Wave_Num, Unweighted_N, Pos = Pct, Sig_Pos = Significance_Flag)
+
+w4_extra_neg <- df |>
+  filter(
+    Subgroup == "All Respondents",
+    Table_Name == "Table 85",
+    Wave == "Wave 4",
+    Metric_Type %in% c(
+      "Monitoring climate change",
+      "The quality of public services",
+      "The trustworthiness of news and information"
+    )
+  ) |>
+  select(Metric_Type, Wave, Neg = Pct, Sig_Neg = Significance_Flag)
+
+w4_extra <- inner_join(w4_extra_pos, w4_extra_neg, by = c("Metric_Type", "Wave")) |>
+  mutate(
+    Domain_Clean = case_when(
+      Metric_Type == "Monitoring climate change" ~ "Monitoring climate change",
+      Metric_Type == "The quality of public services" ~ "Quality of public services",
+      Metric_Type == "The trustworthiness of news and information" ~ "Trustworthiness of news & info"
+    ),
+    Table_Name = "Tables 84/85"
+  ) |>
+  select(names(dom_long))
+
+dom_all <- bind_rows(dom_long, w4_extra) |>
+  mutate(
+    Net_Impact = Pos - Neg,
+    Dont_Know_Or_Neutral = pmax(0, 100 - Pos - Neg),
+    Sentiment_Regime = if_else(Net_Impact >= 0, "Net Positive Backing", "Net Negative Opposition"),
+    tooltip = sprintf(
+      "<b>%s (%s)</b><hr style='margin:5px 0;border-color:#334155;'><b>Net Impact Balance:</b> %+.1f pp<br><b>NET Positive:</b> %.1f%% (<code>%s</code>)<br><b>NET Negative:</b> %.1f%% (<code>%s</code>)<br><b>Neutral / Don't Know:</b> %.1f%%<br><b>Unweighted N:</b> %s",
+      Domain_Clean, Wave, Net_Impact, Pos, Sig_Pos, Neg, Sig_Neg, Dont_Know_Or_Neutral, comma(Unweighted_N)
+    ),
+    data_id = paste(Domain_Clean, Wave, sep = "_")
+  )
+
+w4_order <- dom_all |>
+  filter(Wave_Num == 4) |>
+  arrange(Net_Impact) |>
+  pull(Domain_Clean)
+
+dom_all <- dom_all |>
+  mutate(Domain_Clean = factor(Domain_Clean, levels = w4_order))
+
+dom_w4 <- dom_all |> filter(Wave_Num == 4)
+
+p_domain <- ggplot() +
+  geom_vline(xintercept = 0, color = "#0f172a", linewidth = 0.8) +
+  # Wave 4 baseline horizontal bars showing current net balance
+  geom_col_interactive(
+    data = dom_w4,
+    aes(x = Net_Impact, y = Domain_Clean, fill = Sentiment_Regime, tooltip = tooltip, data_id = data_id),
+    width = 0.58, alpha = 0.88
+  ) +
+  # Overlay historical Wave 2 and Wave 3 markers where multi-wave tracking exists
+  geom_line(
+    data = dom_all |> filter(Domain_Clean %in% c("Healthcare (diagnosis & treatment)", "Fairness in society", "Job opportunities", "Policing & crime prevention", "Access to & quality of education")),
+    aes(x = Net_Impact, y = Domain_Clean, group = Domain_Clean),
+    color = "#334155", linewidth = 0.75, linetype = "solid"
+  ) +
+  geom_point_interactive(
+    data = dom_all |> filter(Wave_Num < 4),
+    aes(x = Net_Impact, y = Domain_Clean, shape = Wave, tooltip = tooltip, data_id = data_id),
+    size = 3.2, fill = "white", color = "#1e293b", stroke = 1.2
+  ) +
+  geom_text(
+    data = dom_w4,
+    aes(
+      x = if_else(Net_Impact >= 0, Net_Impact + 1.4, Net_Impact - 1.4),
+      y = Domain_Clean,
+      label = sprintf("%+.1f pp (%.0f%% Pos / %.0f%% Neg)", Net_Impact, Pos, Neg),
+      hjust = if_else(Net_Impact >= 0, 0, 1)
+    ),
+    size = 3.05, fontface = "bold", color = "#1e293b"
+  ) +
+  annotate(
+    "text", x = -21.5, y = 2.35,
+    label = "Wave 3 GenAI labor panic (-20.9 pp)\npartially rebounded in Wave 4 (-15.8 pp)",
+    size = 2.95, color = "#991b1b", fontface = "italic", hjust = 0, lineheight = 1.1
+  ) +
+  scale_fill_manual(
+    values = c("Net Positive Backing" = "#0f766e", "Net Negative Opposition" = "#b91c1c"),
+    name = "Wave 4 Net Balance:"
+  ) +
+  scale_shape_manual(
+    values = c("Wave 2" = 21, "Wave 3" = 24),
+    name = "Prior Wave Benchmarks:"
+  ) +
+  scale_x_continuous(
+    limits = c(-38, 62),
+    breaks = seq(-30, 50, 10),
+    labels = function(x) sprintf("%+d pp", x)
+  ) +
+  labs(
+    title = "Public Support for AI Splits Between Scientific Public Goods and Socio-Economic Disruption",
+    subtitle = "Bars show Wave 4 Net Expected Impact (% Positive minus % Negative); overlaid markers trace Wave 2 and Wave 3 shifts",
+    x = "Net Expected Impact (% Positive minus % Negative, percentage points)",
+    y = NULL,
+    caption = "Source: UK DSIT PADAI Tracker Survey (Tables 84–90, Q25b). Climate change, public services, and news trustworthiness were introduced in Wave 4."
+  ) +
+  theme_padai() +
+  theme(panel.grid.major.y = element_blank())
+
+girafe(
+  ggobj = p_domain,
+  width_svg = 9.2,
+  height_svg = 5.6,
+  options = list(
+    opts_tooltip(css = tooltip_css),
+    opts_hover(css = "opacity:1;stroke:#0f172a;stroke-width:2px;cursor:pointer;")
+  )
+)
+```
+
+### Key Domain Dynamics
+
+* **Strong Backing for Protective and Analytical AI:** In Wave 4, majorities expect positive impacts when AI is applied to **monitoring climate change** (53.5% positive vs. 14.2% negative; **+39.3 pp** net) and **healthcare diagnosis and treatment** (52.2% positive vs. 17.1% negative; **+35.1 pp** net). **Policing and crime prevention** also posted a statistically significant gain between Wave 3 and Wave 4, rising from 44.5% to 48.6% positive (`Table 90`, `b:a`).
+* **The Wave 3 Shock to Fairness and Employment:** In Wave 2, expectations for AI's effect on **fairness in society** (`Table 86`) were evenly balanced (+1.0 pp net: 28.9% positive vs. 27.9% negative), and **job opportunities** (`Table 87`) sat at just -1.2 pp net (33.0% positive vs. 34.2% negative). When Wave 3 was fielded amidst widespread media coverage of LLM automation, net sentiment on jobs plunged by **19.7 percentage points** to **-20.9 pp** (22.4% positive vs. 43.3% negative), while societal fairness flipped to **-8.9 pp** (22.2% vs. 31.1%). By Wave 4, labor pessimism moderated by +5.1 pp (to -15.8 pp net), though both domains remain firmly negative.
+* **Epistemic Distrust at the Bottom:** Newly tracked in Wave 4, **the trustworthiness of news and information** (`Tables 84/85`) recorded the lowest net score of any domain (**-20.8 pp**, with 44.2% expecting a negative impact versus 23.4% positive).
+
+---
+
+## 3. Familiarity vs. Fear: Post-GenAI Adoption and Risk Recalibration (Waves 3–4)
+
+Comparing behavioral chatbot adoption (`Tables 122, 124`) against perceived societal risks of AI (`Table 83`) across Waves 3 and 4 explains why labor and existential anxieties cooled while information integrity concerns rose.
+
+Between Wave 3 and Wave 4, the proportion of UK adults who had used an AI chatbot for personal life rose from **51.0% to 56.9%** ($p < .05$), workplace trial climbed from **30.3% to 34.9%** ($p < .05$), and regular weekly usage jumped from **16.1% to 22.6%** (+6.5 pp, a 40% relative increase). Direct interaction with conversational AI demystified what the technology can and cannot do in daily practice.
+
+```{r}
+#| label: fig-risk-recalibration
+#| fig-cap: "Two-panel comparison of rising AI chatbot adoption (left) and shifting societal AI risk priorities (right) between Wave 3 and Wave 4 (Hover over lines and bars for statistical significance details)."
+
+# Panel A: Behavioral Chatbot Adoption (Tables 122 & 124)
+adopt_items <- tribble(
+  ~Table_Name, ~Metric_Type, ~Label,
+  "Table 124", "Used a chatbot at all for personal life", "Ever used a chatbot (Personal life)",
+  "Table 124", "Used a chatbot at all for work", "Ever used a chatbot (Work)",
+  "Table 122", "NET: At least weekly", "Uses chatbots at least weekly (NET)"
+)
+
+adopt_df <- df |>
+  filter(Subgroup == "All Respondents", Wave %in% c("Wave 3", "Wave 4")) |>
+  inner_join(adopt_items, by = c("Table_Name", "Metric_Type")) |>
+  group_by(Label) |>
+  mutate(
+    Diff = Pct[Wave == "Wave 4"] - Pct[Wave == "Wave 3"],
+    tooltip = sprintf(
+      "<b>%s</b><br><span style='color:#94a3b8;'>%s (%s)</span><hr style='margin:5px 0;border-color:#334155;'><b>Proportion:</b> %.1f%%<br><b>W3 -> W4 Shift:</b> %+.1f pp (p &lt; .05)<br><b>Unweighted N:</b> %s<br><b>Sig Flag:</b> <code>%s</code>",
+      Label, Table_Name, Wave, Pct, Diff, comma(Unweighted_N), Significance_Flag
+    ),
+    data_id = paste(Label, Wave, sep = "_")
+  ) |>
+  ungroup() |>
+  mutate(Label = fct_reorder(Label, Pct, .fun = max))
+
+p_adopt <- ggplot(adopt_df, aes(x = Pct, y = Label, fill = Wave)) +
+  geom_col_interactive(
+    aes(tooltip = tooltip, data_id = data_id),
+    position = position_dodge(width = 0.72), width = 0.64
+  ) +
+  geom_text(
+    aes(
+      label = sprintf("%.1f%%", Pct),
+      group = Wave
+    ),
+    position = position_dodge(width = 0.72),
+    hjust = -0.15, size = 3.0, fontface = "bold", color = "#1e293b"
+  ) +
+  scale_fill_manual(values = c("Wave 3" = "#94a3b8", "Wave 4" = "#0f766e"), name = NULL) +
+  scale_x_continuous(limits = c(0, 72), labels = label_percent(scale = 1)) +
+  labs(
+    title = "A. Hands-On Chatbot Adoption Climbed",
+    subtitle = "All Wave 3 to Wave 4 adoption gains significant at p < .05",
+    x = "Percentage of UK Adults (%)",
+    y = NULL
+  ) +
+  theme_padai(base_size = 10.5) +
+  theme(panel.grid.major.y = element_blank())
+
+# Panel B: Societal Risk Recalibration Slopegraph (Table 83)
+risk_items <- c(
+  "AI will take people's jobs",
+  "Loss of human creativity and problem-solving",
+  "Humans will lose control of AI",
+  "AI will increase the spread of misinformation",
+  "AI will collect/use personal data without consent",
+  "AI will make decisions humans can't understand"
+)
+
+risk_df <- df |>
+  filter(
+    Table_Name == "Table 83",
+    Subgroup == "All Respondents",
+    Metric_Type %in% risk_items
+  ) |>
+  # Exclude the 0.0% unasked placeholder in Wave 3 for personal data consent
+  filter(!(Metric_Type == "AI will collect/use personal data without consent" & Wave == "Wave 3")) |>
+  group_by(Metric_Type) |>
+  mutate(
+    W3_Val = if (any(Wave == "Wave 3")) Pct[Wave == "Wave 3"] else NA_real_,
+    W4_Val = Pct[Wave == "Wave 4"],
+    Shift = W4_Val - W3_Val,
+    Shift_Type = case_when(
+      is.na(W3_Val) ~ "New Epistemic/Privacy Risk (W4)",
+      Shift > 0 ~ "Rising Epistemic/Privacy Risk (p < .05)",
+      TRUE ~ "Receding Labor & Control Panic (p < .05)"
+    ),
+    Short_Label = case_match(
+      Metric_Type,
+      "AI will take people's jobs" ~ "Take people's jobs",
+      "Loss of human creativity and problem-solving" ~ "Loss of human creativity",
+      "Humans will lose control of AI" ~ "Humans lose control of AI",
+      "AI will increase the spread of misinformation" ~ "Spread of misinformation",
+      "AI will collect/use personal data without consent" ~ "Non-consensual data use (New W4)",
+      "AI will make decisions humans can't understand" ~ "Opaque AI decisions"
+    ),
+    tooltip = sprintf(
+      "<b>%s</b><br><span style='color:#94a3b8;'>Table 83: Main societal risks of AI (%s)</span><hr style='margin:5px 0;border-color:#334155;'><b>Selected by:</b> %.1f%% of adults<br><b>W3 -> W4 Shift:</b> %s<br><b>Unweighted N:</b> %s<br><b>Sig Flag:</b> <code>%s</code>",
+      Metric_Type, Wave, Pct,
+      ifelse(is.na(Shift), "Added in Wave 4 (24.2%)", sprintf("%+.1f pp (p < .05)", Shift)),
+      comma(Unweighted_N), Significance_Flag
+    ),
+    data_id = paste(Short_Label, Wave, sep = "_")
+  ) |>
+  ungroup()
+
+pal_risk <- c(
+  "Rising Epistemic/Privacy Risk (p < .05)" = "#b91c1c",
+  "New Epistemic/Privacy Risk (W4)" = "#d97706",
+  "Receding Labor & Control Panic (p < .05)" = "#0284c7"
+)
+
+p_risk <- ggplot(risk_df, aes(x = Wave_Num, y = Pct, group = Short_Label, color = Shift_Type)) +
+  geom_line(data = risk_df |> filter(!is.na(W3_Val)), linewidth = 1.15) +
+  geom_point_interactive(
+    aes(tooltip = tooltip, data_id = data_id),
+    size = 3.3, fill = "white", shape = 21, stroke = 1.4
+  ) +
+  geom_text(
+    data = risk_df |> filter(Wave == "Wave 3"),
+    aes(x = 2.93, label = sprintf("%s (%.1f%%)", Short_Label, Pct)),
+    hjust = 1, size = 2.95, fontface = "bold", show.legend = FALSE
+  ) +
+  geom_text(
+    data = risk_df |> filter(Wave == "Wave 4"),
+    aes(
+      x = 4.07,
+      label = ifelse(
+        is.na(Shift),
+        sprintf("%.1f%% — %s", Pct, Short_Label),
+        sprintf("%.1f%% (%+.1f pp)", Pct, Shift)
+      )
+    ),
+    hjust = 0, size = 2.95, fontface = "bold", show.legend = FALSE
+  ) +
+  scale_color_manual(values = pal_risk, name = NULL) +
+  scale_x_continuous(
+    breaks = c(3, 4),
+    labels = c("Wave 3\n(n = 4,225)", "Wave 4\n(n = 4,947)"),
+    limits = c(1.85, 5.15)
+  ) +
+  scale_y_continuous(limits = c(15, 48), labels = label_percent(scale = 1)) +
+  labs(
+    title = "B. Risk Perception Shifted Toward Information & Privacy",
+    subtitle = "Top perceived societal risks of AI (Table 83, up to 3 choices)",
+    x = NULL,
+    y = "Selected as Top Societal Risk (%)"
+  ) +
+  theme_padai(base_size = 10.5) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    legend.direction = "vertical"
+  )
+
+combined_adopt_risk <- p_adopt + p_risk +
+  plot_layout(widths = c(1, 1.35)) +
+  plot_annotation(
+    title = "As Direct Chatbot Experience Rose, Sci-Fi & Labor Fears Receded While Epistemic Risks Grew",
+    caption = "Source: UK DSIT PADAI Tracker Survey (Tables 83, 122, 124). All displayed Wave 3 to Wave 4 changes are statistically significant at p < .05.",
+    theme = theme(
+      plot.title = element_text(face = "bold", size = 13.5, color = "#0f172a"),
+      plot.caption = element_text(size = 9, color = "#64748b", hjust = 0)
+    )
+  )
+
+girafe(
+  ggobj = combined_adopt_risk,
+  width_svg = 9.6,
+  height_svg = 5.6,
+  options = list(
+    opts_tooltip(css = tooltip_css),
+    opts_hover(css = "stroke:#0f172a;stroke-width:2px;cursor:pointer;")
+  )
+)
+```
+
+### Explaining the Risk Recalibration
+
+* **Cooling of Acute Displacement and Control Fears:** While job displacement remains the single most cited risk in Wave 4 (36.9%), its selection dropped by **-8.2 percentage points** from Wave 3 (45.1%, `a:b`). Similarly, fears that humans will lose control of AI fell **-6.0 pp** (34.5% to 28.5%), concerns over lost human creativity dropped **-5.0 pp** (34.6% to 29.6%), and worry over unintelligible AI decisions declined **-4.0 pp** (22.7% to 18.7%).
+* **Surge in Misinformation and Data Consent Concerns:** Conversely, concern that AI will increase the spread of misinformation jumped **+6.4 pp** (from 21.7% to 28.1%, `b:a`), and non-consensual collection of personal data entered the Wave 4 questionnaire as an immediate top-tier concern at **24.2%**. As citizens began prompting LLMs themselves, abstract fears of autonomous takeovers gave way to concrete concerns over synthetic media, hallucinations, and training-data scraping.
+
+---
+
+## 4. Demographic Fault Lines: The Closing Gender Gap vs. Widening Age Stratification
+
+Aggregate national figures conceal two opposing demographic shifts across Waves 1 to 4: **gender convergence in self-assessed AI literacy** alongside **generational divergence in literacy, adoption, and regulatory skepticism**.
+
+```{r}
+#| label: fig-demographic-faultlines
+#| fig-cap: "Four-wave demographic trajectories in AI explainability by Age and Gender (Panel A, Table 82) versus age-stratified disagreement that AI is regulated enough (Panel B, Table 145)."
+
+# Panel A: AI Explainability across Waves 1-4 by Age and Gender (Table 82)
+demog_lit <- df |>
+  filter(
+    Table_Name == "Table 82",
+    Metric_Type == "NET: Could explain at least partially",
+    (Demographic_Category == "Age (groups)" & Subgroup %in% c("18-34", "35-54", "55+")) |
+      (Demographic_Category == "Gender" & Subgroup %in% c("Male", "Female"))
+  ) |>
+  mutate(
+    Facet_Group = if_else(Demographic_Category == "Age (groups)", "A1. Widening Age Gap in AI Explainability", "A2. Closing Gender Gap in AI Explainability"),
+    tooltip = sprintf(
+      "<b>Subgroup: %s (%s)</b><br><span style='color:#94a3b8;'>Table 82: Can explain AI at least partially</span><hr style='margin:5px 0;border-color:#334155;'><b>%s:</b> %.1f%%<br><b>Unweighted N:</b> %s<br><b>Sig Flag:</b> <code>%s</code>",
+      Subgroup, Demographic_Category, Wave, Pct, comma(Unweighted_N), Significance_Flag
+    ),
+    data_id = paste("lit", Subgroup, Wave, sep = "_")
+  )
+
+pal_demog <- c(
+  "18-34" = "#0f766e",
+  "35-54" = "#0284c7",
+  "55+" = "#b91c1c",
+  "Male" = "#334155",
+  "Female" = "#d97706"
+)
+
+p_demog_lit <- ggplot(demog_lit, aes(x = Wave_Num, y = Pct, color = Subgroup, group = Subgroup)) +
+  geom_line(linewidth = 1.1) +
+  geom_point_interactive(
+    aes(tooltip = tooltip, data_id = data_id),
+    size = 3.1, fill = "white", shape = 21, stroke = 1.3
+  ) +
+  geom_text(
+    data = demog_lit |> filter(Wave_Num == 4),
+    aes(x = 4.08, label = sprintf("%s (%.1f%%)", Subgroup, Pct)),
+    hjust = 0, size = 2.95, fontface = "bold", show.legend = FALSE
+  ) +
+  facet_wrap(~Facet_Group) +
+  scale_color_manual(values = pal_demog) +
+  scale_x_continuous(breaks = 1:4, labels = c("W1", "W2", "W3", "W4"), limits = c(0.9, 4.95)) +
+  scale_y_continuous(limits = c(40, 86), labels = label_percent(scale = 1)) +
+  labs(
+    title = "Generational Divergence vs. Gender Convergence in AI Explainability (Waves 1–4)",
+    subtitle = "Age gap (18–34 vs. 55+) tripled from 4.9 pp in Wave 1 to 16.6 pp in Wave 4; Gender gap narrowed from 23.1 pp in Wave 2 to 4.1 pp in Wave 4",
+    x = NULL,
+    y = "Can Explain AI at Least Partially (%)"
+  ) +
+  theme_padai(base_size = 10.5) +
+  theme(
+    legend.position = "none",
+    panel.grid.major.x = element_blank()
+  )
+
+# Panel B: Age & Digital Engagement Divide on AI Regulation Sufficiency (Table 145, Wave 4)
+reg_sub <- df |>
+  filter(
+    Table_Name == "Table 145",
+    Wave == "Wave 4",
+    Metric_Type %in% c("NET: Disagree", "NET: Agree"),
+    (Demographic_Category == "Age (groups)" & Subgroup %in% c("18-34", "35-54", "55+")) |
+      (Demographic_Category == "Digital engagement" & Subgroup %in% c("High digital engagement", "Low digital engagement")) |
+      Subgroup == "All Respondents"
+  ) |>
+  mutate(
+    Metric_Clean = if_else(Metric_Type == "NET: Disagree", "Disagree ('AI is NOT regulated enough')", "Agree ('AI is regulated enough')"),
+    Subgroup_Clean = case_match(
+      Subgroup,
+      "All Respondents" ~ "All UK Adults",
+      "18-34" ~ "Age: 18–34",
+      "35-54" ~ "Age: 35–54",
+      "55+" ~ "Age: 55+",
+      "High digital engagement" ~ "Digital Engagement: High",
+      "Low digital engagement" ~ "Digital Engagement: Low"
+    ),
+    Subgroup_Clean = factor(
+      Subgroup_Clean,
+      levels = rev(c("All UK Adults", "Age: 18–34", "Age: 35–54", "Age: 55+", "Digital Engagement: High", "Digital Engagement: Low"))
+    ),
+    tooltip = sprintf(
+      "<b>%s — %s</b><br><span style='color:#94a3b8;'>Table 145 (Wave 4): 'AI is regulated enough'</span><hr style='margin:5px 0;border-color:#334155;'><b>Proportion:</b> %.1f%%<br><b>Unweighted N:</b> %s<br><b>Sig Flag:</b> <code>%s</code>",
+      Subgroup_Clean, Metric_Clean, Pct, comma(Unweighted_N), Significance_Flag
+    ),
+    data_id = paste("reg", Subgroup_Clean, Metric_Type, sep = "_")
+  )
+
+p_reg_sub <- ggplot(reg_sub, aes(x = Pct, y = Subgroup_Clean, fill = Metric_Clean)) +
+  geom_col_interactive(
+    aes(tooltip = tooltip, data_id = data_id),
+    position = position_dodge(width = 0.72), width = 0.64
+  ) +
+  geom_text(
+    aes(label = sprintf("%.1f%%", Pct), group = Metric_Clean),
+    position = position_dodge(width = 0.72),
+    hjust = -0.15, size = 2.95, fontface = "bold", color = "#1e293b"
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Disagree ('AI is NOT regulated enough')" = "#b91c1c",
+      "Agree ('AI is regulated enough')" = "#0f766e"
+    ),
+    name = "Wave 4 Stance on 'AI is Regulated Enough' (Table 145):"
+  ) +
+  scale_x_continuous(limits = c(0, 68), labels = label_percent(scale = 1)) +
+  labs(
+    title = "Older Cohorts Drive the Demand for Stronger AI Regulation in Wave 4",
+    subtitle = "57.4% of adults aged 55+ disagree that AI is regulated enough (up +6.3 pp from Wave 3), vs. 29.4% of 18–34s",
+    x = "Percentage of Subgroup in Wave 4 (%)",
+    y = NULL,
+    caption = "Source: UK DSIT PADAI Tracker Survey (Tables 82 & 145)."
+  ) +
+  theme_padai(base_size = 10.5) +
+  theme(panel.grid.major.y = element_blank())
+
+combined_demog <- p_demog_lit / p_reg_sub +
+  plot_layout(heights = c(1.05, 1))
+
+girafe(
+  ggobj = combined_demog,
+  width_svg = 9.2,
+  height_svg = 7.4,
+  options = list(
+    opts_tooltip(css = tooltip_css),
+    opts_hover(css = "stroke:#0f172a;stroke-width:2px;cursor:pointer;")
+  )
+)
+```
+
+### Demographic Takeaways
+
+* **Tripling of the Generational Literacy Gap (`Table 82`):** In Wave 1, young adults (18–34) and older adults (55+) were separated by just **4.9 percentage points** in their ability to explain AI (64.1% vs. 59.2%). Over the subsequent three waves, 18–34s surged to **79.4%** while the 55+ cohort reached **62.8%**, widening the generational divide to **16.6 pp**. This mirrors behavioral adoption in Wave 4 (`Table 122`): **40.2%** of 18–34s use AI chatbots at least weekly, compared to **24.7%** of 35–54s and **8.6%** of those aged 55+.
+* **Closing of the Gender Gap in AI Explainability (`Table 82`):** In Wave 2, men were **23.1 pp** more likely than women to state they could explain AI (68.2% Male vs. 45.1% Female). Following the mainstream adoption of conversational AI across Waves 3 and 4, women's self-reported explainability climbed by **+23.4 pp** (45.1% $\rightarrow$ 60.1% $\rightarrow$ 68.5%, $p < .05$), reducing the gender gap to **4.1 pp** in Wave 4 (72.6% Male vs. 68.5% Female).
+* **Age Polarization in Regulatory Confidence (`Table 145`):** Skepticism toward AI governance is heavily concentrated among older Britons. In Wave 4, **57.4%** of adults aged 55+ disagree that AI is regulated enough (up significantly from 51.1% in Wave 3), compared to **42.5%** of 35–54s and **29.4%** of 18–34s. Only **11.1%** of adults aged 55+ believe AI is adequately regulated, compared to **44.1%** of 18–34s.
